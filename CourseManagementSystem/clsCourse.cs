@@ -56,4 +56,6 @@ namespace CourseManagementSystem
         public int NoOfUnits { get => noOfUnits; set => noOfUnits = value; }
         public double CourseFee { get => courseFee; set => courseFee = value; }
     }
+
+
 }
