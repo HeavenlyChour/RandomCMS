@@ -82,6 +82,7 @@
     <Compile Include="TeacherForm.Designer.cs">
       <DependentUpon>TeacherForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="testclass.cs" />
     <Compile Include="UnitForm.cs">
       <SubType>Form</SubType>
     </Compile>
