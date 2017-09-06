@@ -56,6 +56,8 @@
     </Compile>
     <Compile Include="clsCourse.cs" />
     <Compile Include="clsEnrolment.cs" />
+    <Compile Include="clsSemester.cs" />
+    <Compile Include="clsSkills.cs" />
     <Compile Include="clsStudent.cs" />
     <Compile Include="clsTeacher.cs" />
     <Compile Include="clsUnit.cs" />

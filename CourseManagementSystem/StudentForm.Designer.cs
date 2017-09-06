@@ -54,7 +54,7 @@
             this.dgvStudent = new System.Windows.Forms.DataGridView();
             this.txtStudentSuburb = new System.Windows.Forms.TextBox();
             this.lblStudentSuburb = new System.Windows.Forms.Label();
-            this.txtStudPostCode = new System.Windows.Forms.TextBox();
+            this.txtStudentPostCode = new System.Windows.Forms.TextBox();
             this.lblStudPostCode = new System.Windows.Forms.Label();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdd = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,10 +69,10 @@
             this.mnuTeacherForm = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.StudentToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSearch = new System.Windows.Forms.Button();
             this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.rdbMale = new System.Windows.Forms.RadioButton();
             this.lblGender = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -289,7 +289,7 @@
             // txtStudentDateOfBirth
             // 
             this.txtStudentDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentDateOfBirth.Location = new System.Drawing.Point(283, 211);
+            this.txtStudentDateOfBirth.Location = new System.Drawing.Point(283, 242);
             this.txtStudentDateOfBirth.Name = "txtStudentDateOfBirth";
             this.txtStudentDateOfBirth.Size = new System.Drawing.Size(217, 26);
             this.txtStudentDateOfBirth.TabIndex = 22;
@@ -302,7 +302,7 @@
             this.lblStudentDateOfBirth.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblStudentDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudentDateOfBirth.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudentDateOfBirth.Location = new System.Drawing.Point(156, 214);
+            this.lblStudentDateOfBirth.Location = new System.Drawing.Point(156, 245);
             this.lblStudentDateOfBirth.Name = "lblStudentDateOfBirth";
             this.lblStudentDateOfBirth.Size = new System.Drawing.Size(117, 20);
             this.lblStudentDateOfBirth.TabIndex = 21;
@@ -362,15 +362,15 @@
             this.lblStudentSuburb.TabIndex = 26;
             this.lblStudentSuburb.Text = "Suburb:";
             // 
-            // txtStudPostCode
+            // txtStudentPostCode
             // 
-            this.txtStudPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudPostCode.Location = new System.Drawing.Point(283, 338);
-            this.txtStudPostCode.Name = "txtStudPostCode";
-            this.txtStudPostCode.Size = new System.Drawing.Size(113, 26);
-            this.txtStudPostCode.TabIndex = 29;
-            this.txtStudPostCode.Tag = "Student Post Code";
-            this.StudentToolTip.SetToolTip(this.txtStudPostCode, "Post code must contain only numeric characters");
+            this.txtStudentPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentPostCode.Location = new System.Drawing.Point(283, 338);
+            this.txtStudentPostCode.Name = "txtStudentPostCode";
+            this.txtStudentPostCode.Size = new System.Drawing.Size(113, 26);
+            this.txtStudentPostCode.TabIndex = 29;
+            this.txtStudentPostCode.Tag = "Student Post Code";
+            this.StudentToolTip.SetToolTip(this.txtStudentPostCode, "Post code must contain only numeric characters");
             // 
             // lblStudPostCode
             // 
@@ -404,6 +404,7 @@
             this.mnuAdd.Size = new System.Drawing.Size(166, 22);
             this.mnuAdd.Text = "Add";
             this.mnuAdd.ToolTipText = "Add a new record";
+            this.mnuAdd.Click += new System.EventHandler(this.mnuAdd_Click);
             // 
             // mnuDelete
             // 
@@ -413,6 +414,7 @@
             this.mnuDelete.Size = new System.Drawing.Size(166, 22);
             this.mnuDelete.Text = "Delete";
             this.mnuDelete.ToolTipText = "Delete  record";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // mnuUpdate
             // 
@@ -500,46 +502,6 @@
             this.menuStrip1.TabIndex = 30;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // rdbFemale
-            // 
-            this.rdbFemale.AutoSize = true;
-            this.rdbFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbFemale.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbFemale.Location = new System.Drawing.Point(354, 244);
-            this.rdbFemale.Name = "rdbFemale";
-            this.rdbFemale.Size = new System.Drawing.Size(86, 24);
-            this.rdbFemale.TabIndex = 34;
-            this.rdbFemale.TabStop = true;
-            this.rdbFemale.Tag = "Gender";
-            this.rdbFemale.Text = "Female";
-            this.rdbFemale.UseVisualStyleBackColor = true;
-            // 
-            // rdbMale
-            // 
-            this.rdbMale.AutoSize = true;
-            this.rdbMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbMale.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbMale.Location = new System.Drawing.Point(283, 244);
-            this.rdbMale.Name = "rdbMale";
-            this.rdbMale.Size = new System.Drawing.Size(65, 24);
-            this.rdbMale.TabIndex = 33;
-            this.rdbMale.TabStop = true;
-            this.rdbMale.Tag = "Gender";
-            this.rdbMale.Text = "Male";
-            this.rdbMale.UseVisualStyleBackColor = true;
-            // 
-            // lblGender
-            // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblGender.Location = new System.Drawing.Point(198, 246);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(74, 20);
-            this.lblGender.TabIndex = 32;
-            this.lblGender.Text = "Gender:";
-            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.White;
@@ -554,6 +516,46 @@
             this.StudentToolTip.SetToolTip(this.btnSearch, "Press to search");
             this.btnSearch.UseVisualStyleBackColor = false;
             // 
+            // rdbFemale
+            // 
+            this.rdbFemale.AutoSize = true;
+            this.rdbFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbFemale.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.rdbFemale.Location = new System.Drawing.Point(354, 211);
+            this.rdbFemale.Name = "rdbFemale";
+            this.rdbFemale.Size = new System.Drawing.Size(86, 24);
+            this.rdbFemale.TabIndex = 34;
+            this.rdbFemale.TabStop = true;
+            this.rdbFemale.Tag = "Gender";
+            this.rdbFemale.Text = "Female";
+            this.rdbFemale.UseVisualStyleBackColor = true;
+            // 
+            // rdbMale
+            // 
+            this.rdbMale.AutoSize = true;
+            this.rdbMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbMale.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.rdbMale.Location = new System.Drawing.Point(283, 211);
+            this.rdbMale.Name = "rdbMale";
+            this.rdbMale.Size = new System.Drawing.Size(65, 24);
+            this.rdbMale.TabIndex = 33;
+            this.rdbMale.TabStop = true;
+            this.rdbMale.Tag = "Gender";
+            this.rdbMale.Text = "Male";
+            this.rdbMale.UseVisualStyleBackColor = true;
+            // 
+            // lblGender
+            // 
+            this.lblGender.AutoSize = true;
+            this.lblGender.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGender.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.lblGender.Location = new System.Drawing.Point(198, 213);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(74, 20);
+            this.lblGender.TabIndex = 32;
+            this.lblGender.Text = "Gender:";
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -566,7 +568,7 @@
             this.Controls.Add(this.rdbMale);
             this.Controls.Add(this.lblGender);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtStudPostCode);
+            this.Controls.Add(this.txtStudentPostCode);
             this.Controls.Add(this.lblStudPostCode);
             this.Controls.Add(this.txtStudentSuburb);
             this.Controls.Add(this.lblStudentSuburb);
@@ -634,7 +636,7 @@
         private System.Windows.Forms.DataGridView dgvStudent;
         private System.Windows.Forms.TextBox txtStudentSuburb;
         private System.Windows.Forms.Label lblStudentSuburb;
-        private System.Windows.Forms.TextBox txtStudPostCode;
+        private System.Windows.Forms.TextBox txtStudentPostCode;
         private System.Windows.Forms.Label lblStudPostCode;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.ToolStripMenuItem mnuAdd;
