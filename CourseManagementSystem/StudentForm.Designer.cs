@@ -73,8 +73,12 @@
             this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.rdbMale = new System.Windows.Forms.RadioButton();
             this.lblGender = new System.Windows.Forms.Label();
+            this.pnlGender = new System.Windows.Forms.Panel();
+            this.pnlDisability = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.pnlGender.SuspendLayout();
+            this.pnlDisability.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtStudentID
@@ -83,7 +87,7 @@
             this.txtStudentID.Location = new System.Drawing.Point(283, 115);
             this.txtStudentID.Name = "txtStudentID";
             this.txtStudentID.Size = new System.Drawing.Size(176, 26);
-            this.txtStudentID.TabIndex = 5;
+            this.txtStudentID.TabIndex = 0;
             this.txtStudentID.Tag = "Student ID";
             this.StudentToolTip.SetToolTip(this.txtStudentID, "must start with STU and consist of six numeric values");
             // 
@@ -118,7 +122,7 @@
             this.txtStudentFirstName.Location = new System.Drawing.Point(283, 147);
             this.txtStudentFirstName.Name = "txtStudentFirstName";
             this.txtStudentFirstName.Size = new System.Drawing.Size(347, 26);
-            this.txtStudentFirstName.TabIndex = 7;
+            this.txtStudentFirstName.TabIndex = 1;
             this.txtStudentFirstName.Tag = "Student First Name";
             this.StudentToolTip.SetToolTip(this.txtStudentFirstName, "First name must only contain alphabetic characters");
             // 
@@ -140,7 +144,7 @@
             this.txtStudStreetAddress.Location = new System.Drawing.Point(283, 274);
             this.txtStudStreetAddress.Name = "txtStudStreetAddress";
             this.txtStudStreetAddress.Size = new System.Drawing.Size(347, 26);
-            this.txtStudStreetAddress.TabIndex = 9;
+            this.txtStudStreetAddress.TabIndex = 6;
             this.txtStudStreetAddress.Tag = "Student Street Address";
             this.StudentToolTip.SetToolTip(this.txtStudStreetAddress, "Street address is required");
             // 
@@ -162,7 +166,7 @@
             this.txtStudentPhoneNum.Location = new System.Drawing.Point(283, 370);
             this.txtStudentPhoneNum.Name = "txtStudentPhoneNum";
             this.txtStudentPhoneNum.Size = new System.Drawing.Size(347, 26);
-            this.txtStudentPhoneNum.TabIndex = 11;
+            this.txtStudentPhoneNum.TabIndex = 9;
             this.txtStudentPhoneNum.Tag = "Student Phone Number";
             this.StudentToolTip.SetToolTip(this.txtStudentPhoneNum, "Phone number must contain only numeric characters");
             // 
@@ -197,7 +201,7 @@
             this.cmbNationality.Location = new System.Drawing.Point(283, 434);
             this.cmbNationality.Name = "cmbNationality";
             this.cmbNationality.Size = new System.Drawing.Size(176, 28);
-            this.cmbNationality.TabIndex = 13;
+            this.cmbNationality.TabIndex = 11;
             this.cmbNationality.Tag = "Student Nationality";
             this.StudentToolTip.SetToolTip(this.cmbNationality, "press the down arrow to make a selection");
             // 
@@ -218,10 +222,10 @@
             this.rdbDisabilityYes.AutoSize = true;
             this.rdbDisabilityYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbDisabilityYes.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbDisabilityYes.Location = new System.Drawing.Point(283, 468);
+            this.rdbDisabilityYes.Location = new System.Drawing.Point(3, 2);
             this.rdbDisabilityYes.Name = "rdbDisabilityYes";
             this.rdbDisabilityYes.Size = new System.Drawing.Size(58, 24);
-            this.rdbDisabilityYes.TabIndex = 15;
+            this.rdbDisabilityYes.TabIndex = 12;
             this.rdbDisabilityYes.TabStop = true;
             this.rdbDisabilityYes.Tag = "Disability";
             this.rdbDisabilityYes.Text = "Yes";
@@ -232,10 +236,10 @@
             this.rdbDisabilityNo.AutoSize = true;
             this.rdbDisabilityNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbDisabilityNo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbDisabilityNo.Location = new System.Drawing.Point(354, 468);
+            this.rdbDisabilityNo.Location = new System.Drawing.Point(74, 2);
             this.rdbDisabilityNo.Name = "rdbDisabilityNo";
             this.rdbDisabilityNo.Size = new System.Drawing.Size(49, 24);
-            this.rdbDisabilityNo.TabIndex = 16;
+            this.rdbDisabilityNo.TabIndex = 13;
             this.rdbDisabilityNo.TabStop = true;
             this.rdbDisabilityNo.Tag = "Disability";
             this.rdbDisabilityNo.Text = "No";
@@ -260,7 +264,7 @@
             this.txtDisabilityDescription.Multiline = true;
             this.txtDisabilityDescription.Name = "txtDisabilityDescription";
             this.txtDisabilityDescription.Size = new System.Drawing.Size(347, 87);
-            this.txtDisabilityDescription.TabIndex = 18;
+            this.txtDisabilityDescription.TabIndex = 14;
             this.txtDisabilityDescription.Tag = "Disability Description";
             this.StudentToolTip.SetToolTip(this.txtDisabilityDescription, "Enter the details regarding disability");
             // 
@@ -270,7 +274,7 @@
             this.txtStudentEmail.Location = new System.Drawing.Point(283, 402);
             this.txtStudentEmail.Name = "txtStudentEmail";
             this.txtStudentEmail.Size = new System.Drawing.Size(347, 26);
-            this.txtStudentEmail.TabIndex = 20;
+            this.txtStudentEmail.TabIndex = 10;
             this.txtStudentEmail.Tag = "Student Email";
             this.StudentToolTip.SetToolTip(this.txtStudentEmail, "Email address is required");
             // 
@@ -292,7 +296,7 @@
             this.txtStudentDateOfBirth.Location = new System.Drawing.Point(283, 242);
             this.txtStudentDateOfBirth.Name = "txtStudentDateOfBirth";
             this.txtStudentDateOfBirth.Size = new System.Drawing.Size(217, 26);
-            this.txtStudentDateOfBirth.TabIndex = 22;
+            this.txtStudentDateOfBirth.TabIndex = 5;
             this.txtStudentDateOfBirth.Tag = "Student Date of Birth";
             this.StudentToolTip.SetToolTip(this.txtStudentDateOfBirth, "Date format must be yyyy-mm-dd and contain only numeric characters");
             // 
@@ -314,7 +318,7 @@
             this.txtStudentLastName.Location = new System.Drawing.Point(283, 179);
             this.txtStudentLastName.Name = "txtStudentLastName";
             this.txtStudentLastName.Size = new System.Drawing.Size(347, 26);
-            this.txtStudentLastName.TabIndex = 24;
+            this.txtStudentLastName.TabIndex = 2;
             this.txtStudentLastName.Tag = "Student Last Name";
             this.StudentToolTip.SetToolTip(this.txtStudentLastName, "Last name must only contain alphabetic characters");
             // 
@@ -346,7 +350,7 @@
             this.txtStudentSuburb.Location = new System.Drawing.Point(283, 306);
             this.txtStudentSuburb.Name = "txtStudentSuburb";
             this.txtStudentSuburb.Size = new System.Drawing.Size(176, 26);
-            this.txtStudentSuburb.TabIndex = 27;
+            this.txtStudentSuburb.TabIndex = 7;
             this.txtStudentSuburb.Tag = "Student Suburb";
             this.StudentToolTip.SetToolTip(this.txtStudentSuburb, "Suburb must only contain alphabetic characters");
             // 
@@ -368,7 +372,7 @@
             this.txtStudentPostCode.Location = new System.Drawing.Point(283, 338);
             this.txtStudentPostCode.Name = "txtStudentPostCode";
             this.txtStudentPostCode.Size = new System.Drawing.Size(113, 26);
-            this.txtStudentPostCode.TabIndex = 29;
+            this.txtStudentPostCode.TabIndex = 8;
             this.txtStudentPostCode.Tag = "Student Post Code";
             this.StudentToolTip.SetToolTip(this.txtStudentPostCode, "Post code must contain only numeric characters");
             // 
@@ -521,10 +525,10 @@
             this.rdbFemale.AutoSize = true;
             this.rdbFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbFemale.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbFemale.Location = new System.Drawing.Point(354, 211);
+            this.rdbFemale.Location = new System.Drawing.Point(74, 2);
             this.rdbFemale.Name = "rdbFemale";
             this.rdbFemale.Size = new System.Drawing.Size(86, 24);
-            this.rdbFemale.TabIndex = 34;
+            this.rdbFemale.TabIndex = 4;
             this.rdbFemale.TabStop = true;
             this.rdbFemale.Tag = "Gender";
             this.rdbFemale.Text = "Female";
@@ -535,10 +539,10 @@
             this.rdbMale.AutoSize = true;
             this.rdbMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbMale.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbMale.Location = new System.Drawing.Point(283, 211);
+            this.rdbMale.Location = new System.Drawing.Point(3, 2);
             this.rdbMale.Name = "rdbMale";
             this.rdbMale.Size = new System.Drawing.Size(65, 24);
-            this.rdbMale.TabIndex = 33;
+            this.rdbMale.TabIndex = 3;
             this.rdbMale.TabStop = true;
             this.rdbMale.Tag = "Gender";
             this.rdbMale.Text = "Male";
@@ -556,6 +560,24 @@
             this.lblGender.TabIndex = 32;
             this.lblGender.Text = "Gender:";
             // 
+            // pnlGender
+            // 
+            this.pnlGender.Controls.Add(this.rdbFemale);
+            this.pnlGender.Controls.Add(this.rdbMale);
+            this.pnlGender.Location = new System.Drawing.Point(283, 211);
+            this.pnlGender.Name = "pnlGender";
+            this.pnlGender.Size = new System.Drawing.Size(176, 25);
+            this.pnlGender.TabIndex = 33;
+            // 
+            // pnlDisability
+            // 
+            this.pnlDisability.Controls.Add(this.rdbDisabilityNo);
+            this.pnlDisability.Controls.Add(this.rdbDisabilityYes);
+            this.pnlDisability.Location = new System.Drawing.Point(283, 468);
+            this.pnlDisability.Name = "pnlDisability";
+            this.pnlDisability.Size = new System.Drawing.Size(176, 24);
+            this.pnlDisability.TabIndex = 34;
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,8 +586,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(669, 756);
-            this.Controls.Add(this.rdbFemale);
-            this.Controls.Add(this.rdbMale);
+            this.Controls.Add(this.pnlDisability);
+            this.Controls.Add(this.pnlGender);
             this.Controls.Add(this.lblGender);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtStudentPostCode);
@@ -581,8 +603,6 @@
             this.Controls.Add(this.lblStudentEmail);
             this.Controls.Add(this.txtDisabilityDescription);
             this.Controls.Add(this.lblDisabilityDescription);
-            this.Controls.Add(this.rdbDisabilityNo);
-            this.Controls.Add(this.rdbDisabilityYes);
             this.Controls.Add(this.lblDisability);
             this.Controls.Add(this.cmbNationality);
             this.Controls.Add(this.lblNationality);
@@ -604,6 +624,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnlGender.ResumeLayout(false);
+            this.pnlGender.PerformLayout();
+            this.pnlDisability.ResumeLayout(false);
+            this.pnlDisability.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -655,5 +679,7 @@
         private System.Windows.Forms.RadioButton rdbFemale;
         private System.Windows.Forms.RadioButton rdbMale;
         private System.Windows.Forms.Label lblGender;
+        private System.Windows.Forms.Panel pnlGender;
+        private System.Windows.Forms.Panel pnlDisability;
     }
 }

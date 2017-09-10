@@ -42,6 +42,22 @@ namespace CourseManagementSystem
             this.LastName = lastName;
         }
 
+        public clsStudent(string firstName, string lastName, string gender, string dateOfBirth, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Gender = gender;
+            this.DateOfBirth = dateOfBirth;
+            this.StreetAddress = streetAddress;
+            this.Suburb = suburb;
+            this.PostCode = postCode;
+            this.PhoneNumber = phoneNumber;
+            this.Email = email;
+            this.Nationality = nationality;
+            this.Disability = disability;
+            this.DisabilityDescription = disabilityDescription;
+        }
+
         public clsStudent(int studentID, string firstName, string lastName, string gender, string dateOfBirth, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
         {
             this.StudentID = studentID;
