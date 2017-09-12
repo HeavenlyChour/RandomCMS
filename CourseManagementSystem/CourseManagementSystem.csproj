@@ -43,6 +43,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ValidateClass">
+      <HintPath>..\..\ValidationClassLibrary\ValidateClass\bin\Debug\ValidateClass.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssessmentForm.cs">
