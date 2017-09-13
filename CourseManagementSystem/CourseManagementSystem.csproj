@@ -47,6 +47,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="ValidateClass">
+
       <HintPath>..\..\ValidationClass\ValidateClass\bin\Debug\ValidateClass.dll</HintPath>
     </Reference>
   </ItemGroup>

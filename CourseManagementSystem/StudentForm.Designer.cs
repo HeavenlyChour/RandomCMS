@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+
             this.txtStudentID = new System.Windows.Forms.TextBox();
             this.lblStudentForm = new System.Windows.Forms.Label();
             this.lblStudentID = new System.Windows.Forms.Label();
@@ -56,31 +57,43 @@
             this.lblStudentSuburb = new System.Windows.Forms.Label();
             this.txtStudentPostCode = new System.Windows.Forms.TextBox();
             this.lblStudPostCode = new System.Windows.Forms.Label();
+
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNavigate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnrolmentForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCourseForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUnitForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAssessmentForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTeacherForm = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.StudentToolTip = new System.Windows.Forms.ToolTip(this.components);
+
             this.btnSearch = new System.Windows.Forms.Button();
+
             this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.rdbMale = new System.Windows.Forms.RadioButton();
+            this.pnlDisability = new System.Windows.Forms.Panel();
+            this.rdbDisabilityYes = new System.Windows.Forms.RadioButton();
+            this.rdbDisabilityNo = new System.Windows.Forms.RadioButton();
+            this.pnlGender = new System.Windows.Forms.Panel();
             this.lblGender = new System.Windows.Forms.Label();
+
             this.pnlGender = new System.Windows.Forms.Panel();
             this.pnlDisability = new System.Windows.Forms.Panel();
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlGender.SuspendLayout();
             this.pnlDisability.SuspendLayout();
             this.SuspendLayout();
             // 
+
             // txtStudentID
             // 
             this.txtStudentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -375,18 +388,7 @@
             this.txtStudentPostCode.TabIndex = 8;
             this.txtStudentPostCode.Tag = "Student Post Code";
             this.StudentToolTip.SetToolTip(this.txtStudentPostCode, "Post code must contain only numeric characters");
-            // 
-            // lblStudPostCode
-            // 
-            this.lblStudPostCode.AutoSize = true;
-            this.lblStudPostCode.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblStudPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudPostCode.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudPostCode.Location = new System.Drawing.Point(175, 341);
-            this.lblStudPostCode.Name = "lblStudPostCode";
-            this.lblStudPostCode.Size = new System.Drawing.Size(97, 20);
-            this.lblStudPostCode.TabIndex = 28;
-            this.lblStudPostCode.Text = "Post Code:";
+
             // 
             // mnuFile
             // 
@@ -394,7 +396,8 @@
             this.mnuAdd,
             this.mnuDelete,
             this.mnuUpdate,
-            this.mnuViewAll});
+            this.mnuViewAll,
+            this.mnuExit});
             this.mnuFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(42, 20);
@@ -435,6 +438,14 @@
             this.mnuViewAll.Size = new System.Drawing.Size(166, 22);
             this.mnuViewAll.Text = "View All";
             this.mnuViewAll.ToolTipText = "View All record";
+            // 
+            // mnuExit
+            // 
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuExit.Size = new System.Drawing.Size(166, 22);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // mnuNavigate
             // 
@@ -495,16 +506,160 @@
             this.mnuTeacherForm.Text = "Teacher Form";
             this.mnuTeacherForm.ToolTipText = "Go to teacher form";
             // 
-            // menuStrip1
+            // mnuEdit
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFile,
-            this.mnuNavigate});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(669, 24);
-            this.menuStrip1.TabIndex = 30;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuClearAll});
+            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuClearAll
+            // 
+            this.mnuClearAll.Name = "mnuClearAll";
+            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
+            this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
+            // 
+            // cmbStudSuburb
+            // 
+            this.cmbStudSuburb.DisplayMember = "Cake";
+            this.cmbStudSuburb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStudSuburb.FormattingEnabled = true;
+            this.cmbStudSuburb.Items.AddRange(new object[] {
+            "Campbelltown",
+            "Liverpool",
+            "Ultimo",
+            "Granville"});
+            this.cmbStudSuburb.Location = new System.Drawing.Point(283, 310);
+            this.cmbStudSuburb.Name = "cmbStudSuburb";
+            this.cmbStudSuburb.Size = new System.Drawing.Size(176, 28);
+            this.cmbStudSuburb.TabIndex = 67;
+            this.cmbStudSuburb.Tag = "Student Suburb";
+            this.StudentToolTip.SetToolTip(this.cmbStudSuburb, "Press the down arrow to make a selection");
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.White;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
+            this.btnSearch.Location = new System.Drawing.Point(465, 121);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(35, 28);
+            this.btnSearch.TabIndex = 63;
+            this.StudentToolTip.SetToolTip(this.btnSearch, "Press to search");
+            this.btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // dtpDateOfBirth
+            // 
+            this.dtpDateOfBirth.AllowDrop = true;
+            this.dtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(283, 215);
+            this.dtpDateOfBirth.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
+            this.dtpDateOfBirth.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
+            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
+            this.dtpDateOfBirth.Size = new System.Drawing.Size(274, 26);
+            this.dtpDateOfBirth.TabIndex = 68;
+            this.dtpDateOfBirth.Tag = "Date of Birth";
+            this.StudentToolTip.SetToolTip(this.dtpDateOfBirth, "press the down arrow to make a selection");
+            this.dtpDateOfBirth.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            this.dtpDateOfBirth.ValueChanged += new System.EventHandler(this.dtpDateOfBirth_ValueChanged);
+            // 
+            // txtStudentLastName
+            // 
+            this.txtStudentLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentLastName.Location = new System.Drawing.Point(283, 185);
+            this.txtStudentLastName.Name = "txtStudentLastName";
+            this.txtStudentLastName.Size = new System.Drawing.Size(347, 26);
+            this.txtStudentLastName.TabIndex = 57;
+            this.txtStudentLastName.Tag = "Student Last Name";
+            this.StudentToolTip.SetToolTip(this.txtStudentLastName, "Last name must only contain alphabetic characters and begin with a capital letter" +
+        "");
+            // 
+            // txtStudentEmail
+            // 
+            this.txtStudentEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentEmail.Location = new System.Drawing.Point(283, 408);
+            this.txtStudentEmail.Name = "txtStudentEmail";
+            this.txtStudentEmail.Size = new System.Drawing.Size(347, 26);
+            this.txtStudentEmail.TabIndex = 54;
+            this.txtStudentEmail.Tag = "Student Email";
+            this.txtStudentEmail.Text = "FirstnameLastname@dummyMail.com.au";
+            this.StudentToolTip.SetToolTip(this.txtStudentEmail, "Email address must follow the format: FirstnameLastname@dummyMail.com.au");
+            // 
+            // txtDisabilityDescription
+            // 
+            this.txtDisabilityDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDisabilityDescription.Location = new System.Drawing.Point(283, 504);
+            this.txtDisabilityDescription.Multiline = true;
+            this.txtDisabilityDescription.Name = "txtDisabilityDescription";
+            this.txtDisabilityDescription.Size = new System.Drawing.Size(347, 87);
+            this.txtDisabilityDescription.TabIndex = 52;
+            this.txtDisabilityDescription.Tag = "Disability Description";
+            this.StudentToolTip.SetToolTip(this.txtDisabilityDescription, "Enter the details regarding disability");
+            // 
+            // cmbNationality
+            // 
+            this.cmbNationality.DisplayMember = "Cake";
+            this.cmbNationality.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbNationality.FormattingEnabled = true;
+            this.cmbNationality.Items.AddRange(new object[] {
+            "Cake",
+            "Coke",
+            "Fries",
+            "Pasta"});
+            this.cmbNationality.Location = new System.Drawing.Point(283, 440);
+            this.cmbNationality.Name = "cmbNationality";
+            this.cmbNationality.Size = new System.Drawing.Size(176, 28);
+            this.cmbNationality.TabIndex = 49;
+            this.cmbNationality.Tag = "Student Nationality";
+            this.StudentToolTip.SetToolTip(this.cmbNationality, "Press the down arrow to make a selection");
+            // 
+            // txtStudentPhoneNum
+            // 
+            this.txtStudentPhoneNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentPhoneNum.Location = new System.Drawing.Point(283, 376);
+            this.txtStudentPhoneNum.Name = "txtStudentPhoneNum";
+            this.txtStudentPhoneNum.Size = new System.Drawing.Size(176, 26);
+            this.txtStudentPhoneNum.TabIndex = 47;
+            this.txtStudentPhoneNum.Tag = "Student Phone Number";
+            this.StudentToolTip.SetToolTip(this.txtStudentPhoneNum, "Phone number must contain only numeric characters");
+            // 
+            // txtStudStreetAddress
+            // 
+            this.txtStudStreetAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudStreetAddress.Location = new System.Drawing.Point(283, 280);
+            this.txtStudStreetAddress.Name = "txtStudStreetAddress";
+            this.txtStudStreetAddress.Size = new System.Drawing.Size(347, 26);
+            this.txtStudStreetAddress.TabIndex = 45;
+            this.txtStudStreetAddress.Tag = "Student Street Address";
+            this.StudentToolTip.SetToolTip(this.txtStudStreetAddress, "Street address must begin with street number and then street name");
+            // 
+            // txtStudentFirstName
+            // 
+            this.txtStudentFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentFirstName.Location = new System.Drawing.Point(283, 153);
+            this.txtStudentFirstName.Name = "txtStudentFirstName";
+            this.txtStudentFirstName.Size = new System.Drawing.Size(347, 26);
+            this.txtStudentFirstName.TabIndex = 43;
+            this.txtStudentFirstName.Tag = "Student First Name";
+            this.StudentToolTip.SetToolTip(this.txtStudentFirstName, "First name must only contain alphabetic characters and begin with a capital lette" +
+        "r");
+            // 
+            // txtStudentID
+            // 
+            this.txtStudentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentID.Location = new System.Drawing.Point(283, 121);
+            this.txtStudentID.Name = "txtStudentID";
+            this.txtStudentID.Size = new System.Drawing.Size(176, 26);
+            this.txtStudentID.TabIndex = 41;
+            this.txtStudentID.Tag = "Student ID";
+            this.StudentToolTip.SetToolTip(this.txtStudentID, "Student ID must be numeric");
             // 
             // btnSearch
             // 
@@ -525,11 +680,13 @@
             this.rdbFemale.AutoSize = true;
             this.rdbFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbFemale.ForeColor = System.Drawing.SystemColors.HighlightText;
+
             this.rdbFemale.Location = new System.Drawing.Point(74, 2);
             this.rdbFemale.Name = "rdbFemale";
             this.rdbFemale.Size = new System.Drawing.Size(86, 24);
             this.rdbFemale.TabIndex = 4;
             this.rdbFemale.TabStop = true;
+
             this.rdbFemale.Tag = "Gender";
             this.rdbFemale.Text = "Female";
             this.rdbFemale.UseVisualStyleBackColor = true;
@@ -539,14 +696,60 @@
             this.rdbMale.AutoSize = true;
             this.rdbMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbMale.ForeColor = System.Drawing.SystemColors.HighlightText;
+
             this.rdbMale.Location = new System.Drawing.Point(3, 2);
             this.rdbMale.Name = "rdbMale";
             this.rdbMale.Size = new System.Drawing.Size(65, 24);
             this.rdbMale.TabIndex = 3;
             this.rdbMale.TabStop = true;
+
             this.rdbMale.Tag = "Gender";
             this.rdbMale.Text = "Male";
             this.rdbMale.UseVisualStyleBackColor = true;
+            // 
+            // pnlDisability
+            // 
+            this.pnlDisability.Controls.Add(this.rdbDisabilityYes);
+            this.pnlDisability.Controls.Add(this.rdbDisabilityNo);
+            this.pnlDisability.Location = new System.Drawing.Point(283, 471);
+            this.pnlDisability.Name = "pnlDisability";
+            this.pnlDisability.Size = new System.Drawing.Size(176, 27);
+            this.pnlDisability.TabIndex = 66;
+            // 
+            // rdbDisabilityYes
+            // 
+            this.rdbDisabilityYes.AutoSize = true;
+            this.rdbDisabilityYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbDisabilityYes.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.rdbDisabilityYes.Location = new System.Drawing.Point(3, 3);
+            this.rdbDisabilityYes.Name = "rdbDisabilityYes";
+            this.rdbDisabilityYes.Size = new System.Drawing.Size(58, 24);
+            this.rdbDisabilityYes.TabIndex = 15;
+            this.rdbDisabilityYes.Tag = "Disability";
+            this.rdbDisabilityYes.Text = "Yes";
+            this.rdbDisabilityYes.UseVisualStyleBackColor = true;
+            // 
+            // rdbDisabilityNo
+            // 
+            this.rdbDisabilityNo.AutoSize = true;
+            this.rdbDisabilityNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbDisabilityNo.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.rdbDisabilityNo.Location = new System.Drawing.Point(71, 3);
+            this.rdbDisabilityNo.Name = "rdbDisabilityNo";
+            this.rdbDisabilityNo.Size = new System.Drawing.Size(49, 24);
+            this.rdbDisabilityNo.TabIndex = 16;
+            this.rdbDisabilityNo.Tag = "Disability";
+            this.rdbDisabilityNo.Text = "No";
+            this.rdbDisabilityNo.UseVisualStyleBackColor = true;
+            // 
+            // pnlGender
+            // 
+            this.pnlGender.Controls.Add(this.rdbFemale);
+            this.pnlGender.Controls.Add(this.rdbMale);
+            this.pnlGender.Location = new System.Drawing.Point(283, 249);
+            this.pnlGender.Name = "pnlGender";
+            this.pnlGender.Size = new System.Drawing.Size(176, 25);
+            this.pnlGender.TabIndex = 65;
             // 
             // lblGender
             // 
@@ -554,12 +757,15 @@
             this.lblGender.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGender.ForeColor = System.Drawing.SystemColors.HighlightText;
+
             this.lblGender.Location = new System.Drawing.Point(198, 213);
+
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(74, 20);
-            this.lblGender.TabIndex = 32;
+            this.lblGender.TabIndex = 64;
             this.lblGender.Text = "Gender:";
             // 
+
             // pnlGender
             // 
             this.pnlGender.Controls.Add(this.rdbFemale);
@@ -577,6 +783,7 @@
             this.pnlDisability.Name = "pnlDisability";
             this.pnlDisability.Size = new System.Drawing.Size(176, 24);
             this.pnlDisability.TabIndex = 34;
+
             // 
             // StudentForm
             // 
@@ -586,18 +793,18 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(669, 756);
+
             this.Controls.Add(this.pnlDisability);
             this.Controls.Add(this.pnlGender);
             this.Controls.Add(this.lblGender);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtStudentPostCode);
+
             this.Controls.Add(this.lblStudPostCode);
-            this.Controls.Add(this.txtStudentSuburb);
             this.Controls.Add(this.lblStudentSuburb);
             this.Controls.Add(this.dgvStudent);
             this.Controls.Add(this.txtStudentLastName);
             this.Controls.Add(this.lblStudentLastName);
-            this.Controls.Add(this.txtStudentDateOfBirth);
             this.Controls.Add(this.lblStudentDateOfBirth);
             this.Controls.Add(this.txtStudentEmail);
             this.Controls.Add(this.lblStudentEmail);
@@ -612,15 +819,18 @@
             this.Controls.Add(this.lblStudStreetAddress);
             this.Controls.Add(this.txtStudentFirstName);
             this.Controls.Add(this.lblStudentFirstName);
-            this.Controls.Add(this.txtStudentID);
             this.Controls.Add(this.lblStudentForm);
             this.Controls.Add(this.lblStudentID);
             this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.txtStudentID);
             this.MaximizeBox = false;
             this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Form";
+            this.pnlDisability.ResumeLayout(false);
+            this.pnlDisability.PerformLayout();
+            this.pnlGender.ResumeLayout(false);
+            this.pnlGender.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -634,6 +844,7 @@
         }
 
         #endregion
+
 
         private System.Windows.Forms.TextBox txtStudentID;
         private System.Windows.Forms.Label lblStudentForm;
@@ -662,24 +873,42 @@
         private System.Windows.Forms.Label lblStudentSuburb;
         private System.Windows.Forms.TextBox txtStudentPostCode;
         private System.Windows.Forms.Label lblStudPostCode;
+
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.ToolStripMenuItem mnuAdd;
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
         private System.Windows.Forms.ToolStripMenuItem mnuUpdate;
         private System.Windows.Forms.ToolStripMenuItem mnuViewAll;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.ToolStripMenuItem mnuNavigate;
         private System.Windows.Forms.ToolStripMenuItem mnuEnrolmentForm;
         private System.Windows.Forms.ToolStripMenuItem mnuCourseForm;
         private System.Windows.Forms.ToolStripMenuItem mnuUnitForm;
         private System.Windows.Forms.ToolStripMenuItem mnuAssessmentForm;
         private System.Windows.Forms.ToolStripMenuItem mnuTeacherForm;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuEdit;
+        private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
+        private System.Windows.Forms.ComboBox cmbStudSuburb;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.ToolTip StudentToolTip;
+        private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
+        private System.Windows.Forms.TextBox txtStudentLastName;
+        private System.Windows.Forms.TextBox txtStudentEmail;
+        private System.Windows.Forms.TextBox txtDisabilityDescription;
+        private System.Windows.Forms.ComboBox cmbNationality;
+        private System.Windows.Forms.TextBox txtStudentPhoneNum;
+        private System.Windows.Forms.TextBox txtStudStreetAddress;
+        private System.Windows.Forms.TextBox txtStudentFirstName;
+        private System.Windows.Forms.TextBox txtStudentID;
         private System.Windows.Forms.RadioButton rdbFemale;
         private System.Windows.Forms.RadioButton rdbMale;
+        private System.Windows.Forms.Panel pnlDisability;
+        private System.Windows.Forms.RadioButton rdbDisabilityYes;
+        private System.Windows.Forms.RadioButton rdbDisabilityNo;
+        private System.Windows.Forms.Panel pnlGender;
         private System.Windows.Forms.Label lblGender;
+
         private System.Windows.Forms.Panel pnlGender;
         private System.Windows.Forms.Panel pnlDisability;
+
     }
 }
