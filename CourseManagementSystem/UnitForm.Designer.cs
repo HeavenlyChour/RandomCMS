@@ -45,19 +45,26 @@
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNavigate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnrolmentForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCourseForm = new System.Windows.Forms.ToolStripMenuItem();
             this.UnitToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.cmbUnitName = new System.Windows.Forms.ComboBox();
-            this.txtNumOfAssessments = new System.Windows.Forms.TextBox();
-            this.txtNoOfHours = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblNumOfAssessments = new System.Windows.Forms.Label();
             this.lblNoOfHours = new System.Windows.Forms.Label();
             this.txtUnitID = new System.Windows.Forms.TextBox();
+            this.pnlUnitType = new System.Windows.Forms.Panel();
+            this.cmbNoOfHours = new System.Windows.Forms.ComboBox();
+            this.cmbNoOfAssessments = new System.Windows.Forms.ComboBox();
+            this.lblCourseID = new System.Windows.Forms.Label();
+            this.txtCourseID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.pnlUnitType.SuspendLayout();
             this.SuspendLayout();
             // 
             // rdbElectiveUnit
@@ -65,13 +72,14 @@
             this.rdbElectiveUnit.AutoSize = true;
             this.rdbElectiveUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbElectiveUnit.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbElectiveUnit.Location = new System.Drawing.Point(379, 266);
+            this.rdbElectiveUnit.Location = new System.Drawing.Point(111, 3);
             this.rdbElectiveUnit.Name = "rdbElectiveUnit";
             this.rdbElectiveUnit.Size = new System.Drawing.Size(128, 24);
             this.rdbElectiveUnit.TabIndex = 97;
             this.rdbElectiveUnit.TabStop = true;
             this.rdbElectiveUnit.Tag = "Unit Type";
             this.rdbElectiveUnit.Text = "Elective Unit";
+            this.UnitToolTip.SetToolTip(this.rdbElectiveUnit, "Elective Unit");
             this.rdbElectiveUnit.UseVisualStyleBackColor = true;
             // 
             // rdbCoreUnit
@@ -79,13 +87,14 @@
             this.rdbCoreUnit.AutoSize = true;
             this.rdbCoreUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbCoreUnit.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbCoreUnit.Location = new System.Drawing.Point(259, 266);
+            this.rdbCoreUnit.Location = new System.Drawing.Point(2, 3);
             this.rdbCoreUnit.Name = "rdbCoreUnit";
             this.rdbCoreUnit.Size = new System.Drawing.Size(103, 24);
             this.rdbCoreUnit.TabIndex = 96;
             this.rdbCoreUnit.TabStop = true;
             this.rdbCoreUnit.Tag = "Unit Type";
             this.rdbCoreUnit.Text = "Core Unit";
+            this.UnitToolTip.SetToolTip(this.rdbCoreUnit, "Core Unit");
             this.rdbCoreUnit.UseVisualStyleBackColor = true;
             // 
             // lblUnitType
@@ -94,7 +103,7 @@
             this.lblUnitType.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblUnitType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnitType.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblUnitType.Location = new System.Drawing.Point(152, 268);
+            this.lblUnitType.Location = new System.Drawing.Point(152, 309);
             this.lblUnitType.Name = "lblUnitType";
             this.lblUnitType.Size = new System.Drawing.Size(90, 20);
             this.lblUnitType.TabIndex = 90;
@@ -178,6 +187,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
+            this.mnuEdit,
             this.mnuNavigate});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -191,7 +201,8 @@
             this.mnuAdd,
             this.mnuDelete,
             this.mnuUpdate,
-            this.mnuViewAll});
+            this.mnuViewAll,
+            this.mnuExit});
             this.mnuFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(42, 20);
@@ -205,6 +216,7 @@
             this.mnuAdd.Size = new System.Drawing.Size(166, 22);
             this.mnuAdd.Text = "Add";
             this.mnuAdd.ToolTipText = "Add a new record";
+            this.mnuAdd.Click += new System.EventHandler(this.mnuAdd_Click);
             // 
             // mnuDelete
             // 
@@ -230,6 +242,31 @@
             this.mnuViewAll.Size = new System.Drawing.Size(166, 22);
             this.mnuViewAll.Text = "View All";
             this.mnuViewAll.ToolTipText = "View All record";
+            // 
+            // mnuExit
+            // 
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuExit.Size = new System.Drawing.Size(166, 22);
+            this.mnuExit.Text = "Exit";
+            // 
+            // mnuEdit
+            // 
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuClearAll});
+            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuClearAll
+            // 
+            this.mnuClearAll.Name = "mnuClearAll";
+            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
+            this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
             // 
             // mnuNavigate
             // 
@@ -272,25 +309,7 @@
             this.cmbUnitName.Size = new System.Drawing.Size(347, 28);
             this.cmbUnitName.TabIndex = 93;
             this.cmbUnitName.Tag = "Unit Name";
-            this.UnitToolTip.SetToolTip(this.cmbUnitName, "press the down arrow to make a selection");
-            // 
-            // txtNumOfAssessments
-            // 
-            this.txtNumOfAssessments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumOfAssessments.Location = new System.Drawing.Point(259, 234);
-            this.txtNumOfAssessments.Name = "txtNumOfAssessments";
-            this.txtNumOfAssessments.Size = new System.Drawing.Size(113, 26);
-            this.txtNumOfAssessments.TabIndex = 87;
-            this.txtNumOfAssessments.Tag = "No. of Assessments";
-            // 
-            // txtNoOfHours
-            // 
-            this.txtNoOfHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoOfHours.Location = new System.Drawing.Point(259, 202);
-            this.txtNoOfHours.Name = "txtNoOfHours";
-            this.txtNoOfHours.Size = new System.Drawing.Size(113, 26);
-            this.txtNoOfHours.TabIndex = 85;
-            this.txtNoOfHours.Tag = "No. of Hours";
+            this.UnitToolTip.SetToolTip(this.cmbUnitName, "Press the down arrow to make a selection");
             // 
             // btnSearch
             // 
@@ -312,7 +331,7 @@
             this.lblNumOfAssessments.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblNumOfAssessments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumOfAssessments.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblNumOfAssessments.Location = new System.Drawing.Point(73, 237);
+            this.lblNumOfAssessments.Location = new System.Drawing.Point(73, 273);
             this.lblNumOfAssessments.Name = "lblNumOfAssessments";
             this.lblNumOfAssessments.Size = new System.Drawing.Size(169, 20);
             this.lblNumOfAssessments.TabIndex = 86;
@@ -324,7 +343,7 @@
             this.lblNoOfHours.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblNoOfHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNoOfHours.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblNoOfHours.Location = new System.Drawing.Point(127, 205);
+            this.lblNoOfHours.Location = new System.Drawing.Point(127, 238);
             this.lblNoOfHours.Name = "lblNoOfHours";
             this.lblNoOfHours.Size = new System.Drawing.Size(115, 20);
             this.lblNoOfHours.TabIndex = 84;
@@ -339,6 +358,60 @@
             this.txtUnitID.TabIndex = 77;
             this.txtUnitID.Tag = "Unit ID";
             // 
+            // pnlUnitType
+            // 
+            this.pnlUnitType.Controls.Add(this.rdbElectiveUnit);
+            this.pnlUnitType.Controls.Add(this.rdbCoreUnit);
+            this.pnlUnitType.Location = new System.Drawing.Point(259, 304);
+            this.pnlUnitType.Name = "pnlUnitType";
+            this.pnlUnitType.Size = new System.Drawing.Size(246, 29);
+            this.pnlUnitType.TabIndex = 98;
+            // 
+            // cmbNoOfHours
+            // 
+            this.cmbNoOfHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbNoOfHours.FormattingEnabled = true;
+            this.cmbNoOfHours.Location = new System.Drawing.Point(259, 235);
+            this.cmbNoOfHours.Name = "cmbNoOfHours";
+            this.cmbNoOfHours.Size = new System.Drawing.Size(113, 28);
+            this.cmbNoOfHours.TabIndex = 99;
+            this.cmbNoOfHours.Tag = "No. of Hours";
+            this.UnitToolTip.SetToolTip(this.cmbNoOfHours, "Press the down arrow to make a selection");
+            // 
+            // cmbNoOfAssessments
+            // 
+            this.cmbNoOfAssessments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbNoOfAssessments.FormattingEnabled = true;
+            this.cmbNoOfAssessments.Location = new System.Drawing.Point(259, 270);
+            this.cmbNoOfAssessments.Name = "cmbNoOfAssessments";
+            this.cmbNoOfAssessments.Size = new System.Drawing.Size(113, 28);
+            this.cmbNoOfAssessments.TabIndex = 100;
+            this.cmbNoOfAssessments.Tag = "No. of Assessments";
+            this.UnitToolTip.SetToolTip(this.cmbNoOfAssessments, "Press the down arrow to make a selection");
+            // 
+            // lblCourseID
+            // 
+            this.lblCourseID.AutoSize = true;
+            this.lblCourseID.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.lblCourseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCourseID.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.lblCourseID.Location = new System.Drawing.Point(147, 206);
+            this.lblCourseID.Name = "lblCourseID";
+            this.lblCourseID.Size = new System.Drawing.Size(95, 20);
+            this.lblCourseID.TabIndex = 101;
+            this.lblCourseID.Tag = "Course ID";
+            this.lblCourseID.Text = "Course ID:";
+            // 
+            // txtCourseID
+            // 
+            this.txtCourseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCourseID.Location = new System.Drawing.Point(259, 203);
+            this.txtCourseID.Name = "txtCourseID";
+            this.txtCourseID.Size = new System.Drawing.Size(176, 26);
+            this.txtCourseID.TabIndex = 102;
+            this.txtCourseID.Tag = "Course ID";
+            this.UnitToolTip.SetToolTip(this.txtCourseID, "Enter the Course ID");
+            // 
             // UnitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,8 +419,11 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 546);
-            this.Controls.Add(this.rdbElectiveUnit);
-            this.Controls.Add(this.rdbCoreUnit);
+            this.Controls.Add(this.lblCourseID);
+            this.Controls.Add(this.txtCourseID);
+            this.Controls.Add(this.cmbNoOfAssessments);
+            this.Controls.Add(this.cmbNoOfHours);
+            this.Controls.Add(this.pnlUnitType);
             this.Controls.Add(this.lblUnitType);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dgvUnit);
@@ -359,8 +435,6 @@
             this.Controls.Add(this.lblNoOfHours);
             this.Controls.Add(this.txtUnitID);
             this.Controls.Add(this.cmbUnitName);
-            this.Controls.Add(this.txtNumOfAssessments);
-            this.Controls.Add(this.txtNoOfHours);
             this.Location = new System.Drawing.Point(423, 123);
             this.MaximizeBox = false;
             this.Name = "UnitForm";
@@ -369,6 +443,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnlUnitType.ResumeLayout(false);
+            this.pnlUnitType.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,10 +473,16 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEnrolmentForm;
         private System.Windows.Forms.ToolStripMenuItem mnuCourseForm;
         private System.Windows.Forms.ComboBox cmbUnitName;
-        private System.Windows.Forms.TextBox txtNumOfAssessments;
-        private System.Windows.Forms.TextBox txtNoOfHours;
         private System.Windows.Forms.Label lblNumOfAssessments;
         private System.Windows.Forms.Label lblNoOfHours;
         private System.Windows.Forms.TextBox txtUnitID;
+        private System.Windows.Forms.Panel pnlUnitType;
+        private System.Windows.Forms.ToolStripMenuItem mnuEdit;
+        private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.ComboBox cmbNoOfHours;
+        private System.Windows.Forms.ComboBox cmbNoOfAssessments;
+        private System.Windows.Forms.Label lblCourseID;
+        private System.Windows.Forms.TextBox txtCourseID;
     }
 }

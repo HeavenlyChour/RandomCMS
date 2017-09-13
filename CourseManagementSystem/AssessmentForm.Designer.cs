@@ -32,8 +32,6 @@
             this.txtAssessmentID = new System.Windows.Forms.TextBox();
             this.AssessmentToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnSearch = new System.Windows.Forms.Button();
-            this.txtAEndDate = new System.Windows.Forms.TextBox();
-            this.txtAStartDate = new System.Windows.Forms.TextBox();
             this.cmbAssessmentName = new System.Windows.Forms.ComboBox();
             this.mnuCourseForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnrolmentForm = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +55,8 @@
             this.lblAEndDate = new System.Windows.Forms.Label();
             this.lblAStartDate = new System.Windows.Forms.Label();
             this.lblAssessmentName = new System.Windows.Forms.Label();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssessment)).BeginInit();
             this.SuspendLayout();
@@ -84,31 +84,13 @@
             this.AssessmentToolTip.SetToolTip(this.btnSearch, "Press to search");
             this.btnSearch.UseVisualStyleBackColor = false;
             // 
-            // txtAEndDate
-            // 
-            this.txtAEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAEndDate.Location = new System.Drawing.Point(278, 307);
-            this.txtAEndDate.Name = "txtAEndDate";
-            this.txtAEndDate.Size = new System.Drawing.Size(176, 26);
-            this.txtAEndDate.TabIndex = 123;
-            this.txtAEndDate.Tag = "Assessment End Date";
-            // 
-            // txtAStartDate
-            // 
-            this.txtAStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAStartDate.Location = new System.Drawing.Point(278, 275);
-            this.txtAStartDate.Name = "txtAStartDate";
-            this.txtAStartDate.Size = new System.Drawing.Size(176, 26);
-            this.txtAStartDate.TabIndex = 121;
-            this.txtAStartDate.Tag = "Assessment Start Date";
-            // 
             // cmbAssessmentName
             // 
             this.cmbAssessmentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAssessmentName.FormattingEnabled = true;
             this.cmbAssessmentName.Location = new System.Drawing.Point(278, 241);
             this.cmbAssessmentName.Name = "cmbAssessmentName";
-            this.cmbAssessmentName.Size = new System.Drawing.Size(284, 28);
+            this.cmbAssessmentName.Size = new System.Drawing.Size(306, 28);
             this.cmbAssessmentName.TabIndex = 119;
             this.cmbAssessmentName.Tag = "Assessment Name";
             this.AssessmentToolTip.SetToolTip(this.cmbAssessmentName, "press the down arrow to make a selection");
@@ -211,7 +193,7 @@
             this.lblAssessmentForm.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblAssessmentForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAssessmentForm.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblAssessmentForm.Location = new System.Drawing.Point(204, 71);
+            this.lblAssessmentForm.Location = new System.Drawing.Point(204, 68);
             this.lblAssessmentForm.Name = "lblAssessmentForm";
             this.lblAssessmentForm.Size = new System.Drawing.Size(291, 37);
             this.lblAssessmentForm.TabIndex = 99;
@@ -312,7 +294,7 @@
             this.lblAEndDate.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblAEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAEndDate.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblAEndDate.Location = new System.Drawing.Point(166, 310);
+            this.lblAEndDate.Location = new System.Drawing.Point(158, 312);
             this.lblAEndDate.Name = "lblAEndDate";
             this.lblAEndDate.Size = new System.Drawing.Size(95, 20);
             this.lblAEndDate.TabIndex = 122;
@@ -324,7 +306,7 @@
             this.lblAStartDate.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblAStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAStartDate.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblAStartDate.Location = new System.Drawing.Point(163, 278);
+            this.lblAStartDate.Location = new System.Drawing.Point(158, 280);
             this.lblAStartDate.Name = "lblAStartDate";
             this.lblAStartDate.Size = new System.Drawing.Size(98, 20);
             this.lblAStartDate.TabIndex = 120;
@@ -342,6 +324,28 @@
             this.lblAssessmentName.TabIndex = 118;
             this.lblAssessmentName.Text = "Assessment Name:";
             // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpStartDate.Location = new System.Drawing.Point(278, 275);
+            this.dtpStartDate.MaxDate = new System.DateTime(4000, 12, 31, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(275, 26);
+            this.dtpStartDate.TabIndex = 124;
+            this.dtpStartDate.Tag = "Start Date";
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEndDate.Location = new System.Drawing.Point(278, 307);
+            this.dtpEndDate.MaxDate = new System.DateTime(4000, 12, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(275, 26);
+            this.dtpEndDate.TabIndex = 125;
+            this.dtpEndDate.Tag = "End Date";
+            // 
             // AssessmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,9 +353,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 546);
-            this.Controls.Add(this.txtAEndDate);
+            this.Controls.Add(this.dtpEndDate);
+            this.Controls.Add(this.dtpStartDate);
             this.Controls.Add(this.lblAEndDate);
-            this.Controls.Add(this.txtAStartDate);
             this.Controls.Add(this.lblAStartDate);
             this.Controls.Add(this.cmbAssessmentName);
             this.Controls.Add(this.lblAssessmentName);
@@ -400,11 +404,11 @@
         private System.Windows.Forms.TextBox txtUnitID;
         private System.Windows.Forms.TextBox txtTeacherID;
         private System.Windows.Forms.Label lblTeacherID;
-        private System.Windows.Forms.TextBox txtAEndDate;
         private System.Windows.Forms.Label lblAEndDate;
-        private System.Windows.Forms.TextBox txtAStartDate;
         private System.Windows.Forms.Label lblAStartDate;
         private System.Windows.Forms.ComboBox cmbAssessmentName;
         private System.Windows.Forms.Label lblAssessmentName;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
     }
 }

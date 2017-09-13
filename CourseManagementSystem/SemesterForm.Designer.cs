@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblSemesterWeeks = new System.Windows.Forms.Label();
+            this.txtSemesterWeeks = new System.Windows.Forms.TextBox();
             this.txtSenesterStartDate = new System.Windows.Forms.TextBox();
             this.lblSemesterStartDate = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.txtSemesterID = new System.Windows.Forms.TextBox();
             this.UnitToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.dgvUnit = new System.Windows.Forms.DataGridView();
+            this.lblSemesterWeeks = new System.Windows.Forms.Label();
             this.mnuTeacherForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAssessmentForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUnitForm = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,33 +46,31 @@
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtSemesterWeeks = new System.Windows.Forms.TextBox();
             this.lblSemesterForm = new System.Windows.Forms.Label();
-            this.lblSemesterID = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
+            this.dgvUnit = new System.Windows.Forms.DataGridView();
+            this.lblSemesterID = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblSemesterWeeks
+            // txtSemesterWeeks
             // 
-            this.lblSemesterWeeks.AutoSize = true;
-            this.lblSemesterWeeks.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblSemesterWeeks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSemesterWeeks.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSemesterWeeks.Location = new System.Drawing.Point(112, 216);
-            this.lblSemesterWeeks.Name = "lblSemesterWeeks";
-            this.lblSemesterWeeks.Size = new System.Drawing.Size(150, 20);
-            this.lblSemesterWeeks.TabIndex = 135;
-            this.lblSemesterWeeks.Text = "Semester Weeks:";
+            this.txtSemesterWeeks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSemesterWeeks.Location = new System.Drawing.Point(276, 214);
+            this.txtSemesterWeeks.Name = "txtSemesterWeeks";
+            this.txtSemesterWeeks.Size = new System.Drawing.Size(217, 26);
+            this.txtSemesterWeeks.TabIndex = 156;
+            this.txtSemesterWeeks.Tag = "Semester Weeks";
             // 
             // txtSenesterStartDate
             // 
             this.txtSenesterStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenesterStartDate.Location = new System.Drawing.Point(276, 181);
+            this.txtSenesterStartDate.Location = new System.Drawing.Point(276, 182);
             this.txtSenesterStartDate.Name = "txtSenesterStartDate";
             this.txtSenesterStartDate.Size = new System.Drawing.Size(217, 26);
-            this.txtSenesterStartDate.TabIndex = 134;
+            this.txtSenesterStartDate.TabIndex = 154;
             this.txtSenesterStartDate.Tag = "Semester Start Date";
             this.UnitToolTip.SetToolTip(this.txtSenesterStartDate, "Date format must be yyyy-mm-dd and contain only numeric characters");
             // 
@@ -83,44 +80,32 @@
             this.lblSemesterStartDate.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSemesterStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSemesterStartDate.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSemesterStartDate.Location = new System.Drawing.Point(82, 184);
+            this.lblSemesterStartDate.Location = new System.Drawing.Point(82, 185);
             this.lblSemesterStartDate.Name = "lblSemesterStartDate";
             this.lblSemesterStartDate.Size = new System.Drawing.Size(180, 20);
-            this.lblSemesterStartDate.TabIndex = 133;
+            this.lblSemesterStartDate.TabIndex = 153;
             this.lblSemesterStartDate.Text = "Semester Start Date:";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.White;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
-            this.btnSearch.Location = new System.Drawing.Point(458, 149);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(35, 28);
-            this.btnSearch.TabIndex = 132;
-            this.UnitToolTip.SetToolTip(this.btnSearch, "Press to search");
-            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // txtSemesterID
             // 
             this.txtSemesterID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSemesterID.Location = new System.Drawing.Point(276, 149);
+            this.txtSemesterID.Location = new System.Drawing.Point(276, 150);
             this.txtSemesterID.Name = "txtSemesterID";
             this.txtSemesterID.Size = new System.Drawing.Size(176, 26);
-            this.txtSemesterID.TabIndex = 129;
+            this.txtSemesterID.TabIndex = 149;
             this.txtSemesterID.Tag = "Semester ID";
             // 
-            // dgvUnit
+            // lblSemesterWeeks
             // 
-            this.dgvUnit.BackgroundColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvUnit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUnit.Location = new System.Drawing.Point(12, 303);
-            this.dgvUnit.Name = "dgvUnit";
-            this.dgvUnit.ReadOnly = true;
-            this.dgvUnit.Size = new System.Drawing.Size(642, 120);
-            this.dgvUnit.TabIndex = 130;
+            this.lblSemesterWeeks.AutoSize = true;
+            this.lblSemesterWeeks.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.lblSemesterWeeks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSemesterWeeks.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.lblSemesterWeeks.Location = new System.Drawing.Point(112, 217);
+            this.lblSemesterWeeks.Name = "lblSemesterWeeks";
+            this.lblSemesterWeeks.Size = new System.Drawing.Size(150, 20);
+            this.lblSemesterWeeks.TabIndex = 155;
+            this.lblSemesterWeeks.Text = "Semester Weeks:";
             // 
             // mnuTeacherForm
             // 
@@ -227,39 +212,18 @@
             this.mnuFile.Text = "File";
             this.mnuFile.ToolTipText = "Press to add, delete, update or view all";
             // 
-            // txtSemesterWeeks
-            // 
-            this.txtSemesterWeeks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSemesterWeeks.Location = new System.Drawing.Point(276, 213);
-            this.txtSemesterWeeks.Name = "txtSemesterWeeks";
-            this.txtSemesterWeeks.Size = new System.Drawing.Size(217, 26);
-            this.txtSemesterWeeks.TabIndex = 136;
-            this.txtSemesterWeeks.Tag = "Semester Weeks";
-            // 
             // lblSemesterForm
             // 
             this.lblSemesterForm.AutoSize = true;
             this.lblSemesterForm.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSemesterForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSemesterForm.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSemesterForm.Location = new System.Drawing.Point(243, 75);
+            this.lblSemesterForm.Location = new System.Drawing.Point(243, 76);
             this.lblSemesterForm.Name = "lblSemesterForm";
             this.lblSemesterForm.Size = new System.Drawing.Size(250, 37);
-            this.lblSemesterForm.TabIndex = 128;
+            this.lblSemesterForm.TabIndex = 148;
             this.lblSemesterForm.Text = "Semester Form";
             this.lblSemesterForm.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblSemesterID
-            // 
-            this.lblSemesterID.AutoSize = true;
-            this.lblSemesterID.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblSemesterID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSemesterID.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSemesterID.Location = new System.Drawing.Point(147, 152);
-            this.lblSemesterID.Name = "lblSemesterID";
-            this.lblSemesterID.Size = new System.Drawing.Size(115, 20);
-            this.lblSemesterID.TabIndex = 127;
-            this.lblSemesterID.Text = "Semester ID:";
             // 
             // menuStrip1
             // 
@@ -269,8 +233,44 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(666, 24);
-            this.menuStrip1.TabIndex = 131;
+            this.menuStrip1.TabIndex = 151;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // dgvUnit
+            // 
+            this.dgvUnit.BackgroundColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvUnit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUnit.Location = new System.Drawing.Point(12, 304);
+            this.dgvUnit.Name = "dgvUnit";
+            this.dgvUnit.ReadOnly = true;
+            this.dgvUnit.Size = new System.Drawing.Size(642, 120);
+            this.dgvUnit.TabIndex = 150;
+            // 
+            // lblSemesterID
+            // 
+            this.lblSemesterID.AutoSize = true;
+            this.lblSemesterID.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.lblSemesterID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSemesterID.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.lblSemesterID.Location = new System.Drawing.Point(147, 153);
+            this.lblSemesterID.Name = "lblSemesterID";
+            this.lblSemesterID.Size = new System.Drawing.Size(115, 20);
+            this.lblSemesterID.TabIndex = 147;
+            this.lblSemesterID.Text = "Semester ID:";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.White;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
+            this.btnSearch.Location = new System.Drawing.Point(458, 150);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(35, 28);
+            this.btnSearch.TabIndex = 152;
+            this.UnitToolTip.SetToolTip(this.btnSearch, "Press to search");
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // SemesterForm
             // 
@@ -278,21 +278,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 436);
-            this.Controls.Add(this.lblSemesterWeeks);
+            this.Controls.Add(this.txtSemesterWeeks);
             this.Controls.Add(this.txtSenesterStartDate);
             this.Controls.Add(this.lblSemesterStartDate);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSemesterID);
-            this.Controls.Add(this.dgvUnit);
-            this.Controls.Add(this.txtSemesterWeeks);
+            this.Controls.Add(this.lblSemesterWeeks);
             this.Controls.Add(this.lblSemesterForm);
-            this.Controls.Add(this.lblSemesterID);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.dgvUnit);
+            this.Controls.Add(this.lblSemesterID);
             this.Name = "SemesterForm";
             this.Text = "SemesterForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,13 +300,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblSemesterWeeks;
+        private System.Windows.Forms.TextBox txtSemesterWeeks;
         private System.Windows.Forms.TextBox txtSenesterStartDate;
         private System.Windows.Forms.ToolTip UnitToolTip;
         private System.Windows.Forms.Label lblSemesterStartDate;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSemesterID;
-        private System.Windows.Forms.DataGridView dgvUnit;
+        private System.Windows.Forms.Label lblSemesterWeeks;
         private System.Windows.Forms.ToolStripMenuItem mnuTeacherForm;
         private System.Windows.Forms.ToolStripMenuItem mnuAssessmentForm;
         private System.Windows.Forms.ToolStripMenuItem mnuUnitForm;
@@ -318,9 +318,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
         private System.Windows.Forms.ToolStripMenuItem mnuAdd;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
-        private System.Windows.Forms.TextBox txtSemesterWeeks;
         private System.Windows.Forms.Label lblSemesterForm;
-        private System.Windows.Forms.Label lblSemesterID;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.DataGridView dgvUnit;
+        private System.Windows.Forms.Label lblSemesterID;
     }
 }

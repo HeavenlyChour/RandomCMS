@@ -50,26 +50,26 @@
             this.txtExpectedEndDate = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cmbPaymentStatus = new System.Windows.Forms.ComboBox();
-            this.txtEnrolmentDate = new System.Windows.Forms.TextBox();
-            this.txtPaymentDueDate = new System.Windows.Forms.TextBox();
-            this.txtBalanceOwing = new System.Windows.Forms.TextBox();
-            this.txtAmountPaid = new System.Windows.Forms.TextBox();
-            this.cmbPaymentMethod = new System.Windows.Forms.ComboBox();
-            this.cmbStudyStatus = new System.Windows.Forms.ComboBox();
             this.txtEnrolmentID = new System.Windows.Forms.TextBox();
             this.txtStudentID = new System.Windows.Forms.TextBox();
             this.lblStudentID = new System.Windows.Forms.Label();
             this.txtCourseID = new System.Windows.Forms.TextBox();
             this.lblCourseID = new System.Windows.Forms.Label();
             this.lblEnrolmentDate = new System.Windows.Forms.Label();
+            this.txtEnrolmentDate = new System.Windows.Forms.TextBox();
             this.lblPaymentDueDate = new System.Windows.Forms.Label();
+            this.txtPaymentDueDate = new System.Windows.Forms.TextBox();
             this.lblBalanceOwing = new System.Windows.Forms.Label();
+            this.txtBalanceOwing = new System.Windows.Forms.TextBox();
             this.lblAmountPaid = new System.Windows.Forms.Label();
+            this.txtAmountPaid = new System.Windows.Forms.TextBox();
             this.lblPaymentMethod = new System.Windows.Forms.Label();
+            this.cmbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.rdbDisabilityNo = new System.Windows.Forms.RadioButton();
             this.rdbDisabilityYes = new System.Windows.Forms.RadioButton();
             this.lblDisability = new System.Windows.Forms.Label();
             this.lblStudyStatus = new System.Windows.Forms.Label();
+            this.cmbStudyStatus = new System.Windows.Forms.ComboBox();
             this.txtDisabilityDescription = new System.Windows.Forms.TextBox();
             this.lblDisabilityDescription = new System.Windows.Forms.Label();
             this.rdbOnline = new System.Windows.Forms.RadioButton();
@@ -289,68 +289,6 @@
             this.cmbPaymentStatus.Tag = "Payment Status";
             this.EnrolmentToolTip.SetToolTip(this.cmbPaymentStatus, "press the down arrow to make a selection");
             // 
-            // txtEnrolmentDate
-            // 
-            this.txtEnrolmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEnrolmentDate.Location = new System.Drawing.Point(325, 231);
-            this.txtEnrolmentDate.Name = "txtEnrolmentDate";
-            this.txtEnrolmentDate.Size = new System.Drawing.Size(224, 26);
-            this.txtEnrolmentDate.TabIndex = 117;
-            this.txtEnrolmentDate.Tag = "Enrolment Date";
-            this.EnrolmentToolTip.SetToolTip(this.txtEnrolmentDate, "Date format must be yyyy-mm-dd and contain only numeric characters");
-            // 
-            // txtPaymentDueDate
-            // 
-            this.txtPaymentDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaymentDueDate.Location = new System.Drawing.Point(325, 360);
-            this.txtPaymentDueDate.Name = "txtPaymentDueDate";
-            this.txtPaymentDueDate.Size = new System.Drawing.Size(224, 26);
-            this.txtPaymentDueDate.TabIndex = 122;
-            this.txtPaymentDueDate.Tag = "Payment Due Date";
-            this.EnrolmentToolTip.SetToolTip(this.txtPaymentDueDate, "Date format must be yyyy-mm-dd and contain only numeric characters");
-            // 
-            // txtBalanceOwing
-            // 
-            this.txtBalanceOwing.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBalanceOwing.Location = new System.Drawing.Point(325, 424);
-            this.txtBalanceOwing.Name = "txtBalanceOwing";
-            this.txtBalanceOwing.Size = new System.Drawing.Size(176, 26);
-            this.txtBalanceOwing.TabIndex = 124;
-            this.txtBalanceOwing.Tag = "Balance Owing";
-            this.EnrolmentToolTip.SetToolTip(this.txtBalanceOwing, "Date format must be yyyy-mm-dd and contain only numeric characters");
-            // 
-            // txtAmountPaid
-            // 
-            this.txtAmountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAmountPaid.Location = new System.Drawing.Point(325, 392);
-            this.txtAmountPaid.Name = "txtAmountPaid";
-            this.txtAmountPaid.Size = new System.Drawing.Size(176, 26);
-            this.txtAmountPaid.TabIndex = 126;
-            this.txtAmountPaid.Tag = "Amount Paid";
-            this.EnrolmentToolTip.SetToolTip(this.txtAmountPaid, "Date format must be yyyy-mm-dd and contain only numeric characters");
-            // 
-            // cmbPaymentMethod
-            // 
-            this.cmbPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbPaymentMethod.FormattingEnabled = true;
-            this.cmbPaymentMethod.Location = new System.Drawing.Point(325, 326);
-            this.cmbPaymentMethod.Name = "cmbPaymentMethod";
-            this.cmbPaymentMethod.Size = new System.Drawing.Size(176, 28);
-            this.cmbPaymentMethod.TabIndex = 128;
-            this.cmbPaymentMethod.Tag = "Payment Method";
-            this.EnrolmentToolTip.SetToolTip(this.cmbPaymentMethod, "press the down arrow to make a selection");
-            // 
-            // cmbStudyStatus
-            // 
-            this.cmbStudyStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStudyStatus.FormattingEnabled = true;
-            this.cmbStudyStatus.Location = new System.Drawing.Point(325, 598);
-            this.cmbStudyStatus.Name = "cmbStudyStatus";
-            this.cmbStudyStatus.Size = new System.Drawing.Size(176, 28);
-            this.cmbStudyStatus.TabIndex = 133;
-            this.cmbStudyStatus.Tag = "Study Status";
-            this.EnrolmentToolTip.SetToolTip(this.cmbStudyStatus, "press the down arrow to make a selection");
-            // 
             // txtEnrolmentID
             // 
             this.txtEnrolmentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -414,6 +352,16 @@
             this.lblEnrolmentDate.TabIndex = 116;
             this.lblEnrolmentDate.Text = "Enrolment Date:";
             // 
+            // txtEnrolmentDate
+            // 
+            this.txtEnrolmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEnrolmentDate.Location = new System.Drawing.Point(325, 231);
+            this.txtEnrolmentDate.Name = "txtEnrolmentDate";
+            this.txtEnrolmentDate.Size = new System.Drawing.Size(224, 26);
+            this.txtEnrolmentDate.TabIndex = 117;
+            this.txtEnrolmentDate.Tag = "Enrolment Date";
+            this.EnrolmentToolTip.SetToolTip(this.txtEnrolmentDate, "Date format must be yyyy-mm-dd and contain only numeric characters");
+            // 
             // lblPaymentDueDate
             // 
             this.lblPaymentDueDate.AutoSize = true;
@@ -425,6 +373,16 @@
             this.lblPaymentDueDate.Size = new System.Drawing.Size(165, 20);
             this.lblPaymentDueDate.TabIndex = 121;
             this.lblPaymentDueDate.Text = "Payment Due Date:";
+            // 
+            // txtPaymentDueDate
+            // 
+            this.txtPaymentDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaymentDueDate.Location = new System.Drawing.Point(325, 360);
+            this.txtPaymentDueDate.Name = "txtPaymentDueDate";
+            this.txtPaymentDueDate.Size = new System.Drawing.Size(224, 26);
+            this.txtPaymentDueDate.TabIndex = 122;
+            this.txtPaymentDueDate.Tag = "Payment Due Date";
+            this.EnrolmentToolTip.SetToolTip(this.txtPaymentDueDate, "Date format must be yyyy-mm-dd and contain only numeric characters");
             // 
             // lblBalanceOwing
             // 
@@ -438,6 +396,16 @@
             this.lblBalanceOwing.TabIndex = 123;
             this.lblBalanceOwing.Text = "Balance Owing:";
             // 
+            // txtBalanceOwing
+            // 
+            this.txtBalanceOwing.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBalanceOwing.Location = new System.Drawing.Point(325, 424);
+            this.txtBalanceOwing.Name = "txtBalanceOwing";
+            this.txtBalanceOwing.Size = new System.Drawing.Size(176, 26);
+            this.txtBalanceOwing.TabIndex = 124;
+            this.txtBalanceOwing.Tag = "Balance Owing";
+            this.EnrolmentToolTip.SetToolTip(this.txtBalanceOwing, "Date format must be yyyy-mm-dd and contain only numeric characters");
+            // 
             // lblAmountPaid
             // 
             this.lblAmountPaid.AutoSize = true;
@@ -450,6 +418,16 @@
             this.lblAmountPaid.TabIndex = 125;
             this.lblAmountPaid.Text = "Amount Paid:";
             // 
+            // txtAmountPaid
+            // 
+            this.txtAmountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmountPaid.Location = new System.Drawing.Point(325, 392);
+            this.txtAmountPaid.Name = "txtAmountPaid";
+            this.txtAmountPaid.Size = new System.Drawing.Size(176, 26);
+            this.txtAmountPaid.TabIndex = 126;
+            this.txtAmountPaid.Tag = "Amount Paid";
+            this.EnrolmentToolTip.SetToolTip(this.txtAmountPaid, "Date format must be yyyy-mm-dd and contain only numeric characters");
+            // 
             // lblPaymentMethod
             // 
             this.lblPaymentMethod.AutoSize = true;
@@ -461,6 +439,17 @@
             this.lblPaymentMethod.Size = new System.Drawing.Size(148, 20);
             this.lblPaymentMethod.TabIndex = 127;
             this.lblPaymentMethod.Text = "Payment Method:";
+            // 
+            // cmbPaymentMethod
+            // 
+            this.cmbPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPaymentMethod.FormattingEnabled = true;
+            this.cmbPaymentMethod.Location = new System.Drawing.Point(325, 326);
+            this.cmbPaymentMethod.Name = "cmbPaymentMethod";
+            this.cmbPaymentMethod.Size = new System.Drawing.Size(176, 28);
+            this.cmbPaymentMethod.TabIndex = 128;
+            this.cmbPaymentMethod.Tag = "Payment Method";
+            this.EnrolmentToolTip.SetToolTip(this.cmbPaymentMethod, "press the down arrow to make a selection");
             // 
             // rdbDisabilityNo
             // 
@@ -513,6 +502,17 @@
             this.lblStudyStatus.Size = new System.Drawing.Size(118, 20);
             this.lblStudyStatus.TabIndex = 132;
             this.lblStudyStatus.Text = "Study Status:";
+            // 
+            // cmbStudyStatus
+            // 
+            this.cmbStudyStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStudyStatus.FormattingEnabled = true;
+            this.cmbStudyStatus.Location = new System.Drawing.Point(325, 598);
+            this.cmbStudyStatus.Name = "cmbStudyStatus";
+            this.cmbStudyStatus.Size = new System.Drawing.Size(176, 28);
+            this.cmbStudyStatus.TabIndex = 133;
+            this.cmbStudyStatus.Tag = "Study Status";
+            this.EnrolmentToolTip.SetToolTip(this.cmbStudyStatus, "press the down arrow to make a selection");
             // 
             // txtDisabilityDescription
             // 
@@ -620,7 +620,6 @@
             this.MaximizeBox = false;
             this.Name = "EnrolmentForm";
             this.Text = "Enrolment Form";
-            this.Load += new System.EventHandler(this.EnrolmentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

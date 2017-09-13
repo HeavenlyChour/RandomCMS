@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.lblSkillDescription = new System.Windows.Forms.Label();
             this.txtSkillName = new System.Windows.Forms.TextBox();
             this.lblSkillsForm = new System.Windows.Forms.Label();
@@ -48,12 +49,25 @@
             this.dgvUnit = new System.Windows.Forms.DataGridView();
             this.lblSkillName = new System.Windows.Forms.Label();
             this.UnitToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtSkillDescription = new System.Windows.Forms.TextBox();
             this.txtSkillID = new System.Windows.Forms.TextBox();
+            this.txtSkillDescription = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.White;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
+            this.btnSearch.Location = new System.Drawing.Point(441, 136);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(35, 28);
+            this.btnSearch.TabIndex = 142;
+            this.UnitToolTip.SetToolTip(this.btnSearch, "Press to search");
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // lblSkillDescription
             // 
@@ -61,19 +75,19 @@
             this.lblSkillDescription.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSkillDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSkillDescription.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSkillDescription.Location = new System.Drawing.Point(102, 194);
+            this.lblSkillDescription.Location = new System.Drawing.Point(102, 203);
             this.lblSkillDescription.Name = "lblSkillDescription";
             this.lblSkillDescription.Size = new System.Drawing.Size(143, 20);
-            this.lblSkillDescription.TabIndex = 124;
+            this.lblSkillDescription.TabIndex = 144;
             this.lblSkillDescription.Text = "Skill Description:";
             // 
             // txtSkillName
             // 
             this.txtSkillName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillName.Location = new System.Drawing.Point(259, 159);
+            this.txtSkillName.Location = new System.Drawing.Point(259, 168);
             this.txtSkillName.Name = "txtSkillName";
             this.txtSkillName.Size = new System.Drawing.Size(217, 26);
-            this.txtSkillName.TabIndex = 123;
+            this.txtSkillName.TabIndex = 143;
             this.txtSkillName.Tag = "Skill Name";
             // 
             // lblSkillsForm
@@ -82,10 +96,10 @@
             this.lblSkillsForm.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSkillsForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSkillsForm.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSkillsForm.Location = new System.Drawing.Point(252, 51);
+            this.lblSkillsForm.Location = new System.Drawing.Point(252, 60);
             this.lblSkillsForm.Name = "lblSkillsForm";
             this.lblSkillsForm.Size = new System.Drawing.Size(187, 37);
-            this.lblSkillsForm.TabIndex = 117;
+            this.lblSkillsForm.TabIndex = 137;
             this.lblSkillsForm.Text = "Skills Form";
             this.lblSkillsForm.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -95,10 +109,10 @@
             this.lblSkillID.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSkillID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSkillID.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSkillID.Location = new System.Drawing.Point(175, 130);
+            this.lblSkillID.Location = new System.Drawing.Point(175, 139);
             this.lblSkillID.Name = "lblSkillID";
             this.lblSkillID.Size = new System.Drawing.Size(71, 20);
-            this.lblSkillID.TabIndex = 116;
+            this.lblSkillID.TabIndex = 136;
             this.lblSkillID.Text = "Skill ID:";
             // 
             // menuStrip1
@@ -109,7 +123,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(666, 24);
-            this.menuStrip1.TabIndex = 121;
+            this.menuStrip1.TabIndex = 141;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // mnuFile
@@ -221,11 +235,11 @@
             // 
             this.dgvUnit.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvUnit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUnit.Location = new System.Drawing.Point(12, 405);
+            this.dgvUnit.Location = new System.Drawing.Point(12, 414);
             this.dgvUnit.Name = "dgvUnit";
             this.dgvUnit.ReadOnly = true;
             this.dgvUnit.Size = new System.Drawing.Size(642, 120);
-            this.dgvUnit.TabIndex = 120;
+            this.dgvUnit.TabIndex = 140;
             // 
             // lblSkillName
             // 
@@ -233,44 +247,30 @@
             this.lblSkillName.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSkillName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSkillName.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSkillName.Location = new System.Drawing.Point(147, 162);
+            this.lblSkillName.Location = new System.Drawing.Point(147, 171);
             this.lblSkillName.Name = "lblSkillName";
             this.lblSkillName.Size = new System.Drawing.Size(98, 20);
-            this.lblSkillName.TabIndex = 119;
+            this.lblSkillName.TabIndex = 139;
             this.lblSkillName.Text = "Skill Name:";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.White;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
-            this.btnSearch.Location = new System.Drawing.Point(441, 127);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(35, 28);
-            this.btnSearch.TabIndex = 122;
-            this.UnitToolTip.SetToolTip(this.btnSearch, "Press to search");
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // txtSkillDescription
-            // 
-            this.txtSkillDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillDescription.Location = new System.Drawing.Point(259, 191);
-            this.txtSkillDescription.Multiline = true;
-            this.txtSkillDescription.Name = "txtSkillDescription";
-            this.txtSkillDescription.Size = new System.Drawing.Size(326, 180);
-            this.txtSkillDescription.TabIndex = 125;
-            this.txtSkillDescription.Tag = "Skill Description";
             // 
             // txtSkillID
             // 
             this.txtSkillID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillID.Location = new System.Drawing.Point(259, 127);
+            this.txtSkillID.Location = new System.Drawing.Point(259, 136);
             this.txtSkillID.Name = "txtSkillID";
             this.txtSkillID.Size = new System.Drawing.Size(176, 26);
-            this.txtSkillID.TabIndex = 118;
+            this.txtSkillID.TabIndex = 138;
             this.txtSkillID.Tag = "Skill ID";
+            // 
+            // txtSkillDescription
+            // 
+            this.txtSkillDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSkillDescription.Location = new System.Drawing.Point(259, 200);
+            this.txtSkillDescription.Multiline = true;
+            this.txtSkillDescription.Name = "txtSkillDescription";
+            this.txtSkillDescription.Size = new System.Drawing.Size(326, 180);
+            this.txtSkillDescription.TabIndex = 145;
+            this.txtSkillDescription.Tag = "Skill Description";
             // 
             // SkillsForm
             // 
@@ -278,6 +278,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 546);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblSkillDescription);
             this.Controls.Add(this.txtSkillName);
             this.Controls.Add(this.lblSkillsForm);
@@ -285,9 +286,8 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dgvUnit);
             this.Controls.Add(this.lblSkillName);
-            this.Controls.Add(this.txtSkillDescription);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSkillID);
+            this.Controls.Add(this.txtSkillDescription);
             this.Name = "SkillsForm";
             this.Text = "SkillsForm";
             this.menuStrip1.ResumeLayout(false);
@@ -300,6 +300,8 @@
 
         #endregion
 
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ToolTip UnitToolTip;
         private System.Windows.Forms.Label lblSkillDescription;
         private System.Windows.Forms.TextBox txtSkillName;
         private System.Windows.Forms.Label lblSkillsForm;
@@ -318,9 +320,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTeacherForm;
         private System.Windows.Forms.DataGridView dgvUnit;
         private System.Windows.Forms.Label lblSkillName;
-        private System.Windows.Forms.ToolTip UnitToolTip;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtSkillDescription;
         private System.Windows.Forms.TextBox txtSkillID;
+        private System.Windows.Forms.TextBox txtSkillDescription;
     }
 }
