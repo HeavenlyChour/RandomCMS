@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DatabaseClass;
 
 namespace CourseManagementSystem
 {
@@ -22,6 +23,8 @@ namespace CourseManagementSystem
         private string classTaught;
         private string skills;
         private bool leave;
+
+        
 
         public clsTeacher()
         {
@@ -50,20 +53,203 @@ namespace CourseManagementSystem
             this.Leave = leave;
         }
 
+        #region Getters and Setters
+        public int TeacherID
+        {
+            get
+            {
+                return teacherID;
+            }
 
-        public int TeacherID { get => teacherID; set => teacherID = value; }
-        public string FirstName { get => firstName; set => firstName = value; }
-        public string LastName { get => lastName; set => lastName = value; }
-        public string DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
-        public string Gender { get => gender; set => gender = value; }
-        public string StreetAddress { get => streetAddress; set => streetAddress = value; }
-        public string Suburb { get => suburb; set => suburb = value; }
-        public string PostCode { get => postCode; set => postCode = value; }
-        public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
-        public string Email { get => email; set => email = value; }
-        public string CommencementDate { get => commencementDate; set => commencementDate = value; }
-        public string ClassTaught { get => classTaught; set => classTaught = value; }
-        public string Skills { get => skills; set => skills = value; }
-        public bool Leave { get => leave; set => leave = value; }
+            set
+            {
+                teacherID = value;
+            }
+        }
+
+        public string FirstName
+        {
+            get
+            {
+                return firstName;
+            }
+
+            set
+            {
+                firstName = value;
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                return lastName;
+            }
+
+            set
+            {
+                lastName = value;
+            }
+        }
+
+        public string DateOfBirth
+        {
+            get
+            {
+                return dateOfBirth;
+            }
+
+            set
+            {
+                dateOfBirth = value;
+            }
+        }
+
+        public string Gender
+        {
+            get
+            {
+                return gender;
+            }
+
+            set
+            {
+                gender = value;
+            }
+        }
+
+        public string StreetAddress
+        {
+            get
+            {
+                return streetAddress;
+            }
+
+            set
+            {
+                streetAddress = value;
+            }
+        }
+
+        public string Suburb
+        {
+            get
+            {
+                return suburb;
+            }
+
+            set
+            {
+                suburb = value;
+            }
+        }
+
+        public string PostCode
+        {
+            get
+            {
+                return postCode;
+            }
+
+            set
+            {
+                postCode = value;
+            }
+        }
+
+        public string PhoneNumber
+        {
+            get
+            {
+                return phoneNumber;
+            }
+
+            set
+            {
+                phoneNumber = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+
+            set
+            {
+                email = value;
+            }
+        }
+
+        public string CommencementDate
+        {
+            get
+            {
+                return commencementDate;
+            }
+
+            set
+            {
+                commencementDate = value;
+            }
+        }
+
+        public string ClassTaught
+        {
+            get
+            {
+                return classTaught;
+            }
+
+            set
+            {
+                classTaught = value;
+            }
+        }
+
+        public string Skills
+        {
+            get
+            {
+                return skills;
+            }
+
+            set
+            {
+                skills = value;
+            }
+        }
+
+        public bool Leave
+        {
+            get
+            {
+                return leave;
+            }
+
+            set
+            {
+                leave = value;
+            }
+        }
+        #endregion
+
+        //public int TeacherID { get => teacherID; set => teacherID = value; }
+        //public string FirstName { get => firstName; set => firstName = value; }
+        //public string LastName { get => lastName; set => lastName = value; }
+        //public string DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
+        //public string Gender { get => gender; set => gender = value; }
+        //public string StreetAddress { get => streetAddress; set => streetAddress = value; }
+        //public string Suburb { get => suburb; set => suburb = value; }
+        //public string PostCode { get => postCode; set => postCode = value; }
+        //public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
+        //public string Email { get => email; set => email = value; }
+        //public string CommencementDate { get => commencementDate; set => commencementDate = value; }
+        //public string ClassTaught { get => classTaught; set => classTaught = value; }
+        //public string Skills { get => skills; set => skills = value; }
+        //public bool Leave { get => leave; set => leave = value; }
     }
 }

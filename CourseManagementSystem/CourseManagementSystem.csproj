@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DatabaseClass">
+      <HintPath>..\..\DatabaseClass\DatabaseClass\bin\Debug\DatabaseClass.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,7 +47,8 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="ValidateClass">
-      <HintPath>..\..\ValidationClassLibrary\ValidateClass\bin\Debug\ValidateClass.dll</HintPath>
+
+      <HintPath>..\..\ValidationClass\ValidateClass\bin\Debug\ValidateClass.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +60,8 @@
     </Compile>
     <Compile Include="clsCourse.cs" />
     <Compile Include="clsEnrolment.cs" />
+    <Compile Include="clsSemester.cs" />
+    <Compile Include="clsSkills.cs" />
     <Compile Include="clsStudent.cs" />
     <Compile Include="clsTeacher.cs" />
     <Compile Include="clsUnit.cs" />
