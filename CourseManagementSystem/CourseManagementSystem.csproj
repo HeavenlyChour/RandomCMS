@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DatabaseClass">
+      <HintPath>..\..\DatabaseRepo\DatabaseClass\bin\Debug\DatabaseClass.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +59,13 @@
     <Compile Include="AssessmentForm.Designer.cs">
       <DependentUpon>AssessmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="clsCourse.cs" />
+    <Compile Include="clsEnrolment.cs" />
+    <Compile Include="clsSemester.cs" />
+    <Compile Include="clsSkills.cs" />
+    <Compile Include="clsStudent.cs" />
+    <Compile Include="clsTeacher.cs" />
+    <Compile Include="clsUnit.cs" />
     <Compile Include="CourseForm.cs">
       <SubType>Form</SubType>
     </Compile>

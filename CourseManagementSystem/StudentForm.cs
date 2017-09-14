@@ -122,6 +122,17 @@ namespace CourseManagementSystem
             {
                 return;
             }
+            string genderText = String.Empty;
+            if (rdbMale.Checked)
+            {
+                genderText = "m";
+            }
+            else if (rdbFemale.Checked)
+            {
+                genderText = "f";
+            }
+            
+
             if (rdbDisabilityYes.Checked==true)
             {
                 txtDisabilityDescription.ReadOnly = false;
@@ -135,7 +146,22 @@ namespace CourseManagementSystem
                 txtDisabilityDescription.Text = String.Empty;
                 txtDisabilityDescription.ReadOnly = true;
             }
-             MessageBox.Show("Student record successfully added!");            
+            string disabilityText = String.Empty;
+            if (rdbDisabilityYes.Checked)
+            {
+                disabilityText = "Yes";
+            }
+            else if (rdbDisabilityNo.Checked)
+            {
+                disabilityText = "No";
+            }
+
+            //Convert.ToInt32(txtStudentID.Text), <-------I'm leaving this here for now. It belongs in the code below.
+            clsStudent objStudent = new clsStudent(txtStudentFirstName.Text,
+                  txtStudentLastName.Text, genderText, dtpDateOfBirth.Text, txtStudStreetAddress.Text,
+                  cmbStudSuburb.Text, txtStudPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
+                  cmbNationality.Text, disabilityText, txtDisabilityDescription.Text);
+            MessageBox.Show("Student record successfully added!");            
         }
 
         private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)
