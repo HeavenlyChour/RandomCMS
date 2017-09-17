@@ -34,6 +34,7 @@
             this.lblSemesterStartDate = new System.Windows.Forms.Label();
             this.txtSemesterID = new System.Windows.Forms.TextBox();
             this.UnitToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSearch = new System.Windows.Forms.Button();
             this.lblSemesterWeeks = new System.Windows.Forms.Label();
             this.mnuTeacherForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAssessmentForm = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +51,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dgvUnit = new System.Windows.Forms.DataGridView();
             this.lblSemesterID = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +61,7 @@
             this.txtSemesterWeeks.Location = new System.Drawing.Point(276, 214);
             this.txtSemesterWeeks.Name = "txtSemesterWeeks";
             this.txtSemesterWeeks.Size = new System.Drawing.Size(217, 26);
-            this.txtSemesterWeeks.TabIndex = 156;
+            this.txtSemesterWeeks.TabIndex = 3;
             this.txtSemesterWeeks.Tag = "Semester Weeks";
             // 
             // txtSenesterStartDate
@@ -70,7 +70,7 @@
             this.txtSenesterStartDate.Location = new System.Drawing.Point(276, 182);
             this.txtSenesterStartDate.Name = "txtSenesterStartDate";
             this.txtSenesterStartDate.Size = new System.Drawing.Size(217, 26);
-            this.txtSenesterStartDate.TabIndex = 154;
+            this.txtSenesterStartDate.TabIndex = 2;
             this.txtSenesterStartDate.Tag = "Semester Start Date";
             this.UnitToolTip.SetToolTip(this.txtSenesterStartDate, "Date format must be yyyy-mm-dd and contain only numeric characters");
             // 
@@ -92,8 +92,22 @@
             this.txtSemesterID.Location = new System.Drawing.Point(276, 150);
             this.txtSemesterID.Name = "txtSemesterID";
             this.txtSemesterID.Size = new System.Drawing.Size(176, 26);
-            this.txtSemesterID.TabIndex = 149;
+            this.txtSemesterID.TabIndex = 1;
             this.txtSemesterID.Tag = "Semester ID";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.White;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
+            this.btnSearch.Location = new System.Drawing.Point(458, 150);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(35, 28);
+            this.btnSearch.TabIndex = 152;
+            this.UnitToolTip.SetToolTip(this.btnSearch, "Press to search");
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // lblSemesterWeeks
             // 
@@ -257,20 +271,6 @@
             this.lblSemesterID.Size = new System.Drawing.Size(115, 20);
             this.lblSemesterID.TabIndex = 147;
             this.lblSemesterID.Text = "Semester ID:";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.White;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
-            this.btnSearch.Location = new System.Drawing.Point(458, 150);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(35, 28);
-            this.btnSearch.TabIndex = 152;
-            this.UnitToolTip.SetToolTip(this.btnSearch, "Press to search");
-            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // SemesterForm
             // 

@@ -90,7 +90,7 @@
             this.txtStudentID.Location = new System.Drawing.Point(283, 115);
             this.txtStudentID.Name = "txtStudentID";
             this.txtStudentID.Size = new System.Drawing.Size(176, 26);
-            this.txtStudentID.TabIndex = 5;
+            this.txtStudentID.TabIndex = 1;
             this.txtStudentID.Tag = "Student ID";
             this.StudentToolTip.SetToolTip(this.txtStudentID, "Student ID must be numeric");
             // 
@@ -125,7 +125,7 @@
             this.txtStudentFirstName.Location = new System.Drawing.Point(283, 147);
             this.txtStudentFirstName.Name = "txtStudentFirstName";
             this.txtStudentFirstName.Size = new System.Drawing.Size(347, 26);
-            this.txtStudentFirstName.TabIndex = 7;
+            this.txtStudentFirstName.TabIndex = 2;
             this.txtStudentFirstName.Tag = "Student First Name";
             this.StudentToolTip.SetToolTip(this.txtStudentFirstName, "First name must only contain alphabetic characters and begin with a capital lette" +
         "r");
@@ -148,7 +148,7 @@
             this.txtStudStreetAddress.Location = new System.Drawing.Point(283, 274);
             this.txtStudStreetAddress.Name = "txtStudStreetAddress";
             this.txtStudStreetAddress.Size = new System.Drawing.Size(347, 26);
-            this.txtStudStreetAddress.TabIndex = 9;
+            this.txtStudStreetAddress.TabIndex = 6;
             this.txtStudStreetAddress.Tag = "Student Street Address";
             this.StudentToolTip.SetToolTip(this.txtStudStreetAddress, "Street address must begin with street number and then street name");
             // 
@@ -170,7 +170,7 @@
             this.txtStudentPhoneNum.Location = new System.Drawing.Point(283, 370);
             this.txtStudentPhoneNum.Name = "txtStudentPhoneNum";
             this.txtStudentPhoneNum.Size = new System.Drawing.Size(176, 26);
-            this.txtStudentPhoneNum.TabIndex = 11;
+            this.txtStudentPhoneNum.TabIndex = 9;
             this.txtStudentPhoneNum.Tag = "Student Phone Number";
             this.StudentToolTip.SetToolTip(this.txtStudentPhoneNum, "Phone number must contain only numeric characters");
             // 
@@ -211,7 +211,7 @@
             this.cmbNationality.Location = new System.Drawing.Point(283, 434);
             this.cmbNationality.Name = "cmbNationality";
             this.cmbNationality.Size = new System.Drawing.Size(176, 28);
-            this.cmbNationality.TabIndex = 13;
+            this.cmbNationality.TabIndex = 11;
             this.cmbNationality.Tag = "Student Nationality";
             this.StudentToolTip.SetToolTip(this.cmbNationality, "Press the down arrow to make a selection");
             // 
@@ -272,7 +272,7 @@
             this.txtDisabilityDescription.Multiline = true;
             this.txtDisabilityDescription.Name = "txtDisabilityDescription";
             this.txtDisabilityDescription.Size = new System.Drawing.Size(347, 87);
-            this.txtDisabilityDescription.TabIndex = 18;
+            this.txtDisabilityDescription.TabIndex = 13;
             this.txtDisabilityDescription.Tag = "Disability Description";
             this.StudentToolTip.SetToolTip(this.txtDisabilityDescription, "Enter the details regarding disability");
             // 
@@ -282,7 +282,7 @@
             this.txtStudentEmail.Location = new System.Drawing.Point(283, 402);
             this.txtStudentEmail.Name = "txtStudentEmail";
             this.txtStudentEmail.Size = new System.Drawing.Size(347, 26);
-            this.txtStudentEmail.TabIndex = 20;
+            this.txtStudentEmail.TabIndex = 10;
             this.txtStudentEmail.Tag = "Student Email";
             this.txtStudentEmail.Text = "FirstnameLastname@dummyMail.com.au";
             this.StudentToolTip.SetToolTip(this.txtStudentEmail, "Email address must follow the format: FirstnameLastname@dummyMail.com.au");
@@ -317,7 +317,7 @@
             this.txtStudentLastName.Location = new System.Drawing.Point(283, 179);
             this.txtStudentLastName.Name = "txtStudentLastName";
             this.txtStudentLastName.Size = new System.Drawing.Size(347, 26);
-            this.txtStudentLastName.TabIndex = 24;
+            this.txtStudentLastName.TabIndex = 3;
             this.txtStudentLastName.Tag = "Student Last Name";
             this.StudentToolTip.SetToolTip(this.txtStudentLastName, "Last name must only contain alphabetic characters and begin with a capital letter" +
         "");
@@ -362,7 +362,7 @@
             this.txtStudPostCode.Location = new System.Drawing.Point(283, 338);
             this.txtStudPostCode.Name = "txtStudPostCode";
             this.txtStudPostCode.Size = new System.Drawing.Size(113, 26);
-            this.txtStudPostCode.TabIndex = 29;
+            this.txtStudPostCode.TabIndex = 8;
             this.txtStudPostCode.Tag = "Student Post Code";
             this.StudentToolTip.SetToolTip(this.txtStudPostCode, "Post code must contain only numeric characters");
             // 
@@ -550,7 +550,7 @@
             this.cmbStudSuburb.Location = new System.Drawing.Point(283, 304);
             this.cmbStudSuburb.Name = "cmbStudSuburb";
             this.cmbStudSuburb.Size = new System.Drawing.Size(176, 28);
-            this.cmbStudSuburb.TabIndex = 37;
+            this.cmbStudSuburb.TabIndex = 7;
             this.cmbStudSuburb.Tag = "Student Suburb";
             this.StudentToolTip.SetToolTip(this.cmbStudSuburb, "Press the down arrow to make a selection");
             // 
@@ -563,7 +563,7 @@
             this.dtpDateOfBirth.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(274, 26);
-            this.dtpDateOfBirth.TabIndex = 38;
+            this.dtpDateOfBirth.TabIndex = 4;
             this.dtpDateOfBirth.Tag = "Date of Birth";
             this.StudentToolTip.SetToolTip(this.dtpDateOfBirth, "Press the down arrow to make a selection");
             this.dtpDateOfBirth.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
@@ -616,7 +616,7 @@
             this.pnlGender.Location = new System.Drawing.Point(283, 243);
             this.pnlGender.Name = "pnlGender";
             this.pnlGender.Size = new System.Drawing.Size(176, 25);
-            this.pnlGender.TabIndex = 35;
+            this.pnlGender.TabIndex = 5;
             // 
             // pnlDisability
             // 
@@ -625,7 +625,7 @@
             this.pnlDisability.Location = new System.Drawing.Point(283, 465);
             this.pnlDisability.Name = "pnlDisability";
             this.pnlDisability.Size = new System.Drawing.Size(176, 27);
-            this.pnlDisability.TabIndex = 36;
+            this.pnlDisability.TabIndex = 12;
             // 
             // StudentForm
             // 

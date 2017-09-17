@@ -56,7 +56,7 @@ namespace CourseManagementSystem
                 txtTeacherLastName.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDate(dtpDateOfBirth))
+            if (!clsValidation.ValidateDOB(dtpDateOfBirth))
             {
                 return;
             }
@@ -113,14 +113,14 @@ namespace CourseManagementSystem
                 txtTeacherEmail.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDate(dtpCommencementDate))
+            if (!clsValidation.ValidateDOB(dtpCommencementDate))
             {
                 return;
             }
-            if (!clsValidation.ValidateDateStartVsEnd(dtpDateOfBirth, dtpCommencementDate))
-            {
-                return;
-            }
+            //if (!clsValidation.ValidateDateStartVsEnd(dtpDateOfBirth, dtpCommencementDate))
+            //{
+            //    return;
+            //}
             if (!clsValidation.ValidateComboBox(cmbTeachDepartment))
             {
                 return;

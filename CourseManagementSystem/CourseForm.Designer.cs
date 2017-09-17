@@ -79,7 +79,7 @@
             this.cmbCourseSemester.Location = new System.Drawing.Point(241, 255);
             this.cmbCourseSemester.Name = "cmbCourseSemester";
             this.cmbCourseSemester.Size = new System.Drawing.Size(176, 28);
-            this.cmbCourseSemester.TabIndex = 62;
+            this.cmbCourseSemester.TabIndex = 5;
             this.cmbCourseSemester.Tag = "Course Semester";
             this.CourseToolTip.SetToolTip(this.cmbCourseSemester, "press the down arrow to make a selection");
             // 
@@ -90,7 +90,7 @@
             this.cmbCourseLocation.Location = new System.Drawing.Point(241, 189);
             this.cmbCourseLocation.Name = "cmbCourseLocation";
             this.cmbCourseLocation.Size = new System.Drawing.Size(217, 28);
-            this.cmbCourseLocation.TabIndex = 63;
+            this.cmbCourseLocation.TabIndex = 3;
             this.cmbCourseLocation.Tag = "Course Location";
             this.CourseToolTip.SetToolTip(this.cmbCourseLocation, "press the down arrow to make a selection");
             // 
@@ -101,7 +101,7 @@
             this.cmbCourseName.Location = new System.Drawing.Point(241, 155);
             this.cmbCourseName.Name = "cmbCourseName";
             this.cmbCourseName.Size = new System.Drawing.Size(347, 28);
-            this.cmbCourseName.TabIndex = 64;
+            this.cmbCourseName.TabIndex = 2;
             this.cmbCourseName.Tag = "Course Name";
             this.CourseToolTip.SetToolTip(this.cmbCourseName, "press the down arrow to make a selection");
             // 
@@ -112,7 +112,7 @@
             this.cmbCourseFee.Location = new System.Drawing.Point(241, 448);
             this.cmbCourseFee.Name = "cmbCourseFee";
             this.cmbCourseFee.Size = new System.Drawing.Size(176, 28);
-            this.cmbCourseFee.TabIndex = 66;
+            this.cmbCourseFee.TabIndex = 11;
             this.cmbCourseFee.Tag = "Course Fee";
             this.CourseToolTip.SetToolTip(this.cmbCourseFee, "press the down arrow to make a selection");
             // 
@@ -136,7 +136,7 @@
             this.txtNumOfUnits.Location = new System.Drawing.Point(241, 416);
             this.txtNumOfUnits.Name = "txtNumOfUnits";
             this.txtNumOfUnits.Size = new System.Drawing.Size(113, 26);
-            this.txtNumOfUnits.TabIndex = 58;
+            this.txtNumOfUnits.TabIndex = 10;
             this.txtNumOfUnits.Tag = "No. of Units";
             // 
             // txtHoursPerWeek
@@ -145,7 +145,7 @@
             this.txtHoursPerWeek.Location = new System.Drawing.Point(241, 384);
             this.txtHoursPerWeek.Name = "txtHoursPerWeek";
             this.txtHoursPerWeek.Size = new System.Drawing.Size(113, 26);
-            this.txtHoursPerWeek.TabIndex = 56;
+            this.txtHoursPerWeek.TabIndex = 9;
             this.txtHoursPerWeek.Tag = "Hours Per Week";
             // 
             // txtCStartDate
@@ -154,7 +154,7 @@
             this.txtCStartDate.Location = new System.Drawing.Point(241, 289);
             this.txtCStartDate.Name = "txtCStartDate";
             this.txtCStartDate.Size = new System.Drawing.Size(176, 26);
-            this.txtCStartDate.TabIndex = 70;
+            this.txtCStartDate.TabIndex = 6;
             this.txtCStartDate.Tag = "Course Start Date";
             // 
             // txtCEndDate
@@ -163,7 +163,7 @@
             this.txtCEndDate.Location = new System.Drawing.Point(241, 321);
             this.txtCEndDate.Name = "txtCEndDate";
             this.txtCEndDate.Size = new System.Drawing.Size(176, 26);
-            this.txtCEndDate.TabIndex = 72;
+            this.txtCEndDate.TabIndex = 7;
             this.txtCEndDate.Tag = "Course End Date";
             // 
             // txtCourseID
@@ -172,7 +172,7 @@
             this.txtCourseID.Location = new System.Drawing.Point(241, 123);
             this.txtCourseID.Name = "txtCourseID";
             this.txtCourseID.Size = new System.Drawing.Size(176, 26);
-            this.txtCourseID.TabIndex = 34;
+            this.txtCourseID.TabIndex = 1;
             this.txtCourseID.Tag = "Course ID";
             // 
             // lblNumOfUnits
@@ -468,7 +468,7 @@
             this.txtCourseDuration.Location = new System.Drawing.Point(241, 223);
             this.txtCourseDuration.Name = "txtCourseDuration";
             this.txtCourseDuration.Size = new System.Drawing.Size(113, 26);
-            this.txtCourseDuration.TabIndex = 74;
+            this.txtCourseDuration.TabIndex = 4;
             this.txtCourseDuration.Tag = "Course Duration";
             // 
             // lblCourseDuration

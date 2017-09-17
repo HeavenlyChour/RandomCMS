@@ -87,7 +87,7 @@
             this.txtSkillName.Location = new System.Drawing.Point(259, 168);
             this.txtSkillName.Name = "txtSkillName";
             this.txtSkillName.Size = new System.Drawing.Size(217, 26);
-            this.txtSkillName.TabIndex = 143;
+            this.txtSkillName.TabIndex = 2;
             this.txtSkillName.Tag = "Skill Name";
             // 
             // lblSkillsForm
@@ -259,7 +259,7 @@
             this.txtSkillID.Location = new System.Drawing.Point(259, 136);
             this.txtSkillID.Name = "txtSkillID";
             this.txtSkillID.Size = new System.Drawing.Size(176, 26);
-            this.txtSkillID.TabIndex = 138;
+            this.txtSkillID.TabIndex = 1;
             this.txtSkillID.Tag = "Skill ID";
             // 
             // txtSkillDescription
@@ -269,7 +269,7 @@
             this.txtSkillDescription.Multiline = true;
             this.txtSkillDescription.Name = "txtSkillDescription";
             this.txtSkillDescription.Size = new System.Drawing.Size(326, 180);
-            this.txtSkillDescription.TabIndex = 145;
+            this.txtSkillDescription.TabIndex = 3;
             this.txtSkillDescription.Tag = "Skill Description";
             // 
             // SkillsForm

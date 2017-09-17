@@ -57,7 +57,7 @@ namespace CourseManagementSystem
                 txtStudentLastName.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDate(dtpDateOfBirth))
+            if (!clsValidation.ValidateDOB(dtpDateOfBirth))
             {
                 return;
             }
@@ -161,7 +161,8 @@ namespace CourseManagementSystem
                   txtStudentLastName.Text, genderText, dtpDateOfBirth.Text, txtStudStreetAddress.Text,
                   cmbStudSuburb.Text, txtStudPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
                   cmbNationality.Text, disabilityText, txtDisabilityDescription.Text);
-            MessageBox.Show("Student record successfully added!");            
+            objStudent.AddStudent();
+            MessageBox.Show("Student record successfully added!");
         }
 
         private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)

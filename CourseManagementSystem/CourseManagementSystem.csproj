@@ -47,9 +47,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ValidationClass, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ValidateClass, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\clsValidation\ValidationClass\bin\Debug\ValidationClass.dll</HintPath>
+      <HintPath>..\..\ValidationClass\ValidateClass\bin\Debug\ValidateClass.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
