@@ -16,7 +16,8 @@ namespace CourseManagementSystem
         private string firstName;
         private string lastName;
         private string gender;
-        private string dateOfBirth;
+        //private string dateOfBirth;
+        private DateTime dateOfBirth;
         private string streetAddress;
         private string suburb;
         private string postCode;
@@ -42,7 +43,7 @@ namespace CourseManagementSystem
             this.LastName = lastName;
         }
 
-        public clsStudent(string firstName, string lastName, string gender, string dateOfBirth, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
+        public clsStudent(string firstName, string lastName, string gender, DateTime dateOfBirth, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -58,7 +59,7 @@ namespace CourseManagementSystem
             this.DisabilityDescription = disabilityDescription;
         }
 
-        public clsStudent(int studentID, string firstName, string lastName, string gender, string dateOfBirth, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
+        public clsStudent(int studentID, string firstName, string lastName, string gender, DateTime dateOfBirth, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
         {
             this.StudentID = studentID;
             this.FirstName = firstName;
@@ -128,7 +129,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public string DateOfBirth
+        public DateTime DateOfBirth
         {
             get
             {
@@ -262,36 +263,38 @@ namespace CourseManagementSystem
         public bool AddStudent()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
-            SqlCommand objCommand = new SqlCommand("CheckIfStudentExists", objConnection);
-            objCommand.CommandType = CommandType.StoredProcedure;
-            SqlDataReader objDataReader = objCommand.ExecuteReader();
-            objDataReader.Read();
+            //SqlCommand objCommand = new SqlCommand("CheckIfStudentExists", objConnection);
+            
+            //SqlDataReader objDataReader = objCommand.ExecuteReader();
+            //objDataReader.Read();
 
-            if(objDataReader.HasRows)
-            {
-                objDataReader.Close();
-                string strSql = "insert into values(@sid, @fname, @lname, @gender, @dob, @staddress, @suburb, @postcode, @phoneno, @email, @nat, @dis, @disdesc)";
-                SqlCommand objCommand1 = new SqlCommand(strSql, objConnection);
-                objCommand.Parameters.AddWithValue("@sid", StudentID);
-                objCommand.Parameters.AddWithValue("@fname", StudentID);
-                objCommand.Parameters.AddWithValue("@lname", StudentID);
-                objCommand.Parameters.AddWithValue("@gender", StudentID);
-                objCommand.Parameters.AddWithValue("@dob", StudentID);
-                objCommand.Parameters.AddWithValue("@staddress", StudentID);
-                objCommand.Parameters.AddWithValue("@suburb", StudentID);
-                objCommand.Parameters.AddWithValue("@postcode", StudentID);
-                objCommand.Parameters.AddWithValue("@phoneno", StudentID);
-                objCommand.Parameters.AddWithValue("@email", StudentID);
-                objCommand.Parameters.AddWithValue("@nat", StudentID);
-                objCommand.Parameters.AddWithValue("@dis", StudentID);
-                objCommand.Parameters.AddWithValue("@disdesc", StudentID);
+            //if(objDataReader.HasRows)
+            //{
+                //objDataReader.Close();
+                //string strSql = "insert into values(@fname, @lname, @gender, @dob, @staddress, @suburb, @postcode, @phoneno, @email, @nat, @dis, @disdetails)";
+                SqlCommand objCommand = new SqlCommand("InsertStudent", objConnection);
+                //objCommand.Parameters.AddWithValue("@sid", StudentID);
+                objCommand.Parameters.AddWithValue("@fname", FirstName);
+                objCommand.Parameters.AddWithValue("@lname", LastName);
+                objCommand.Parameters.AddWithValue("@gender", Gender);
+                objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
+                objCommand.Parameters.AddWithValue("@staddress", StreetAddress);
+                objCommand.Parameters.AddWithValue("@suburb", Suburb);
+                objCommand.Parameters.AddWithValue("@postcode", PostCode);
+                objCommand.Parameters.AddWithValue("@phoneno", PhoneNumber);
+                objCommand.Parameters.AddWithValue("@email", Email);
+                objCommand.Parameters.AddWithValue("@nat", Nationality);
+                objCommand.Parameters.AddWithValue("@dis", Disability);
+                objCommand.Parameters.AddWithValue("@disdetails", DisabilityDescription);
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.ExecuteNonQuery();
                 return true;
-            }
-            else
-            {
-                objDataReader.Close();
-                return false;
-            }
+            //}
+            //else
+            //{
+            //    objDataReader.Close();
+            //    return false;
+            //}
         }
 
         public bool DeleteStudent()

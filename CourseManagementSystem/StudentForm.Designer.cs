@@ -239,6 +239,7 @@
             this.rdbDisabilityYes.Tag = "Disability";
             this.rdbDisabilityYes.Text = "Yes";
             this.rdbDisabilityYes.UseVisualStyleBackColor = true;
+            this.rdbDisabilityYes.CheckedChanged += new System.EventHandler(this.rdbDisabilityYes_CheckedChanged);
             // 
             // rdbDisabilityNo
             // 
@@ -252,6 +253,7 @@
             this.rdbDisabilityNo.Tag = "Disability";
             this.rdbDisabilityNo.Text = "No";
             this.rdbDisabilityNo.UseVisualStyleBackColor = true;
+            this.rdbDisabilityNo.CheckedChanged += new System.EventHandler(this.rdbDisabilityNo_CheckedChanged);
             // 
             // lblDisabilityDescription
             // 
@@ -558,6 +560,7 @@
             // 
             this.dtpDateOfBirth.AllowDrop = true;
             this.dtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateOfBirth.Location = new System.Drawing.Point(283, 209);
             this.dtpDateOfBirth.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
             this.dtpDateOfBirth.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);

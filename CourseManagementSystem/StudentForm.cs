@@ -57,6 +57,8 @@ namespace CourseManagementSystem
                 txtStudentLastName.Focus();
                 return;
             }
+            dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
+            dtpDateOfBirth.CustomFormat = "yyyy-MM-dd";
             if (!clsValidation.ValidateDOB(dtpDateOfBirth))
             {
                 return;
@@ -158,7 +160,7 @@ namespace CourseManagementSystem
 
             //Convert.ToInt32(txtStudentID.Text), <-------I'm leaving this here for now. It belongs in the code below.
             clsStudent objStudent = new clsStudent(txtStudentFirstName.Text,
-                  txtStudentLastName.Text, genderText, dtpDateOfBirth.Text, txtStudStreetAddress.Text,
+                  txtStudentLastName.Text, genderText, dtpDateOfBirth.Value.Date, txtStudStreetAddress.Text,
                   cmbStudSuburb.Text, txtStudPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
                   cmbNationality.Text, disabilityText, txtDisabilityDescription.Text);
             objStudent.AddStudent();
@@ -206,6 +208,17 @@ namespace CourseManagementSystem
         private void mnuExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void rdbDisabilityYes_CheckedChanged(object sender, EventArgs e)
+        {
+            txtDisabilityDescription.ReadOnly = false;
+        }
+
+        private void rdbDisabilityNo_CheckedChanged(object sender, EventArgs e)
+        {
+            txtDisabilityDescription.Text = String.Empty;
+            txtDisabilityDescription.ReadOnly = true;
         }
     }
 }
