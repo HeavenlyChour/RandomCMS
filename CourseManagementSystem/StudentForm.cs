@@ -167,6 +167,165 @@ namespace CourseManagementSystem
             MessageBox.Show("Student record successfully added!");
         }
 
+        private void mnuDelete_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateTextBoxForNumeric(txtStudentID))
+            {
+                txtStudentID.Focus();
+                return;
+            }
+            clsStudent objStudent = new clsStudent(Convert.ToInt32(txtStudentID.Text));
+            objStudent.DeleteStudent();
+            MessageBox.Show("Student record successfully deleted");
+        }
+
+        private void mnuUpdate_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateTextBoxForNumeric(txtStudentID))
+            {
+                txtStudentID.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtStudentFirstName))
+            {
+                txtStudentFirstName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateForAlphabet(txtStudentFirstName))
+            {
+                txtStudentFirstName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateNameFormat(txtStudentFirstName))
+            {
+                txtStudentFirstName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtStudentLastName))
+            {
+                txtStudentLastName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateForAlphabet(txtStudentLastName))
+            {
+                txtStudentLastName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateNameFormat(txtStudentLastName))
+            {
+                txtStudentLastName.Focus();
+                return;
+            }
+            dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
+            dtpDateOfBirth.CustomFormat = "yyyy-MM-dd";
+            if (!clsValidation.ValidateDOB(dtpDateOfBirth))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateRadioButton(rdbMale, rdbFemale))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtStudStreetAddress))
+            {
+                txtStudStreetAddress.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateStreetAddress(txtStudStreetAddress))
+            {
+                txtStudStreetAddress.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateComboBox(cmbStudSuburb))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtStudPostCode))
+            {
+                txtStudPostCode.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxForNumeric(txtStudPostCode))
+            {
+                txtStudPostCode.Focus();
+                return;
+            }
+            if (!clsValidation.ValidatePostCode(txtStudPostCode.Text))
+            {
+                txtStudPostCode.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtStudentPhoneNum))
+            {
+                txtStudentPhoneNum.Focus();
+                return;
+            }
+            if (!clsValidation.ValidatePhoneNumber(txtStudentPhoneNum))
+            {
+                txtStudentPhoneNum.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtStudentEmail))
+            {
+                txtStudentEmail.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateEmail(txtStudentEmail))
+            {
+                txtStudentEmail.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateComboBox(cmbNationality))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateRadioButton(rdbDisabilityYes, rdbDisabilityNo))
+            {
+                return;
+            }
+            string genderText = String.Empty;
+            if (rdbMale.Checked)
+            {
+                genderText = "m";
+            }
+            else if (rdbFemale.Checked)
+            {
+                genderText = "f";
+            }
+
+
+            if (rdbDisabilityYes.Checked == true)
+            {
+                txtDisabilityDescription.ReadOnly = false;
+                if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
+                {
+                    return;
+                }
+            }
+            if (rdbDisabilityNo.Checked == true)
+            {
+                txtDisabilityDescription.Text = String.Empty;
+                txtDisabilityDescription.ReadOnly = true;
+            }
+            string disabilityText = String.Empty;
+            if (rdbDisabilityYes.Checked)
+            {
+                disabilityText = "Yes";
+            }
+            else if (rdbDisabilityNo.Checked)
+            {
+                disabilityText = "No";
+            }
+
+            //Convert.ToInt32(txtStudentID.Text), <-------I'm leaving this here for now. It belongs in the code below.
+            clsStudent objStudent = new clsStudent(Convert.ToInt32(txtStudentID.Text), txtStudentFirstName.Text,
+                  txtStudentLastName.Text, genderText, dtpDateOfBirth.Value.Date, txtStudStreetAddress.Text,
+                  cmbStudSuburb.Text, txtStudPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
+                  cmbNationality.Text, disabilityText, txtDisabilityDescription.Text);
+            objStudent.UpdateStudent();
+            MessageBox.Show("Student record successfully updated!");
+        }
+
         private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)
         {
             string dobSelected = dtpDateOfBirth.Value.ToString("yyyy-MM-dd");
@@ -220,5 +379,7 @@ namespace CourseManagementSystem
             txtDisabilityDescription.Text = String.Empty;
             txtDisabilityDescription.ReadOnly = true;
         }
+
+        
     }
 }

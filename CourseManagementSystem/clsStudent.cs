@@ -248,17 +248,6 @@ namespace CourseManagementSystem
         #endregion
         
 
-        //public void DeleteStudent(ArrayList arl)
-        //{
-        //    foreach (object stu in arl)
-        //    {
-        //        if (((clsStudent)stu).StudentID.Equals(this.StudentID))
-        //        {
-        //            arl.Remove(stu);
-        //            break;
-        //        }
-        //    }
-        //}
 
         public bool AddStudent()
         {
@@ -272,7 +261,7 @@ namespace CourseManagementSystem
             //{
                 //objDataReader.Close();
                 //string strSql = "insert into values(@fname, @lname, @gender, @dob, @staddress, @suburb, @postcode, @phoneno, @email, @nat, @dis, @disdetails)";
-                SqlCommand objCommand = new SqlCommand("InsertStudent", objConnection);
+                SqlCommand objCommand = new SqlCommand("CheckIfStudentExists", objConnection);
                 //objCommand.Parameters.AddWithValue("@sid", StudentID);
                 objCommand.Parameters.AddWithValue("@fname", FirstName);
                 objCommand.Parameters.AddWithValue("@lname", LastName);
@@ -300,72 +289,50 @@ namespace CourseManagementSystem
         public bool DeleteStudent()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
-            SqlCommand objCommand1 = new SqlCommand("CheckIfStudentExists", objConnection);
+            SqlCommand objCommand = new SqlCommand("DeleteStudent", objConnection);
 
-            objCommand1.Parameters.AddWithValue("@sid", studentID);
-            objCommand1.CommandType = CommandType.StoredProcedure;
-            SqlDataReader objDataReader = objCommand1.ExecuteReader();
-            objDataReader.Read();
+            objCommand.Parameters.AddWithValue("@sid", studentID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+            return true;
+            //objDataReader.Read();
 
-            if (objDataReader.HasRows)
-            {
-                objDataReader.Close();
-                string strSql = "delete from student where studentid = @sid";
-                SqlCommand objCommand2 = new SqlCommand(strSql, objConnection);
-                objCommand2.ExecuteReader();
-                objDataReader.Close();
-                return true;
-            }
-            else
-            {
-                objDataReader.Close();
-                return false;
-            }
+            //if (objDataReader.HasRows)
+            //{
+            //    objDataReader.Close();
+            //    string strSql = "delete from student where studentid = @sid";
+            //    SqlCommand objCommand2 = new SqlCommand(strSql, objConnection);
+            //    objCommand2.ExecuteReader();
+            //    objDataReader.Close();
+            //    return true;
+            //}
+            //else
+            //{
+            //    objDataReader.Close();
+            //    return false;
+            //}
         }
-
-        //public bool SearchStudent(ArrayList arl)
-        //{
-        //    bool valid = false;
-        //    foreach (object stu in arl)
-        //    {
-        //        if (((clsStudent)stu).StudentID.Equals(this.studentID))
-        //        {
-        //            this.studentID = ((clsStudent)stu).studentID;
-        //            this.firstName = ((clsStudent)stu).firstName;
-        //            this.lastName = ((clsStudent)stu).lastName;
-        //            this.dateOfBirth = ((clsStudent)stu).dateOfBirth;
-        //            this.gender = ((clsStudent)stu).gender;
-        //            this.streetAddress = ((clsStudent)stu).streetAddress;
-        //            this.suburb = ((clsStudent)stu).suburb;
-        //            this.postCode = ((clsStudent)stu).postCode;
-        //            this.phoneNumber = ((clsStudent)stu).phoneNumber;
-        //            this.email = ((clsStudent)stu).email;
-        //            this.nationality = ((clsStudent)stu).nationality;
-        //            this.disability = ((clsStudent)stu).disability;
-        //            this.disabilityDetails = ((clsStudent)stu).disabilityDetails;
-        //            valid = true;
-        //            break;
-        //        }
-        //    }
-
-        //    if (valid)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-
-        public void something()
+        
+        public bool UpdateStudent()
         {
-
-        }
-
-        public void somethingElse()
-        {
-
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("UpdateStudent", objConnection);
+            objCommand.Parameters.AddWithValue("@sid", StudentID);
+            objCommand.Parameters.AddWithValue("@fname", FirstName);
+            objCommand.Parameters.AddWithValue("@lname", LastName);
+            objCommand.Parameters.AddWithValue("@gender", Gender);
+            objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
+            objCommand.Parameters.AddWithValue("@staddress", StreetAddress);
+            objCommand.Parameters.AddWithValue("@suburb", Suburb);
+            objCommand.Parameters.AddWithValue("@postcode", PostCode);
+            objCommand.Parameters.AddWithValue("@phoneno", PhoneNumber);
+            objCommand.Parameters.AddWithValue("@email", Email);
+            objCommand.Parameters.AddWithValue("@nat", Nationality);
+            objCommand.Parameters.AddWithValue("@dis", Disability);
+            objCommand.Parameters.AddWithValue("@disdetails", DisabilityDescription);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
         }
     }
 }
