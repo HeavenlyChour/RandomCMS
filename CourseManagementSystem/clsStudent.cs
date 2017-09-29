@@ -43,7 +43,7 @@ namespace CourseManagementSystem
             this.LastName = lastName;
         }
 
-        public clsStudent(string firstName, string lastName, string gender, DateTime dateOfBirth, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
+        public clsStudent(string firstName, string lastName, DateTime dateOfBirth, string gender, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -59,7 +59,7 @@ namespace CourseManagementSystem
             this.DisabilityDescription = disabilityDescription;
         }
 
-        public clsStudent(int studentID, string firstName, string lastName, string gender, DateTime dateOfBirth, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
+        public clsStudent(int studentID, string firstName, string lastName, DateTime dateOfBirth, string gender, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
         {
             this.StudentID = studentID;
             this.FirstName = firstName;
@@ -116,19 +116,6 @@ namespace CourseManagementSystem
             }
         }
 
-        public string Gender
-        {
-            get
-            {
-                return gender;
-            }
-
-            set
-            {
-                gender = value;
-            }
-        }
-
         public DateTime DateOfBirth
         {
             get
@@ -139,6 +126,19 @@ namespace CourseManagementSystem
             set
             {
                 dateOfBirth = value;
+            }
+        }
+
+        public string Gender
+        {
+            get
+            {
+                return gender;
+            }
+
+            set
+            {
+                gender = value;
             }
         }
 
@@ -247,8 +247,6 @@ namespace CourseManagementSystem
         }
         #endregion
         
-
-
         public bool AddStudent()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
@@ -261,12 +259,12 @@ namespace CourseManagementSystem
             //{
                 //objDataReader.Close();
                 //string strSql = "insert into values(@fname, @lname, @gender, @dob, @staddress, @suburb, @postcode, @phoneno, @email, @nat, @dis, @disdetails)";
-                SqlCommand objCommand = new SqlCommand("CheckIfStudentExists", objConnection);
+                SqlCommand objCommand = new SqlCommand("InsertStudent", objConnection);
                 //objCommand.Parameters.AddWithValue("@sid", StudentID);
                 objCommand.Parameters.AddWithValue("@fname", FirstName);
                 objCommand.Parameters.AddWithValue("@lname", LastName);
-                objCommand.Parameters.AddWithValue("@gender", Gender);
                 objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
+                objCommand.Parameters.AddWithValue("@gender", Gender);
                 objCommand.Parameters.AddWithValue("@staddress", StreetAddress);
                 objCommand.Parameters.AddWithValue("@suburb", Suburb);
                 objCommand.Parameters.AddWithValue("@postcode", PostCode);

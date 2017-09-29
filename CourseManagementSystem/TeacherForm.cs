@@ -19,13 +19,14 @@ namespace CourseManagementSystem
 
             //This is to make the date time picker empty at the beginning of the form
             dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
-            dtpDateOfBirth.CustomFormat = " ";
+            dtpDateOfBirth.CustomFormat = "yyyy-MM-dd";
             dtpCommencementDate.Format = DateTimePickerFormat.Custom;
-            dtpCommencementDate.CustomFormat = " ";
+            dtpCommencementDate.CustomFormat = "yyyy-MM-dd";
         }
 
         private void mnuAdd_Click(object sender, EventArgs e)
         {
+            #region ValidationArea
             if (!clsValidation.ValidateTextBox(txtTeacherFirstName))
             {
                 txtTeacherFirstName.Focus();
@@ -117,6 +118,8 @@ namespace CourseManagementSystem
             {
                 return;
             }
+            //dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
+            //dtpDateOfBirth.CustomFormat = "yyyy-MM-dd";
             //if (!clsValidation.ValidateDateStartVsEnd(dtpDateOfBirth, dtpCommencementDate))
             //{
             //    return;
@@ -138,8 +141,194 @@ namespace CourseManagementSystem
             {
                 return;
             }
+            #endregion
+            string genderText = String.Empty;
+            if (rdbMale.Checked)
+            {
+                genderText = "m";
+            }
+            else if (rdbFemale.Checked)
+            {
+                genderText = "f";
+            }
+            string leaveText = String.Empty;
+            if (rdbASYes.Checked)
+            {
+                leaveText = "Yes";
+            }
+            else if (rdbASNo.Checked)
+            {
+                leaveText = "No";
+            }
+            clsTeacher objTeacher = new clsTeacher(txtTeacherFirstName.Text,
+                  txtTeacherLastName.Text, dtpDateOfBirth.Value.Date, genderText, txtTeachStreetAddress.Text,
+                  cmbTeachSuburb.Text, txtTeachPostCode.Text, txtTeacherPhoneNum.Text, txtTeacherEmail.Text,
+                  dtpCommencementDate.Value.Date, cmbClassTaught.Text, txtTeacherSkills.Text, leaveText);
+            objTeacher.AddTeacher();
             MessageBox.Show("Teacher record successfully added!");
         }
+
+        private void mnuDelete_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateTextBoxForNumeric(txtTeacherID))
+            {
+                txtTeacherID.Focus();
+                return;
+            }
+            clsTeacher objTeacher = new clsTeacher(Convert.ToInt32(txtTeacherID.Text));
+            objTeacher.DeleteTeacher();
+            MessageBox.Show("Teacher record successfully deleted");
+        }
+
+        private void mnuUpdate_Click(object sender, EventArgs e)
+        {
+            #region ValidationArea
+            if (!clsValidation.ValidateTextBoxForNumeric(txtTeacherID))
+            {
+                txtTeacherID.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtTeacherFirstName))
+            {
+                txtTeacherFirstName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateForAlphabet(txtTeacherFirstName))
+            {
+                txtTeacherFirstName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateNameFormat(txtTeacherFirstName))
+            {
+                txtTeacherFirstName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtTeacherLastName))
+            {
+                txtTeacherLastName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateForAlphabet(txtTeacherLastName))
+            {
+                txtTeacherLastName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateNameFormat(txtTeacherLastName))
+            {
+                txtTeacherLastName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateDOB(dtpDateOfBirth))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateRadioButton(rdbMale, rdbFemale))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtTeachStreetAddress))
+            {
+                txtTeachStreetAddress.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateStreetAddress(txtTeachStreetAddress))
+            {
+                txtTeachStreetAddress.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateComboBox(cmbTeachSuburb))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtTeachPostCode))
+            {
+                txtTeachPostCode.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxForNumeric(txtTeachPostCode))
+            {
+                txtTeachPostCode.Focus();
+                return;
+            }
+            if (!clsValidation.ValidatePostCode(txtTeachPostCode.Text))
+            {
+                txtTeachPostCode.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtTeacherPhoneNum))
+            {
+                txtTeacherPhoneNum.Focus();
+                return;
+            }
+            if (!clsValidation.ValidatePhoneNumber(txtTeacherPhoneNum))
+            {
+                txtTeacherPhoneNum.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtTeacherEmail))
+            {
+                txtTeacherEmail.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateEmail(txtTeacherEmail))
+            {
+                txtTeacherEmail.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateDOB(dtpCommencementDate))
+            {
+                return;
+            }
+            //dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
+            //dtpDateOfBirth.CustomFormat = "yyyy-MM-dd";
+            //if (!clsValidation.ValidateDateStartVsEnd(dtpDateOfBirth, dtpCommencementDate))
+            //{
+            //    return;
+            //}
+            if (!clsValidation.ValidateComboBox(cmbTeachDepartment))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateComboBox(cmbClassTaught))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtTeacherSkills))
+            {
+                txtTeacherSkills.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateRadioButton(rdbASYes, rdbASNo))
+            {
+                return;
+            }
+            #endregion
+            string genderText = String.Empty;
+            if (rdbMale.Checked)
+            {
+                genderText = "m";
+            }
+            else if (rdbFemale.Checked)
+            {
+                genderText = "f";
+            }
+            string leaveText = String.Empty;
+            if (rdbASYes.Checked)
+            {
+                leaveText = "Yes";
+            }
+            else if (rdbASNo.Checked)
+            {
+                leaveText = "No";
+            }
+            clsTeacher objTeacher = new clsTeacher(Convert.ToInt32(txtTeacherID.Text), txtTeacherFirstName.Text,
+                  txtTeacherLastName.Text, dtpDateOfBirth.Value.Date, genderText, txtTeachStreetAddress.Text,
+                  cmbTeachSuburb.Text, txtTeachPostCode.Text, txtTeacherPhoneNum.Text, txtTeacherEmail.Text,
+                  dtpCommencementDate.Value.Date, cmbClassTaught.Text, txtTeacherSkills.Text, leaveText);
+            objTeacher.AddTeacher();
+            MessageBox.Show("Teacher record successfully updated!");
+        }
+
         private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)
         {
             string dobSelected = dtpDateOfBirth.Value.ToString("yyyy-MM-dd");
@@ -192,5 +381,7 @@ namespace CourseManagementSystem
         {
             this.Close();
         }
+
+        
     }
 }

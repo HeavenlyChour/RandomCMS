@@ -27,6 +27,7 @@ namespace CourseManagementSystem
 
         private void mnuAdd_Click(object sender, EventArgs e)
         {
+            #region ValidationArea
             if (!clsValidation.ValidateTextBox(txtStudentFirstName))
             {
                 txtStudentFirstName.Focus();
@@ -124,6 +125,8 @@ namespace CourseManagementSystem
             {
                 return;
             }
+            #endregion
+
             string genderText = String.Empty;
             if (rdbMale.Checked)
             {
@@ -133,8 +136,6 @@ namespace CourseManagementSystem
             {
                 genderText = "f";
             }
-            
-
             if (rdbDisabilityYes.Checked==true)
             {
                 txtDisabilityDescription.ReadOnly = false;
@@ -160,7 +161,7 @@ namespace CourseManagementSystem
 
             //Convert.ToInt32(txtStudentID.Text), <-------I'm leaving this here for now. It belongs in the code below.
             clsStudent objStudent = new clsStudent(txtStudentFirstName.Text,
-                  txtStudentLastName.Text, genderText, dtpDateOfBirth.Value.Date, txtStudStreetAddress.Text,
+                  txtStudentLastName.Text, dtpDateOfBirth.Value.Date, genderText, txtStudStreetAddress.Text,
                   cmbStudSuburb.Text, txtStudPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
                   cmbNationality.Text, disabilityText, txtDisabilityDescription.Text);
             objStudent.AddStudent();
@@ -181,6 +182,7 @@ namespace CourseManagementSystem
 
         private void mnuUpdate_Click(object sender, EventArgs e)
         {
+            #region ValidationArea
             if (!clsValidation.ValidateTextBoxForNumeric(txtStudentID))
             {
                 txtStudentID.Focus();
@@ -283,6 +285,7 @@ namespace CourseManagementSystem
             {
                 return;
             }
+            #endregion
             string genderText = String.Empty;
             if (rdbMale.Checked)
             {
@@ -292,8 +295,6 @@ namespace CourseManagementSystem
             {
                 genderText = "f";
             }
-
-
             if (rdbDisabilityYes.Checked == true)
             {
                 txtDisabilityDescription.ReadOnly = false;
@@ -317,9 +318,9 @@ namespace CourseManagementSystem
                 disabilityText = "No";
             }
 
-            //Convert.ToInt32(txtStudentID.Text), <-------I'm leaving this here for now. It belongs in the code below.
+            //Convert.ToInt32(txtStudentID.Text), <-------I'm leaving this here for now. It was taken out of the code below.
             clsStudent objStudent = new clsStudent(Convert.ToInt32(txtStudentID.Text), txtStudentFirstName.Text,
-                  txtStudentLastName.Text, genderText, dtpDateOfBirth.Value.Date, txtStudStreetAddress.Text,
+                  txtStudentLastName.Text, dtpDateOfBirth.Value.Date, genderText, txtStudStreetAddress.Text,
                   cmbStudSuburb.Text, txtStudPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
                   cmbNationality.Text, disabilityText, txtDisabilityDescription.Text);
             objStudent.UpdateStudent();

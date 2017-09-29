@@ -349,6 +349,7 @@
             this.mnuDelete.Size = new System.Drawing.Size(166, 22);
             this.mnuDelete.Text = "Delete";
             this.mnuDelete.ToolTipText = "Delete  record";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // mnuUpdate
             // 
@@ -357,6 +358,7 @@
             this.mnuUpdate.Size = new System.Drawing.Size(166, 22);
             this.mnuUpdate.Text = "Update";
             this.mnuUpdate.ToolTipText = "Update record";
+            this.mnuUpdate.Click += new System.EventHandler(this.mnuUpdate_Click);
             // 
             // mnuViewAll
             // 

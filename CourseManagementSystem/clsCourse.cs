@@ -192,16 +192,5 @@ namespace CourseManagementSystem
         }
         #endregion
         
-        //public int CourseID { get => courseID; set => courseID = value; }
-        //public string CourseName { get => courseName; set => courseName = value; }
-        //public string CourseLocation { get => courseLocation; set => courseLocation = value; }
-        //public string CourseDuration { get => courseDuration; set => courseDuration = value; }
-        //public string CourseSemester { get => courseSemester; set => courseSemester = value; }
-        //public string StartDate { get => startDate; set => startDate = value; }
-        //public string EndDate { get => endDate; set => endDate = value; }
-        //public string CourseDelivery { get => courseDelivery; set => courseDelivery = value; }
-        //public int HoursPerWeek { get => hoursPerWeek; set => hoursPerWeek = value; }
-        //public int NoOfUnits { get => noOfUnits; set => noOfUnits = value; }
-        //public double CourseFee { get => courseFee; set => courseFee = value; }
     }
 }
