@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DatabaseClass;
-
+using System.Data.SqlClient;
+using System.Data;
 
 namespace CourseManagementSystem
 {
@@ -13,14 +14,14 @@ namespace CourseManagementSystem
         private int courseID;
         private string courseName;
         private string courseLocation;
-        private string courseDuration;
+        private int courseDuration;
         private string courseSemester;
-        private string startDate;
-        private string endDate;
+        private DateTime startDate;
+        private DateTime endDate;
         private string courseDelivery;
         private int hoursPerWeek;
         private int noOfUnits;
-        private double courseFee;
+        private int courseFee;
         
 
         public clsCourse()
@@ -32,7 +33,21 @@ namespace CourseManagementSystem
             this.CourseID = courseID;
         }
 
-        public clsCourse(int courseID, string courseName, string courseLocation, string courseDuration, string courseSemester, string startDate, string endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, double courseFee)
+        public clsCourse(string courseName, string courseLocation, int courseDuration, string courseSemester, DateTime startDate, DateTime endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, int courseFee)
+        {
+            this.CourseName = courseName;
+            this.CourseLocation = courseLocation;
+            this.CourseDuration = courseDuration;
+            this.CourseSemester = courseSemester;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.CourseDelivery = courseDelivery;
+            this.HoursPerWeek = hoursPerWeek;
+            this.NoOfUnits = noOfUnits;
+            this.CourseFee = courseFee;
+        }
+
+        public clsCourse(int courseID, string courseName, string courseLocation, int courseDuration, string courseSemester, DateTime startDate, DateTime endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, int courseFee)
         {
             this.CourseID = courseID;
             this.CourseName = courseName;
@@ -87,7 +102,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public string CourseDuration
+        public int CourseDuration
         {
             get
             {
@@ -113,7 +128,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public string StartDate
+        public DateTime StartDate
         {
             get
             {
@@ -126,7 +141,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public string EndDate
+        public DateTime EndDate
         {
             get
             {
@@ -178,7 +193,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public double CourseFee
+        public int CourseFee
         {
             get
             {
@@ -191,6 +206,54 @@ namespace CourseManagementSystem
             }
         }
         #endregion
-        
+
+
+        public bool AddCourse()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("InsertCourse", objConnection);
+            objCommand.Parameters.AddWithValue("@cname", CourseName);
+            objCommand.Parameters.AddWithValue("@cloc", CourseLocation);
+            objCommand.Parameters.AddWithValue("@csem", CourseSemester);
+            objCommand.Parameters.AddWithValue("@sdate", StartDate);
+            objCommand.Parameters.AddWithValue("@edate", EndDate);
+            objCommand.Parameters.AddWithValue("@cdeliv", CourseDelivery);
+            objCommand.Parameters.AddWithValue("@hrs", HoursPerWeek);
+            objCommand.Parameters.AddWithValue("@noofunits", NoOfUnits);
+            objCommand.Parameters.AddWithValue("@cfee", CourseFee);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
+        }
+
+        public bool DeleteCourse()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("DeleteCourse", objConnection);
+
+            objCommand.Parameters.AddWithValue("@cid", courseID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+            return true;
+        }
+
+        public bool UpdateCourse()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("UpdateStudent", objConnection);
+            objCommand.Parameters.AddWithValue("@cid", CourseID);
+            objCommand.Parameters.AddWithValue("@cname", CourseName);
+            objCommand.Parameters.AddWithValue("@cloc", CourseLocation);
+            objCommand.Parameters.AddWithValue("@csem", CourseSemester);
+            objCommand.Parameters.AddWithValue("@sdate", StartDate);
+            objCommand.Parameters.AddWithValue("@edate", EndDate);
+            objCommand.Parameters.AddWithValue("@cdeliv", CourseDelivery);
+            objCommand.Parameters.AddWithValue("@hrs", HoursPerWeek);
+            objCommand.Parameters.AddWithValue("@noofunits", NoOfUnits);
+            objCommand.Parameters.AddWithValue("@cfee", CourseFee);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
+        }
     }
 }

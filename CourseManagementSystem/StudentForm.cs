@@ -125,7 +125,6 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            #endregion
 
             string genderText = String.Empty;
             if (rdbMale.Checked)
@@ -158,6 +157,7 @@ namespace CourseManagementSystem
             {
                 disabilityText = "No";
             }
+            #endregion
 
             //Convert.ToInt32(txtStudentID.Text), <-------I'm leaving this here for now. It belongs in the code below.
             clsStudent objStudent = new clsStudent(txtStudentFirstName.Text,

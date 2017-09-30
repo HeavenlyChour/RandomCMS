@@ -325,7 +325,7 @@ namespace CourseManagementSystem
                   txtTeacherLastName.Text, dtpDateOfBirth.Value.Date, genderText, txtTeachStreetAddress.Text,
                   cmbTeachSuburb.Text, txtTeachPostCode.Text, txtTeacherPhoneNum.Text, txtTeacherEmail.Text,
                   dtpCommencementDate.Value.Date, cmbClassTaught.Text, txtTeacherSkills.Text, leaveText);
-            objTeacher.AddTeacher();
+            objTeacher.UpdateTeacher();
             MessageBox.Show("Teacher record successfully updated!");
         }
 

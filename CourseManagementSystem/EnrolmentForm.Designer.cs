@@ -47,11 +47,8 @@
             this.mnuNavigate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnrolmentForm = new System.Windows.Forms.ToolStripMenuItem();
             this.EnrolmentToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.txtExpectedEndDate = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cmbPaymentStatus = new System.Windows.Forms.ComboBox();
-            this.txtEnrolmentDate = new System.Windows.Forms.TextBox();
-            this.txtPaymentDueDate = new System.Windows.Forms.TextBox();
             this.txtBalanceOwing = new System.Windows.Forms.TextBox();
             this.txtAmountPaid = new System.Windows.Forms.TextBox();
             this.cmbPaymentMethod = new System.Windows.Forms.ComboBox();
@@ -75,6 +72,9 @@
             this.rdbOnline = new System.Windows.Forms.RadioButton();
             this.rdbFaceToFace = new System.Windows.Forms.RadioButton();
             this.lblCourseDelivery = new System.Windows.Forms.Label();
+            this.dtpEnrolmentDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpExpectedEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpPaymentDueDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -205,6 +205,7 @@
             this.mnuAdd.Size = new System.Drawing.Size(166, 22);
             this.mnuAdd.Text = "Add";
             this.mnuAdd.ToolTipText = "Add a new record";
+            this.mnuAdd.Click += new System.EventHandler(this.mnuAdd_Click);
             // 
             // mnuDelete
             // 
@@ -214,6 +215,7 @@
             this.mnuDelete.Size = new System.Drawing.Size(166, 22);
             this.mnuDelete.Text = "Delete";
             this.mnuDelete.ToolTipText = "Delete  record";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // mnuUpdate
             // 
@@ -222,6 +224,7 @@
             this.mnuUpdate.Size = new System.Drawing.Size(166, 22);
             this.mnuUpdate.Text = "Update";
             this.mnuUpdate.ToolTipText = "Update record";
+            this.mnuUpdate.Click += new System.EventHandler(this.mnuUpdate_Click);
             // 
             // mnuViewAll
             // 
@@ -254,16 +257,6 @@
             this.mnuEnrolmentForm.Text = "Enrolment Form";
             this.mnuEnrolmentForm.ToolTipText = "Go to enrolment form";
             // 
-            // txtExpectedEndDate
-            // 
-            this.txtExpectedEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtExpectedEndDate.Location = new System.Drawing.Point(325, 263);
-            this.txtExpectedEndDate.Name = "txtExpectedEndDate";
-            this.txtExpectedEndDate.Size = new System.Drawing.Size(224, 26);
-            this.txtExpectedEndDate.TabIndex = 5;
-            this.txtExpectedEndDate.Tag = "Expected End Date";
-            this.EnrolmentToolTip.SetToolTip(this.txtExpectedEndDate, "Date format must be yyyy-mm-dd and contain only numeric characters");
-            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.White;
@@ -289,26 +282,6 @@
             this.cmbPaymentStatus.Tag = "Payment Status";
             this.EnrolmentToolTip.SetToolTip(this.cmbPaymentStatus, "press the down arrow to make a selection");
             // 
-            // txtEnrolmentDate
-            // 
-            this.txtEnrolmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEnrolmentDate.Location = new System.Drawing.Point(325, 231);
-            this.txtEnrolmentDate.Name = "txtEnrolmentDate";
-            this.txtEnrolmentDate.Size = new System.Drawing.Size(224, 26);
-            this.txtEnrolmentDate.TabIndex = 4;
-            this.txtEnrolmentDate.Tag = "Enrolment Date";
-            this.EnrolmentToolTip.SetToolTip(this.txtEnrolmentDate, "Date format must be yyyy-mm-dd and contain only numeric characters");
-            // 
-            // txtPaymentDueDate
-            // 
-            this.txtPaymentDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaymentDueDate.Location = new System.Drawing.Point(325, 360);
-            this.txtPaymentDueDate.Name = "txtPaymentDueDate";
-            this.txtPaymentDueDate.Size = new System.Drawing.Size(224, 26);
-            this.txtPaymentDueDate.TabIndex = 8;
-            this.txtPaymentDueDate.Tag = "Payment Due Date";
-            this.EnrolmentToolTip.SetToolTip(this.txtPaymentDueDate, "Date format must be yyyy-mm-dd and contain only numeric characters");
-            // 
             // txtBalanceOwing
             // 
             this.txtBalanceOwing.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -333,7 +306,7 @@
             // 
             this.cmbPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPaymentMethod.FormattingEnabled = true;
-            this.cmbPaymentMethod.Location = new System.Drawing.Point(325, 326);
+            this.cmbPaymentMethod.Location = new System.Drawing.Point(325, 324);
             this.cmbPaymentMethod.Name = "cmbPaymentMethod";
             this.cmbPaymentMethod.Size = new System.Drawing.Size(176, 28);
             this.cmbPaymentMethod.TabIndex = 7;
@@ -576,6 +549,48 @@
             this.lblCourseDelivery.TabIndex = 136;
             this.lblCourseDelivery.Text = "Course Delivery:";
             // 
+            // dtpEnrolmentDate
+            // 
+            this.dtpEnrolmentDate.AllowDrop = true;
+            this.dtpEnrolmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEnrolmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEnrolmentDate.Location = new System.Drawing.Point(325, 231);
+            this.dtpEnrolmentDate.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
+            this.dtpEnrolmentDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
+            this.dtpEnrolmentDate.Name = "dtpEnrolmentDate";
+            this.dtpEnrolmentDate.Size = new System.Drawing.Size(224, 26);
+            this.dtpEnrolmentDate.TabIndex = 139;
+            this.dtpEnrolmentDate.Tag = "Date of Birth";
+            this.dtpEnrolmentDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            // 
+            // dtpExpectedEndDate
+            // 
+            this.dtpExpectedEndDate.AllowDrop = true;
+            this.dtpExpectedEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpExpectedEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpExpectedEndDate.Location = new System.Drawing.Point(325, 264);
+            this.dtpExpectedEndDate.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
+            this.dtpExpectedEndDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
+            this.dtpExpectedEndDate.Name = "dtpExpectedEndDate";
+            this.dtpExpectedEndDate.Size = new System.Drawing.Size(224, 26);
+            this.dtpExpectedEndDate.TabIndex = 140;
+            this.dtpExpectedEndDate.Tag = "Date of Birth";
+            this.dtpExpectedEndDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            // 
+            // dtpPaymentDueDate
+            // 
+            this.dtpPaymentDueDate.AllowDrop = true;
+            this.dtpPaymentDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpPaymentDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPaymentDueDate.Location = new System.Drawing.Point(325, 358);
+            this.dtpPaymentDueDate.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
+            this.dtpPaymentDueDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
+            this.dtpPaymentDueDate.Name = "dtpPaymentDueDate";
+            this.dtpPaymentDueDate.Size = new System.Drawing.Size(224, 26);
+            this.dtpPaymentDueDate.TabIndex = 141;
+            this.dtpPaymentDueDate.Tag = "Date of Birth";
+            this.dtpPaymentDueDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            // 
             // EnrolmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -583,6 +598,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(665, 792);
+            this.Controls.Add(this.dtpPaymentDueDate);
+            this.Controls.Add(this.dtpExpectedEndDate);
+            this.Controls.Add(this.dtpEnrolmentDate);
             this.Controls.Add(this.rdbOnline);
             this.Controls.Add(this.rdbFaceToFace);
             this.Controls.Add(this.lblCourseDelivery);
@@ -600,9 +618,7 @@
             this.Controls.Add(this.lblBalanceOwing);
             this.Controls.Add(this.txtBalanceOwing);
             this.Controls.Add(this.lblPaymentDueDate);
-            this.Controls.Add(this.txtPaymentDueDate);
             this.Controls.Add(this.lblEnrolmentDate);
-            this.Controls.Add(this.txtEnrolmentDate);
             this.Controls.Add(this.txtCourseID);
             this.Controls.Add(this.lblCourseID);
             this.Controls.Add(this.txtStudentID);
@@ -613,7 +629,6 @@
             this.Controls.Add(this.lblEnrolmentForm);
             this.Controls.Add(this.lblEnrolmentID);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.txtExpectedEndDate);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cmbPaymentStatus);
             this.Controls.Add(this.txtEnrolmentID);
@@ -648,7 +663,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuNavigate;
         private System.Windows.Forms.ToolStripMenuItem mnuEnrolmentForm;
         private System.Windows.Forms.ToolTip EnrolmentToolTip;
-        private System.Windows.Forms.TextBox txtExpectedEndDate;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ComboBox cmbPaymentStatus;
         private System.Windows.Forms.TextBox txtEnrolmentID;
@@ -657,9 +671,7 @@
         private System.Windows.Forms.TextBox txtCourseID;
         private System.Windows.Forms.Label lblCourseID;
         private System.Windows.Forms.Label lblEnrolmentDate;
-        private System.Windows.Forms.TextBox txtEnrolmentDate;
         private System.Windows.Forms.Label lblPaymentDueDate;
-        private System.Windows.Forms.TextBox txtPaymentDueDate;
         private System.Windows.Forms.Label lblBalanceOwing;
         private System.Windows.Forms.TextBox txtBalanceOwing;
         private System.Windows.Forms.Label lblAmountPaid;
@@ -676,5 +688,8 @@
         private System.Windows.Forms.RadioButton rdbOnline;
         private System.Windows.Forms.RadioButton rdbFaceToFace;
         private System.Windows.Forms.Label lblCourseDelivery;
+        private System.Windows.Forms.DateTimePicker dtpEnrolmentDate;
+        private System.Windows.Forms.DateTimePicker dtpExpectedEndDate;
+        private System.Windows.Forms.DateTimePicker dtpPaymentDueDate;
     }
 }

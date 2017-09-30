@@ -52,7 +52,6 @@
             this.mnuEnrolmentForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCourseForm = new System.Windows.Forms.ToolStripMenuItem();
             this.UnitToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.cmbUnitName = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cmbNoOfHours = new System.Windows.Forms.ComboBox();
             this.cmbNoOfAssessments = new System.Windows.Forms.ComboBox();
@@ -62,6 +61,7 @@
             this.txtUnitID = new System.Windows.Forms.TextBox();
             this.pnlUnitType = new System.Windows.Forms.Panel();
             this.lblCourseID = new System.Windows.Forms.Label();
+            this.txtUnitName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlUnitType.SuspendLayout();
@@ -226,6 +226,7 @@
             this.mnuDelete.Size = new System.Drawing.Size(166, 22);
             this.mnuDelete.Text = "Delete";
             this.mnuDelete.ToolTipText = "Delete  record";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // mnuUpdate
             // 
@@ -234,6 +235,7 @@
             this.mnuUpdate.Size = new System.Drawing.Size(166, 22);
             this.mnuUpdate.Text = "Update";
             this.mnuUpdate.ToolTipText = "Update record";
+            this.mnuUpdate.Click += new System.EventHandler(this.mnuUpdate_Click);
             // 
             // mnuViewAll
             // 
@@ -299,17 +301,6 @@
             this.mnuCourseForm.Size = new System.Drawing.Size(259, 22);
             this.mnuCourseForm.Text = "Course Form";
             this.mnuCourseForm.ToolTipText = "Go to course form";
-            // 
-            // cmbUnitName
-            // 
-            this.cmbUnitName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbUnitName.FormattingEnabled = true;
-            this.cmbUnitName.Location = new System.Drawing.Point(259, 168);
-            this.cmbUnitName.Name = "cmbUnitName";
-            this.cmbUnitName.Size = new System.Drawing.Size(347, 28);
-            this.cmbUnitName.TabIndex = 2;
-            this.cmbUnitName.Tag = "Unit Name";
-            this.UnitToolTip.SetToolTip(this.cmbUnitName, "Press the down arrow to make a selection");
             // 
             // btnSearch
             // 
@@ -412,6 +403,15 @@
             this.lblCourseID.Tag = "Course ID";
             this.lblCourseID.Text = "Course ID:";
             // 
+            // txtUnitName
+            // 
+            this.txtUnitName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnitName.Location = new System.Drawing.Point(259, 171);
+            this.txtUnitName.Name = "txtUnitName";
+            this.txtUnitName.Size = new System.Drawing.Size(302, 26);
+            this.txtUnitName.TabIndex = 102;
+            this.txtUnitName.Tag = "Unit ID";
+            // 
             // UnitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,6 +419,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 546);
+            this.Controls.Add(this.txtUnitName);
             this.Controls.Add(this.lblCourseID);
             this.Controls.Add(this.txtCourseID);
             this.Controls.Add(this.cmbNoOfAssessments);
@@ -434,7 +435,6 @@
             this.Controls.Add(this.lblNumOfAssessments);
             this.Controls.Add(this.lblNoOfHours);
             this.Controls.Add(this.txtUnitID);
-            this.Controls.Add(this.cmbUnitName);
             this.Location = new System.Drawing.Point(423, 123);
             this.MaximizeBox = false;
             this.Name = "UnitForm";
@@ -472,7 +472,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuNavigate;
         private System.Windows.Forms.ToolStripMenuItem mnuEnrolmentForm;
         private System.Windows.Forms.ToolStripMenuItem mnuCourseForm;
-        private System.Windows.Forms.ComboBox cmbUnitName;
         private System.Windows.Forms.Label lblNumOfAssessments;
         private System.Windows.Forms.Label lblNoOfHours;
         private System.Windows.Forms.TextBox txtUnitID;
@@ -484,5 +483,6 @@
         private System.Windows.Forms.ComboBox cmbNoOfAssessments;
         private System.Windows.Forms.Label lblCourseID;
         private System.Windows.Forms.TextBox txtCourseID;
+        private System.Windows.Forms.TextBox txtUnitName;
     }
 }

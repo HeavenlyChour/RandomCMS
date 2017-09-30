@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DatabaseClass;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace CourseManagementSystem
 {
@@ -12,15 +14,15 @@ namespace CourseManagementSystem
         private int enrolmentID;
         private int studentID;
         private int courseID;
-        private string enrolmentDate;
-        private string expectedEndDate;
+        private DateTime enrolmentDate;
+        private DateTime expectedEndDate;
         private string courseDelivery;
         private string paymentMethod;
-        private string paymentDueDate;
+        private DateTime paymentDueDate;
         private double amountPaid;
         private double balanceOwing;
         private string paymentStatus;
-        private bool disability;
+        private string disability;
         private string disabilityDetails;
         private string studyStatus;
 
@@ -40,7 +42,24 @@ namespace CourseManagementSystem
             this.CourseID = courseID;
         }
 
-        public clsEnrolment(int enrolmentID, int studentID, int courseID, string enrolmentDate, string expectedEndDate, string courseDelivery, string paymentMethod, string paymentDueDate, double amountPaid, double balanceOwing, string paymentStatus, bool disability, string disabilityDetails, string studyStatus)
+        public clsEnrolment(int studentID, int courseID, DateTime enrolmentDate, DateTime expectedEndDate, string courseDelivery, string paymentMethod, DateTime paymentDueDate, double amountPaid, double balanceOwing, string paymentStatus, string disability, string disabilityDetails, string studyStatus)
+        {
+            this.StudentID = studentID;
+            this.CourseID = courseID;
+            this.EnrolmentDate = enrolmentDate;
+            this.ExpectedEndDate = expectedEndDate;
+            this.CourseDelivery = courseDelivery;
+            this.PaymentMethod = paymentMethod;
+            this.PaymentDueDate = paymentDueDate;
+            this.AmountPaid = amountPaid;
+            this.BalanceOwing = balanceOwing;
+            this.PaymentStatus = paymentStatus;
+            this.Disability = disability;
+            this.DisabilityDetails = disabilityDetails;
+            this.StudyStatus = studyStatus;
+        }
+
+        public clsEnrolment(int enrolmentID, int studentID, int courseID, DateTime enrolmentDate, DateTime expectedEndDate, string courseDelivery, string paymentMethod, DateTime paymentDueDate, double amountPaid, double balanceOwing, string paymentStatus, string disability, string disabilityDetails, string studyStatus)
         {
             this.EnrolmentID = enrolmentID;
             this.StudentID = studentID;
@@ -98,7 +117,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public string EnrolmentDate
+        public DateTime EnrolmentDate
         {
             get
             {
@@ -111,7 +130,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public string ExpectedEndDate
+        public DateTime ExpectedEndDate
         {
             get
             {
@@ -150,7 +169,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public string PaymentDueDate
+        public DateTime PaymentDueDate
         {
             get
             {
@@ -202,7 +221,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public bool Disability
+        public string Disability
         {
             get
             {
@@ -242,19 +261,61 @@ namespace CourseManagementSystem
         }
         #endregion
 
-        //public int EnrolmentID { get => enrolmentID; set => enrolmentID = value; }
-        //public int StudentID { get => studentID; set => studentID = value; }
-        //public int CourseID { get => courseID; set => courseID = value; }
-        //public string EnrolmentDate { get => enrolmentDate; set => enrolmentDate = value; }
-        //public string ExpectedEndDate { get => expectedEndDate; set => expectedEndDate = value; }
-        //public string CourseDelivery { get => courseDelivery; set => courseDelivery = value; }
-        //public string PaymentMethod { get => paymentMethod; set => paymentMethod = value; }
-        //public string PaymentDueDate { get => paymentDueDate; set => paymentDueDate = value; }
-        //public double AmountPaid { get => amountPaid; set => amountPaid = value; }
-        //public double BalanceOwing { get => balanceOwing; set => balanceOwing = value; }
-        //public string PaymentStatus { get => paymentStatus; set => paymentStatus = value; }
-        //public bool Disability { get => disability; set => disability = value; }
-        //public string DisabilityDetails { get => disabilityDetails; set => disabilityDetails = value; }
-        //public string StudyStatus { get => studyStatus; set => studyStatus = value; }
+        public bool AddEnrolment()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("InsertEnrolment", objConnection);
+            objCommand.Parameters.AddWithValue("@sid", StudentID);
+            objCommand.Parameters.AddWithValue("@cid", CourseID);
+            objCommand.Parameters.AddWithValue("@enroldate", EnrolmentDate);
+            objCommand.Parameters.AddWithValue("@enddate", ExpectedEndDate);
+            objCommand.Parameters.AddWithValue("@coursedev", CourseDelivery);
+            objCommand.Parameters.AddWithValue("@paymeth", PaymentMethod);
+            objCommand.Parameters.AddWithValue("@payduedate", PaymentDueDate);
+            objCommand.Parameters.AddWithValue("@amountpaid", AmountPaid);
+            objCommand.Parameters.AddWithValue("@balanceowe", BalanceOwing);
+            objCommand.Parameters.AddWithValue("@paystat", PaymentStatus);
+            objCommand.Parameters.AddWithValue("@dis", Disability);
+            objCommand.Parameters.AddWithValue("@disdetails", DisabilityDetails);
+            objCommand.Parameters.AddWithValue("@studystat", StudyStatus);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
+        }
+
+        public bool DeleteEnrolment()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("DeleteEnrolment", objConnection);
+
+            objCommand.Parameters.AddWithValue("@eid", EnrolmentID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+            return true;
+        }
+
+        public bool UpdateEnrolment()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("UpdateEnrolment", objConnection);
+            objCommand.Parameters.AddWithValue("@eid", EnrolmentID);
+            objCommand.Parameters.AddWithValue("@sid", StudentID);
+            objCommand.Parameters.AddWithValue("@cid", CourseID);
+            objCommand.Parameters.AddWithValue("@enroldate", EnrolmentDate);
+            objCommand.Parameters.AddWithValue("@enddate", ExpectedEndDate);
+            objCommand.Parameters.AddWithValue("@coursedev", CourseDelivery);
+            objCommand.Parameters.AddWithValue("@paymeth", PaymentMethod);
+            objCommand.Parameters.AddWithValue("@payduedate", PaymentDueDate);
+            objCommand.Parameters.AddWithValue("@amountpaid", AmountPaid);
+            objCommand.Parameters.AddWithValue("@balanceowe", BalanceOwing);
+            objCommand.Parameters.AddWithValue("@paystat", PaymentStatus);
+            objCommand.Parameters.AddWithValue("@dis", Disability);
+            objCommand.Parameters.AddWithValue("@disdetails", DisabilityDetails);
+            objCommand.Parameters.AddWithValue("@studystat", StudyStatus);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
+        }
+
     }
 }

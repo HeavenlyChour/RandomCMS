@@ -59,6 +59,7 @@
     <Compile Include="AssessmentForm.Designer.cs">
       <DependentUpon>AssessmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="clsAssessment.cs" />
     <Compile Include="clsCourse.cs" />
     <Compile Include="clsEnrolment.cs" />
     <Compile Include="clsSemester.cs" />

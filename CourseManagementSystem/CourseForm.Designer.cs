@@ -32,13 +32,9 @@
             this.CourseToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.cmbCourseSemester = new System.Windows.Forms.ComboBox();
             this.cmbCourseLocation = new System.Windows.Forms.ComboBox();
-            this.cmbCourseName = new System.Windows.Forms.ComboBox();
-            this.cmbCourseFee = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtNumOfUnits = new System.Windows.Forms.TextBox();
             this.txtHoursPerWeek = new System.Windows.Forms.TextBox();
-            this.txtCStartDate = new System.Windows.Forms.TextBox();
-            this.txtCEndDate = new System.Windows.Forms.TextBox();
             this.txtCourseID = new System.Windows.Forms.TextBox();
             this.lblNumOfUnits = new System.Windows.Forms.Label();
             this.lblHoursPerWeek = new System.Windows.Forms.Label();
@@ -68,6 +64,10 @@
             this.lblCEndDate = new System.Windows.Forms.Label();
             this.txtCourseDuration = new System.Windows.Forms.TextBox();
             this.lblCourseDuration = new System.Windows.Forms.Label();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.txtCourseName = new System.Windows.Forms.TextBox();
+            this.txtCourseFee = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourse)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +78,7 @@
             this.cmbCourseSemester.FormattingEnabled = true;
             this.cmbCourseSemester.Location = new System.Drawing.Point(241, 255);
             this.cmbCourseSemester.Name = "cmbCourseSemester";
-            this.cmbCourseSemester.Size = new System.Drawing.Size(176, 28);
+            this.cmbCourseSemester.Size = new System.Drawing.Size(275, 28);
             this.cmbCourseSemester.TabIndex = 5;
             this.cmbCourseSemester.Tag = "Course Semester";
             this.CourseToolTip.SetToolTip(this.cmbCourseSemester, "press the down arrow to make a selection");
@@ -89,32 +89,10 @@
             this.cmbCourseLocation.FormattingEnabled = true;
             this.cmbCourseLocation.Location = new System.Drawing.Point(241, 189);
             this.cmbCourseLocation.Name = "cmbCourseLocation";
-            this.cmbCourseLocation.Size = new System.Drawing.Size(217, 28);
+            this.cmbCourseLocation.Size = new System.Drawing.Size(275, 28);
             this.cmbCourseLocation.TabIndex = 3;
             this.cmbCourseLocation.Tag = "Course Location";
             this.CourseToolTip.SetToolTip(this.cmbCourseLocation, "press the down arrow to make a selection");
-            // 
-            // cmbCourseName
-            // 
-            this.cmbCourseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCourseName.FormattingEnabled = true;
-            this.cmbCourseName.Location = new System.Drawing.Point(241, 155);
-            this.cmbCourseName.Name = "cmbCourseName";
-            this.cmbCourseName.Size = new System.Drawing.Size(347, 28);
-            this.cmbCourseName.TabIndex = 2;
-            this.cmbCourseName.Tag = "Course Name";
-            this.CourseToolTip.SetToolTip(this.cmbCourseName, "press the down arrow to make a selection");
-            // 
-            // cmbCourseFee
-            // 
-            this.cmbCourseFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCourseFee.FormattingEnabled = true;
-            this.cmbCourseFee.Location = new System.Drawing.Point(241, 448);
-            this.cmbCourseFee.Name = "cmbCourseFee";
-            this.cmbCourseFee.Size = new System.Drawing.Size(176, 28);
-            this.cmbCourseFee.TabIndex = 11;
-            this.cmbCourseFee.Tag = "Course Fee";
-            this.CourseToolTip.SetToolTip(this.cmbCourseFee, "press the down arrow to make a selection");
             // 
             // btnSearch
             // 
@@ -147,24 +125,6 @@
             this.txtHoursPerWeek.Size = new System.Drawing.Size(113, 26);
             this.txtHoursPerWeek.TabIndex = 9;
             this.txtHoursPerWeek.Tag = "Hours Per Week";
-            // 
-            // txtCStartDate
-            // 
-            this.txtCStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCStartDate.Location = new System.Drawing.Point(241, 289);
-            this.txtCStartDate.Name = "txtCStartDate";
-            this.txtCStartDate.Size = new System.Drawing.Size(176, 26);
-            this.txtCStartDate.TabIndex = 6;
-            this.txtCStartDate.Tag = "Course Start Date";
-            // 
-            // txtCEndDate
-            // 
-            this.txtCEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCEndDate.Location = new System.Drawing.Point(241, 321);
-            this.txtCEndDate.Name = "txtCEndDate";
-            this.txtCEndDate.Size = new System.Drawing.Size(176, 26);
-            this.txtCEndDate.TabIndex = 7;
-            this.txtCEndDate.Tag = "Course End Date";
             // 
             // txtCourseID
             // 
@@ -219,6 +179,7 @@
             this.mnuAdd.Size = new System.Drawing.Size(166, 22);
             this.mnuAdd.Text = "Add";
             this.mnuAdd.ToolTipText = "Add a new record";
+            this.mnuAdd.Click += new System.EventHandler(this.mnuAdd_Click);
             // 
             // mnuDelete
             // 
@@ -228,6 +189,7 @@
             this.mnuDelete.Size = new System.Drawing.Size(166, 22);
             this.mnuDelete.Text = "Delete";
             this.mnuDelete.ToolTipText = "Delete  record";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // mnuUpdate
             // 
@@ -236,6 +198,7 @@
             this.mnuUpdate.Size = new System.Drawing.Size(166, 22);
             this.mnuUpdate.Text = "Update";
             this.mnuUpdate.ToolTipText = "Update record";
+            this.mnuUpdate.Click += new System.EventHandler(this.mnuUpdate_Click);
             // 
             // mnuViewAll
             // 
@@ -483,6 +446,46 @@
             this.lblCourseDuration.TabIndex = 73;
             this.lblCourseDuration.Text = "Course Duration:";
             // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpStartDate.Location = new System.Drawing.Point(241, 289);
+            this.dtpStartDate.MaxDate = new System.DateTime(4000, 12, 31, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(275, 26);
+            this.dtpStartDate.TabIndex = 74;
+            this.dtpStartDate.Tag = "Commencement Date";
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEndDate.Location = new System.Drawing.Point(241, 321);
+            this.dtpEndDate.MaxDate = new System.DateTime(4000, 12, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(275, 26);
+            this.dtpEndDate.TabIndex = 75;
+            this.dtpEndDate.Tag = "Commencement Date";
+            // 
+            // txtCourseName
+            // 
+            this.txtCourseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCourseName.Location = new System.Drawing.Point(241, 155);
+            this.txtCourseName.Name = "txtCourseName";
+            this.txtCourseName.Size = new System.Drawing.Size(275, 26);
+            this.txtCourseName.TabIndex = 76;
+            this.txtCourseName.Tag = "Course ID";
+            // 
+            // txtCourseFee
+            // 
+            this.txtCourseFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCourseFee.Location = new System.Drawing.Point(241, 448);
+            this.txtCourseFee.Name = "txtCourseFee";
+            this.txtCourseFee.Size = new System.Drawing.Size(113, 26);
+            this.txtCourseFee.TabIndex = 77;
+            this.txtCourseFee.Tag = "No. of Units";
+            // 
             // CourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -490,17 +493,17 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 719);
+            this.Controls.Add(this.txtCourseFee);
+            this.Controls.Add(this.txtCourseName);
+            this.Controls.Add(this.dtpEndDate);
+            this.Controls.Add(this.dtpStartDate);
             this.Controls.Add(this.txtCourseDuration);
             this.Controls.Add(this.lblCourseDuration);
-            this.Controls.Add(this.txtCEndDate);
             this.Controls.Add(this.lblCEndDate);
-            this.Controls.Add(this.txtCStartDate);
             this.Controls.Add(this.lblCStartDate);
             this.Controls.Add(this.rdbOnline);
             this.Controls.Add(this.rdbFaceToFace);
-            this.Controls.Add(this.cmbCourseFee);
             this.Controls.Add(this.lblCourseFee);
-            this.Controls.Add(this.cmbCourseName);
             this.Controls.Add(this.cmbCourseLocation);
             this.Controls.Add(this.cmbCourseSemester);
             this.Controls.Add(this.lblCourseDelivery);
@@ -559,16 +562,16 @@
         private System.Windows.Forms.Label lblCourseDelivery;
         private System.Windows.Forms.ComboBox cmbCourseSemester;
         private System.Windows.Forms.ComboBox cmbCourseLocation;
-        private System.Windows.Forms.ComboBox cmbCourseName;
-        private System.Windows.Forms.ComboBox cmbCourseFee;
         private System.Windows.Forms.Label lblCourseFee;
         private System.Windows.Forms.RadioButton rdbOnline;
         private System.Windows.Forms.RadioButton rdbFaceToFace;
-        private System.Windows.Forms.TextBox txtCStartDate;
         private System.Windows.Forms.Label lblCStartDate;
-        private System.Windows.Forms.TextBox txtCEndDate;
         private System.Windows.Forms.Label lblCEndDate;
         private System.Windows.Forms.TextBox txtCourseDuration;
         private System.Windows.Forms.Label lblCourseDuration;
+        private System.Windows.Forms.DateTimePicker dtpStartDate;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.TextBox txtCourseName;
+        private System.Windows.Forms.TextBox txtCourseFee;
     }
 }
