@@ -19,9 +19,9 @@ namespace CourseManagementSystem
 
             //This is to make the date time picker empty at the beginning of the form
             dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
-            dtpDateOfBirth.CustomFormat = "yyyy-MM-dd";
+            dtpDateOfBirth.CustomFormat = " ";
             dtpCommencementDate.Format = DateTimePickerFormat.Custom;
-            dtpCommencementDate.CustomFormat = "yyyy-MM-dd";
+            dtpCommencementDate.CustomFormat = " ";
         }
 
         private void mnuAdd_Click(object sender, EventArgs e)

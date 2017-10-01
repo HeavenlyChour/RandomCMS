@@ -16,6 +16,14 @@ namespace CourseManagementSystem
         public EnrolmentForm()
         {
             InitializeComponent();
+
+            txtDisabilityDescription.ReadOnly = true;
+            dtpEnrolmentDate.Format = DateTimePickerFormat.Custom;
+            dtpEnrolmentDate.CustomFormat = " ";
+            dtpExpectedEndDate.Format = DateTimePickerFormat.Custom;
+            dtpExpectedEndDate.CustomFormat = " ";
+            dtpPaymentDueDate.Format = DateTimePickerFormat.Custom;
+            dtpPaymentDueDate.CustomFormat = " ";
         }
 
         private void mnuAdd_Click(object sender, EventArgs e)
@@ -238,6 +246,38 @@ namespace CourseManagementSystem
 
             objEnrolment.UpdateEnrolment();
             MessageBox.Show("Enrolment record successfully updated!");
+        }
+
+        private void dtpEnrolmentDate_ValueChanged(object sender, EventArgs e)
+        {
+            string dateSelected = dtpEnrolmentDate.Value.ToString("yyyy-MM-dd");
+            dtpEnrolmentDate.Format = DateTimePickerFormat.Custom;
+            dtpEnrolmentDate.CustomFormat = dateSelected;
+        }
+
+        private void dtpExpectedEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            string dateSelected = dtpExpectedEndDate.Value.ToString("yyyy-MM-dd");
+            dtpExpectedEndDate.Format = DateTimePickerFormat.Custom;
+            dtpExpectedEndDate.CustomFormat = dateSelected;
+        }
+
+        private void dtpPaymentDueDate_ValueChanged(object sender, EventArgs e)
+        {
+            string dateSelected = dtpPaymentDueDate.Value.ToString("yyyy-MM-dd");
+            dtpPaymentDueDate.Format = DateTimePickerFormat.Custom;
+            dtpPaymentDueDate.CustomFormat = dateSelected;
+        }
+
+        private void rdbDisabilityYes_CheckedChanged(object sender, EventArgs e)
+        {
+            txtDisabilityDescription.ReadOnly = false;
+        }
+
+        private void rdbDisabilityNo_CheckedChanged(object sender, EventArgs e)
+        {
+            txtDisabilityDescription.Text = String.Empty;
+            txtDisabilityDescription.ReadOnly = true;
         }
     }
 }

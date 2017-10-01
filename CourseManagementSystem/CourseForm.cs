@@ -50,14 +50,16 @@ namespace CourseManagementSystem
                 cmbCourseSemester.Focus();
                 return;
             }
+            //dtpStartDate.Format = DateTimePickerFormat.Custom;
+            //dtpStartDate.CustomFormat = "yyyy-MM-dd";
             if (!clsValidation.ValidateDOB(dtpStartDate))
             {
-                dtpStartDate.Focus();
                 return;
             }
+            //dtpEndDate.Format = DateTimePickerFormat.Custom;
+            //dtpEndDate.CustomFormat = "yyyy-MM-dd";
             if (!clsValidation.ValidateDOB(dtpEndDate))
             {
-                dtpEndDate.Focus();
                 return;
             }
             if (!clsValidation.ValidateRadioButton(rdbFaceToFace, rdbOnline))
@@ -186,6 +188,20 @@ namespace CourseManagementSystem
 
             objCourse.UpdateCourse();
             MessageBox.Show("Course record successfully updated!");
+        }
+
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            string dateSelected = dtpStartDate.Value.ToString("yyyy-MM-dd");
+            dtpStartDate.Format = DateTimePickerFormat.Custom;
+            dtpStartDate.CustomFormat = dateSelected;
+        }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            string dateSelected = dtpEndDate.Value.ToString("yyyy-MM-dd");
+            dtpEndDate.Format = DateTimePickerFormat.Custom;
+            dtpEndDate.CustomFormat = dateSelected;
         }
     }
 }

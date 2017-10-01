@@ -16,6 +16,11 @@ namespace CourseManagementSystem
         public AssessmentForm()
         {
             InitializeComponent();
+
+            dtpStartDate.Format = DateTimePickerFormat.Custom;
+            dtpStartDate.CustomFormat = " ";
+            dtpEndDate.Format = DateTimePickerFormat.Custom;
+            dtpEndDate.CustomFormat = " ";
         }
 
         private void mnuAdd_Click(object sender, EventArgs e)
@@ -101,6 +106,20 @@ namespace CourseManagementSystem
 
             objAssessment.UpdateAssessment();
             MessageBox.Show("Assessment successfully updated");
+        }
+
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            string dateSelected = dtpStartDate.Value.ToString("yyyy-MM-dd");
+            dtpStartDate.Format = DateTimePickerFormat.Custom;
+            dtpStartDate.CustomFormat = dateSelected;
+        }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            string dateSelected = dtpEndDate.Value.ToString("yyyy-MM-dd");
+            dtpEndDate.Format = DateTimePickerFormat.Custom;
+            dtpEndDate.CustomFormat = dateSelected;
         }
     }
 }

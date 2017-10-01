@@ -326,6 +326,7 @@
             this.dtpStartDate.Size = new System.Drawing.Size(275, 26);
             this.dtpStartDate.TabIndex = 5;
             this.dtpStartDate.Tag = "Start Date";
+            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
             // dtpEndDate
             // 
@@ -337,6 +338,7 @@
             this.dtpEndDate.Size = new System.Drawing.Size(275, 26);
             this.dtpEndDate.TabIndex = 6;
             this.dtpEndDate.Tag = "End Date";
+            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             // 
             // txtAssessmentName
             // 

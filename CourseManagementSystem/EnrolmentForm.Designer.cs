@@ -75,8 +75,12 @@
             this.dtpEnrolmentDate = new System.Windows.Forms.DateTimePicker();
             this.dtpExpectedEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpPaymentDueDate = new System.Windows.Forms.DateTimePicker();
+            this.pnlCourseDelivery = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.pnlCourseDelivery.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuCourseForm
@@ -440,7 +444,7 @@
             this.rdbDisabilityNo.AutoSize = true;
             this.rdbDisabilityNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbDisabilityNo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbDisabilityNo.Location = new System.Drawing.Point(396, 490);
+            this.rdbDisabilityNo.Location = new System.Drawing.Point(72, 0);
             this.rdbDisabilityNo.Name = "rdbDisabilityNo";
             this.rdbDisabilityNo.Size = new System.Drawing.Size(49, 24);
             this.rdbDisabilityNo.TabIndex = 131;
@@ -448,13 +452,14 @@
             this.rdbDisabilityNo.Tag = "Disability";
             this.rdbDisabilityNo.Text = "No";
             this.rdbDisabilityNo.UseVisualStyleBackColor = true;
+            this.rdbDisabilityNo.CheckedChanged += new System.EventHandler(this.rdbDisabilityNo_CheckedChanged);
             // 
             // rdbDisabilityYes
             // 
             this.rdbDisabilityYes.AutoSize = true;
             this.rdbDisabilityYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbDisabilityYes.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbDisabilityYes.Location = new System.Drawing.Point(325, 490);
+            this.rdbDisabilityYes.Location = new System.Drawing.Point(1, 0);
             this.rdbDisabilityYes.Name = "rdbDisabilityYes";
             this.rdbDisabilityYes.Size = new System.Drawing.Size(58, 24);
             this.rdbDisabilityYes.TabIndex = 130;
@@ -462,6 +467,7 @@
             this.rdbDisabilityYes.Tag = "Disability";
             this.rdbDisabilityYes.Text = "Yes";
             this.rdbDisabilityYes.UseVisualStyleBackColor = true;
+            this.rdbDisabilityYes.CheckedChanged += new System.EventHandler(this.rdbDisabilityYes_CheckedChanged);
             // 
             // lblDisability
             // 
@@ -514,7 +520,7 @@
             this.rdbOnline.AutoSize = true;
             this.rdbOnline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbOnline.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbOnline.Location = new System.Drawing.Point(464, 296);
+            this.rdbOnline.Location = new System.Drawing.Point(140, 3);
             this.rdbOnline.Name = "rdbOnline";
             this.rdbOnline.Size = new System.Drawing.Size(78, 24);
             this.rdbOnline.TabIndex = 138;
@@ -528,7 +534,7 @@
             this.rdbFaceToFace.AutoSize = true;
             this.rdbFaceToFace.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbFaceToFace.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbFaceToFace.Location = new System.Drawing.Point(325, 296);
+            this.rdbFaceToFace.Location = new System.Drawing.Point(1, 3);
             this.rdbFaceToFace.Name = "rdbFaceToFace";
             this.rdbFaceToFace.Size = new System.Drawing.Size(133, 24);
             this.rdbFaceToFace.TabIndex = 137;
@@ -562,6 +568,7 @@
             this.dtpEnrolmentDate.TabIndex = 139;
             this.dtpEnrolmentDate.Tag = "Date of Birth";
             this.dtpEnrolmentDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            this.dtpEnrolmentDate.ValueChanged += new System.EventHandler(this.dtpEnrolmentDate_ValueChanged);
             // 
             // dtpExpectedEndDate
             // 
@@ -576,6 +583,7 @@
             this.dtpExpectedEndDate.TabIndex = 140;
             this.dtpExpectedEndDate.Tag = "Date of Birth";
             this.dtpExpectedEndDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            this.dtpExpectedEndDate.ValueChanged += new System.EventHandler(this.dtpExpectedEndDate_ValueChanged);
             // 
             // dtpPaymentDueDate
             // 
@@ -590,6 +598,25 @@
             this.dtpPaymentDueDate.TabIndex = 141;
             this.dtpPaymentDueDate.Tag = "Date of Birth";
             this.dtpPaymentDueDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            this.dtpPaymentDueDate.ValueChanged += new System.EventHandler(this.dtpPaymentDueDate_ValueChanged);
+            // 
+            // pnlCourseDelivery
+            // 
+            this.pnlCourseDelivery.Controls.Add(this.rdbOnline);
+            this.pnlCourseDelivery.Controls.Add(this.rdbFaceToFace);
+            this.pnlCourseDelivery.Location = new System.Drawing.Point(325, 294);
+            this.pnlCourseDelivery.Name = "pnlCourseDelivery";
+            this.pnlCourseDelivery.Size = new System.Drawing.Size(221, 28);
+            this.pnlCourseDelivery.TabIndex = 142;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rdbDisabilityNo);
+            this.panel1.Controls.Add(this.rdbDisabilityYes);
+            this.panel1.Location = new System.Drawing.Point(325, 490);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(134, 24);
+            this.panel1.TabIndex = 143;
             // 
             // EnrolmentForm
             // 
@@ -598,18 +625,16 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(665, 792);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlCourseDelivery);
             this.Controls.Add(this.dtpPaymentDueDate);
             this.Controls.Add(this.dtpExpectedEndDate);
             this.Controls.Add(this.dtpEnrolmentDate);
-            this.Controls.Add(this.rdbOnline);
-            this.Controls.Add(this.rdbFaceToFace);
             this.Controls.Add(this.lblCourseDelivery);
             this.Controls.Add(this.txtDisabilityDescription);
             this.Controls.Add(this.lblDisabilityDescription);
             this.Controls.Add(this.lblStudyStatus);
             this.Controls.Add(this.cmbStudyStatus);
-            this.Controls.Add(this.rdbDisabilityNo);
-            this.Controls.Add(this.rdbDisabilityYes);
             this.Controls.Add(this.lblDisability);
             this.Controls.Add(this.lblPaymentMethod);
             this.Controls.Add(this.cmbPaymentMethod);
@@ -638,6 +663,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnlCourseDelivery.ResumeLayout(false);
+            this.pnlCourseDelivery.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -691,5 +720,7 @@
         private System.Windows.Forms.DateTimePicker dtpEnrolmentDate;
         private System.Windows.Forms.DateTimePicker dtpExpectedEndDate;
         private System.Windows.Forms.DateTimePicker dtpPaymentDueDate;
+        private System.Windows.Forms.Panel pnlCourseDelivery;
+        private System.Windows.Forms.Panel panel1;
     }
 }

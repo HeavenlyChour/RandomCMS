@@ -456,6 +456,7 @@
             this.dtpStartDate.Size = new System.Drawing.Size(275, 26);
             this.dtpStartDate.TabIndex = 74;
             this.dtpStartDate.Tag = "Commencement Date";
+            this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
             // dtpEndDate
             // 
@@ -467,6 +468,7 @@
             this.dtpEndDate.Size = new System.Drawing.Size(275, 26);
             this.dtpEndDate.TabIndex = 75;
             this.dtpEndDate.Tag = "Commencement Date";
+            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             // 
             // txtCourseName
             // 

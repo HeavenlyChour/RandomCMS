@@ -16,6 +16,9 @@ namespace CourseManagementSystem
         public SemesterForm()
         {
             InitializeComponent();
+
+            dtpSemesterStartDate.Format = DateTimePickerFormat.Custom;
+            dtpSemesterStartDate.CustomFormat = " ";
         }
 
         private void mnuAdd_Click(object sender, EventArgs e)
@@ -65,6 +68,13 @@ namespace CourseManagementSystem
             clsSemester objSemester = new clsSemester(Convert.ToInt32(txtSemesterID.Text), dtpSemesterStartDate.Value.Date, Convert.ToInt32(txtSemesterWeeks.Text));
             objSemester.UpdateSemester();
             MessageBox.Show("Semester successfully updated");
+        }
+
+        private void dtpSemesterStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            string dateSelected = dtpSemesterStartDate.Value.ToString("yyyy-MM-dd");
+            dtpSemesterStartDate.Format = DateTimePickerFormat.Custom;
+            dtpSemesterStartDate.CustomFormat = dateSelected;
         }
     }
 }

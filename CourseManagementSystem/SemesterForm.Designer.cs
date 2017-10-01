@@ -278,6 +278,7 @@
             this.dtpSemesterStartDate.TabIndex = 2;
             this.dtpSemesterStartDate.Tag = "Date of Birth";
             this.dtpSemesterStartDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            this.dtpSemesterStartDate.ValueChanged += new System.EventHandler(this.dtpSemesterStartDate_ValueChanged);
             // 
             // SemesterForm
             // 
