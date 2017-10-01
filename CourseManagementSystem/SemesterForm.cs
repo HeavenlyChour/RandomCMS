@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ValidationClass;
 
 namespace CourseManagementSystem
 {
@@ -15,6 +16,55 @@ namespace CourseManagementSystem
         public SemesterForm()
         {
             InitializeComponent();
+        }
+
+        private void mnuAdd_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateDOB(dtpSemesterStartDate))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxForNumeric(txtSemesterWeeks))
+            {
+                return;
+            }
+
+            clsSemester objSemester = new clsSemester(dtpSemesterStartDate.Value.Date, Convert.ToInt32(txtSemesterWeeks.Text));
+            objSemester.AddSemester();
+            MessageBox.Show("Semester successfully added");
+        }
+
+        private void mnuDelete_Click(object sender, EventArgs e)
+        {
+            
+            if (!clsValidation.ValidateTextBoxForNumeric(txtSemesterID))
+            {
+                return;
+            }
+
+            clsSemester objSemester = new clsSemester(Convert.ToInt32(txtSemesterID.Text));
+            objSemester.DeleteSemester();
+            MessageBox.Show("Semester successfully deleted");
+        }
+
+        private void mnuUpdate_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateTextBoxForNumeric(txtSemesterID))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateDOB(dtpSemesterStartDate))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxForNumeric(txtSemesterWeeks))
+            {
+                return;
+            }
+
+            clsSemester objSemester = new clsSemester(Convert.ToInt32(txtSemesterID.Text), dtpSemesterStartDate.Value.Date, Convert.ToInt32(txtSemesterWeeks.Text));
+            objSemester.UpdateSemester();
+            MessageBox.Show("Semester successfully updated");
         }
     }
 }

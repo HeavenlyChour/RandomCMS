@@ -22,6 +22,11 @@ namespace CourseManagementSystem
         {
         }
 
+        public clsAssessment(int assessmentID)
+        {
+            this.assessmentID = assessmentID;
+        }
+
         public clsAssessment(int assessmentID, int unitID, int teacherID)
         {
             this.assessmentID = assessmentID;
@@ -123,6 +128,44 @@ namespace CourseManagementSystem
         }
         #endregion
 
+        public bool AddAssessment()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("InsertAssessment", objConnection);
+            objCommand.Parameters.AddWithValue("@uid", UnitID);
+            objCommand.Parameters.AddWithValue("@tid", TeacherID);
+            objCommand.Parameters.AddWithValue("@assname", AssessmentName);
+            objCommand.Parameters.AddWithValue("@startdate", StartDate);
+            objCommand.Parameters.AddWithValue("@enddate", EndDate);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
+        }
 
+        public bool DeleteAssessment()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("DeleteAssessment", objConnection);
+
+            objCommand.Parameters.AddWithValue("@aid", AssessmentID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+            return true;
+        }
+
+        public bool UpdateAssessment()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("UpdateAssessment", objConnection);
+            objCommand.Parameters.AddWithValue("@aid", AssessmentID);
+            objCommand.Parameters.AddWithValue("@uid", UnitID);
+            objCommand.Parameters.AddWithValue("@tid", TeacherID);
+            objCommand.Parameters.AddWithValue("@assname", AssessmentName);
+            objCommand.Parameters.AddWithValue("@startdate", StartDate);
+            objCommand.Parameters.AddWithValue("@enddate", EndDate);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
+        }
     }
 }

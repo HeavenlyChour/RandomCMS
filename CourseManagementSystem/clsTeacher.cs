@@ -294,8 +294,8 @@ namespace CourseManagementSystem
         public bool UpdateTeacher()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
-            SqlCommand objCommand = new SqlCommand("UpdateStudent", objConnection);
-            objCommand.Parameters.AddWithValue("@sid", TeacherID);
+            SqlCommand objCommand = new SqlCommand("UpdateTeacher", objConnection);
+            objCommand.Parameters.AddWithValue("@tid", TeacherID);
             objCommand.Parameters.AddWithValue("@fname", FirstName);
             objCommand.Parameters.AddWithValue("@lname", LastName);
             objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
@@ -313,19 +313,5 @@ namespace CourseManagementSystem
             objCommand.ExecuteNonQuery();
             return true;
         }
-        //private int teacherID;
-        //private string firstName;
-        //private string lastName;
-        //private string dateOfBirth;
-        //private string gender;
-        //private string streetAddress;
-        //private string suburb;
-        //private string postCode;
-        //private string phoneNumber;
-        //private string email;
-        //private string commencementDate;
-        //private string classTaught;
-        //private string skills;
-        //private bool leave;
     }
 }

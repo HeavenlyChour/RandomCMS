@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DatabaseClass;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace CourseManagementSystem
 {
@@ -16,6 +19,18 @@ namespace CourseManagementSystem
 
         public clsSkills()
         {
+        }
+
+        public clsSkills(int skillID)
+        {
+            this.SkillID = skillID;
+        }
+
+        public clsSkills(string skillName, string skillDescription)
+        {
+            
+            this.SkillName = skillName;
+            this.SkillDescription = skillDescription;
         }
 
         public clsSkills(int skillID, string skillName, string skillDescription)
@@ -67,9 +82,38 @@ namespace CourseManagementSystem
         #endregion
 
 
-        public void AddSkill()
+        public bool AddSkill()
         {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("InsertAssessment", objConnection);
+            objCommand.Parameters.AddWithValue("@skname", SkillName);
+            objCommand.Parameters.AddWithValue("@skweeks", SkillDescription);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
+        }
 
+        public bool DeleteSkill()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("DeleteSkill", objConnection);
+
+            objCommand.Parameters.AddWithValue("@skid", SkillID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+            return true;
+        }
+
+        public bool UpdateSkill()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("UpdateSkill", objConnection);
+            objCommand.Parameters.AddWithValue("@skid", SkillID);
+            objCommand.Parameters.AddWithValue("@skname", SkillName);
+            objCommand.Parameters.AddWithValue("@skweeks", SkillDescription);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
         }
     }
 }

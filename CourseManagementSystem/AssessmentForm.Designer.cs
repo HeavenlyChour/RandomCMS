@@ -32,7 +32,6 @@
             this.txtAssessmentID = new System.Windows.Forms.TextBox();
             this.AssessmentToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnSearch = new System.Windows.Forms.Button();
-            this.cmbAssessmentName = new System.Windows.Forms.ComboBox();
             this.mnuCourseForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnrolmentForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNavigate = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +56,7 @@
             this.lblAssessmentName = new System.Windows.Forms.Label();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.txtAssessmentName = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssessment)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +67,7 @@
             this.txtAssessmentID.Location = new System.Drawing.Point(278, 145);
             this.txtAssessmentID.Name = "txtAssessmentID";
             this.txtAssessmentID.Size = new System.Drawing.Size(176, 26);
-            this.txtAssessmentID.TabIndex = 100;
+            this.txtAssessmentID.TabIndex = 1;
             this.txtAssessmentID.Tag = "Assessment ID";
             // 
             // btnSearch
@@ -83,17 +83,6 @@
             this.btnSearch.TabIndex = 109;
             this.AssessmentToolTip.SetToolTip(this.btnSearch, "Press to search");
             this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // cmbAssessmentName
-            // 
-            this.cmbAssessmentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbAssessmentName.FormattingEnabled = true;
-            this.cmbAssessmentName.Location = new System.Drawing.Point(278, 241);
-            this.cmbAssessmentName.Name = "cmbAssessmentName";
-            this.cmbAssessmentName.Size = new System.Drawing.Size(306, 28);
-            this.cmbAssessmentName.TabIndex = 119;
-            this.cmbAssessmentName.Tag = "Assessment Name";
-            this.AssessmentToolTip.SetToolTip(this.cmbAssessmentName, "press the down arrow to make a selection");
             // 
             // mnuCourseForm
             // 
@@ -169,6 +158,7 @@
             this.mnuUpdate.Size = new System.Drawing.Size(166, 22);
             this.mnuUpdate.Text = "Update";
             this.mnuUpdate.ToolTipText = "Update record";
+            this.mnuUpdate.Click += new System.EventHandler(this.mnuUpdate_Click);
             // 
             // mnuDelete
             // 
@@ -178,6 +168,7 @@
             this.mnuDelete.Size = new System.Drawing.Size(166, 22);
             this.mnuDelete.Text = "Delete";
             this.mnuDelete.ToolTipText = "Delete  record";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // mnuAdd
             // 
@@ -186,6 +177,7 @@
             this.mnuAdd.Size = new System.Drawing.Size(166, 22);
             this.mnuAdd.Text = "Add";
             this.mnuAdd.ToolTipText = "Add a new record";
+            this.mnuAdd.Click += new System.EventHandler(this.mnuAdd_Click);
             // 
             // lblAssessmentForm
             // 
@@ -264,7 +256,7 @@
             this.txtUnitID.Location = new System.Drawing.Point(278, 177);
             this.txtUnitID.Name = "txtUnitID";
             this.txtUnitID.Size = new System.Drawing.Size(176, 26);
-            this.txtUnitID.TabIndex = 115;
+            this.txtUnitID.TabIndex = 2;
             this.txtUnitID.Tag = "Unit ID";
             // 
             // txtTeacherID
@@ -273,7 +265,7 @@
             this.txtTeacherID.Location = new System.Drawing.Point(278, 209);
             this.txtTeacherID.Name = "txtTeacherID";
             this.txtTeacherID.Size = new System.Drawing.Size(176, 26);
-            this.txtTeacherID.TabIndex = 117;
+            this.txtTeacherID.TabIndex = 3;
             this.txtTeacherID.Tag = "Teacher ID";
             // 
             // lblTeacherID
@@ -332,7 +324,7 @@
             this.dtpStartDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(275, 26);
-            this.dtpStartDate.TabIndex = 124;
+            this.dtpStartDate.TabIndex = 5;
             this.dtpStartDate.Tag = "Start Date";
             // 
             // dtpEndDate
@@ -343,8 +335,17 @@
             this.dtpEndDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(275, 26);
-            this.dtpEndDate.TabIndex = 125;
+            this.dtpEndDate.TabIndex = 6;
             this.dtpEndDate.Tag = "End Date";
+            // 
+            // txtAssessmentName
+            // 
+            this.txtAssessmentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAssessmentName.Location = new System.Drawing.Point(278, 241);
+            this.txtAssessmentName.Name = "txtAssessmentName";
+            this.txtAssessmentName.Size = new System.Drawing.Size(275, 26);
+            this.txtAssessmentName.TabIndex = 4;
+            this.txtAssessmentName.Tag = "Teacher ID";
             // 
             // AssessmentForm
             // 
@@ -353,11 +354,11 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 546);
+            this.Controls.Add(this.txtAssessmentName);
             this.Controls.Add(this.dtpEndDate);
             this.Controls.Add(this.dtpStartDate);
             this.Controls.Add(this.lblAEndDate);
             this.Controls.Add(this.lblAStartDate);
-            this.Controls.Add(this.cmbAssessmentName);
             this.Controls.Add(this.lblAssessmentName);
             this.Controls.Add(this.txtTeacherID);
             this.Controls.Add(this.lblTeacherID);
@@ -406,9 +407,9 @@
         private System.Windows.Forms.Label lblTeacherID;
         private System.Windows.Forms.Label lblAEndDate;
         private System.Windows.Forms.Label lblAStartDate;
-        private System.Windows.Forms.ComboBox cmbAssessmentName;
         private System.Windows.Forms.Label lblAssessmentName;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.TextBox txtAssessmentName;
     }
 }

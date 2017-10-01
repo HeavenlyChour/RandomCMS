@@ -1,22 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DatabaseClass;
 
 namespace CourseManagementSystem
 {
     class clsSemester
     {
         private int semesterID;
-        private string semesterDate;
+        private DateTime semesterDate;
         private int semesterWeeks;
 
         public clsSemester()
         {
         }
 
-        public clsSemester(int semesterID, string semesterDate, int semesterWeeks)
+        public clsSemester(int semesterID)
+        {
+            this.SemesterID = semesterID;
+        }
+
+        public clsSemester(DateTime semesterDate, int semesterWeeks)
+        {
+            this.SemesterDate = semesterDate;
+            this.SemesterWeeks = semesterWeeks;
+        }
+
+        public clsSemester(int semesterID, DateTime semesterDate, int semesterWeeks)
         {
             this.SemesterID = semesterID;
             this.SemesterDate = semesterDate;
@@ -37,7 +51,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public string SemesterDate
+        public DateTime SemesterDate
         {
             get
             {
@@ -64,9 +78,39 @@ namespace CourseManagementSystem
         }
         #endregion
 
-        public void AddSemester()
+        public bool AddSemester()
         {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("InsertSemester", objConnection);
+            objCommand.Parameters.AddWithValue("@semdate", SemesterDate);
+            objCommand.Parameters.AddWithValue("@semweeks", SemesterWeeks);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
+        }
 
+        public bool DeleteSemester()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("DeleteSemester", objConnection);
+
+            objCommand.Parameters.AddWithValue("@semid", SemesterID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+            return true;
+        }
+
+        public bool UpdateSemester()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("UpdateSemester", objConnection);
+
+            objCommand.Parameters.AddWithValue("@semid", SemesterID);
+            objCommand.Parameters.AddWithValue("@semdate", SemesterDate);
+            objCommand.Parameters.AddWithValue("@semweeks", SemesterWeeks);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            return true;
         }
     }
 }

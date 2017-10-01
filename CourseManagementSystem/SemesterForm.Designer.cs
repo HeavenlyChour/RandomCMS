@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.txtSemesterWeeks = new System.Windows.Forms.TextBox();
-            this.txtSenesterStartDate = new System.Windows.Forms.TextBox();
             this.lblSemesterStartDate = new System.Windows.Forms.Label();
             this.txtSemesterID = new System.Windows.Forms.TextBox();
             this.UnitToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -51,6 +50,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dgvUnit = new System.Windows.Forms.DataGridView();
             this.lblSemesterID = new System.Windows.Forms.Label();
+            this.dtpSemesterStartDate = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
             this.SuspendLayout();
@@ -63,16 +63,6 @@
             this.txtSemesterWeeks.Size = new System.Drawing.Size(217, 26);
             this.txtSemesterWeeks.TabIndex = 3;
             this.txtSemesterWeeks.Tag = "Semester Weeks";
-            // 
-            // txtSenesterStartDate
-            // 
-            this.txtSenesterStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenesterStartDate.Location = new System.Drawing.Point(276, 182);
-            this.txtSenesterStartDate.Name = "txtSenesterStartDate";
-            this.txtSenesterStartDate.Size = new System.Drawing.Size(217, 26);
-            this.txtSenesterStartDate.TabIndex = 2;
-            this.txtSenesterStartDate.Tag = "Semester Start Date";
-            this.UnitToolTip.SetToolTip(this.txtSenesterStartDate, "Date format must be yyyy-mm-dd and contain only numeric characters");
             // 
             // lblSemesterStartDate
             // 
@@ -195,6 +185,7 @@
             this.mnuUpdate.Size = new System.Drawing.Size(166, 22);
             this.mnuUpdate.Text = "Update";
             this.mnuUpdate.ToolTipText = "Update record";
+            this.mnuUpdate.Click += new System.EventHandler(this.mnuUpdate_Click);
             // 
             // mnuDelete
             // 
@@ -204,6 +195,7 @@
             this.mnuDelete.Size = new System.Drawing.Size(166, 22);
             this.mnuDelete.Text = "Delete";
             this.mnuDelete.ToolTipText = "Delete  record";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // mnuAdd
             // 
@@ -212,6 +204,7 @@
             this.mnuAdd.Size = new System.Drawing.Size(166, 22);
             this.mnuAdd.Text = "Add";
             this.mnuAdd.ToolTipText = "Add a new record";
+            this.mnuAdd.Click += new System.EventHandler(this.mnuAdd_Click);
             // 
             // mnuFile
             // 
@@ -272,14 +265,28 @@
             this.lblSemesterID.TabIndex = 147;
             this.lblSemesterID.Text = "Semester ID:";
             // 
+            // dtpSemesterStartDate
+            // 
+            this.dtpSemesterStartDate.AllowDrop = true;
+            this.dtpSemesterStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpSemesterStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpSemesterStartDate.Location = new System.Drawing.Point(276, 182);
+            this.dtpSemesterStartDate.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
+            this.dtpSemesterStartDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
+            this.dtpSemesterStartDate.Name = "dtpSemesterStartDate";
+            this.dtpSemesterStartDate.Size = new System.Drawing.Size(217, 26);
+            this.dtpSemesterStartDate.TabIndex = 2;
+            this.dtpSemesterStartDate.Tag = "Date of Birth";
+            this.dtpSemesterStartDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            // 
             // SemesterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 436);
+            this.Controls.Add(this.dtpSemesterStartDate);
             this.Controls.Add(this.txtSemesterWeeks);
-            this.Controls.Add(this.txtSenesterStartDate);
             this.Controls.Add(this.lblSemesterStartDate);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSemesterID);
@@ -301,7 +308,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtSemesterWeeks;
-        private System.Windows.Forms.TextBox txtSenesterStartDate;
         private System.Windows.Forms.ToolTip UnitToolTip;
         private System.Windows.Forms.Label lblSemesterStartDate;
         private System.Windows.Forms.Button btnSearch;
@@ -322,5 +328,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.DataGridView dgvUnit;
         private System.Windows.Forms.Label lblSemesterID;
+        private System.Windows.Forms.DateTimePicker dtpSemesterStartDate;
     }
 }
