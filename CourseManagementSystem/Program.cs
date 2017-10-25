@@ -16,7 +16,7 @@ namespace CourseManagementSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AssessmentForm());
+            Application.Run(new StudentForm());
         }
     }
 }
