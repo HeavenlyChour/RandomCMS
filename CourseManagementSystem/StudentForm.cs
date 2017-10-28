@@ -68,7 +68,7 @@ namespace CourseManagementSystem
             }
             dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
             dtpDateOfBirth.CustomFormat = "yyyy-MM-dd";
-            if (!clsValidation.ValidateDOB(dtpDateOfBirth))
+            if (!clsValidation.ValidateDate(dtpDateOfBirth))
             {
                 return;
             }
@@ -166,7 +166,20 @@ namespace CourseManagementSystem
                 disabilityText = "No";
             }
             #endregion
-            
+
+            if (rdbDisabilityYes.Checked == true)
+            {
+                //   txtDisabilityDescription.ReadOnly = false;
+                if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
+                {
+                    return;
+                }
+            }
+            if (rdbDisabilityNo.Checked == true)
+            {
+                txtDisabilityDescription.Text = String.Empty;
+                txtDisabilityDescription.ReadOnly = true;
+            }
             clsStudent objStudent = new clsStudent(txtStudentFirstName.Text,
                   txtStudentLastName.Text, dtpDateOfBirth.Value.ToString("yyyy-MM-dd"), genderText, txtStudStreetAddress.Text,
                   cmbStudSuburb.Text, txtStudPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
@@ -239,7 +252,7 @@ namespace CourseManagementSystem
             }
             dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
             dtpDateOfBirth.CustomFormat = "yyyy-MM-dd";
-            if (!clsValidation.ValidateDOB(dtpDateOfBirth))
+            if (!clsValidation.ValidateDate(dtpDateOfBirth))
             {
                 return;
             }

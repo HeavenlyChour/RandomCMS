@@ -23,12 +23,18 @@ namespace CourseManagementSystem
 
         private void mnuAdd_Click(object sender, EventArgs e)
         {
-            if (!clsValidation.ValidateDOB(dtpSemesterStartDate))
+            if (!clsValidation.ValidateDate(dtpSemesterStartDate))
             {
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtSemesterWeeks))
+            {
+                txtSemesterWeeks.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtSemesterWeeks))
             {
+                txtSemesterWeeks.Focus();
                 return;
             }
 
@@ -56,15 +62,20 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpSemesterStartDate))
+            if (!clsValidation.ValidateDate(dtpSemesterStartDate))
             {
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtSemesterWeeks))
+            {
+                txtSemesterWeeks.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtSemesterWeeks))
             {
+                txtSemesterWeeks.Focus();
                 return;
             }
-
             clsSemester objSemester = new clsSemester(Convert.ToInt32(txtSemesterID.Text), dtpSemesterStartDate.Value.Date, Convert.ToInt32(txtSemesterWeeks.Text));
             objSemester.UpdateSemester();
             MessageBox.Show("Semester successfully updated");
@@ -75,6 +86,14 @@ namespace CourseManagementSystem
             string dateSelected = dtpSemesterStartDate.Value.ToString("yyyy-MM-dd");
             dtpSemesterStartDate.Format = DateTimePickerFormat.Custom;
             dtpSemesterStartDate.CustomFormat = dateSelected;
+        }
+
+        private void mnuClearAll_Click(object sender, EventArgs e)
+        {
+            txtSemesterID.Text = String.Empty;
+            dtpSemesterStartDate.Format = DateTimePickerFormat.Custom;
+            dtpSemesterStartDate.CustomFormat = " ";
+            txtSemesterWeeks.Text = String.Empty;
         }
     }
 }

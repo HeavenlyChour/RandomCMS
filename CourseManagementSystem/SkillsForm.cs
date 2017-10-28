@@ -25,12 +25,16 @@ namespace CourseManagementSystem
                 txtSkillName.Focus();
                 return;
             }
+            if (!clsValidation.ValidateForAlphabet(txtSkillName))
+            {
+                txtSkillName.Focus();
+                return;
+            }
             if (!clsValidation.ValidateTextBox(txtSkillDescription))
             {
                 txtSkillDescription.Focus();
                 return;
             }
-
             clsSkills objSkills = new clsSkills(txtSkillName.Text, txtSkillDescription.Text);
             objSkills.AddSkill();
             MessageBox.Show("Skill successfully added");
@@ -61,12 +65,16 @@ namespace CourseManagementSystem
                 txtSkillName.Focus();
                 return;
             }
+            if (!clsValidation.ValidateForAlphabet(txtSkillName))
+            {
+                txtSkillName.Focus();
+                return;
+            }
             if (!clsValidation.ValidateTextBox(txtSkillDescription))
             {
                 txtSkillDescription.Focus();
                 return;
             }
-
             clsSkills objSkills = new clsSkills(txtSkillName.Text, txtSkillDescription.Text);
             objSkills.AddSkill();
             MessageBox.Show("Skill successfully updated");

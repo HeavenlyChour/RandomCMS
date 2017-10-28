@@ -57,7 +57,7 @@ namespace CourseManagementSystem
                 txtTeacherLastName.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpDateOfBirth))
+            if (!clsValidation.ValidateDate(dtpDateOfBirth))
             {
                 return;
             }
@@ -114,25 +114,24 @@ namespace CourseManagementSystem
                 txtTeacherEmail.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpCommencementDate))
+            if (!clsValidation.ValidateDate(dtpCommencementDate))
             {
                 return;
             }
-            //dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
-            //dtpDateOfBirth.CustomFormat = "yyyy-MM-dd";
-            //if (!clsValidation.ValidateDateStartVsEnd(dtpDateOfBirth, dtpCommencementDate))
-            //{
-            //    return;
-            //}
+            if (!clsValidation.ValidateDateStartVsEnd(dtpDateOfBirth, dtpCommencementDate))
+            {
+                return;
+            }
             if (!clsValidation.ValidateComboBox(cmbTeachDepartment))
             {
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbClassTaught))
+            if (!clsValidation.ValidateTextBox(txtTeacherSkills))
             {
+                txtTeacherSkills.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtTeacherSkills))
+            if (!clsValidation.ValidateForAlphabet(txtTeacherSkills))
             {
                 txtTeacherSkills.Focus();
                 return;
@@ -142,6 +141,7 @@ namespace CourseManagementSystem
                 return;
             }
             #endregion
+
             string genderText = String.Empty;
             if (rdbMale.Checked)
             {
@@ -183,11 +183,6 @@ namespace CourseManagementSystem
         private void mnuUpdate_Click(object sender, EventArgs e)
         {
             #region ValidationArea
-            if (!clsValidation.ValidateTextBoxForNumeric(txtTeacherID))
-            {
-                txtTeacherID.Focus();
-                return;
-            }
             if (!clsValidation.ValidateTextBox(txtTeacherFirstName))
             {
                 txtTeacherFirstName.Focus();
@@ -218,7 +213,7 @@ namespace CourseManagementSystem
                 txtTeacherLastName.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpDateOfBirth))
+            if (!clsValidation.ValidateDate(dtpDateOfBirth))
             {
                 return;
             }
@@ -275,25 +270,24 @@ namespace CourseManagementSystem
                 txtTeacherEmail.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpCommencementDate))
+            if (!clsValidation.ValidateDate(dtpCommencementDate))
             {
                 return;
             }
-            //dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
-            //dtpDateOfBirth.CustomFormat = "yyyy-MM-dd";
-            //if (!clsValidation.ValidateDateStartVsEnd(dtpDateOfBirth, dtpCommencementDate))
-            //{
-            //    return;
-            //}
+            if (!clsValidation.ValidateDateStartVsEnd(dtpDateOfBirth, dtpCommencementDate))
+            {
+                return;
+            }
             if (!clsValidation.ValidateComboBox(cmbTeachDepartment))
             {
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbClassTaught))
+            if (!clsValidation.ValidateTextBox(txtTeacherSkills))
             {
+                txtTeacherSkills.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtTeacherSkills))
+            if (!clsValidation.ValidateForAlphabet(txtTeacherSkills))
             {
                 txtTeacherSkills.Focus();
                 return;

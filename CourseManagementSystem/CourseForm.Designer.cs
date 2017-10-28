@@ -58,8 +58,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lblCourseDelivery = new System.Windows.Forms.Label();
             this.lblCourseFee = new System.Windows.Forms.Label();
-            this.rdbOnline = new System.Windows.Forms.RadioButton();
-            this.rdbFaceToFace = new System.Windows.Forms.RadioButton();
             this.lblCStartDate = new System.Windows.Forms.Label();
             this.lblCEndDate = new System.Windows.Forms.Label();
             this.txtCourseDuration = new System.Windows.Forms.TextBox();
@@ -68,8 +66,14 @@
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.txtCourseName = new System.Windows.Forms.TextBox();
             this.txtCourseFee = new System.Windows.Forms.TextBox();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlCourseDelivery = new System.Windows.Forms.Panel();
+            this.rdbFaceToFace = new System.Windows.Forms.RadioButton();
+            this.rdbOnline = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourse)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.pnlCourseDelivery.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbCourseSemester
@@ -111,7 +115,7 @@
             // txtNumOfUnits
             // 
             this.txtNumOfUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumOfUnits.Location = new System.Drawing.Point(241, 416);
+            this.txtNumOfUnits.Location = new System.Drawing.Point(241, 418);
             this.txtNumOfUnits.Name = "txtNumOfUnits";
             this.txtNumOfUnits.Size = new System.Drawing.Size(113, 26);
             this.txtNumOfUnits.TabIndex = 10;
@@ -120,7 +124,7 @@
             // txtHoursPerWeek
             // 
             this.txtHoursPerWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHoursPerWeek.Location = new System.Drawing.Point(241, 384);
+            this.txtHoursPerWeek.Location = new System.Drawing.Point(241, 386);
             this.txtHoursPerWeek.Name = "txtHoursPerWeek";
             this.txtHoursPerWeek.Size = new System.Drawing.Size(113, 26);
             this.txtHoursPerWeek.TabIndex = 9;
@@ -141,7 +145,7 @@
             this.lblNumOfUnits.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblNumOfUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumOfUnits.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblNumOfUnits.Location = new System.Drawing.Point(117, 419);
+            this.lblNumOfUnits.Location = new System.Drawing.Point(117, 421);
             this.lblNumOfUnits.Name = "lblNumOfUnits";
             this.lblNumOfUnits.Size = new System.Drawing.Size(109, 20);
             this.lblNumOfUnits.TabIndex = 57;
@@ -153,7 +157,7 @@
             this.lblHoursPerWeek.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblHoursPerWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoursPerWeek.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblHoursPerWeek.Location = new System.Drawing.Point(82, 387);
+            this.lblHoursPerWeek.Location = new System.Drawing.Point(82, 389);
             this.lblHoursPerWeek.Name = "lblHoursPerWeek";
             this.lblHoursPerWeek.Size = new System.Drawing.Size(144, 20);
             this.lblHoursPerWeek.TabIndex = 55;
@@ -342,6 +346,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
+            this.mnuEdit,
             this.mnuNavigate});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -355,7 +360,7 @@
             this.lblCourseDelivery.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblCourseDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCourseDelivery.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblCourseDelivery.Location = new System.Drawing.Point(89, 356);
+            this.lblCourseDelivery.Location = new System.Drawing.Point(85, 358);
             this.lblCourseDelivery.Name = "lblCourseDelivery";
             this.lblCourseDelivery.Size = new System.Drawing.Size(139, 20);
             this.lblCourseDelivery.TabIndex = 61;
@@ -367,39 +372,11 @@
             this.lblCourseFee.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblCourseFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCourseFee.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblCourseFee.Location = new System.Drawing.Point(117, 451);
+            this.lblCourseFee.Location = new System.Drawing.Point(117, 453);
             this.lblCourseFee.Name = "lblCourseFee";
             this.lblCourseFee.Size = new System.Drawing.Size(107, 20);
             this.lblCourseFee.TabIndex = 65;
             this.lblCourseFee.Text = "Course Fee:";
-            // 
-            // rdbOnline
-            // 
-            this.rdbOnline.AutoSize = true;
-            this.rdbOnline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbOnline.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbOnline.Location = new System.Drawing.Point(382, 354);
-            this.rdbOnline.Name = "rdbOnline";
-            this.rdbOnline.Size = new System.Drawing.Size(78, 24);
-            this.rdbOnline.TabIndex = 68;
-            this.rdbOnline.TabStop = true;
-            this.rdbOnline.Tag = "Course Delivery";
-            this.rdbOnline.Text = "Online";
-            this.rdbOnline.UseVisualStyleBackColor = true;
-            // 
-            // rdbFaceToFace
-            // 
-            this.rdbFaceToFace.AutoSize = true;
-            this.rdbFaceToFace.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbFaceToFace.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbFaceToFace.Location = new System.Drawing.Point(243, 354);
-            this.rdbFaceToFace.Name = "rdbFaceToFace";
-            this.rdbFaceToFace.Size = new System.Drawing.Size(133, 24);
-            this.rdbFaceToFace.TabIndex = 67;
-            this.rdbFaceToFace.TabStop = true;
-            this.rdbFaceToFace.Tag = "Course Delivery";
-            this.rdbFaceToFace.Text = "Face to Face";
-            this.rdbFaceToFace.UseVisualStyleBackColor = true;
             // 
             // lblCStartDate
             // 
@@ -455,7 +432,7 @@
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(275, 26);
             this.dtpStartDate.TabIndex = 74;
-            this.dtpStartDate.Tag = "Commencement Date";
+            this.dtpStartDate.Tag = "Start Date";
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
             // dtpEndDate
@@ -467,7 +444,7 @@
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(275, 26);
             this.dtpEndDate.TabIndex = 75;
-            this.dtpEndDate.Tag = "Commencement Date";
+            this.dtpEndDate.Tag = "End Date";
             this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             // 
             // txtCourseName
@@ -477,16 +454,71 @@
             this.txtCourseName.Name = "txtCourseName";
             this.txtCourseName.Size = new System.Drawing.Size(275, 26);
             this.txtCourseName.TabIndex = 76;
-            this.txtCourseName.Tag = "Course ID";
+            this.txtCourseName.Tag = "Course Name";
             // 
             // txtCourseFee
             // 
             this.txtCourseFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCourseFee.Location = new System.Drawing.Point(241, 448);
+            this.txtCourseFee.Location = new System.Drawing.Point(241, 450);
             this.txtCourseFee.Name = "txtCourseFee";
             this.txtCourseFee.Size = new System.Drawing.Size(113, 26);
             this.txtCourseFee.TabIndex = 77;
-            this.txtCourseFee.Tag = "No. of Units";
+            this.txtCourseFee.Tag = "Course Fee";
+            // 
+            // mnuEdit
+            // 
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuClearAll});
+            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuClearAll
+            // 
+            this.mnuClearAll.Name = "mnuClearAll";
+            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
+            this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
+            // 
+            // pnlCourseDelivery
+            // 
+            this.pnlCourseDelivery.Controls.Add(this.rdbFaceToFace);
+            this.pnlCourseDelivery.Controls.Add(this.rdbOnline);
+            this.pnlCourseDelivery.Location = new System.Drawing.Point(241, 353);
+            this.pnlCourseDelivery.Name = "pnlCourseDelivery";
+            this.pnlCourseDelivery.Size = new System.Drawing.Size(246, 25);
+            this.pnlCourseDelivery.TabIndex = 103;
+            // 
+            // rdbFaceToFace
+            // 
+            this.rdbFaceToFace.AutoSize = true;
+            this.rdbFaceToFace.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbFaceToFace.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.rdbFaceToFace.Location = new System.Drawing.Point(3, 3);
+            this.rdbFaceToFace.Name = "rdbFaceToFace";
+            this.rdbFaceToFace.Size = new System.Drawing.Size(133, 24);
+            this.rdbFaceToFace.TabIndex = 67;
+            this.rdbFaceToFace.TabStop = true;
+            this.rdbFaceToFace.Tag = "Course Delivery";
+            this.rdbFaceToFace.Text = "Face to Face";
+            this.rdbFaceToFace.UseVisualStyleBackColor = true;
+            // 
+            // rdbOnline
+            // 
+            this.rdbOnline.AutoSize = true;
+            this.rdbOnline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbOnline.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.rdbOnline.Location = new System.Drawing.Point(142, 3);
+            this.rdbOnline.Name = "rdbOnline";
+            this.rdbOnline.Size = new System.Drawing.Size(78, 24);
+            this.rdbOnline.TabIndex = 68;
+            this.rdbOnline.TabStop = true;
+            this.rdbOnline.Tag = "Course Delivery";
+            this.rdbOnline.Text = "Online";
+            this.rdbOnline.UseVisualStyleBackColor = true;
             // 
             // CourseForm
             // 
@@ -495,6 +527,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 719);
+            this.Controls.Add(this.pnlCourseDelivery);
             this.Controls.Add(this.txtCourseFee);
             this.Controls.Add(this.txtCourseName);
             this.Controls.Add(this.dtpEndDate);
@@ -503,8 +536,6 @@
             this.Controls.Add(this.lblCourseDuration);
             this.Controls.Add(this.lblCEndDate);
             this.Controls.Add(this.lblCStartDate);
-            this.Controls.Add(this.rdbOnline);
-            this.Controls.Add(this.rdbFaceToFace);
             this.Controls.Add(this.lblCourseFee);
             this.Controls.Add(this.cmbCourseLocation);
             this.Controls.Add(this.cmbCourseSemester);
@@ -529,6 +560,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourse)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnlCourseDelivery.ResumeLayout(false);
+            this.pnlCourseDelivery.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -565,8 +598,6 @@
         private System.Windows.Forms.ComboBox cmbCourseSemester;
         private System.Windows.Forms.ComboBox cmbCourseLocation;
         private System.Windows.Forms.Label lblCourseFee;
-        private System.Windows.Forms.RadioButton rdbOnline;
-        private System.Windows.Forms.RadioButton rdbFaceToFace;
         private System.Windows.Forms.Label lblCStartDate;
         private System.Windows.Forms.Label lblCEndDate;
         private System.Windows.Forms.TextBox txtCourseDuration;
@@ -575,5 +606,10 @@
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.TextBox txtCourseName;
         private System.Windows.Forms.TextBox txtCourseFee;
+        private System.Windows.Forms.ToolStripMenuItem mnuEdit;
+        private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
+        private System.Windows.Forms.Panel pnlCourseDelivery;
+        private System.Windows.Forms.RadioButton rdbFaceToFace;
+        private System.Windows.Forms.RadioButton rdbOnline;
     }
 }

@@ -25,12 +25,17 @@ namespace CourseManagementSystem
 
         private void mnuAdd_Click(object sender, EventArgs e)
         {
+            if (!clsValidation.ValidateTextBox(txtUnitID))
+            {
+                txtUnitID.Focus();
+                return;
+            }
             if (!clsValidation.ValidateTextBoxForNumeric(txtUnitID))
             {
                 txtUnitID.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtTeacherID))
+            if (!clsValidation.ValidateTextBox(txtTeacherID))
             {
                 txtTeacherID.Focus();
                 return;
@@ -40,15 +45,23 @@ namespace CourseManagementSystem
                 txtAssessmentName.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpStartDate))
+            if (!clsValidation.ValidateForAlphabet(txtAssessmentName))
+            {
+                txtAssessmentName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateDate(dtpStartDate))
             {
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpEndDate))
+            if (!clsValidation.ValidateDate(dtpEndDate))
             {
                 return;
             }
-
+            if (!clsValidation.ValidateDateStartVsEnd(dtpStartDate, dtpEndDate))
+            {
+                return;
+            }
             clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtUnitID.Text), Convert.ToInt32(txtTeacherID.Text), 
                 txtAssessmentName.Text, dtpStartDate.Value.Date, dtpEndDate.Value.Date);
 
@@ -92,15 +105,18 @@ namespace CourseManagementSystem
                 txtAssessmentName.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpStartDate))
+            if (!clsValidation.ValidateDate(dtpStartDate))
             {
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpEndDate))
+            if (!clsValidation.ValidateDate(dtpEndDate))
             {
                 return;
             }
-
+            if (!clsValidation.ValidateDateStartVsEnd(dtpStartDate, dtpEndDate))
+            {
+                return;
+            }
             clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text), Convert.ToInt32(txtUnitID.Text), Convert.ToInt32(txtTeacherID.Text),
                 txtAssessmentName.Text, dtpStartDate.Value.Date, dtpEndDate.Value.Date);
 
@@ -120,6 +136,20 @@ namespace CourseManagementSystem
             string dateSelected = dtpEndDate.Value.ToString("yyyy-MM-dd");
             dtpEndDate.Format = DateTimePickerFormat.Custom;
             dtpEndDate.CustomFormat = dateSelected;
+        }
+
+        private void mnuClearAll_Click(object sender, EventArgs e)
+        {
+            txtAssessmentID.Text = String.Empty;
+            txtUnitID.Text = String.Empty;
+            txtTeacherID.Text = String.Empty;
+            txtAssessmentName.Text = String.Empty;
+            dtpStartDate.Text = String.Empty;
+            dtpEndDate.Text = String.Empty;
+            dtpStartDate.Format = DateTimePickerFormat.Custom;
+            dtpStartDate.CustomFormat = " ";
+            dtpEndDate.Format = DateTimePickerFormat.Custom;
+            dtpEndDate.CustomFormat = " ";
         }
     }
 }

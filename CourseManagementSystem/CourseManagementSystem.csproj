@@ -48,8 +48,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ValidateClass">
-      <HintPath>..\..\ValidationRepo\ValidateClass\bin\Debug\ValidateClass.dll</HintPath>
+    <Reference Include="ValidationClass, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Diploma in Software Development\3. Advance Programming C#\1. Randoms Group Project\CMS by Randoms\clsValidation\ValidationClass\bin\Debug\ValidationClass.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

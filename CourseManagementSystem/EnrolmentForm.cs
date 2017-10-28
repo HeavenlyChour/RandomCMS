@@ -29,9 +29,19 @@ namespace CourseManagementSystem
         private void mnuAdd_Click(object sender, EventArgs e)
         {
             #region ValidationArea
+            if (!clsValidation.ValidateTextBox(txtStudentID))
+            {
+                txtStudentID.Focus();
+                return;
+            }
             if (!clsValidation.ValidateTextBoxForNumeric(txtStudentID))
             {
                 txtStudentID.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtCourseID))
+            {
+                txtCourseID.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
@@ -39,11 +49,15 @@ namespace CourseManagementSystem
                 txtCourseID.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpEnrolmentDate))
+            if (!clsValidation.ValidateDate(dtpEnrolmentDate))
             {
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpExpectedEndDate))
+            if (!clsValidation.ValidateDate(dtpExpectedEndDate))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateDateStartVsEnd(dtpEnrolmentDate, dtpExpectedEndDate))
             {
                 return;
             }
@@ -65,13 +79,31 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpPaymentDueDate))
+            if (!clsValidation.ValidateDate(dtpPaymentDueDate))
             {
+                return;
+            }
+            if (!clsValidation.ValidateDateStartVsEnd(dtpEnrolmentDate, dtpPaymentDueDate))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateDateStartVsEnd(dtpPaymentDueDate, dtpExpectedEndDate))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtAmountPaid))
+            {
+                txtAmountPaid.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtAmountPaid))
             {
                 txtAmountPaid.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtBalanceOwing))
+            {
+                txtBalanceOwing.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtBalanceOwing))
@@ -81,7 +113,6 @@ namespace CourseManagementSystem
             }
             if (!clsValidation.ValidateComboBox(cmbPaymentStatus))
             {
-                cmbPaymentStatus.Focus();
                 return;
             }
             if (!clsValidation.ValidateRadioButton(rdbDisabilityYes, rdbDisabilityNo))
@@ -119,6 +150,23 @@ namespace CourseManagementSystem
             }
             #endregion
 
+            if (rdbDisabilityYes.Checked == true)
+            {
+                //   txtDisabilityDescription.ReadOnly = false;
+                if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
+                {
+                    return;
+                }
+            }
+            if (rdbDisabilityNo.Checked == true)
+            {
+                txtDisabilityDescription.Text = String.Empty;
+                txtDisabilityDescription.ReadOnly = true;
+            }
+            if (!clsValidation.ValidateComboBox(cmbStudyStatus))
+            {
+                return;
+            }
             clsEnrolment objEnrolment = new clsEnrolment(Convert.ToInt32(txtStudentID.Text), Convert.ToInt32(txtCourseID.Text),
                 dtpEnrolmentDate.Value.Date, dtpExpectedEndDate.Value.Date, courseDelText, cmbPaymentMethod.Text,
                 dtpPaymentDueDate.Value.Date, Convert.ToInt32(txtAmountPaid.Text), Convert.ToInt32(txtBalanceOwing.Text),
@@ -148,9 +196,19 @@ namespace CourseManagementSystem
                 txtEnrolmentID.Focus();
                 return;
             }
+            if (!clsValidation.ValidateTextBox(txtStudentID))
+            {
+                txtStudentID.Focus();
+                return;
+            }
             if (!clsValidation.ValidateTextBoxForNumeric(txtStudentID))
             {
                 txtStudentID.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtCourseID))
+            {
+                txtCourseID.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
@@ -158,11 +216,15 @@ namespace CourseManagementSystem
                 txtCourseID.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpEnrolmentDate))
+            if (!clsValidation.ValidateDate(dtpEnrolmentDate))
             {
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpExpectedEndDate))
+            if (!clsValidation.ValidateDate(dtpExpectedEndDate))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateDateStartVsEnd(dtpEnrolmentDate, dtpExpectedEndDate))
             {
                 return;
             }
@@ -184,13 +246,31 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpPaymentDueDate))
+            if (!clsValidation.ValidateDate(dtpPaymentDueDate))
             {
+                return;
+            }
+            if (!clsValidation.ValidateDateStartVsEnd(dtpEnrolmentDate, dtpPaymentDueDate))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateDateStartVsEnd(dtpPaymentDueDate, dtpExpectedEndDate))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtAmountPaid))
+            {
+                txtAmountPaid.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtAmountPaid))
             {
                 txtAmountPaid.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtBalanceOwing))
+            {
+                txtBalanceOwing.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtBalanceOwing))
@@ -200,7 +280,6 @@ namespace CourseManagementSystem
             }
             if (!clsValidation.ValidateComboBox(cmbPaymentStatus))
             {
-                cmbPaymentStatus.Focus();
                 return;
             }
             if (!clsValidation.ValidateRadioButton(rdbDisabilityYes, rdbDisabilityNo))
@@ -278,6 +357,28 @@ namespace CourseManagementSystem
         {
             txtDisabilityDescription.Text = String.Empty;
             txtDisabilityDescription.ReadOnly = true;
+        }
+
+        private void mnuClearAll_Click(object sender, EventArgs e)
+        {
+            txtStudentID.Text = String.Empty;
+            txtCourseID.Text = String.Empty;
+            dtpEnrolmentDate.Format = DateTimePickerFormat.Custom;
+            dtpEnrolmentDate.CustomFormat = " ";
+            dtpExpectedEndDate.Format = DateTimePickerFormat.Custom;
+            dtpExpectedEndDate.CustomFormat = " ";
+            rdbFaceToFace.Checked = false;
+            rdbOnline.Checked = false;
+            cmbPaymentMethod.SelectedIndex = -1;
+            dtpPaymentDueDate.Format = DateTimePickerFormat.Custom;
+            dtpPaymentDueDate.CustomFormat = " ";
+            txtAmountPaid.Text = String.Empty;
+            txtBalanceOwing.Text = String.Empty;
+            cmbPaymentStatus.SelectedIndex = -1;
+            rdbDisabilityYes.Checked = false;
+            rdbDisabilityNo.Checked = false;
+            txtDisabilityDescription.Text = String.Empty;
+            cmbStudyStatus.SelectedIndex = -1;
         }
     }
 }

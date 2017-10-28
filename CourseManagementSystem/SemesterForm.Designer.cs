@@ -51,6 +51,8 @@
             this.dgvUnit = new System.Windows.Forms.DataGridView();
             this.lblSemesterID = new System.Windows.Forms.Label();
             this.dtpSemesterStartDate = new System.Windows.Forms.DateTimePicker();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
             this.SuspendLayout();
@@ -236,6 +238,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
+            this.mnuEdit,
             this.mnuNavigate});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -276,9 +279,27 @@
             this.dtpSemesterStartDate.Name = "dtpSemesterStartDate";
             this.dtpSemesterStartDate.Size = new System.Drawing.Size(217, 26);
             this.dtpSemesterStartDate.TabIndex = 2;
-            this.dtpSemesterStartDate.Tag = "Date of Birth";
+            this.dtpSemesterStartDate.Tag = "Start Date";
             this.dtpSemesterStartDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
             this.dtpSemesterStartDate.ValueChanged += new System.EventHandler(this.dtpSemesterStartDate_ValueChanged);
+            // 
+            // mnuEdit
+            // 
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuClearAll});
+            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuClearAll
+            // 
+            this.mnuClearAll.Name = "mnuClearAll";
+            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
+            this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
             // 
             // SemesterForm
             // 
@@ -330,5 +351,7 @@
         private System.Windows.Forms.DataGridView dgvUnit;
         private System.Windows.Forms.Label lblSemesterID;
         private System.Windows.Forms.DateTimePicker dtpSemesterStartDate;
+        private System.Windows.Forms.ToolStripMenuItem mnuEdit;
+        private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
     }
 }

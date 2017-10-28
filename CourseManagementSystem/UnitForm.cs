@@ -25,6 +25,14 @@ namespace CourseManagementSystem
                 txtUnitName.Focus();
                 return;
             }
+            if (!clsValidation.ValidateTextBox(txtCourseID))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
+            {
+                return;
+            }
             if (!clsValidation.ValidateComboBox(cmbNoOfHours))
             {
                 return;
@@ -74,6 +82,14 @@ namespace CourseManagementSystem
             if (!clsValidation.ValidateTextBox(txtUnitName))
             {
                 txtUnitName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtCourseID))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
+            {
                 return;
             }
             if (!clsValidation.ValidateComboBox(cmbNoOfHours))

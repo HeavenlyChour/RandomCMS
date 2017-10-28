@@ -77,6 +77,8 @@
             this.dtpPaymentDueDate = new System.Windows.Forms.DateTimePicker();
             this.pnlCourseDelivery = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlCourseDelivery.SuspendLayout();
@@ -182,6 +184,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
+            this.mnuEdit,
             this.mnuNavigate});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -561,12 +564,12 @@
             this.dtpEnrolmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEnrolmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpEnrolmentDate.Location = new System.Drawing.Point(325, 231);
-            this.dtpEnrolmentDate.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
+            this.dtpEnrolmentDate.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpEnrolmentDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpEnrolmentDate.Name = "dtpEnrolmentDate";
             this.dtpEnrolmentDate.Size = new System.Drawing.Size(224, 26);
             this.dtpEnrolmentDate.TabIndex = 139;
-            this.dtpEnrolmentDate.Tag = "Date of Birth";
+            this.dtpEnrolmentDate.Tag = "Enrolment Date";
             this.dtpEnrolmentDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
             this.dtpEnrolmentDate.ValueChanged += new System.EventHandler(this.dtpEnrolmentDate_ValueChanged);
             // 
@@ -576,12 +579,12 @@
             this.dtpExpectedEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpExpectedEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpExpectedEndDate.Location = new System.Drawing.Point(325, 264);
-            this.dtpExpectedEndDate.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
+            this.dtpExpectedEndDate.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpExpectedEndDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpExpectedEndDate.Name = "dtpExpectedEndDate";
             this.dtpExpectedEndDate.Size = new System.Drawing.Size(224, 26);
             this.dtpExpectedEndDate.TabIndex = 140;
-            this.dtpExpectedEndDate.Tag = "Date of Birth";
+            this.dtpExpectedEndDate.Tag = "Expected End Date";
             this.dtpExpectedEndDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
             this.dtpExpectedEndDate.ValueChanged += new System.EventHandler(this.dtpExpectedEndDate_ValueChanged);
             // 
@@ -591,12 +594,12 @@
             this.dtpPaymentDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpPaymentDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpPaymentDueDate.Location = new System.Drawing.Point(325, 358);
-            this.dtpPaymentDueDate.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
+            this.dtpPaymentDueDate.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpPaymentDueDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpPaymentDueDate.Name = "dtpPaymentDueDate";
             this.dtpPaymentDueDate.Size = new System.Drawing.Size(224, 26);
             this.dtpPaymentDueDate.TabIndex = 141;
-            this.dtpPaymentDueDate.Tag = "Date of Birth";
+            this.dtpPaymentDueDate.Tag = "Payment Due Date";
             this.dtpPaymentDueDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
             this.dtpPaymentDueDate.ValueChanged += new System.EventHandler(this.dtpPaymentDueDate_ValueChanged);
             // 
@@ -617,6 +620,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(134, 24);
             this.panel1.TabIndex = 143;
+            // 
+            // mnuEdit
+            // 
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuClearAll});
+            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuClearAll
+            // 
+            this.mnuClearAll.Name = "mnuClearAll";
+            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
+            this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
             // 
             // EnrolmentForm
             // 
@@ -722,5 +743,7 @@
         private System.Windows.Forms.DateTimePicker dtpPaymentDueDate;
         private System.Windows.Forms.Panel pnlCourseDelivery;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem mnuEdit;
+        private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
     }
 }

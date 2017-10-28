@@ -25,19 +25,23 @@ namespace CourseManagementSystem
         private void mnuAdd_Click(object sender, EventArgs e)
         {
             #region ValidationArea
-            //if (!clsValidation.ValidateComboBox(cmbCourseName))
-            //{
-            //    cmbCourseName.Focus();
-            //    return;
-            //}
             if (!clsValidation.ValidateTextBox(txtCourseName))
             {
-                cmbCourseLocation.Focus();
+                txtCourseName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateForAlphabet(txtCourseName))
+            {
+                txtCourseName.Focus();
                 return;
             }
             if (!clsValidation.ValidateComboBox(cmbCourseLocation))
             {
-                cmbCourseLocation.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtCourseDuration))
+            {
+                txtCourseDuration.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtCourseDuration))
@@ -45,20 +49,24 @@ namespace CourseManagementSystem
                 txtCourseDuration.Focus();
                 return;
             }
+            if (!clsValidation.ValidateTextBoxRange(txtCourseDuration, 100, 200))
+            {
+                txtCourseDuration.Focus();
+                return;
+            }
             if (!clsValidation.ValidateComboBox(cmbCourseSemester))
             {
-                cmbCourseSemester.Focus();
                 return;
             }
-            //dtpStartDate.Format = DateTimePickerFormat.Custom;
-            //dtpStartDate.CustomFormat = "yyyy-MM-dd";
-            if (!clsValidation.ValidateDOB(dtpStartDate))
+            if (!clsValidation.ValidateDate(dtpStartDate))
             {
                 return;
             }
-            //dtpEndDate.Format = DateTimePickerFormat.Custom;
-            //dtpEndDate.CustomFormat = "yyyy-MM-dd";
-            if (!clsValidation.ValidateDOB(dtpEndDate))
+            if (!clsValidation.ValidateDate(dtpEndDate))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateDateStartVsEnd(dtpStartDate, dtpEndDate))
             {
                 return;
             }
@@ -66,14 +74,39 @@ namespace CourseManagementSystem
             {
                 return;
             }
+            if (!clsValidation.ValidateTextBox(txtHoursPerWeek))
+            {
+                txtHoursPerWeek.Focus();
+                return;
+            }
             if (!clsValidation.ValidateTextBoxForNumeric(txtHoursPerWeek))
             {
                 txtHoursPerWeek.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtNumOfUnits))
+            if (!clsValidation.ValidateTextBoxRange(txtHoursPerWeek, 10, 30))
             {
                 txtHoursPerWeek.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtNumOfUnits))
+            {
+                txtNumOfUnits.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxForNumeric(txtNumOfUnits))
+            {
+                txtNumOfUnits.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxRange(txtNumOfUnits, 5, 30))
+            {
+                txtNumOfUnits.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtCourseFee))
+            {
+                txtCourseFee.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtCourseFee))
@@ -81,8 +114,12 @@ namespace CourseManagementSystem
                 txtCourseFee.Focus();
                 return;
             }
+            if (!clsValidation.ValidateTextBoxRange(txtCourseFee, 1000, 6000))
+            {
+                txtCourseFee.Focus();
+                return;
+            }
             #endregion
-
             string courseDelText = String.Empty;
             if (rdbFaceToFace.Checked)
             {
@@ -116,19 +153,23 @@ namespace CourseManagementSystem
         private void mnuUpdate_Click(object sender, EventArgs e)
         {
             #region ValidationArea
-            if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
-            {
-                txtCourseID.Focus();
-                return;
-            }
             if (!clsValidation.ValidateTextBox(txtCourseName))
             {
-                cmbCourseLocation.Focus();
+                txtCourseName.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateForAlphabet(txtCourseName))
+            {
+                txtCourseName.Focus();
                 return;
             }
             if (!clsValidation.ValidateComboBox(cmbCourseLocation))
             {
-                cmbCourseLocation.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtCourseDuration))
+            {
+                txtCourseDuration.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtCourseDuration))
@@ -136,23 +177,34 @@ namespace CourseManagementSystem
                 txtCourseDuration.Focus();
                 return;
             }
+            if (!clsValidation.ValidateTextBoxRange(txtCourseDuration, 100, 200))
+            {
+                txtCourseDuration.Focus();
+                return;
+            }
             if (!clsValidation.ValidateComboBox(cmbCourseSemester))
             {
-                cmbCourseSemester.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpStartDate))
+            if (!clsValidation.ValidateDate(dtpStartDate))
             {
-                dtpStartDate.Focus();
                 return;
             }
-            if (!clsValidation.ValidateDOB(dtpEndDate))
+            if (!clsValidation.ValidateDate(dtpEndDate))
             {
-                dtpEndDate.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateDateStartVsEnd(dtpStartDate, dtpEndDate))
+            {
                 return;
             }
             if (!clsValidation.ValidateRadioButton(rdbFaceToFace, rdbOnline))
             {
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtHoursPerWeek))
+            {
+                txtHoursPerWeek.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBoxForNumeric(txtHoursPerWeek))
@@ -160,12 +212,37 @@ namespace CourseManagementSystem
                 txtHoursPerWeek.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtNumOfUnits))
+            if (!clsValidation.ValidateTextBoxRange(txtHoursPerWeek, 10, 30))
             {
                 txtHoursPerWeek.Focus();
                 return;
             }
+            if (!clsValidation.ValidateTextBox(txtNumOfUnits))
+            {
+                txtNumOfUnits.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxForNumeric(txtNumOfUnits))
+            {
+                txtNumOfUnits.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxRange(txtNumOfUnits, 5, 30))
+            {
+                txtNumOfUnits.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBox(txtCourseFee))
+            {
+                txtCourseFee.Focus();
+                return;
+            }
             if (!clsValidation.ValidateTextBoxForNumeric(txtCourseFee))
+            {
+                txtCourseFee.Focus();
+                return;
+            }
+            if (!clsValidation.ValidateTextBoxRange(txtCourseFee, 1000, 6000))
             {
                 txtCourseFee.Focus();
                 return;
@@ -202,6 +279,24 @@ namespace CourseManagementSystem
             string dateSelected = dtpEndDate.Value.ToString("yyyy-MM-dd");
             dtpEndDate.Format = DateTimePickerFormat.Custom;
             dtpEndDate.CustomFormat = dateSelected;
+        }
+
+        private void mnuClearAll_Click(object sender, EventArgs e)
+        {
+            txtCourseID.Text = String.Empty;
+            txtCourseName.Text = String.Empty;
+            cmbCourseLocation.SelectedIndex = -1;
+            txtCourseDuration.Text = String.Empty;
+            cmbCourseSemester.SelectedIndex = -1;
+            dtpStartDate.Format = DateTimePickerFormat.Custom;
+            dtpStartDate.CustomFormat = " ";
+            dtpEndDate.Format = DateTimePickerFormat.Custom;
+            dtpEndDate.CustomFormat = " ";
+            rdbFaceToFace.Checked = false;
+            rdbOnline.Checked = false;
+            txtHoursPerWeek.Text = String.Empty;
+            txtNumOfUnits.Text = String.Empty;
+            txtCourseFee.Text = String.Empty;
         }
     }
 }

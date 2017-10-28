@@ -410,7 +410,7 @@
             this.txtUnitName.Name = "txtUnitName";
             this.txtUnitName.Size = new System.Drawing.Size(302, 26);
             this.txtUnitName.TabIndex = 102;
-            this.txtUnitName.Tag = "Unit ID";
+            this.txtUnitName.Tag = "Unit Name";
             // 
             // UnitForm
             // 
