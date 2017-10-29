@@ -251,12 +251,7 @@ namespace CourseManagementSystem
         }
         #endregion
 
-        /// <summary>
-        /// This method connects to the database and runs the stored procedure InsertStudent. 
-        /// The procedure holds the query for inserting the student values into the student table. 
-        /// INSERT INTO student VALUES(@fname, @lname, @gender, @dob, @staddress, @suburb, @postcode, @phoneno, @email, @nat, @dis, @disdetails);
-        /// </summary>
-        /// <returns></returns>
+        #region Old code
         //public bool AddStudent()
         //{
         //    SqlConnection objConnection = clsDatabase.CreateConnection();
@@ -278,12 +273,6 @@ namespace CourseManagementSystem
         //    return true;
         //}
 
-        /// <summary>
-        /// This method connects to the database and runs the stored procedure DeleteStudent.
-        /// The procedure deletes a student from the table based on the ID that is passsed through.
-        /// DELETE FROM student WHERE StudentID = @sid;
-        /// </summary>
-        /// <returns></returns>
         public bool DeleteStudent()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
@@ -292,17 +281,11 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@sid", studentID);
             objCommand.CommandType = CommandType.StoredProcedure;
             SqlDataReader objDataReader = objCommand.ExecuteReader();
+            objConnection.Close();
             return true;
         }
 
-        /// <summary>
-        /// This method connects to the database and runs the stored procedure UpdateStudent.
-        /// The procedure updates a student with the values passed in based on the chosen ID.
-        /// UPDATE student SET StudentFirstName = @fname, StudentLastName = @lname, StudentGender = @gender, StudentDOB = @dob, 
-        /// StudentStreetAddress = @staddress, StudentSuburb = @suburb, StudentPostCode = @postcode, StudentPhoneNo = @phoneno, 
-        /// StudentEmail = @email, StudentNationality = @nat, Disability = @dis, DisabilityDescription = @disdetails WHERE StudentID = @sid;
-        /// </summary>
-        /// <returns></returns>
+
         public bool UpdateStudent()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
@@ -322,17 +305,11 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@disdetails", DisabilityDescription);
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.ExecuteNonQuery();
+            objConnection.Close();
             return true;
         }
 
-        /// <summary>
-        /// This method connects to the database and runs the stored procedure SearchStudent.
-        /// The procedure selects a student based on the chosen ID and uses a DataReader to read
-        /// the values from the table in the database. These values change the attributes within this class
-        /// which the Form then uses to fill in the GUI elements.
-        /// SELECT * FROM student WHERE StudentID = @sid;
-        /// </summary>
-        /// <returns></returns>
+
         public bool SearchStudent()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
@@ -355,6 +332,7 @@ namespace CourseManagementSystem
                 nationality = objDataReader[10].ToString();
                 disability = objDataReader[11].ToString();
                 disabilityDescription = objDataReader[12].ToString();
+                objConnection.Close();
                 return true;
             }
             else
@@ -362,7 +340,14 @@ namespace CourseManagementSystem
                 return false;
             }
         }
+        #endregion
 
+        /// <summary>
+        /// This method connects to the database and runs the stored procedure InsertStudent. 
+        /// The procedure holds the query for inserting the student values into the student table. 
+        /// INSERT INTO student VALUES(@fname, @lname, @gender, @dob, @staddress, @suburb, @postcode, @phoneno, @email, @nat, @dis, @disdetails);
+        /// </summary>
+        /// <returns></returns>
         public bool Add()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
@@ -381,7 +366,144 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@disdetails", DisabilityDescription);
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.ExecuteNonQuery();
+            objConnection.Close();
             return true;
+        }
+
+        /// <summary>
+        /// This method connects to the database and runs the stored procedure DeleteStudent.
+        /// The procedure deletes a student from the table based on the ID that is passsed through.
+        /// DELETE FROM student WHERE StudentID = @sid;
+        /// </summary>
+        /// <returns></returns>
+        public bool Delete()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("DeleteStudent", objConnection);
+
+            objCommand.Parameters.AddWithValue("@sid", studentID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+            objConnection.Close();
+            return true;
+        }
+
+        /// <summary>
+        /// This method connects to the database and runs the stored procedure UpdateStudent.
+        /// The procedure updates a student with the values passed in based on the chosen ID.
+        /// UPDATE student SET StudentFirstName = @fname, StudentLastName = @lname, StudentGender = @gender, StudentDOB = @dob, 
+        /// StudentStreetAddress = @staddress, StudentSuburb = @suburb, StudentPostCode = @postcode, StudentPhoneNo = @phoneno, 
+        /// StudentEmail = @email, StudentNationality = @nat, Disability = @dis, DisabilityDescription = @disdetails WHERE StudentID = @sid;
+        /// </summary>
+        /// <returns></returns>
+        public bool Update()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("UpdateStudent", objConnection);
+            objCommand.Parameters.AddWithValue("@sid", StudentID);
+            objCommand.Parameters.AddWithValue("@fname", FirstName);
+            objCommand.Parameters.AddWithValue("@lname", LastName);
+            objCommand.Parameters.AddWithValue("@gender", Gender);
+            objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
+            objCommand.Parameters.AddWithValue("@staddress", StreetAddress);
+            objCommand.Parameters.AddWithValue("@suburb", Suburb);
+            objCommand.Parameters.AddWithValue("@postcode", PostCode);
+            objCommand.Parameters.AddWithValue("@phoneno", PhoneNumber);
+            objCommand.Parameters.AddWithValue("@email", Email);
+            objCommand.Parameters.AddWithValue("@nat", Nationality);
+            objCommand.Parameters.AddWithValue("@dis", Disability);
+            objCommand.Parameters.AddWithValue("@disdetails", DisabilityDescription);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.ExecuteNonQuery();
+            objConnection.Close();
+            return true;
+        }
+
+        /// <summary>
+        /// This method connects to the database and runs the stored procedure SearchStudent.
+        /// The procedure selects a student based on the chosen ID and uses a DataReader to read
+        /// the values from the table in the database. These values change the attributes within this class
+        /// which the Form then uses to fill in the GUI elements.
+        /// SELECT * FROM student WHERE StudentID = @sid;
+        /// </summary>
+        /// <returns></returns>
+        public bool Search()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("SearchStudent", objConnection);
+            objCommand.Parameters.AddWithValue("@sid", StudentID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+
+            if (objDataReader.Read())
+            {
+                firstName = objDataReader[1].ToString();
+                lastName = objDataReader[2].ToString();
+                gender = objDataReader[3].ToString();
+                dateOfBirth = objDataReader[4].ToString();
+                streetAddress = objDataReader[5].ToString();
+                suburb = objDataReader[6].ToString();
+                postCode = objDataReader[7].ToString();
+                phoneNumber = objDataReader[8].ToString();
+                email = objDataReader[9].ToString();
+                nationality = objDataReader[10].ToString();
+                disability = objDataReader[11].ToString();
+                disabilityDescription = objDataReader[12].ToString();
+                objConnection.Close();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ViewAll(DataGridView dgv)
+        {
+            string strConnection = "server=localhost;database=randomdb;Trusted_Connection=yes";
+            SqlConnection objConnection = new SqlConnection(strConnection);
+            //SqlConnection objConnection = clsDatabase.CreateConnection();
+            objConnection.Open();
+
+            string strSQL = "select * from student";
+            SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
+
+            DataTable objDataTable = new DataTable();
+            objDataAdapter.Fill(objDataTable);
+
+            if (objDataTable.Rows.Count != 0)
+            {
+                dgv.DataSource = null;
+                dgv.DataSource = objDataTable;
+                dgv.AutoGenerateColumns = false;
+                dgv.Columns[0].HeaderText = "Student ID";
+                dgv.Columns[1].HeaderText = "First Name";
+                dgv.Columns[2].HeaderText = "Last Name";
+                dgv.Columns[3].HeaderText = "Gender";
+                dgv.Columns[4].HeaderText = "D.O.B.";
+                dgv.Columns[5].HeaderText = "Street Address";
+                dgv.Columns[6].HeaderText = "Suburb";
+                dgv.Columns[7].HeaderText = "Post Code";
+                dgv.Columns[8].HeaderText = "Phone No.";
+                dgv.Columns[9].HeaderText = "Email";
+                dgv.Columns[10].HeaderText = "Nationality";
+                dgv.Columns[11].HeaderText = "Disability";
+                dgv.Columns[12].HeaderText = "Disability Description";
+                dgv.AutoResizeColumns();
+                dgv.AutoSize = false;
+                dgv.Visible = true;
+                objConnection.Close();
+            }
+            else
+            {
+                MessageBox.Show("There are no students");
+                objConnection.Close();
+            }
+        }
+
+        public void Load(ComboBox[] cmb)
+        {
+
         }
     }
 }

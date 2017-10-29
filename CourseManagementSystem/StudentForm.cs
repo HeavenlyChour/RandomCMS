@@ -202,7 +202,7 @@ namespace CourseManagementSystem
                 return;
             }
             clsStudent objStudent = new clsStudent(Convert.ToInt32(txtStudentID.Text));
-            objStudent.DeleteStudent();
+            objStudent.Delete();
             MessageBox.Show("Student record successfully deleted");
         }
 
@@ -353,7 +353,7 @@ namespace CourseManagementSystem
                   txtStudentLastName.Text, dtpDateOfBirth.Value.ToString("yyyy-MM-dd"), genderText, txtStudStreetAddress.Text,
                   cmbStudSuburb.Text, txtStudPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
                   cmbNationality.Text, disabilityText, txtDisabilityDescription.Text);
-            objStudent.UpdateStudent();
+            objStudent.Update();
             MessageBox.Show("Student record successfully updated!");
         }
 
@@ -446,7 +446,7 @@ namespace CourseManagementSystem
             }
             clsStudent objStudent = new clsStudent(Convert.ToInt32(txtStudentID.Text));
             
-            bool valid = objStudent.SearchStudent();
+            bool valid = objStudent.Search();
             if (valid)
             {
                 txtStudentFirstName.Text = objStudent.FirstName;
@@ -490,42 +490,47 @@ namespace CourseManagementSystem
         /// <param name="e"></param>
         private void mnuViewAll_Click(object sender, EventArgs e)
         {
-            string strConnection = "server=localhost;database=randomdb;Trusted_Connection=yes";
-            SqlConnection objConnection = new SqlConnection(strConnection);
-            objConnection.Open();
+            clsStudent objStudent = new clsStudent();
+            objStudent.ViewAll(dgvStudent);
 
-            string strSQL = "select * from student";
-            SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
+            #region Not used
+            //string strConnection = "server=localhost;database=randomdb;Trusted_Connection=yes";
+            //SqlConnection objConnection = new SqlConnection(strConnection);
+            //objConnection.Open();
 
-            DataTable objDataTable = new DataTable();
-            objDataAdapter.Fill(objDataTable);
+            //string strSQL = "select * from student";
+            //SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
 
-            if(objDataTable.Rows.Count != 0)
-            {
-                dgvStudent.DataSource = null;
-                dgvStudent.DataSource = objDataTable;
-                dgvStudent.AutoGenerateColumns = false;
-                dgvStudent.Columns[0].HeaderText = "Student ID";
-                dgvStudent.Columns[1].HeaderText = "First Name";
-                dgvStudent.Columns[2].HeaderText = "Last Name";
-                dgvStudent.Columns[3].HeaderText = "Gender";
-                dgvStudent.Columns[4].HeaderText = "D.O.B.";
-                dgvStudent.Columns[5].HeaderText = "Street Address";
-                dgvStudent.Columns[6].HeaderText = "Suburb";
-                dgvStudent.Columns[7].HeaderText = "Post Code";
-                dgvStudent.Columns[8].HeaderText = "Phone No.";
-                dgvStudent.Columns[9].HeaderText = "Email";
-                dgvStudent.Columns[10].HeaderText = "Nationality";
-                dgvStudent.Columns[11].HeaderText = "Disability";
-                dgvStudent.Columns[12].HeaderText = "Disability Description";
-                dgvStudent.AutoResizeColumns();
-                dgvStudent.AutoSize = false;
-                dgvStudent.Visible = true;
-            }
-            else
-            {
-                MessageBox.Show("There are no students");
-            }
+            //DataTable objDataTable = new DataTable();
+            //objDataAdapter.Fill(objDataTable);
+
+            //if (objDataTable.Rows.Count != 0)
+            //{
+            //    dgvStudent.DataSource = null;
+            //    dgvStudent.DataSource = objDataTable;
+            //    dgvStudent.AutoGenerateColumns = false;
+            //    dgvStudent.Columns[0].HeaderText = "Student ID";
+            //    dgvStudent.Columns[1].HeaderText = "First Name";
+            //    dgvStudent.Columns[2].HeaderText = "Last Name";
+            //    dgvStudent.Columns[3].HeaderText = "Gender";
+            //    dgvStudent.Columns[4].HeaderText = "D.O.B.";
+            //    dgvStudent.Columns[5].HeaderText = "Street Address";
+            //    dgvStudent.Columns[6].HeaderText = "Suburb";
+            //    dgvStudent.Columns[7].HeaderText = "Post Code";
+            //    dgvStudent.Columns[8].HeaderText = "Phone No.";
+            //    dgvStudent.Columns[9].HeaderText = "Email";
+            //    dgvStudent.Columns[10].HeaderText = "Nationality";
+            //    dgvStudent.Columns[11].HeaderText = "Disability";
+            //    dgvStudent.Columns[12].HeaderText = "Disability Description";
+            //    dgvStudent.AutoResizeColumns();
+            //    dgvStudent.AutoSize = false;
+            //    dgvStudent.Visible = true;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("There are no students");
+            //}
+            #endregion
         }
     }
 }

@@ -46,19 +46,21 @@
             this.lblAssessmentID = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvAssessment = new System.Windows.Forms.DataGridView();
             this.lblUnitID = new System.Windows.Forms.Label();
-            this.txtUnitID = new System.Windows.Forms.TextBox();
-            this.txtTeacherID = new System.Windows.Forms.TextBox();
             this.lblTeacherID = new System.Windows.Forms.Label();
-            this.lblAEndDate = new System.Windows.Forms.Label();
+            this.lblADueDate = new System.Windows.Forms.Label();
             this.lblAStartDate = new System.Windows.Forms.Label();
             this.lblAssessmentName = new System.Windows.Forms.Label();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
             this.txtAssessmentName = new System.Windows.Forms.TextBox();
-            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmbUnitID = new System.Windows.Forms.ComboBox();
+            this.cmbTeacherID = new System.Windows.Forms.ComboBox();
+            this.txtUnitID = new System.Windows.Forms.TextBox();
+            this.txtTeacherID = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssessment)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +87,7 @@
             this.btnSearch.TabIndex = 109;
             this.AssessmentToolTip.SetToolTip(this.btnSearch, "Press to search");
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // mnuCourseForm
             // 
@@ -152,6 +155,7 @@
             this.mnuViewAll.Size = new System.Drawing.Size(166, 22);
             this.mnuViewAll.Text = "View All";
             this.mnuViewAll.ToolTipText = "View All record";
+            this.mnuViewAll.Click += new System.EventHandler(this.mnuViewAll_Click);
             // 
             // mnuUpdate
             // 
@@ -231,6 +235,24 @@
             this.mnuFile.Text = "File";
             this.mnuFile.ToolTipText = "Press to add, delete, update or view all";
             // 
+            // mnuEdit
+            // 
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuClearAll});
+            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuClearAll
+            // 
+            this.mnuClearAll.Name = "mnuClearAll";
+            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
+            this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
+            // 
             // dgvAssessment
             // 
             this.dgvAssessment.BackgroundColor = System.Drawing.SystemColors.HighlightText;
@@ -253,24 +275,6 @@
             this.lblUnitID.TabIndex = 101;
             this.lblUnitID.Text = "Unit ID:";
             // 
-            // txtUnitID
-            // 
-            this.txtUnitID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnitID.Location = new System.Drawing.Point(278, 177);
-            this.txtUnitID.Name = "txtUnitID";
-            this.txtUnitID.Size = new System.Drawing.Size(176, 26);
-            this.txtUnitID.TabIndex = 2;
-            this.txtUnitID.Tag = "Unit ID";
-            // 
-            // txtTeacherID
-            // 
-            this.txtTeacherID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherID.Location = new System.Drawing.Point(278, 209);
-            this.txtTeacherID.Name = "txtTeacherID";
-            this.txtTeacherID.Size = new System.Drawing.Size(176, 26);
-            this.txtTeacherID.TabIndex = 3;
-            this.txtTeacherID.Tag = "Teacher ID";
-            // 
             // lblTeacherID
             // 
             this.lblTeacherID.AutoSize = true;
@@ -283,17 +287,17 @@
             this.lblTeacherID.TabIndex = 116;
             this.lblTeacherID.Text = "Teacher ID:";
             // 
-            // lblAEndDate
+            // lblADueDate
             // 
-            this.lblAEndDate.AutoSize = true;
-            this.lblAEndDate.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblAEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAEndDate.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblAEndDate.Location = new System.Drawing.Point(158, 312);
-            this.lblAEndDate.Name = "lblAEndDate";
-            this.lblAEndDate.Size = new System.Drawing.Size(95, 20);
-            this.lblAEndDate.TabIndex = 122;
-            this.lblAEndDate.Text = "End  Date:";
+            this.lblADueDate.AutoSize = true;
+            this.lblADueDate.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.lblADueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblADueDate.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.lblADueDate.Location = new System.Drawing.Point(170, 312);
+            this.lblADueDate.Name = "lblADueDate";
+            this.lblADueDate.Size = new System.Drawing.Size(91, 20);
+            this.lblADueDate.TabIndex = 122;
+            this.lblADueDate.Text = "Due Date:";
             // 
             // lblAStartDate
             // 
@@ -301,7 +305,7 @@
             this.lblAStartDate.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblAStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAStartDate.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblAStartDate.Location = new System.Drawing.Point(158, 280);
+            this.lblAStartDate.Location = new System.Drawing.Point(163, 280);
             this.lblAStartDate.Name = "lblAStartDate";
             this.lblAStartDate.Size = new System.Drawing.Size(98, 20);
             this.lblAStartDate.TabIndex = 120;
@@ -331,17 +335,17 @@
             this.dtpStartDate.Tag = "Start Date";
             this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
             // 
-            // dtpEndDate
+            // dtpDueDate
             // 
-            this.dtpEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpEndDate.Location = new System.Drawing.Point(278, 307);
-            this.dtpEndDate.MaxDate = new System.DateTime(4000, 12, 31, 0, 0, 0, 0);
-            this.dtpEndDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(275, 26);
-            this.dtpEndDate.TabIndex = 6;
-            this.dtpEndDate.Tag = "End Date";
-            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
+            this.dtpDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDueDate.Location = new System.Drawing.Point(278, 307);
+            this.dtpDueDate.MaxDate = new System.DateTime(4000, 12, 31, 0, 0, 0, 0);
+            this.dtpDueDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpDueDate.Name = "dtpDueDate";
+            this.dtpDueDate.Size = new System.Drawing.Size(275, 26);
+            this.dtpDueDate.TabIndex = 6;
+            this.dtpDueDate.Tag = "Due Date";
+            this.dtpDueDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             // 
             // txtAssessmentName
             // 
@@ -352,23 +356,45 @@
             this.txtAssessmentName.TabIndex = 4;
             this.txtAssessmentName.Tag = "Assessment Name";
             // 
-            // mnuEdit
+            // cmbUnitID
             // 
-            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuClearAll});
-            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
-            this.mnuEdit.Text = "Edit";
+            this.cmbUnitID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbUnitID.FormattingEnabled = true;
+            this.cmbUnitID.Location = new System.Drawing.Point(278, 176);
+            this.cmbUnitID.Name = "cmbUnitID";
+            this.cmbUnitID.Size = new System.Drawing.Size(176, 28);
+            this.cmbUnitID.TabIndex = 2;
+            this.cmbUnitID.Tag = "Unit ID";
             // 
-            // mnuClearAll
+            // cmbTeacherID
             // 
-            this.mnuClearAll.Name = "mnuClearAll";
-            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.C)));
-            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
-            this.mnuClearAll.Text = "Clear All";
-            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
+            this.cmbTeacherID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTeacherID.FormattingEnabled = true;
+            this.cmbTeacherID.Location = new System.Drawing.Point(278, 208);
+            this.cmbTeacherID.Name = "cmbTeacherID";
+            this.cmbTeacherID.Size = new System.Drawing.Size(176, 28);
+            this.cmbTeacherID.TabIndex = 3;
+            this.cmbTeacherID.Tag = "Teacher ID";
+            // 
+            // txtUnitID
+            // 
+            this.txtUnitID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnitID.Location = new System.Drawing.Point(460, 177);
+            this.txtUnitID.Name = "txtUnitID";
+            this.txtUnitID.ReadOnly = true;
+            this.txtUnitID.Size = new System.Drawing.Size(35, 26);
+            this.txtUnitID.TabIndex = 123;
+            this.txtUnitID.Tag = "Unit ID";
+            // 
+            // txtTeacherID
+            // 
+            this.txtTeacherID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTeacherID.Location = new System.Drawing.Point(460, 209);
+            this.txtTeacherID.Name = "txtTeacherID";
+            this.txtTeacherID.ReadOnly = true;
+            this.txtTeacherID.Size = new System.Drawing.Size(35, 26);
+            this.txtTeacherID.TabIndex = 124;
+            this.txtTeacherID.Tag = "Teacher ID";
             // 
             // AssessmentForm
             // 
@@ -377,15 +403,17 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 546);
+            this.Controls.Add(this.txtTeacherID);
+            this.Controls.Add(this.txtUnitID);
+            this.Controls.Add(this.cmbTeacherID);
+            this.Controls.Add(this.cmbUnitID);
             this.Controls.Add(this.txtAssessmentName);
-            this.Controls.Add(this.dtpEndDate);
+            this.Controls.Add(this.dtpDueDate);
             this.Controls.Add(this.dtpStartDate);
-            this.Controls.Add(this.lblAEndDate);
+            this.Controls.Add(this.lblADueDate);
             this.Controls.Add(this.lblAStartDate);
             this.Controls.Add(this.lblAssessmentName);
-            this.Controls.Add(this.txtTeacherID);
             this.Controls.Add(this.lblTeacherID);
-            this.Controls.Add(this.txtUnitID);
             this.Controls.Add(this.txtAssessmentID);
             this.Controls.Add(this.lblAssessmentForm);
             this.Controls.Add(this.lblAssessmentID);
@@ -397,6 +425,7 @@
             this.Name = "AssessmentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Assessment Form";
+            this.Load += new System.EventHandler(this.AssessmentForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssessment)).EndInit();
@@ -425,16 +454,18 @@
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.DataGridView dgvAssessment;
         private System.Windows.Forms.Label lblUnitID;
-        private System.Windows.Forms.TextBox txtUnitID;
-        private System.Windows.Forms.TextBox txtTeacherID;
         private System.Windows.Forms.Label lblTeacherID;
-        private System.Windows.Forms.Label lblAEndDate;
+        private System.Windows.Forms.Label lblADueDate;
         private System.Windows.Forms.Label lblAStartDate;
         private System.Windows.Forms.Label lblAssessmentName;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
-        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.DateTimePicker dtpDueDate;
         private System.Windows.Forms.TextBox txtAssessmentName;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
+        private System.Windows.Forms.ComboBox cmbUnitID;
+        private System.Windows.Forms.ComboBox cmbTeacherID;
+        private System.Windows.Forms.TextBox txtUnitID;
+        private System.Windows.Forms.TextBox txtTeacherID;
     }
 }

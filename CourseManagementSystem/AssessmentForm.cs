@@ -19,25 +19,18 @@ namespace CourseManagementSystem
 
             dtpStartDate.Format = DateTimePickerFormat.Custom;
             dtpStartDate.CustomFormat = " ";
-            dtpEndDate.Format = DateTimePickerFormat.Custom;
-            dtpEndDate.CustomFormat = " ";
+            dtpDueDate.Format = DateTimePickerFormat.Custom;
+            dtpDueDate.CustomFormat = " ";
         }
 
         private void mnuAdd_Click(object sender, EventArgs e)
         {
-            if (!clsValidation.ValidateTextBox(txtUnitID))
+            if (!clsValidation.ValidateComboBox(cmbUnitID))
             {
-                txtUnitID.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtUnitID))
+            if (!clsValidation.ValidateComboBox(cmbTeacherID))
             {
-                txtUnitID.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBox(txtTeacherID))
-            {
-                txtTeacherID.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBox(txtAssessmentName))
@@ -54,18 +47,18 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateDate(dtpEndDate))
+            if (!clsValidation.ValidateDate(dtpDueDate))
             {
                 return;
             }
-            if (!clsValidation.ValidateDateStartVsEnd(dtpStartDate, dtpEndDate))
+            if (!clsValidation.ValidateDateStartVsEnd(dtpStartDate, dtpDueDate))
             {
                 return;
             }
-            clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtUnitID.Text), Convert.ToInt32(txtTeacherID.Text), 
-                txtAssessmentName.Text, dtpStartDate.Value.Date, dtpEndDate.Value.Date);
+            clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(cmbUnitID.Text), Convert.ToInt32(cmbTeacherID.Text), 
+                txtAssessmentName.Text, dtpStartDate.Value.ToString("yyyy-MM-dd"), dtpDueDate.Value.ToString("yyyy-MM-dd"));
 
-            objAssessment.AddAssessment();
+            objAssessment.Add();
             MessageBox.Show("Assessment successfully added");
         }
 
@@ -79,7 +72,7 @@ namespace CourseManagementSystem
 
             clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text));
 
-            objAssessment.DeleteAssessment();
+            objAssessment.Delete();
             MessageBox.Show("Assessment successfully deleted");
         }
 
@@ -90,14 +83,12 @@ namespace CourseManagementSystem
                 txtAssessmentID.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtUnitID))
+            if (!clsValidation.ValidateComboBox(cmbUnitID))
             {
-                txtUnitID.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtTeacherID))
+            if (!clsValidation.ValidateComboBox(cmbTeacherID))
             {
-                txtTeacherID.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBox(txtAssessmentName))
@@ -109,18 +100,19 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateDate(dtpEndDate))
+            if (!clsValidation.ValidateDate(dtpDueDate))
             {
                 return;
             }
-            if (!clsValidation.ValidateDateStartVsEnd(dtpStartDate, dtpEndDate))
+            if (!clsValidation.ValidateDateStartVsEnd(dtpStartDate, dtpDueDate))
             {
                 return;
             }
-            clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text), Convert.ToInt32(txtUnitID.Text), Convert.ToInt32(txtTeacherID.Text),
-                txtAssessmentName.Text, dtpStartDate.Value.Date, dtpEndDate.Value.Date);
+            clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text), 
+                Convert.ToInt32(cmbUnitID.Text), Convert.ToInt32(cmbTeacherID.Text), txtAssessmentName.Text, 
+                dtpStartDate.Value.ToString("yyyy-MM-dd"), dtpDueDate.Value.ToString("yyyy-MM-dd"));
 
-            objAssessment.UpdateAssessment();
+            objAssessment.Update();
             MessageBox.Show("Assessment successfully updated");
         }
 
@@ -133,23 +125,56 @@ namespace CourseManagementSystem
 
         private void dtpEndDate_ValueChanged(object sender, EventArgs e)
         {
-            string dateSelected = dtpEndDate.Value.ToString("yyyy-MM-dd");
-            dtpEndDate.Format = DateTimePickerFormat.Custom;
-            dtpEndDate.CustomFormat = dateSelected;
+            string dateSelected = dtpDueDate.Value.ToString("yyyy-MM-dd");
+            dtpDueDate.Format = DateTimePickerFormat.Custom;
+            dtpDueDate.CustomFormat = dateSelected;
         }
 
         private void mnuClearAll_Click(object sender, EventArgs e)
         {
             txtAssessmentID.Text = String.Empty;
-            txtUnitID.Text = String.Empty;
-            txtTeacherID.Text = String.Empty;
+            cmbUnitID.Text = String.Empty;
+            cmbTeacherID.Text = String.Empty;
             txtAssessmentName.Text = String.Empty;
             dtpStartDate.Text = String.Empty;
-            dtpEndDate.Text = String.Empty;
+            dtpDueDate.Text = String.Empty;
             dtpStartDate.Format = DateTimePickerFormat.Custom;
             dtpStartDate.CustomFormat = " ";
-            dtpEndDate.Format = DateTimePickerFormat.Custom;
-            dtpEndDate.CustomFormat = " ";
+            dtpDueDate.Format = DateTimePickerFormat.Custom;
+            dtpDueDate.CustomFormat = " ";
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateTextBoxForNumeric(txtAssessmentID))
+            {
+                txtAssessmentID.Focus();
+                return;
+            }
+            clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text));
+            bool valid = objAssessment.Search();
+            if (valid)
+            {
+                
+                cmbUnitID.Text = objAssessment.UnitID.ToString();
+                cmbTeacherID.Text = objAssessment.TeacherID.ToString();
+                txtAssessmentName.Text = objAssessment.AssessmentName;
+                dtpStartDate.Value = DateTime.Parse(objAssessment.StartDate);
+                dtpDueDate.Value = DateTime.Parse(objAssessment.DueDate);
+            }
+        }
+
+        private void mnuViewAll_Click(object sender, EventArgs e)
+        {
+            clsAssessment objAssessment = new clsAssessment();
+            objAssessment.ViewAll(dgvAssessment);
+        }
+
+        private void AssessmentForm_Load(object sender, EventArgs e)
+        {
+            clsAssessment objAssessment = new clsAssessment();
+            ComboBox[] cmb = new ComboBox[] {cmbUnitID, cmbTeacherID };
+            objAssessment.Load(cmb);
         }
     }
 }

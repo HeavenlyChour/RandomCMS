@@ -56,6 +56,8 @@
             this.lblCourseForm = new System.Windows.Forms.Label();
             this.lblCourseID = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.lblCourseDelivery = new System.Windows.Forms.Label();
             this.lblCourseFee = new System.Windows.Forms.Label();
             this.lblCStartDate = new System.Windows.Forms.Label();
@@ -66,8 +68,6 @@
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.txtCourseName = new System.Windows.Forms.TextBox();
             this.txtCourseFee = new System.Windows.Forms.TextBox();
-            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlCourseDelivery = new System.Windows.Forms.Panel();
             this.rdbFaceToFace = new System.Windows.Forms.RadioButton();
             this.rdbOnline = new System.Windows.Forms.RadioButton();
@@ -111,6 +111,7 @@
             this.btnSearch.TabIndex = 60;
             this.CourseToolTip.SetToolTip(this.btnSearch, "Press to search");
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtNumOfUnits
             // 
@@ -211,6 +212,7 @@
             this.mnuViewAll.Size = new System.Drawing.Size(166, 22);
             this.mnuViewAll.Text = "View All";
             this.mnuViewAll.ToolTipText = "View All record";
+            this.mnuViewAll.Click += new System.EventHandler(this.mnuViewAll_Click);
             // 
             // mnuNavigate
             // 
@@ -354,6 +356,24 @@
             this.menuStrip1.TabIndex = 59;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // mnuEdit
+            // 
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuClearAll});
+            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuClearAll
+            // 
+            this.mnuClearAll.Name = "mnuClearAll";
+            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
+            this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
+            // 
             // lblCourseDelivery
             // 
             this.lblCourseDelivery.AutoSize = true;
@@ -464,24 +484,6 @@
             this.txtCourseFee.Size = new System.Drawing.Size(113, 26);
             this.txtCourseFee.TabIndex = 77;
             this.txtCourseFee.Tag = "Course Fee";
-            // 
-            // mnuEdit
-            // 
-            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuClearAll});
-            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
-            this.mnuEdit.Text = "Edit";
-            // 
-            // mnuClearAll
-            // 
-            this.mnuClearAll.Name = "mnuClearAll";
-            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.C)));
-            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
-            this.mnuClearAll.Text = "Clear All";
-            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
             // 
             // pnlCourseDelivery
             // 

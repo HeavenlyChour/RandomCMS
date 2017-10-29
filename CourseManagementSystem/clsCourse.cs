@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 using DatabaseClass;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace CourseManagementSystem
 {
-    class clsCourse
+    class clsCourse : ILogic
     {
         private int courseID;
         private string courseName;
         private string courseLocation;
         private int courseDuration;
         private string courseSemester;
-        private DateTime startDate;
-        private DateTime endDate;
+        private string startDate;
+        private string endDate;
+        //private DateTime startDate;
+        //private DateTime endDate;
         private string courseDelivery;
         private int hoursPerWeek;
         private int noOfUnits;
@@ -33,7 +36,7 @@ namespace CourseManagementSystem
             this.CourseID = courseID;
         }
 
-        public clsCourse(string courseName, string courseLocation, int courseDuration, string courseSemester, DateTime startDate, DateTime endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, int courseFee)
+        public clsCourse(string courseName, string courseLocation, int courseDuration, string courseSemester, string startDate, string endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, int courseFee)
         {
             this.CourseName = courseName;
             this.CourseLocation = courseLocation;
@@ -47,7 +50,7 @@ namespace CourseManagementSystem
             this.CourseFee = courseFee;
         }
 
-        public clsCourse(int courseID, string courseName, string courseLocation, int courseDuration, string courseSemester, DateTime startDate, DateTime endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, int courseFee)
+        public clsCourse(int courseID, string courseName, string courseLocation, int courseDuration, string courseSemester, string startDate, string endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, int courseFee)
         {
             this.CourseID = courseID;
             this.CourseName = courseName;
@@ -128,7 +131,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public DateTime StartDate
+        public string StartDate
         {
             get
             {
@@ -141,7 +144,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public DateTime EndDate
+        public string EndDate
         {
             get
             {
@@ -208,12 +211,13 @@ namespace CourseManagementSystem
         #endregion
 
 
-        public bool AddCourse()
+        public bool Add()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("InsertCourse", objConnection);
             objCommand.Parameters.AddWithValue("@cname", CourseName);
             objCommand.Parameters.AddWithValue("@cloc", CourseLocation);
+            objCommand.Parameters.AddWithValue("@csdur", CourseDuration);
             objCommand.Parameters.AddWithValue("@csem", CourseSemester);
             objCommand.Parameters.AddWithValue("@sdate", StartDate);
             objCommand.Parameters.AddWithValue("@edate", EndDate);
@@ -226,7 +230,7 @@ namespace CourseManagementSystem
             return true;
         }
 
-        public bool DeleteCourse()
+        public bool Delete()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("DeleteCourse", objConnection);
@@ -237,13 +241,14 @@ namespace CourseManagementSystem
             return true;
         }
 
-        public bool UpdateCourse()
+        public bool Update()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("UpdateStudent", objConnection);
             objCommand.Parameters.AddWithValue("@cid", CourseID);
             objCommand.Parameters.AddWithValue("@cname", CourseName);
             objCommand.Parameters.AddWithValue("@cloc", CourseLocation);
+            objCommand.Parameters.AddWithValue("@csdur", CourseDuration);
             objCommand.Parameters.AddWithValue("@csem", CourseSemester);
             objCommand.Parameters.AddWithValue("@sdate", StartDate);
             objCommand.Parameters.AddWithValue("@edate", EndDate);
@@ -254,6 +259,82 @@ namespace CourseManagementSystem
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.ExecuteNonQuery();
             return true;
+        }
+
+        public bool Search()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("SearchCourse", objConnection);
+            objCommand.Parameters.AddWithValue("@cid", CourseID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+
+            if (objDataReader.Read())
+            {
+                //courseID = objDataReader[0].ToString();
+                courseName = objDataReader[1].ToString();
+                courseLocation = objDataReader[2].ToString();
+                courseDuration = Convert.ToInt32(objDataReader[3]);
+                courseSemester = objDataReader[4].ToString();
+                startDate = objDataReader[5].ToString();
+                endDate = objDataReader[6].ToString();
+                courseDelivery = objDataReader[7].ToString();
+                hoursPerWeek = Convert.ToInt32(objDataReader[8]);
+                noOfUnits = Convert.ToInt32(objDataReader[9]);
+                courseFee = Convert.ToInt32(objDataReader[10]);
+                objConnection.Close();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
+
+        public void ViewAll(DataGridView dgv)
+        {
+            string strConnection = "server=localhost;database=randomdb;Trusted_Connection=yes";
+            SqlConnection objConnection = new SqlConnection(strConnection);
+            //SqlConnection objConnection = clsDatabase.CreateConnection();
+            objConnection.Open();
+
+            string strSQL = "select * from course";
+            SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
+
+            DataTable objDataTable = new DataTable();
+            objDataAdapter.Fill(objDataTable);
+
+            if (objDataTable.Rows.Count != 0)
+            {
+                dgv.DataSource = null;
+                dgv.DataSource = objDataTable;
+                dgv.AutoGenerateColumns = false;
+                dgv.Columns[0].HeaderText = "Course ID";
+                dgv.Columns[1].HeaderText = "Course Name";
+                dgv.Columns[2].HeaderText = "Course Location";
+                dgv.Columns[3].HeaderText = "Course Duration";
+                dgv.Columns[4].HeaderText = "Course Semester";
+                dgv.Columns[5].HeaderText = "Start Date";
+                dgv.Columns[6].HeaderText = "End Date";
+                dgv.Columns[7].HeaderText = "Delivery";
+                dgv.Columns[8].HeaderText = "Hrs/Week";
+                dgv.Columns[9].HeaderText = "No. of Units";
+                dgv.Columns[10].HeaderText = "Course Fee";
+                dgv.AutoResizeColumns();
+                dgv.AutoSize = false;
+                dgv.Visible = true;
+                objConnection.Close();
+            }
+            else
+            {
+                MessageBox.Show("There are no courses");
+                objConnection.Close();
+            }
+        }
+
+        public void Load(ComboBox[] cmb)
+        {
+
         }
     }
 }
