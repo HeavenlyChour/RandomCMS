@@ -503,7 +503,23 @@ namespace CourseManagementSystem
 
         public void Load(ComboBox[] cmb)
         {
+            string strSql = "select * from suburb";
+            clsDatabase.CreateConnection();
+            DataTable objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[0].DataSource = objDataTable;
+            cmb[0].DisplayMember = "suburbname";
+            cmb[0].ValueMember = "suburbid";
+            cmb[0].SelectedIndex = -1;
+            cmb[0].Text = "Select a suburb";
 
+            objDataTable = null;
+            strSql = "select * from country";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[1].DataSource = objDataTable;
+            cmb[1].DisplayMember = "countryname";
+            cmb[1].ValueMember = "countryid";
+            cmb[1].SelectedIndex = -1;
+            cmb[1].Text = "Select a country";
         }
     }
 }

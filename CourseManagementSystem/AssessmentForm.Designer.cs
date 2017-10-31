@@ -57,10 +57,10 @@
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
             this.txtAssessmentName = new System.Windows.Forms.TextBox();
+            this.cmbUnitName = new System.Windows.Forms.ComboBox();
+            this.cmbTeacherName = new System.Windows.Forms.ComboBox();
             this.cmbUnitID = new System.Windows.Forms.ComboBox();
             this.cmbTeacherID = new System.Windows.Forms.ComboBox();
-            this.txtUnitID = new System.Windows.Forms.TextBox();
-            this.txtTeacherID = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssessment)).BeginInit();
             this.SuspendLayout();
@@ -356,45 +356,51 @@
             this.txtAssessmentName.TabIndex = 4;
             this.txtAssessmentName.Tag = "Assessment Name";
             // 
+            // cmbUnitName
+            // 
+            this.cmbUnitName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbUnitName.FormattingEnabled = true;
+            this.cmbUnitName.Location = new System.Drawing.Point(319, 177);
+            this.cmbUnitName.Name = "cmbUnitName";
+            this.cmbUnitName.Size = new System.Drawing.Size(176, 28);
+            this.cmbUnitName.TabIndex = 2;
+            this.cmbUnitName.Tag = "Unit Name";
+            this.cmbUnitName.SelectedIndexChanged += new System.EventHandler(this.cmbUnitName_Changed);
+            // 
+            // cmbTeacherName
+            // 
+            this.cmbTeacherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTeacherName.FormattingEnabled = true;
+            this.cmbTeacherName.Location = new System.Drawing.Point(319, 209);
+            this.cmbTeacherName.Name = "cmbTeacherName";
+            this.cmbTeacherName.Size = new System.Drawing.Size(176, 28);
+            this.cmbTeacherName.TabIndex = 3;
+            this.cmbTeacherName.Tag = "Teacher Name";
+            this.cmbTeacherName.SelectedIndexChanged += new System.EventHandler(this.cmbTeacherName_Changed);
+            // 
             // cmbUnitID
             // 
+            this.cmbUnitID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbUnitID.Enabled = false;
             this.cmbUnitID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUnitID.FormattingEnabled = true;
-            this.cmbUnitID.Location = new System.Drawing.Point(278, 176);
+            this.cmbUnitID.Location = new System.Drawing.Point(278, 177);
             this.cmbUnitID.Name = "cmbUnitID";
-            this.cmbUnitID.Size = new System.Drawing.Size(176, 28);
-            this.cmbUnitID.TabIndex = 2;
+            this.cmbUnitID.Size = new System.Drawing.Size(35, 28);
+            this.cmbUnitID.TabIndex = 125;
             this.cmbUnitID.Tag = "Unit ID";
             // 
             // cmbTeacherID
             // 
+            this.cmbTeacherID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbTeacherID.Enabled = false;
             this.cmbTeacherID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTeacherID.FormattingEnabled = true;
-            this.cmbTeacherID.Location = new System.Drawing.Point(278, 208);
+            this.cmbTeacherID.Location = new System.Drawing.Point(278, 209);
             this.cmbTeacherID.Name = "cmbTeacherID";
-            this.cmbTeacherID.Size = new System.Drawing.Size(176, 28);
-            this.cmbTeacherID.TabIndex = 3;
+            this.cmbTeacherID.Size = new System.Drawing.Size(35, 28);
+            this.cmbTeacherID.TabIndex = 126;
             this.cmbTeacherID.Tag = "Teacher ID";
-            // 
-            // txtUnitID
-            // 
-            this.txtUnitID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnitID.Location = new System.Drawing.Point(460, 177);
-            this.txtUnitID.Name = "txtUnitID";
-            this.txtUnitID.ReadOnly = true;
-            this.txtUnitID.Size = new System.Drawing.Size(35, 26);
-            this.txtUnitID.TabIndex = 123;
-            this.txtUnitID.Tag = "Unit ID";
-            // 
-            // txtTeacherID
-            // 
-            this.txtTeacherID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherID.Location = new System.Drawing.Point(460, 209);
-            this.txtTeacherID.Name = "txtTeacherID";
-            this.txtTeacherID.ReadOnly = true;
-            this.txtTeacherID.Size = new System.Drawing.Size(35, 26);
-            this.txtTeacherID.TabIndex = 124;
-            this.txtTeacherID.Tag = "Teacher ID";
             // 
             // AssessmentForm
             // 
@@ -403,10 +409,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 546);
-            this.Controls.Add(this.txtTeacherID);
-            this.Controls.Add(this.txtUnitID);
             this.Controls.Add(this.cmbTeacherID);
             this.Controls.Add(this.cmbUnitID);
+            this.Controls.Add(this.cmbTeacherName);
+            this.Controls.Add(this.cmbUnitName);
             this.Controls.Add(this.txtAssessmentName);
             this.Controls.Add(this.dtpDueDate);
             this.Controls.Add(this.dtpStartDate);
@@ -463,9 +469,9 @@
         private System.Windows.Forms.TextBox txtAssessmentName;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
+        private System.Windows.Forms.ComboBox cmbUnitName;
+        private System.Windows.Forms.ComboBox cmbTeacherName;
         private System.Windows.Forms.ComboBox cmbUnitID;
         private System.Windows.Forms.ComboBox cmbTeacherID;
-        private System.Windows.Forms.TextBox txtUnitID;
-        private System.Windows.Forms.TextBox txtTeacherID;
     }
 }

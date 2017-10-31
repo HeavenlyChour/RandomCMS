@@ -677,6 +677,7 @@
             this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Form";
+            this.Load += new System.EventHandler(this.StudentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

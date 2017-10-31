@@ -13,6 +13,8 @@ namespace CourseManagementSystem
 {
     public partial class AssessmentForm : Form
     {
+        bool loaded = false;
+
         public AssessmentForm()
         {
             InitializeComponent();
@@ -25,11 +27,12 @@ namespace CourseManagementSystem
 
         private void mnuAdd_Click(object sender, EventArgs e)
         {
-            if (!clsValidation.ValidateComboBox(cmbUnitID))
+            #region Validation Area
+            if (!clsValidation.ValidateComboBox(cmbUnitName))
             {
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbTeacherID))
+            if (!clsValidation.ValidateComboBox(cmbTeacherName))
             {
                 return;
             }
@@ -55,6 +58,7 @@ namespace CourseManagementSystem
             {
                 return;
             }
+            #endregion
             clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(cmbUnitID.Text), Convert.ToInt32(cmbTeacherID.Text), 
                 txtAssessmentName.Text, dtpStartDate.Value.ToString("yyyy-MM-dd"), dtpDueDate.Value.ToString("yyyy-MM-dd"));
 
@@ -78,16 +82,17 @@ namespace CourseManagementSystem
 
         private void mnuUpdate_Click(object sender, EventArgs e)
         {
+            #region Validation Area
             if (!clsValidation.ValidateTextBoxForNumeric(txtAssessmentID))
             {
                 txtAssessmentID.Focus();
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbUnitID))
+            if (!clsValidation.ValidateComboBox(cmbUnitName))
             {
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbTeacherID))
+            if (!clsValidation.ValidateComboBox(cmbTeacherName))
             {
                 return;
             }
@@ -108,8 +113,9 @@ namespace CourseManagementSystem
             {
                 return;
             }
+            #endregion
             clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text), 
-                Convert.ToInt32(cmbUnitID.Text), Convert.ToInt32(cmbTeacherID.Text), txtAssessmentName.Text, 
+                Convert.ToInt32(cmbUnitName.Text), Convert.ToInt32(cmbTeacherName.Text), txtAssessmentName.Text, 
                 dtpStartDate.Value.ToString("yyyy-MM-dd"), dtpDueDate.Value.ToString("yyyy-MM-dd"));
 
             objAssessment.Update();
@@ -133,8 +139,8 @@ namespace CourseManagementSystem
         private void mnuClearAll_Click(object sender, EventArgs e)
         {
             txtAssessmentID.Text = String.Empty;
-            cmbUnitID.Text = String.Empty;
-            cmbTeacherID.Text = String.Empty;
+            cmbUnitName.Text = String.Empty;
+            cmbTeacherName.Text = String.Empty;
             txtAssessmentName.Text = String.Empty;
             dtpStartDate.Text = String.Empty;
             dtpDueDate.Text = String.Empty;
@@ -157,6 +163,15 @@ namespace CourseManagementSystem
             {
                 
                 cmbUnitID.Text = objAssessment.UnitID.ToString();
+                for (int i = 0; i < cmbUnitID.Items.Count; i++)
+                {
+                    if (i == objAssessment.UnitID)
+                    {
+                        cmbUnitName.SelectedIndex = i;
+                        break;
+                    }
+                }
+
                 cmbTeacherID.Text = objAssessment.TeacherID.ToString();
                 txtAssessmentName.Text = objAssessment.AssessmentName;
                 dtpStartDate.Value = DateTime.Parse(objAssessment.StartDate);
@@ -173,8 +188,33 @@ namespace CourseManagementSystem
         private void AssessmentForm_Load(object sender, EventArgs e)
         {
             clsAssessment objAssessment = new clsAssessment();
-            ComboBox[] cmb = new ComboBox[] {cmbUnitID, cmbTeacherID };
+            ComboBox[] cmb = new ComboBox[] {cmbUnitID, cmbUnitName, cmbTeacherID, cmbTeacherName };
             objAssessment.Load(cmb);
+            objAssessment.ViewAll(dgvAssessment);
+            loaded = true;
+        }
+
+        private void cmbUnitName_Changed(object sender, EventArgs e)
+        {
+            if (loaded == true)
+            {
+                int selectedNumber = cmbUnitName.SelectedIndex;
+                //DataGridViewRow row = dgvAssessment.Rows[selectedNumber];
+
+                //int selectedID = Convert.ToInt32(row.Cells[1].Value);
+                //MessageBox.Show("Unit Name Selected Index: " + selectedNumber);
+                //int selectedID = Convert.ToInt32(dgvAssessment.Rows[selectedNumber].Cells[1].Value);
+
+                cmbUnitID.SelectedIndex = selectedNumber;
+                //cmbUnitID.SelectedIndex = selectedID;
+            }
+        }
+
+        private void cmbTeacherName_Changed(object sender, EventArgs e)
+        {
+            int selectedNumber = cmbTeacherName.SelectedIndex;
+
+            cmbTeacherID.SelectedIndex = selectedNumber;
         }
     }
 }

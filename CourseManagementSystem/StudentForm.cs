@@ -532,5 +532,13 @@ namespace CourseManagementSystem
             //}
             #endregion
         }
+
+        private void StudentForm_Load(object sender, EventArgs e)
+        {
+            clsStudent objStudent = new clsStudent();
+            ComboBox[] cmb = new ComboBox[] { cmbStudSuburb, cmbNationality };
+            objStudent.Load(cmb);
+            objStudent.ViewAll(dgvStudent);
+        }
     }
 }

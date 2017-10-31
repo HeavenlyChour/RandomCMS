@@ -179,12 +179,12 @@ namespace CourseManagementSystem
 
             if (objDataReader.Read())
             {
-                //courseID = objDataReader[0].ToString();
-                assessmentName = objDataReader[1].ToString();
-                unitID = Convert.ToInt32(objDataReader[2]);
-                teacherID = Convert.ToInt32(objDataReader[3]);
-                startDate = objDataReader[5].ToString();
-                dueDate = objDataReader[6].ToString();
+                //assessmentID = Convert.ToInt32(objDataReader[0]);
+                unitID = Convert.ToInt32(objDataReader[1]);
+                teacherID = Convert.ToInt32(objDataReader[2]);
+                assessmentName = objDataReader[3].ToString();
+                startDate = objDataReader[4].ToString();
+                dueDate = objDataReader[5].ToString();
                 objConnection.Close();
                 return true;
             }
@@ -236,19 +236,37 @@ namespace CourseManagementSystem
             clsDatabase.CreateConnection();
             DataTable objDataTable = clsDatabase.CreateDataTable(strSql);
             cmb[0].DataSource = objDataTable;
-            cmb[0].DisplayMember = "unitname";
+            cmb[0].DisplayMember = "unitid";
             cmb[0].ValueMember = "unitid";
             cmb[0].SelectedIndex = -1;
-            cmb[0].Text = "Select a unit";
+            cmb[0].Text = "";
+
+            objDataTable = null;
+            strSql = "select * from unit";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[1].DataSource = objDataTable;
+            cmb[1].DisplayMember = "unitname";
+            cmb[1].ValueMember = "unitid";
+            cmb[1].SelectedIndex = -1;
+            cmb[1].Text = "Select a unit";
+
+            objDataTable = null;
+            strSql = "select * from teacher";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[2].DataSource = objDataTable;
+            cmb[2].DisplayMember = "teacherid";
+            cmb[2].ValueMember = "teacherid";
+            cmb[2].SelectedIndex = -1;
+            cmb[2].Text = "";
 
             objDataTable = null;
             strSql = "select teacherid, (teacherfirstname + ' ' + teacherlastname) as name from teacher";
             objDataTable = clsDatabase.CreateDataTable(strSql);
-            cmb[1].DataSource = objDataTable;
-            cmb[1].DisplayMember = "name";
-            cmb[1].ValueMember = "teacherid";
-            cmb[1].SelectedIndex = -1;
-            cmb[1].Text = "Select a teacher";
+            cmb[3].DataSource = objDataTable;
+            cmb[3].DisplayMember = "name";
+            cmb[3].ValueMember = "teacherid";
+            cmb[3].SelectedIndex = -1;
+            cmb[3].Text = "Select a teacher";
         }
     }
 }
