@@ -59,8 +59,9 @@ namespace CourseManagementSystem
                 return;
             }
             #endregion
-            clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(cmbUnitID.Text), Convert.ToInt32(cmbTeacherID.Text), 
-                txtAssessmentName.Text, dtpStartDate.Value.ToString("yyyy-MM-dd"), dtpDueDate.Value.ToString("yyyy-MM-dd"));
+            clsAssessment objAssessment = new clsAssessment(txtAssessmentName.Text, Convert.ToInt32(cmbUnitID.Text), 
+                Convert.ToInt32(cmbTeacherID.Text),  dtpStartDate.Value.ToString("yyyy-MM-dd"), 
+                dtpDueDate.Value.ToString("yyyy-MM-dd"));
 
             objAssessment.Add();
             MessageBox.Show("Assessment successfully added");
@@ -114,8 +115,8 @@ namespace CourseManagementSystem
                 return;
             }
             #endregion
-            clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text), 
-                Convert.ToInt32(cmbUnitName.Text), Convert.ToInt32(cmbTeacherName.Text), txtAssessmentName.Text, 
+            clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text), txtAssessmentName.Text,
+                Convert.ToInt32(cmbUnitName.Text), Convert.ToInt32(cmbTeacherName.Text), 
                 dtpStartDate.Value.ToString("yyyy-MM-dd"), dtpDueDate.Value.ToString("yyyy-MM-dd"));
 
             objAssessment.Update();
@@ -161,19 +162,21 @@ namespace CourseManagementSystem
             bool valid = objAssessment.Search();
             if (valid)
             {
-                
+
+                txtAssessmentName.Text = objAssessment.AssessmentName;
                 cmbUnitID.Text = objAssessment.UnitID.ToString();
-                for (int i = 0; i < cmbUnitID.Items.Count; i++)
+                cmbUnitName.Text = objAssessment.UnitName;
+                /*for (int i = 0; i < cmbUnitID.Items.Count; i++)
                 {
                     if (i == objAssessment.UnitID)
                     {
                         cmbUnitName.SelectedIndex = i;
                         break;
                     }
-                }
+                }*/
 
                 cmbTeacherID.Text = objAssessment.TeacherID.ToString();
-                txtAssessmentName.Text = objAssessment.AssessmentName;
+                cmbTeacherName.Text = objAssessment.TeacherFirstName + " " + objAssessment.TeacherLastName;
                 dtpStartDate.Value = DateTime.Parse(objAssessment.StartDate);
                 dtpDueDate.Value = DateTime.Parse(objAssessment.DueDate);
             }
@@ -193,6 +196,8 @@ namespace CourseManagementSystem
             objAssessment.ViewAll(dgvAssessment);
             loaded = true;
         }
+
+        //Need to fix the Unit ID and Teacher ID text field changing
 
         private void cmbUnitName_Changed(object sender, EventArgs e)
         {

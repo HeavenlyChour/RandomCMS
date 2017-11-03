@@ -13,9 +13,12 @@ namespace CourseManagementSystem
     class clsAssessment :ILogic
     {
         private int assessmentID;
-        private int unitID;
-        private int teacherID;
         private string assessmentName;
+        private int unitID;
+        private string unitName;
+        private int teacherID;
+        private string teacherFirstName;
+        private string teacherLastName;
         private string startDate;
         private string dueDate;
 
@@ -35,7 +38,7 @@ namespace CourseManagementSystem
             this.teacherID = teacherID;
         }
 
-        public clsAssessment(int unitID, int teacherID, string assessmentName, string startDate, string dueDate)
+        public clsAssessment(string assessmentName, int unitID, int teacherID, string startDate, string dueDate)
         {
             this.unitID = unitID;
             this.teacherID = teacherID;
@@ -44,7 +47,7 @@ namespace CourseManagementSystem
             this.dueDate = dueDate;
         }
 
-        public clsAssessment(int assessmentID, int unitID, int teacherID, string assessmentName, string startDate, string dueDate)
+        public clsAssessment(int assessmentID, string assessmentName, int unitID, int teacherID, string startDate, string dueDate)
         {
             this.assessmentID = assessmentID;
             this.unitID = unitID;
@@ -67,6 +70,18 @@ namespace CourseManagementSystem
                 assessmentID = value;
             }
         }
+        public string AssessmentName
+        {
+            get
+            {
+                return assessmentName;
+            }
+
+            set
+            {
+                assessmentName = value;
+            }
+        }
         public int UnitID
         {
             get
@@ -77,6 +92,18 @@ namespace CourseManagementSystem
             set
             {
                 unitID = value;
+            }
+        }
+        public string UnitName
+        {
+            get
+            {
+                return unitName;
+            }
+
+            set
+            {
+                unitName = value;
             }
         }
         public int TeacherID
@@ -91,16 +118,28 @@ namespace CourseManagementSystem
                 teacherID = value;
             }
         }
-        public string AssessmentName
+        public string TeacherFirstName
         {
             get
             {
-                return assessmentName;
+                return teacherFirstName;
             }
 
             set
             {
-                assessmentName = value;
+                teacherFirstName = value;
+            }
+        }
+        public string TeacherLastName
+        {
+            get
+            {
+                return teacherLastName;
+            }
+
+            set
+            {
+                teacherLastName = value;
             }
         }
         public string StartDate
@@ -159,9 +198,9 @@ namespace CourseManagementSystem
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("UpdateAssessment", objConnection);
             objCommand.Parameters.AddWithValue("@aid", AssessmentID);
+            objCommand.Parameters.AddWithValue("@aname", AssessmentName);
             objCommand.Parameters.AddWithValue("@uid", UnitID);
             objCommand.Parameters.AddWithValue("@tid", TeacherID);
-            objCommand.Parameters.AddWithValue("@aname", AssessmentName);
             objCommand.Parameters.AddWithValue("@sdate", StartDate);
             objCommand.Parameters.AddWithValue("@ddate", DueDate);
             objCommand.CommandType = CommandType.StoredProcedure;
@@ -180,11 +219,14 @@ namespace CourseManagementSystem
             if (objDataReader.Read())
             {
                 //assessmentID = Convert.ToInt32(objDataReader[0]);
-                unitID = Convert.ToInt32(objDataReader[1]);
-                teacherID = Convert.ToInt32(objDataReader[2]);
-                assessmentName = objDataReader[3].ToString();
-                startDate = objDataReader[4].ToString();
-                dueDate = objDataReader[5].ToString();
+                assessmentName = objDataReader[1].ToString();
+                unitID = Convert.ToInt32(objDataReader[2]);
+                unitName = objDataReader[3].ToString();
+                teacherID = Convert.ToInt32(objDataReader[4]);
+                teacherFirstName = objDataReader[5].ToString();
+                teacherLastName = objDataReader[6].ToString();
+                startDate = objDataReader[7].ToString();
+                dueDate = objDataReader[8].ToString();
                 objConnection.Close();
                 return true;
             }
