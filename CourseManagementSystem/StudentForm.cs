@@ -86,23 +86,26 @@ namespace CourseManagementSystem
                 txtStudStreetAddress.Focus();
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbStudSuburb))
+            if (!clsValidation.ValidateComboBox(cmbSuburbName))
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtStudPostCode))
+            //if (!clsValidation.ValidateTextBox(txtStudPostCode))
+            //{
+            //    txtStudPostCode.Focus();
+            //    return;
+            //}
+            //if(!clsValidation.ValidateComboBox(cmbPostCode))
+            //{
+            //    return;
+            //}
+            //if (!clsValidation.ValidateTextBoxForNumeric(cmbPostCode))
+            //{
+            //    txtStudPostCode.Focus();
+            //    return;
+            //}
+            if (!clsValidation.ValidatePostCode(cmbPostCode.Text))
             {
-                txtStudPostCode.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtStudPostCode))
-            {
-                txtStudPostCode.Focus();
-                return;
-            }
-            if (!clsValidation.ValidatePostCode(txtStudPostCode.Text))
-            {
-                txtStudPostCode.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBox(txtStudentPhoneNum))
@@ -125,7 +128,7 @@ namespace CourseManagementSystem
                 txtStudentEmail.Focus();
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbNationality))
+            if (!clsValidation.ValidateComboBox(cmbCountryName))
             {
                 return;
             }
@@ -134,16 +137,19 @@ namespace CourseManagementSystem
                 return;
             }
 
+
+            #endregion
+            #region Radio buttons
             string genderText = String.Empty;
             if (rdbMale.Checked)
             {
-                genderText = "m";
+                genderText = "M";
             }
             else if (rdbFemale.Checked)
             {
-                genderText = "f";
+                genderText = "F";
             }
-            if (rdbDisabilityYes.Checked==true)
+            if (rdbDisabilityYes.Checked == true)
             {
                 txtDisabilityDescription.ReadOnly = false;
                 if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
@@ -165,8 +171,6 @@ namespace CourseManagementSystem
             {
                 disabilityText = "No";
             }
-            #endregion
-
             if (rdbDisabilityYes.Checked == true)
             {
                 //   txtDisabilityDescription.ReadOnly = false;
@@ -180,10 +184,11 @@ namespace CourseManagementSystem
                 txtDisabilityDescription.Text = String.Empty;
                 txtDisabilityDescription.ReadOnly = true;
             }
+            #endregion
             clsStudent objStudent = new clsStudent(txtStudentFirstName.Text,
-                  txtStudentLastName.Text, dtpDateOfBirth.Value.ToString("yyyy-MM-dd"), genderText, txtStudStreetAddress.Text,
-                  cmbStudSuburb.Text, txtStudPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
-                  cmbNationality.Text, disabilityText, txtDisabilityDescription.Text);
+                  txtStudentLastName.Text, genderText, dtpDateOfBirth.Value.ToString("yyyy-MM-dd"), txtStudStreetAddress.Text,
+                  Convert.ToInt32(cmbSuburbID.Text), cmbPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
+                  Convert.ToInt32(cmbCountryID.Text), disabilityText, txtDisabilityDescription.Text);
             objStudent.Add();
             MessageBox.Show("Student record successfully added!");
         }
@@ -270,23 +275,22 @@ namespace CourseManagementSystem
                 txtStudStreetAddress.Focus();
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbStudSuburb))
+            if (!clsValidation.ValidateComboBox(cmbSuburbName))
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtStudPostCode))
+            //if (!clsValidation.ValidateTextBox(txtStudPostCode))
+            //{
+            //    txtStudPostCode.Focus();
+            //    return;
+            //}
+            //if (!clsValidation.ValidateTextBoxForNumeric(txtStudPostCode))
+            //{
+            //    txtStudPostCode.Focus();
+            //    return;
+            //}
+            if (!clsValidation.ValidatePostCode(cmbPostCode.Text))
             {
-                txtStudPostCode.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtStudPostCode))
-            {
-                txtStudPostCode.Focus();
-                return;
-            }
-            if (!clsValidation.ValidatePostCode(txtStudPostCode.Text))
-            {
-                txtStudPostCode.Focus();
                 return;
             }
             if (!clsValidation.ValidateTextBox(txtStudentPhoneNum))
@@ -309,7 +313,7 @@ namespace CourseManagementSystem
                 txtStudentEmail.Focus();
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbNationality))
+            if (!clsValidation.ValidateComboBox(cmbCountryName))
             {
                 return;
             }
@@ -318,6 +322,7 @@ namespace CourseManagementSystem
                 return;
             }
             #endregion
+            #region Radio buttons
             string genderText = String.Empty;
             if (rdbMale.Checked)
             {
@@ -349,10 +354,11 @@ namespace CourseManagementSystem
             {
                 disabilityText = "No";
             }
+            #endregion
             clsStudent objStudent = new clsStudent(Convert.ToInt32(txtStudentID.Text), txtStudentFirstName.Text,
-                  txtStudentLastName.Text, dtpDateOfBirth.Value.ToString("yyyy-MM-dd"), genderText, txtStudStreetAddress.Text,
-                  cmbStudSuburb.Text, txtStudPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
-                  cmbNationality.Text, disabilityText, txtDisabilityDescription.Text);
+                  txtStudentLastName.Text, genderText, dtpDateOfBirth.Value.ToString("yyyy-MM-dd"), txtStudStreetAddress.Text,
+                  Convert.ToInt32(cmbSuburbID.Text), cmbPostCode.Text, txtStudentPhoneNum.Text, txtStudentEmail.Text,
+                  Convert.ToInt32(cmbCountryID.Text), disabilityText, txtDisabilityDescription.Text);
             objStudent.Update();
             MessageBox.Show("Student record successfully updated!");
         }
@@ -389,11 +395,12 @@ namespace CourseManagementSystem
                 rdbFemale.Checked = false;
             }
             txtStudStreetAddress.Text = String.Empty;
-            cmbStudSuburb.SelectedIndex = -1;
-            txtStudPostCode.Text = String.Empty;
+            cmbSuburbName.SelectedIndex = -1;
+            cmbPostCode.Text = String.Empty;
+            //txtStudPostCode.Text = String.Empty;
             txtStudentPhoneNum.Text = String.Empty;
             txtStudentEmail.Text = String.Empty;
-            cmbNationality.SelectedIndex = -1;
+            cmbCountryName.SelectedIndex = -1;
             if (rdbDisabilityYes.Checked == true)
             {
                 rdbDisabilityYes.Checked = false;
@@ -461,16 +468,19 @@ namespace CourseManagementSystem
                 }
                 dtpDateOfBirth.Value = DateTime.Parse(objStudent.DateOfBirth);
                 txtStudStreetAddress.Text = objStudent.StreetAddress;
-                cmbStudSuburb.Text = objStudent.Suburb;
-                txtStudPostCode.Text = objStudent.PostCode;
+                cmbSuburbID.Text = objStudent.SuburbID.ToString();
+                cmbSuburbName.Text = objStudent.SuburbName;
+                cmbPostCode.Text = objStudent.PostCode;
+                //txtStudPostCode.Text = objStudent.PostCode;
                 txtStudentPhoneNum.Text = objStudent.PhoneNumber;
                 txtStudentEmail.Text = objStudent.Email;
-                cmbNationality.Text = objStudent.Nationality;
+                cmbCountryID.Text = objStudent.CountryID.ToString();
+                cmbCountryName.Text = objStudent.CountryName;
                 if (objStudent.Disability == "Yes")
                 {
                     rdbDisabilityYes.Checked = true;
                 }
-                else if (objStudent.Gender == "No")
+                else if (objStudent.Disability == "No")
                 {
                     rdbDisabilityNo.Checked = true;
                 }
@@ -536,9 +546,24 @@ namespace CourseManagementSystem
         private void StudentForm_Load(object sender, EventArgs e)
         {
             clsStudent objStudent = new clsStudent();
-            ComboBox[] cmb = new ComboBox[] { cmbStudSuburb, cmbNationality };
+            ComboBox[] cmb = new ComboBox[] {cmbSuburbID, cmbSuburbName, cmbPostCode, cmbCountryID, cmbCountryName };
             objStudent.Load(cmb);
             objStudent.ViewAll(dgvStudent);
+        }
+
+        private void cmbSuburbName_Changed(object sender, EventArgs e)
+        {
+            int selectedNumber = cmbSuburbName.SelectedIndex;
+
+            cmbSuburbID.SelectedIndex = selectedNumber;
+            cmbPostCode.SelectedIndex = selectedNumber;
+        }
+
+        private void cmbCountryName_Changed(object sender, EventArgs e)
+        {
+            int selectedNumber = cmbCountryName.SelectedIndex;
+
+            cmbCountryID.SelectedIndex = selectedNumber;
         }
     }
 }

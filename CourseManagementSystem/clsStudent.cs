@@ -21,11 +21,13 @@ namespace CourseManagementSystem
         private string dateOfBirth;
         //private DateTime dateOfBirth;
         private string streetAddress;
-        private string suburb;
+        private int suburbID;
+        private string suburbName;
         private string postCode;
         private string phoneNumber;
         private string email;
-        private string nationality;
+        private int countryID;
+        private string countryName;
         private string disability;
         private string disabilityDescription;
 
@@ -47,23 +49,23 @@ namespace CourseManagementSystem
             this.LastName = lastName;
         }
 
-        public clsStudent(string firstName, string lastName, string dateOfBirth, string gender, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
+        public clsStudent(string firstName, string lastName, string gender, string dateOfBirth, string streetAddress, int suburbID, string postCode, string phoneNumber, string email, int countryID, string disability, string disabilityDescription)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Gender = gender;
             this.DateOfBirth = dateOfBirth;
             this.StreetAddress = streetAddress;
-            this.Suburb = suburb;
+            this.SuburbID = suburbID;
             this.PostCode = postCode;
             this.PhoneNumber = phoneNumber;
             this.Email = email;
-            this.Nationality = nationality;
+            this.CountryID = countryID;
             this.Disability = disability;
             this.DisabilityDescription = disabilityDescription;
         }
 
-        public clsStudent(int studentID, string firstName, string lastName, string dateOfBirth, string gender, string streetAddress, string suburb, string postCode, string phoneNumber, string email, string nationality, string disability, string disabilityDescription)
+        public clsStudent(int studentID, string firstName, string lastName, string gender, string dateOfBirth, string streetAddress, int suburbID, string postCode, string phoneNumber, string email, int countryID, string disability, string disabilityDescription)
         {
             this.StudentID = studentID;
             this.FirstName = firstName;
@@ -71,11 +73,11 @@ namespace CourseManagementSystem
             this.Gender = gender;
             this.DateOfBirth = dateOfBirth;
             this.StreetAddress = streetAddress;
-            this.Suburb = suburb;
+            this.SuburbID = suburbID;
             this.PostCode = postCode;
             this.PhoneNumber = phoneNumber;
             this.Email = email;
-            this.Nationality = nationality;
+            this.CountryID = countryID;
             this.Disability = disability;
             this.DisabilityDescription = disabilityDescription;
         }
@@ -120,6 +122,18 @@ namespace CourseManagementSystem
             }
         }
 
+        public string Gender
+        {
+            get
+            {
+                return gender;
+            }
+
+            set
+            {
+                gender = value;
+            }
+        }
         public string DateOfBirth
         {
             get
@@ -133,18 +147,6 @@ namespace CourseManagementSystem
             }
         }
 
-        public string Gender
-        {
-            get
-            {
-                return gender;
-            }
-
-            set
-            {
-                gender = value;
-            }
-        }
 
         public string StreetAddress
         {
@@ -159,16 +161,29 @@ namespace CourseManagementSystem
             }
         }
 
-        public string Suburb
+        public int SuburbID
         {
             get
             {
-                return suburb;
+                return suburbID;
             }
 
             set
             {
-                suburb = value;
+                suburbID = value;
+            }
+        }
+
+        public string SuburbName
+        {
+            get
+            {
+                return suburbName;
+            }
+
+            set
+            {
+                suburbName = value;
             }
         }
 
@@ -211,16 +226,29 @@ namespace CourseManagementSystem
             }
         }
 
-        public string Nationality
+        public int CountryID
         {
             get
             {
-                return nationality;
+                return countryID;
             }
 
             set
             {
-                nationality = value;
+                countryID = value;
+            }
+        }
+
+        public string CountryName
+        {
+            get
+            {
+                return countryName;
+            }
+
+            set
+            {
+                countryName = value;
             }
         }
 
@@ -296,11 +324,11 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@gender", Gender);
             objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
             objCommand.Parameters.AddWithValue("@staddress", StreetAddress);
-            objCommand.Parameters.AddWithValue("@suburb", Suburb);
+            objCommand.Parameters.AddWithValue("@suburb", SuburbName);
             objCommand.Parameters.AddWithValue("@postcode", PostCode);
             objCommand.Parameters.AddWithValue("@phoneno", PhoneNumber);
             objCommand.Parameters.AddWithValue("@email", Email);
-            objCommand.Parameters.AddWithValue("@nat", Nationality);
+            objCommand.Parameters.AddWithValue("@nat", CountryName);
             objCommand.Parameters.AddWithValue("@dis", Disability);
             objCommand.Parameters.AddWithValue("@disdetails", DisabilityDescription);
             objCommand.CommandType = CommandType.StoredProcedure;
@@ -325,11 +353,11 @@ namespace CourseManagementSystem
                 gender = objDataReader[3].ToString();
                 dateOfBirth = objDataReader[4].ToString();
                 streetAddress = objDataReader[5].ToString();
-                suburb = objDataReader[6].ToString();
+                suburbName = objDataReader[6].ToString();
                 postCode = objDataReader[7].ToString();
                 phoneNumber = objDataReader[8].ToString();
                 email = objDataReader[9].ToString();
-                nationality = objDataReader[10].ToString();
+                countryName = objDataReader[10].ToString();
                 disability = objDataReader[11].ToString();
                 disabilityDescription = objDataReader[12].ToString();
                 objConnection.Close();
@@ -354,14 +382,14 @@ namespace CourseManagementSystem
             SqlCommand objCommand = new SqlCommand("InsertStudent", objConnection);
             objCommand.Parameters.AddWithValue("@fname", FirstName);
             objCommand.Parameters.AddWithValue("@lname", LastName);
-            objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
             objCommand.Parameters.AddWithValue("@gender", Gender);
+            objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
             objCommand.Parameters.AddWithValue("@staddress", StreetAddress);
-            objCommand.Parameters.AddWithValue("@suburb", Suburb);
+            objCommand.Parameters.AddWithValue("@subid", SuburbID);
             objCommand.Parameters.AddWithValue("@postcode", PostCode);
             objCommand.Parameters.AddWithValue("@phoneno", PhoneNumber);
             objCommand.Parameters.AddWithValue("@email", Email);
-            objCommand.Parameters.AddWithValue("@nat", Nationality);
+            objCommand.Parameters.AddWithValue("@coid", CountryID);
             objCommand.Parameters.AddWithValue("@dis", Disability);
             objCommand.Parameters.AddWithValue("@disdetails", DisabilityDescription);
             objCommand.CommandType = CommandType.StoredProcedure;
@@ -406,11 +434,11 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@gender", Gender);
             objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
             objCommand.Parameters.AddWithValue("@staddress", StreetAddress);
-            objCommand.Parameters.AddWithValue("@suburb", Suburb);
+            objCommand.Parameters.AddWithValue("@subid", SuburbID);
             objCommand.Parameters.AddWithValue("@postcode", PostCode);
             objCommand.Parameters.AddWithValue("@phoneno", PhoneNumber);
             objCommand.Parameters.AddWithValue("@email", Email);
-            objCommand.Parameters.AddWithValue("@nat", Nationality);
+            objCommand.Parameters.AddWithValue("@coid", CountryID);
             objCommand.Parameters.AddWithValue("@dis", Disability);
             objCommand.Parameters.AddWithValue("@disdetails", DisabilityDescription);
             objCommand.CommandType = CommandType.StoredProcedure;
@@ -442,13 +470,15 @@ namespace CourseManagementSystem
                 gender = objDataReader[3].ToString();
                 dateOfBirth = objDataReader[4].ToString();
                 streetAddress = objDataReader[5].ToString();
-                suburb = objDataReader[6].ToString();
-                postCode = objDataReader[7].ToString();
-                phoneNumber = objDataReader[8].ToString();
-                email = objDataReader[9].ToString();
-                nationality = objDataReader[10].ToString();
-                disability = objDataReader[11].ToString();
-                disabilityDescription = objDataReader[12].ToString();
+                suburbID = Convert.ToInt32(objDataReader[6]);
+                suburbName = objDataReader[7].ToString();
+                postCode = objDataReader[8].ToString();
+                phoneNumber = objDataReader[9].ToString();
+                email = objDataReader[10].ToString();
+                countryID = Convert.ToInt32(objDataReader[11]);
+                countryName = objDataReader[12].ToString();
+                disability = objDataReader[13].ToString();
+                disabilityDescription = objDataReader[14].ToString();
                 objConnection.Close();
                 return true;
             }
@@ -507,19 +537,46 @@ namespace CourseManagementSystem
             clsDatabase.CreateConnection();
             DataTable objDataTable = clsDatabase.CreateDataTable(strSql);
             cmb[0].DataSource = objDataTable;
-            cmb[0].DisplayMember = "suburbname";
+            cmb[0].DisplayMember = "suburbid";
             cmb[0].ValueMember = "suburbid";
             cmb[0].SelectedIndex = -1;
-            cmb[0].Text = "Select a suburb";
+            cmb[0].Text = "";
+
+            objDataTable = null;
+            //strSql = "select * from suburb";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[1].DataSource = objDataTable;
+            cmb[1].DisplayMember = "suburbname";
+            cmb[1].ValueMember = "suburbid";
+            cmb[1].SelectedIndex = -1;
+            cmb[1].Text = "Select a suburb";
+
+            objDataTable = null;
+            //strSql = "select * from suburb";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[2].DataSource = objDataTable;
+            cmb[2].DisplayMember = "suburbpostcode";
+            cmb[2].ValueMember = "suburbid";
+            cmb[2].SelectedIndex = -1;
+            cmb[2].Text = "Post Code";
 
             objDataTable = null;
             strSql = "select * from country";
             objDataTable = clsDatabase.CreateDataTable(strSql);
-            cmb[1].DataSource = objDataTable;
-            cmb[1].DisplayMember = "countryname";
-            cmb[1].ValueMember = "countryid";
-            cmb[1].SelectedIndex = -1;
-            cmb[1].Text = "Select a country";
+            cmb[3].DataSource = objDataTable;
+            cmb[3].DisplayMember = "countryid";
+            cmb[3].ValueMember = "countryid";
+            cmb[3].SelectedIndex = -1;
+            cmb[3].Text = "";
+
+            objDataTable = null;
+            //strSql = "select * from country";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[4].DataSource = objDataTable;
+            cmb[4].DisplayMember = "countryname";
+            cmb[4].ValueMember = "countryid";
+            cmb[4].SelectedIndex = -1;
+            cmb[4].Text = "Select a country";
         }
     }
 }

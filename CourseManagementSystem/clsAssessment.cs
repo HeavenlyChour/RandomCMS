@@ -284,7 +284,7 @@ namespace CourseManagementSystem
             cmb[0].Text = "";
 
             objDataTable = null;
-            strSql = "select * from unit";
+            //strSql = "select * from unit";
             objDataTable = clsDatabase.CreateDataTable(strSql);
             cmb[1].DataSource = objDataTable;
             cmb[1].DisplayMember = "unitname";

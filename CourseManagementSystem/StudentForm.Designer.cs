@@ -39,7 +39,7 @@
             this.txtStudentPhoneNum = new System.Windows.Forms.TextBox();
             this.lblStudentPhoneNum = new System.Windows.Forms.Label();
             this.lblNationality = new System.Windows.Forms.Label();
-            this.cmbNationality = new System.Windows.Forms.ComboBox();
+            this.cmbCountryName = new System.Windows.Forms.ComboBox();
             this.lblDisability = new System.Windows.Forms.Label();
             this.rdbDisabilityYes = new System.Windows.Forms.RadioButton();
             this.rdbDisabilityNo = new System.Windows.Forms.RadioButton();
@@ -52,8 +52,6 @@
             this.lblStudentLastName = new System.Windows.Forms.Label();
             this.dgvStudent = new System.Windows.Forms.DataGridView();
             this.lblStudentSuburb = new System.Windows.Forms.Label();
-            this.txtStudPostCode = new System.Windows.Forms.TextBox();
-            this.lblStudPostCode = new System.Windows.Forms.Label();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,13 +69,16 @@
             this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.StudentToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnSearch = new System.Windows.Forms.Button();
-            this.cmbStudSuburb = new System.Windows.Forms.ComboBox();
+            this.cmbSuburbName = new System.Windows.Forms.ComboBox();
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.rdbMale = new System.Windows.Forms.RadioButton();
             this.lblGender = new System.Windows.Forms.Label();
             this.pnlGender = new System.Windows.Forms.Panel();
             this.pnlDisability = new System.Windows.Forms.Panel();
+            this.cmbSuburbID = new System.Windows.Forms.ComboBox();
+            this.cmbCountryID = new System.Windows.Forms.ComboBox();
+            this.cmbPostCode = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlGender.SuspendLayout();
@@ -158,16 +159,16 @@
             this.lblStudStreetAddress.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblStudStreetAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudStreetAddress.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudStreetAddress.Location = new System.Drawing.Point(133, 277);
+            this.lblStudStreetAddress.Location = new System.Drawing.Point(137, 277);
             this.lblStudStreetAddress.Name = "lblStudStreetAddress";
-            this.lblStudStreetAddress.Size = new System.Drawing.Size(140, 20);
+            this.lblStudStreetAddress.Size = new System.Drawing.Size(135, 20);
             this.lblStudStreetAddress.TabIndex = 8;
-            this.lblStudStreetAddress.Text = "Street Address::";
+            this.lblStudStreetAddress.Text = "Street Address:";
             // 
             // txtStudentPhoneNum
             // 
             this.txtStudentPhoneNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentPhoneNum.Location = new System.Drawing.Point(283, 370);
+            this.txtStudentPhoneNum.Location = new System.Drawing.Point(283, 338);
             this.txtStudentPhoneNum.Name = "txtStudentPhoneNum";
             this.txtStudentPhoneNum.Size = new System.Drawing.Size(176, 26);
             this.txtStudentPhoneNum.TabIndex = 9;
@@ -180,7 +181,7 @@
             this.lblStudentPhoneNum.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblStudentPhoneNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudentPhoneNum.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudentPhoneNum.Location = new System.Drawing.Point(144, 373);
+            this.lblStudentPhoneNum.Location = new System.Drawing.Point(145, 341);
             this.lblStudentPhoneNum.Name = "lblStudentPhoneNum";
             this.lblStudentPhoneNum.Size = new System.Drawing.Size(132, 20);
             this.lblStudentPhoneNum.TabIndex = 10;
@@ -192,28 +193,29 @@
             this.lblNationality.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblNationality.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNationality.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblNationality.Location = new System.Drawing.Point(175, 437);
+            this.lblNationality.Location = new System.Drawing.Point(175, 405);
             this.lblNationality.Name = "lblNationality";
             this.lblNationality.Size = new System.Drawing.Size(98, 20);
             this.lblNationality.TabIndex = 12;
             this.lblNationality.Text = "Nationality:";
             // 
-            // cmbNationality
+            // cmbCountryName
             // 
-            this.cmbNationality.DisplayMember = "Cake";
-            this.cmbNationality.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbNationality.FormattingEnabled = true;
-            this.cmbNationality.Items.AddRange(new object[] {
+            this.cmbCountryName.DisplayMember = "Cake";
+            this.cmbCountryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCountryName.FormattingEnabled = true;
+            this.cmbCountryName.Items.AddRange(new object[] {
             "Cake",
             "Coke",
             "Fries",
             "Pasta"});
-            this.cmbNationality.Location = new System.Drawing.Point(283, 434);
-            this.cmbNationality.Name = "cmbNationality";
-            this.cmbNationality.Size = new System.Drawing.Size(176, 28);
-            this.cmbNationality.TabIndex = 11;
-            this.cmbNationality.Tag = "Student Nationality";
-            this.StudentToolTip.SetToolTip(this.cmbNationality, "Press the down arrow to make a selection");
+            this.cmbCountryName.Location = new System.Drawing.Point(324, 402);
+            this.cmbCountryName.Name = "cmbCountryName";
+            this.cmbCountryName.Size = new System.Drawing.Size(176, 28);
+            this.cmbCountryName.TabIndex = 11;
+            this.cmbCountryName.Tag = "Country Name";
+            this.StudentToolTip.SetToolTip(this.cmbCountryName, "Press the down arrow to make a selection");
+            this.cmbCountryName.SelectedIndexChanged += new System.EventHandler(this.cmbCountryName_Changed);
             // 
             // lblDisability
             // 
@@ -221,7 +223,7 @@
             this.lblDisability.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblDisability.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDisability.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblDisability.Location = new System.Drawing.Point(29, 470);
+            this.lblDisability.Location = new System.Drawing.Point(29, 441);
             this.lblDisability.Name = "lblDisability";
             this.lblDisability.Size = new System.Drawing.Size(244, 20);
             this.lblDisability.TabIndex = 14;
@@ -261,7 +263,7 @@
             this.lblDisabilityDescription.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblDisabilityDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDisabilityDescription.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblDisabilityDescription.Location = new System.Drawing.Point(87, 501);
+            this.lblDisabilityDescription.Location = new System.Drawing.Point(87, 472);
             this.lblDisabilityDescription.Name = "lblDisabilityDescription";
             this.lblDisabilityDescription.Size = new System.Drawing.Size(186, 20);
             this.lblDisabilityDescription.TabIndex = 17;
@@ -270,7 +272,7 @@
             // txtDisabilityDescription
             // 
             this.txtDisabilityDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisabilityDescription.Location = new System.Drawing.Point(283, 498);
+            this.txtDisabilityDescription.Location = new System.Drawing.Point(283, 469);
             this.txtDisabilityDescription.Multiline = true;
             this.txtDisabilityDescription.Name = "txtDisabilityDescription";
             this.txtDisabilityDescription.Size = new System.Drawing.Size(347, 87);
@@ -281,7 +283,7 @@
             // txtStudentEmail
             // 
             this.txtStudentEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentEmail.Location = new System.Drawing.Point(283, 402);
+            this.txtStudentEmail.Location = new System.Drawing.Point(283, 370);
             this.txtStudentEmail.Name = "txtStudentEmail";
             this.txtStudentEmail.Size = new System.Drawing.Size(347, 26);
             this.txtStudentEmail.TabIndex = 10;
@@ -295,7 +297,7 @@
             this.lblStudentEmail.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblStudentEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudentEmail.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudentEmail.Location = new System.Drawing.Point(215, 405);
+            this.lblStudentEmail.Location = new System.Drawing.Point(215, 373);
             this.lblStudentEmail.Name = "lblStudentEmail";
             this.lblStudentEmail.Size = new System.Drawing.Size(58, 20);
             this.lblStudentEmail.TabIndex = 19;
@@ -307,7 +309,7 @@
             this.lblStudentDateOfBirth.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblStudentDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudentDateOfBirth.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudentDateOfBirth.Location = new System.Drawing.Point(156, 214);
+            this.lblStudentDateOfBirth.Location = new System.Drawing.Point(156, 247);
             this.lblStudentDateOfBirth.Name = "lblStudentDateOfBirth";
             this.lblStudentDateOfBirth.Size = new System.Drawing.Size(117, 20);
             this.lblStudentDateOfBirth.TabIndex = 21;
@@ -340,10 +342,10 @@
             // 
             this.dgvStudent.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudent.Location = new System.Drawing.Point(11, 625);
+            this.dgvStudent.Location = new System.Drawing.Point(11, 562);
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.ReadOnly = true;
-            this.dgvStudent.Size = new System.Drawing.Size(645, 120);
+            this.dgvStudent.Size = new System.Drawing.Size(645, 183);
             this.dgvStudent.TabIndex = 25;
             // 
             // lblStudentSuburb
@@ -352,33 +354,11 @@
             this.lblStudentSuburb.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblStudentSuburb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudentSuburb.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudentSuburb.Location = new System.Drawing.Point(201, 309);
+            this.lblStudentSuburb.Location = new System.Drawing.Point(201, 307);
             this.lblStudentSuburb.Name = "lblStudentSuburb";
             this.lblStudentSuburb.Size = new System.Drawing.Size(72, 20);
             this.lblStudentSuburb.TabIndex = 26;
             this.lblStudentSuburb.Text = "Suburb:";
-            // 
-            // txtStudPostCode
-            // 
-            this.txtStudPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudPostCode.Location = new System.Drawing.Point(283, 338);
-            this.txtStudPostCode.Name = "txtStudPostCode";
-            this.txtStudPostCode.Size = new System.Drawing.Size(113, 26);
-            this.txtStudPostCode.TabIndex = 8;
-            this.txtStudPostCode.Tag = "Student Post Code";
-            this.StudentToolTip.SetToolTip(this.txtStudPostCode, "Post code must contain only numeric characters");
-            // 
-            // lblStudPostCode
-            // 
-            this.lblStudPostCode.AutoSize = true;
-            this.lblStudPostCode.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblStudPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudPostCode.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudPostCode.Location = new System.Drawing.Point(175, 341);
-            this.lblStudPostCode.Name = "lblStudPostCode";
-            this.lblStudPostCode.Size = new System.Drawing.Size(97, 20);
-            this.lblStudPostCode.TabIndex = 28;
-            this.lblStudPostCode.Text = "Post Code:";
             // 
             // mnuFile
             // 
@@ -543,29 +523,30 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // cmbStudSuburb
+            // cmbSuburbName
             // 
-            this.cmbStudSuburb.DisplayMember = "Cake";
-            this.cmbStudSuburb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStudSuburb.FormattingEnabled = true;
-            this.cmbStudSuburb.Items.AddRange(new object[] {
+            this.cmbSuburbName.DisplayMember = "Cake";
+            this.cmbSuburbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSuburbName.FormattingEnabled = true;
+            this.cmbSuburbName.Items.AddRange(new object[] {
             "Campbelltown",
             "Liverpool",
             "Ultimo",
             "Granville"});
-            this.cmbStudSuburb.Location = new System.Drawing.Point(283, 304);
-            this.cmbStudSuburb.Name = "cmbStudSuburb";
-            this.cmbStudSuburb.Size = new System.Drawing.Size(176, 28);
-            this.cmbStudSuburb.TabIndex = 7;
-            this.cmbStudSuburb.Tag = "Student Suburb";
-            this.StudentToolTip.SetToolTip(this.cmbStudSuburb, "Press the down arrow to make a selection");
+            this.cmbSuburbName.Location = new System.Drawing.Point(324, 304);
+            this.cmbSuburbName.Name = "cmbSuburbName";
+            this.cmbSuburbName.Size = new System.Drawing.Size(176, 28);
+            this.cmbSuburbName.TabIndex = 7;
+            this.cmbSuburbName.Tag = "Suburb Name";
+            this.StudentToolTip.SetToolTip(this.cmbSuburbName, "Press the down arrow to make a selection");
+            this.cmbSuburbName.SelectedIndexChanged += new System.EventHandler(this.cmbSuburbName_Changed);
             // 
             // dtpDateOfBirth
             // 
             this.dtpDateOfBirth.AllowDrop = true;
             this.dtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(283, 209);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(283, 242);
             this.dtpDateOfBirth.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
             this.dtpDateOfBirth.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
@@ -610,7 +591,7 @@
             this.lblGender.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGender.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblGender.Location = new System.Drawing.Point(198, 246);
+            this.lblGender.Location = new System.Drawing.Point(198, 214);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(74, 20);
             this.lblGender.TabIndex = 32;
@@ -620,7 +601,7 @@
             // 
             this.pnlGender.Controls.Add(this.rdbFemale);
             this.pnlGender.Controls.Add(this.rdbMale);
-            this.pnlGender.Location = new System.Drawing.Point(283, 243);
+            this.pnlGender.Location = new System.Drawing.Point(283, 211);
             this.pnlGender.Name = "pnlGender";
             this.pnlGender.Size = new System.Drawing.Size(176, 25);
             this.pnlGender.TabIndex = 5;
@@ -629,10 +610,46 @@
             // 
             this.pnlDisability.Controls.Add(this.rdbDisabilityYes);
             this.pnlDisability.Controls.Add(this.rdbDisabilityNo);
-            this.pnlDisability.Location = new System.Drawing.Point(283, 465);
+            this.pnlDisability.Location = new System.Drawing.Point(283, 436);
             this.pnlDisability.Name = "pnlDisability";
             this.pnlDisability.Size = new System.Drawing.Size(176, 27);
             this.pnlDisability.TabIndex = 12;
+            // 
+            // cmbSuburbID
+            // 
+            this.cmbSuburbID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbSuburbID.Enabled = false;
+            this.cmbSuburbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSuburbID.FormattingEnabled = true;
+            this.cmbSuburbID.Location = new System.Drawing.Point(283, 304);
+            this.cmbSuburbID.Name = "cmbSuburbID";
+            this.cmbSuburbID.Size = new System.Drawing.Size(35, 28);
+            this.cmbSuburbID.TabIndex = 126;
+            this.cmbSuburbID.Tag = "Suburb ID";
+            // 
+            // cmbCountryID
+            // 
+            this.cmbCountryID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbCountryID.Enabled = false;
+            this.cmbCountryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCountryID.FormattingEnabled = true;
+            this.cmbCountryID.Location = new System.Drawing.Point(283, 402);
+            this.cmbCountryID.Name = "cmbCountryID";
+            this.cmbCountryID.Size = new System.Drawing.Size(35, 28);
+            this.cmbCountryID.TabIndex = 127;
+            this.cmbCountryID.Tag = "Country ID";
+            // 
+            // cmbPostCode
+            // 
+            this.cmbPostCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbPostCode.Enabled = false;
+            this.cmbPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPostCode.FormattingEnabled = true;
+            this.cmbPostCode.Location = new System.Drawing.Point(506, 304);
+            this.cmbPostCode.Name = "cmbPostCode";
+            this.cmbPostCode.Size = new System.Drawing.Size(124, 28);
+            this.cmbPostCode.TabIndex = 128;
+            this.cmbPostCode.Tag = "Post Code";
             // 
             // StudentForm
             // 
@@ -642,14 +659,15 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(665, 756);
+            this.Controls.Add(this.cmbPostCode);
+            this.Controls.Add(this.cmbCountryID);
+            this.Controls.Add(this.cmbSuburbID);
             this.Controls.Add(this.dtpDateOfBirth);
-            this.Controls.Add(this.cmbStudSuburb);
+            this.Controls.Add(this.cmbSuburbName);
             this.Controls.Add(this.pnlDisability);
             this.Controls.Add(this.pnlGender);
             this.Controls.Add(this.lblGender);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtStudPostCode);
-            this.Controls.Add(this.lblStudPostCode);
             this.Controls.Add(this.lblStudentSuburb);
             this.Controls.Add(this.dgvStudent);
             this.Controls.Add(this.txtStudentLastName);
@@ -660,7 +678,7 @@
             this.Controls.Add(this.txtDisabilityDescription);
             this.Controls.Add(this.lblDisabilityDescription);
             this.Controls.Add(this.lblDisability);
-            this.Controls.Add(this.cmbNationality);
+            this.Controls.Add(this.cmbCountryName);
             this.Controls.Add(this.lblNationality);
             this.Controls.Add(this.txtStudentPhoneNum);
             this.Controls.Add(this.lblStudentPhoneNum);
@@ -702,7 +720,7 @@
         private System.Windows.Forms.TextBox txtStudentPhoneNum;
         private System.Windows.Forms.Label lblStudentPhoneNum;
         private System.Windows.Forms.Label lblNationality;
-        private System.Windows.Forms.ComboBox cmbNationality;
+        private System.Windows.Forms.ComboBox cmbCountryName;
         private System.Windows.Forms.Label lblDisability;
         private System.Windows.Forms.RadioButton rdbDisabilityYes;
         private System.Windows.Forms.RadioButton rdbDisabilityNo;
@@ -715,8 +733,6 @@
         private System.Windows.Forms.Label lblStudentLastName;
         private System.Windows.Forms.DataGridView dgvStudent;
         private System.Windows.Forms.Label lblStudentSuburb;
-        private System.Windows.Forms.TextBox txtStudPostCode;
-        private System.Windows.Forms.Label lblStudPostCode;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.ToolStripMenuItem mnuAdd;
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
@@ -736,10 +752,13 @@
         private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Panel pnlGender;
         private System.Windows.Forms.Panel pnlDisability;
-        private System.Windows.Forms.ComboBox cmbStudSuburb;
+        private System.Windows.Forms.ComboBox cmbSuburbName;
         private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.ComboBox cmbSuburbID;
+        private System.Windows.Forms.ComboBox cmbCountryID;
+        private System.Windows.Forms.ComboBox cmbPostCode;
     }
 }

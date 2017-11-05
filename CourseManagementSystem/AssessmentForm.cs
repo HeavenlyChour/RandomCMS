@@ -116,7 +116,7 @@ namespace CourseManagementSystem
             }
             #endregion
             clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text), txtAssessmentName.Text,
-                Convert.ToInt32(cmbUnitName.Text), Convert.ToInt32(cmbTeacherName.Text), 
+                Convert.ToInt32(cmbUnitID.Text), Convert.ToInt32(cmbTeacherID.Text), 
                 dtpStartDate.Value.ToString("yyyy-MM-dd"), dtpDueDate.Value.ToString("yyyy-MM-dd"));
 
             objAssessment.Update();
