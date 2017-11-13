@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.CourseToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.cmbCourseSemester = new System.Windows.Forms.ComboBox();
-            this.cmbCourseLocation = new System.Windows.Forms.ComboBox();
+            this.cmbSemesterID = new System.Windows.Forms.ComboBox();
+            this.cmbSuburbName = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtNumOfUnits = new System.Windows.Forms.TextBox();
             this.txtHoursPerWeek = new System.Windows.Forms.TextBox();
@@ -71,32 +71,34 @@
             this.pnlCourseDelivery = new System.Windows.Forms.Panel();
             this.rdbFaceToFace = new System.Windows.Forms.RadioButton();
             this.rdbOnline = new System.Windows.Forms.RadioButton();
+            this.cmbSuburbID = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourse)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlCourseDelivery.SuspendLayout();
             this.SuspendLayout();
             // 
-            // cmbCourseSemester
+            // cmbSemesterID
             // 
-            this.cmbCourseSemester.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCourseSemester.FormattingEnabled = true;
-            this.cmbCourseSemester.Location = new System.Drawing.Point(241, 255);
-            this.cmbCourseSemester.Name = "cmbCourseSemester";
-            this.cmbCourseSemester.Size = new System.Drawing.Size(275, 28);
-            this.cmbCourseSemester.TabIndex = 5;
-            this.cmbCourseSemester.Tag = "Course Semester";
-            this.CourseToolTip.SetToolTip(this.cmbCourseSemester, "press the down arrow to make a selection");
+            this.cmbSemesterID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSemesterID.FormattingEnabled = true;
+            this.cmbSemesterID.Location = new System.Drawing.Point(241, 255);
+            this.cmbSemesterID.Name = "cmbSemesterID";
+            this.cmbSemesterID.Size = new System.Drawing.Size(275, 28);
+            this.cmbSemesterID.TabIndex = 5;
+            this.cmbSemesterID.Tag = "Course Semester";
+            this.CourseToolTip.SetToolTip(this.cmbSemesterID, "press the down arrow to make a selection");
             // 
-            // cmbCourseLocation
+            // cmbSuburbName
             // 
-            this.cmbCourseLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCourseLocation.FormattingEnabled = true;
-            this.cmbCourseLocation.Location = new System.Drawing.Point(241, 189);
-            this.cmbCourseLocation.Name = "cmbCourseLocation";
-            this.cmbCourseLocation.Size = new System.Drawing.Size(275, 28);
-            this.cmbCourseLocation.TabIndex = 3;
-            this.cmbCourseLocation.Tag = "Course Location";
-            this.CourseToolTip.SetToolTip(this.cmbCourseLocation, "press the down arrow to make a selection");
+            this.cmbSuburbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSuburbName.FormattingEnabled = true;
+            this.cmbSuburbName.Location = new System.Drawing.Point(282, 187);
+            this.cmbSuburbName.Name = "cmbSuburbName";
+            this.cmbSuburbName.Size = new System.Drawing.Size(234, 28);
+            this.cmbSuburbName.TabIndex = 3;
+            this.cmbSuburbName.Tag = "Course Location";
+            this.CourseToolTip.SetToolTip(this.cmbSuburbName, "press the down arrow to make a selection");
+            this.cmbSuburbName.SelectedIndexChanged += new System.EventHandler(this.cmbSuburbName_Changed);
             // 
             // btnSearch
             // 
@@ -277,10 +279,10 @@
             // 
             this.dgvCourse.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvCourse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCourse.Location = new System.Drawing.Point(12, 586);
+            this.dgvCourse.Location = new System.Drawing.Point(12, 498);
             this.dgvCourse.Name = "dgvCourse";
             this.dgvCourse.ReadOnly = true;
-            this.dgvCourse.Size = new System.Drawing.Size(642, 120);
+            this.dgvCourse.Size = new System.Drawing.Size(642, 208);
             this.dgvCourse.TabIndex = 54;
             // 
             // lblCourseLocation
@@ -522,6 +524,18 @@
             this.rdbOnline.Text = "Online";
             this.rdbOnline.UseVisualStyleBackColor = true;
             // 
+            // cmbSuburbID
+            // 
+            this.cmbSuburbID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbSuburbID.Enabled = false;
+            this.cmbSuburbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSuburbID.FormattingEnabled = true;
+            this.cmbSuburbID.Location = new System.Drawing.Point(241, 187);
+            this.cmbSuburbID.Name = "cmbSuburbID";
+            this.cmbSuburbID.Size = new System.Drawing.Size(35, 28);
+            this.cmbSuburbID.TabIndex = 127;
+            this.cmbSuburbID.Tag = "Suburb ID";
+            // 
             // CourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,6 +543,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 719);
+            this.Controls.Add(this.cmbSuburbID);
             this.Controls.Add(this.pnlCourseDelivery);
             this.Controls.Add(this.txtCourseFee);
             this.Controls.Add(this.txtCourseName);
@@ -539,8 +554,8 @@
             this.Controls.Add(this.lblCEndDate);
             this.Controls.Add(this.lblCStartDate);
             this.Controls.Add(this.lblCourseFee);
-            this.Controls.Add(this.cmbCourseLocation);
-            this.Controls.Add(this.cmbCourseSemester);
+            this.Controls.Add(this.cmbSuburbName);
+            this.Controls.Add(this.cmbSemesterID);
             this.Controls.Add(this.lblCourseDelivery);
             this.Controls.Add(this.txtNumOfUnits);
             this.Controls.Add(this.lblNumOfUnits);
@@ -559,6 +574,7 @@
             this.Name = "CourseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Course Form";
+            this.Load += new System.EventHandler(this.CourseForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourse)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -597,8 +613,8 @@
         private System.Windows.Forms.Label lblCourseID;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lblCourseDelivery;
-        private System.Windows.Forms.ComboBox cmbCourseSemester;
-        private System.Windows.Forms.ComboBox cmbCourseLocation;
+        private System.Windows.Forms.ComboBox cmbSemesterID;
+        private System.Windows.Forms.ComboBox cmbSuburbName;
         private System.Windows.Forms.Label lblCourseFee;
         private System.Windows.Forms.Label lblCStartDate;
         private System.Windows.Forms.Label lblCEndDate;
@@ -613,5 +629,6 @@
         private System.Windows.Forms.Panel pnlCourseDelivery;
         private System.Windows.Forms.RadioButton rdbFaceToFace;
         private System.Windows.Forms.RadioButton rdbOnline;
+        private System.Windows.Forms.ComboBox cmbSuburbID;
     }
 }

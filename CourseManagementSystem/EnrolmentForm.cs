@@ -29,26 +29,26 @@ namespace CourseManagementSystem
         private void mnuAdd_Click(object sender, EventArgs e)
         {
             #region ValidationArea
-            if (!clsValidation.ValidateTextBox(txtStudentID))
-            {
-                txtStudentID.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtStudentID))
-            {
-                txtStudentID.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBox(txtCourseID))
-            {
-                txtCourseID.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
-            {
-                txtCourseID.Focus();
-                return;
-            }
+            //if (!clsValidation.ValidateTextBox(txtStudentID))
+            //{
+            //    txtStudentID.Focus();
+            //    return;
+            //}
+            //if (!clsValidation.ValidateTextBoxForNumeric(txtStudentID))
+            //{
+            //    txtStudentID.Focus();
+            //    return;
+            //}
+            //if (!clsValidation.ValidateTextBox(txtCourseID))
+            //{
+            //    txtCourseID.Focus();
+            //    return;
+            //}
+            //if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
+            //{
+            //    txtCourseID.Focus();
+            //    return;
+            //}
             if (!clsValidation.ValidateDate(dtpEnrolmentDate))
             {
                 return;
@@ -120,28 +120,28 @@ namespace CourseManagementSystem
                 return;
             }
 
-            if (rdbDisabilityYes.Checked == true)
-            {
-                txtDisabilityDescription.ReadOnly = false;
-                if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
-                {
-                    return;
-                }
-            }
-            if (rdbDisabilityNo.Checked == true)
-            {
-                txtDisabilityDescription.Text = String.Empty;
-                txtDisabilityDescription.ReadOnly = true;
-            }
-            string disabilityText = String.Empty;
-            if (rdbDisabilityYes.Checked)
-            {
-                disabilityText = "Yes";
-            }
-            else if (rdbDisabilityNo.Checked)
-            {
-                disabilityText = "No";
-            }
+            //if (rdbDisabilityYes.Checked == true)
+            //{
+            //    txtDisabilityDescription.ReadOnly = false;
+            //    if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
+            //    {
+            //        return;
+            //    }
+            //}
+            //if (rdbDisabilityNo.Checked == true)
+            //{
+            //    txtDisabilityDescription.Text = String.Empty;
+            //    txtDisabilityDescription.ReadOnly = true;
+            //}
+            //string disabilityText = String.Empty;
+            //if (rdbDisabilityYes.Checked)
+            //{
+            //    disabilityText = "Yes";
+            //}
+            //else if (rdbDisabilityNo.Checked)
+            //{
+            //    disabilityText = "No";
+            //}
 
             if (!clsValidation.ValidateComboBox(cmbStudyStatus))
             {
@@ -150,29 +150,29 @@ namespace CourseManagementSystem
             }
             #endregion
 
-            if (rdbDisabilityYes.Checked == true)
-            {
-                //   txtDisabilityDescription.ReadOnly = false;
-                if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
-                {
-                    return;
-                }
-            }
-            if (rdbDisabilityNo.Checked == true)
-            {
-                txtDisabilityDescription.Text = String.Empty;
-                txtDisabilityDescription.ReadOnly = true;
-            }
+            //if (rdbDisabilityYes.Checked == true)
+            //{
+            //    //   txtDisabilityDescription.ReadOnly = false;
+            //    if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
+            //    {
+            //        return;
+            //    }
+            //}
+            //if (rdbDisabilityNo.Checked == true)
+            //{
+            //    txtDisabilityDescription.Text = String.Empty;
+            //    txtDisabilityDescription.ReadOnly = true;
+            //}
             if (!clsValidation.ValidateComboBox(cmbStudyStatus))
             {
                 return;
             }
             clsEnrolment objEnrolment = new clsEnrolment(Convert.ToInt32(txtStudentID.Text), Convert.ToInt32(txtCourseID.Text),
-                dtpEnrolmentDate.Value.Date, dtpExpectedEndDate.Value.Date, courseDelText, cmbPaymentMethod.Text,
-                dtpPaymentDueDate.Value.Date, Convert.ToInt32(txtAmountPaid.Text), Convert.ToInt32(txtBalanceOwing.Text),
-                cmbPaymentStatus.Text, disabilityText, txtDisabilityDescription.Text, cmbStudyStatus.Text);
+                dtpEnrolmentDate.Value.ToString("yyyy-MM-dd"), dtpExpectedEndDate.Value.ToString("yyyy-MM-dd"), courseDelText, 
+                cmbPaymentMethod.Text, dtpPaymentDueDate.Value.ToString("yyyy-MM-dd"), Convert.ToInt32(txtAmountPaid.Text), 
+                Convert.ToInt32(txtBalanceOwing.Text), cmbPaymentStatus.Text, cmbStudyStatus.Text);
 
-            objEnrolment.AddEnrolment();
+            objEnrolment.Add();
             MessageBox.Show("Enrolment record successfully added!");
         }
 
@@ -184,7 +184,7 @@ namespace CourseManagementSystem
                 return;
             }
             clsEnrolment objEnrolment = new clsEnrolment(Convert.ToInt32(txtEnrolmentID.Text));
-            objEnrolment.DeleteEnrolment();
+            objEnrolment.Delete();
             MessageBox.Show("Enrolment record successfully deleted");
         }
 
@@ -318,12 +318,13 @@ namespace CourseManagementSystem
             #endregion
 
             clsEnrolment objEnrolment = new clsEnrolment(Convert.ToInt32(txtEnrolmentID.Text), Convert.ToInt32(txtStudentID.Text), 
-                Convert.ToInt32(txtCourseID.Text), dtpEnrolmentDate.Value.Date, dtpExpectedEndDate.Value.Date, courseDelText, 
-                cmbPaymentMethod.Text, dtpPaymentDueDate.Value.Date, Convert.ToInt32(txtAmountPaid.Text), 
-                Convert.ToInt32(txtBalanceOwing.Text), cmbPaymentStatus.Text, disabilityText, txtDisabilityDescription.Text, 
-                cmbStudyStatus.Text);
+                Convert.ToInt32(txtCourseID.Text), dtpEnrolmentDate.Value.ToString("yyyy-MM-dd"), 
+                dtpExpectedEndDate.Value.Date.ToString("yyyy-MM-dd"), courseDelText, 
+                cmbPaymentMethod.Text, dtpPaymentDueDate.Value.ToString("yyyy-MM-dd"), 
+                Convert.ToInt32(txtAmountPaid.Text), Convert.ToInt32(txtBalanceOwing.Text), 
+                cmbPaymentStatus.Text, cmbStudyStatus.Text);
 
-            objEnrolment.UpdateEnrolment();
+            objEnrolment.Update();
             MessageBox.Show("Enrolment record successfully updated!");
         }
 

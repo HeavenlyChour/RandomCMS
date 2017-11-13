@@ -6,24 +6,27 @@ using System.Threading.Tasks;
 using DatabaseClass;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace CourseManagementSystem
 {
-    class clsEnrolment
+    class clsEnrolment : ILogic
     {
         private int enrolmentID;
         private int studentID;
+        private string studentName;
         private int courseID;
-        private DateTime enrolmentDate;
-        private DateTime expectedEndDate;
+        private string courseName;
+        private string enrolmentDate;
+        private string expectedEndDate;
         private string courseDelivery;
+        private float amountDue;
+        private string paymentDueDate;
         private string paymentMethod;
-        private DateTime paymentDueDate;
-        private double amountPaid;
-        private double balanceOwing;
         private string paymentStatus;
-        private string disability;
-        private string disabilityDetails;
+        private string datePaid;
+        //private string disability;
+        //private string disabilityDetails;
         private string studyStatus;
 
         public clsEnrolment()
@@ -42,24 +45,24 @@ namespace CourseManagementSystem
             this.CourseID = courseID;
         }
 
-        public clsEnrolment(int studentID, int courseID, DateTime enrolmentDate, DateTime expectedEndDate, string courseDelivery, string paymentMethod, DateTime paymentDueDate, double amountPaid, double balanceOwing, string paymentStatus, string disability, string disabilityDetails, string studyStatus)
+        public clsEnrolment(int studentID, int courseID, string enrolmentDate, string expectedEndDate, string courseDelivery, float amountDue, string paymentDueDate, string paymentMethod, string paymentStatus, string datePaid, string studyStatus)
         {
             this.StudentID = studentID;
             this.CourseID = courseID;
             this.EnrolmentDate = enrolmentDate;
             this.ExpectedEndDate = expectedEndDate;
             this.CourseDelivery = courseDelivery;
-            this.PaymentMethod = paymentMethod;
+            this.AmountDue = amountDue;
             this.PaymentDueDate = paymentDueDate;
-            this.AmountPaid = amountPaid;
-            this.BalanceOwing = balanceOwing;
+            this.PaymentMethod = paymentMethod;
             this.PaymentStatus = paymentStatus;
-            this.Disability = disability;
-            this.DisabilityDetails = disabilityDetails;
+            this.DatePaid = datePaid;
+            //this.Disability = disability;
+            //this.DisabilityDetails = disabilityDetails;
             this.StudyStatus = studyStatus;
         }
 
-        public clsEnrolment(int enrolmentID, int studentID, int courseID, DateTime enrolmentDate, DateTime expectedEndDate, string courseDelivery, string paymentMethod, DateTime paymentDueDate, double amountPaid, double balanceOwing, string paymentStatus, string disability, string disabilityDetails, string studyStatus)
+        public clsEnrolment(int enrolmentID, int studentID, int courseID, string enrolmentDate, string expectedEndDate, string courseDelivery, float amountDue, string paymentDueDate, string paymentMethod, string paymentStatus, string datePaid, string studyStatus)
         {
             this.EnrolmentID = enrolmentID;
             this.StudentID = studentID;
@@ -67,13 +70,13 @@ namespace CourseManagementSystem
             this.EnrolmentDate = enrolmentDate;
             this.ExpectedEndDate = expectedEndDate;
             this.CourseDelivery = courseDelivery;
-            this.PaymentMethod = paymentMethod;
+            this.AmountDue = amountDue;
             this.PaymentDueDate = paymentDueDate;
-            this.AmountPaid = amountPaid;
-            this.BalanceOwing = balanceOwing;
+            this.PaymentMethod = paymentMethod;
             this.PaymentStatus = paymentStatus;
-            this.Disability = disability;
-            this.DisabilityDetails = disabilityDetails;
+            this.DatePaid = datePaid;
+            //this.Disability = disability;
+            //this.DisabilityDetails = disabilityDetails;
             this.StudyStatus = studyStatus;
         }
 
@@ -104,6 +107,19 @@ namespace CourseManagementSystem
             }
         }
 
+        public string StudentName
+        {
+            get
+            {
+                return studentName;
+            }
+
+            set
+            {
+                studentName = value;
+            }
+        }
+
         public int CourseID
         {
             get
@@ -117,7 +133,20 @@ namespace CourseManagementSystem
             }
         }
 
-        public DateTime EnrolmentDate
+        public string CourseName
+        {
+            get
+            {
+                return courseName;
+            }
+
+            set
+            {
+                courseName = value;
+            }
+        }
+
+        public string EnrolmentDate
         {
             get
             {
@@ -130,7 +159,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public DateTime ExpectedEndDate
+        public string ExpectedEndDate
         {
             get
             {
@@ -156,20 +185,20 @@ namespace CourseManagementSystem
             }
         }
 
-        public string PaymentMethod
+        public float AmountDue
         {
             get
             {
-                return paymentMethod;
+                return amountDue;
             }
 
             set
             {
-                paymentMethod = value;
+                amountDue = value;
             }
         }
 
-        public DateTime PaymentDueDate
+        public string PaymentDueDate
         {
             get
             {
@@ -182,29 +211,16 @@ namespace CourseManagementSystem
             }
         }
 
-        public double AmountPaid
+        public string PaymentMethod
         {
             get
             {
-                return amountPaid;
+                return paymentMethod;
             }
 
             set
             {
-                amountPaid = value;
-            }
-        }
-
-        public double BalanceOwing
-        {
-            get
-            {
-                return balanceOwing;
-            }
-
-            set
-            {
-                balanceOwing = value;
+                paymentMethod = value;
             }
         }
 
@@ -221,29 +237,16 @@ namespace CourseManagementSystem
             }
         }
 
-        public string Disability
+        public string DatePaid
         {
             get
             {
-                return disability;
+                return datePaid;
             }
 
             set
             {
-                disability = value;
-            }
-        }
-
-        public string DisabilityDetails
-        {
-            get
-            {
-                return disabilityDetails;
-            }
-
-            set
-            {
-                disabilityDetails = value;
+                datePaid = value;
             }
         }
 
@@ -261,7 +264,7 @@ namespace CourseManagementSystem
         }
         #endregion
 
-        public bool AddEnrolment()
+        public bool Add()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("InsertEnrolment", objConnection);
@@ -269,21 +272,21 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@cid", CourseID);
             objCommand.Parameters.AddWithValue("@enroldate", EnrolmentDate);
             objCommand.Parameters.AddWithValue("@enddate", ExpectedEndDate);
-            objCommand.Parameters.AddWithValue("@coursedev", CourseDelivery);
+            objCommand.Parameters.AddWithValue("@coursedel", CourseDelivery);
             objCommand.Parameters.AddWithValue("@paymeth", PaymentMethod);
             objCommand.Parameters.AddWithValue("@payduedate", PaymentDueDate);
             objCommand.Parameters.AddWithValue("@amountpaid", AmountPaid);
-            objCommand.Parameters.AddWithValue("@balanceowe", BalanceOwing);
+            objCommand.Parameters.AddWithValue("@balowing", BalanceOwing);
             objCommand.Parameters.AddWithValue("@paystat", PaymentStatus);
-            objCommand.Parameters.AddWithValue("@dis", Disability);
-            objCommand.Parameters.AddWithValue("@disdetails", DisabilityDetails);
+            //objCommand.Parameters.AddWithValue("@dis", Disability);
+            //objCommand.Parameters.AddWithValue("@disdetails", DisabilityDetails);
             objCommand.Parameters.AddWithValue("@studystat", StudyStatus);
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.ExecuteNonQuery();
             return true;
         }
 
-        public bool DeleteEnrolment()
+        public bool Delete()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("DeleteEnrolment", objConnection);
@@ -294,7 +297,7 @@ namespace CourseManagementSystem
             return true;
         }
 
-        public bool UpdateEnrolment()
+        public bool Update()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("UpdateEnrolment", objConnection);
@@ -303,19 +306,98 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@cid", CourseID);
             objCommand.Parameters.AddWithValue("@enroldate", EnrolmentDate);
             objCommand.Parameters.AddWithValue("@enddate", ExpectedEndDate);
-            objCommand.Parameters.AddWithValue("@coursedev", CourseDelivery);
+            objCommand.Parameters.AddWithValue("@coursedel", CourseDelivery);
             objCommand.Parameters.AddWithValue("@paymeth", PaymentMethod);
             objCommand.Parameters.AddWithValue("@payduedate", PaymentDueDate);
             objCommand.Parameters.AddWithValue("@amountpaid", AmountPaid);
             objCommand.Parameters.AddWithValue("@balanceowe", BalanceOwing);
             objCommand.Parameters.AddWithValue("@paystat", PaymentStatus);
-            objCommand.Parameters.AddWithValue("@dis", Disability);
-            objCommand.Parameters.AddWithValue("@disdetails", DisabilityDetails);
+            //objCommand.Parameters.AddWithValue("@dis", Disability);
+            //objCommand.Parameters.AddWithValue("@disdetails", DisabilityDetails);
             objCommand.Parameters.AddWithValue("@studystat", StudyStatus);
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.ExecuteNonQuery();
             return true;
         }
 
+        public bool Search()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("SearchEnrolment", objConnection);
+            objCommand.Parameters.AddWithValue("@cid", CourseID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+
+            if (objDataReader.Read())
+            {
+                StudentID = Convert.ToInt32(objDataReader[1]);
+                StudentName = objDataReader[2].ToString();
+                CourseID = Convert.ToInt32(objDataReader[3]);
+                CourseName = objDataReader[4].ToString();
+                EnrolmentDate = objDataReader[6].ToString();
+                ExpectedEndDate = objDataReader[7].ToString();
+                PaymentMethod = objDataReader[8].ToString();
+                PaymentDueDate = objDataReader[9].ToString();
+                //amountPaid = Convert.ToInt32(objDataReader[10]);
+                //balanceOwing = Convert.ToInt32(objDataReader[11]);
+                PaymentStatus = objDataReader[12].ToString();
+                StudyStatus = objDataReader[13].ToString();
+                objConnection.Close();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        public void ViewAll(DataGridView dgv)
+        {
+            string strConnection = "server=localhost;database=randomdb;Trusted_Connection=yes";
+            SqlConnection objConnection = new SqlConnection(strConnection);
+            //SqlConnection objConnection = clsDatabase.CreateConnection();
+            objConnection.Open();
+
+            string strSQL = "select * from enrolment";
+            SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
+
+            DataTable objDataTable = new DataTable();
+            objDataAdapter.Fill(objDataTable);
+
+            if (objDataTable.Rows.Count != 0)
+            {
+                dgv.DataSource = null;
+                dgv.DataSource = objDataTable;
+                dgv.AutoGenerateColumns = false;
+                dgv.Columns[0].HeaderText = "Enroment ID";
+                dgv.Columns[1].HeaderText = "Student ID";
+                dgv.Columns[2].HeaderText = "Student Name";
+                dgv.Columns[3].HeaderText = "Course ID";
+                dgv.Columns[4].HeaderText = "Course Name";
+                dgv.Columns[5].HeaderText = "Enrolment Date";
+                dgv.Columns[6].HeaderText = "Expected End Date";
+                dgv.Columns[7].HeaderText = "Delivery";
+                dgv.Columns[8].HeaderText = "Payment Method";
+                dgv.Columns[9].HeaderText = "Payment Due Date";
+                dgv.Columns[10].HeaderText = "Amount Paid";
+                dgv.Columns[11].HeaderText = "Balance Owed";
+                dgv.Columns[12].HeaderText = "Payment Status";
+                dgv.Columns[13].HeaderText = "Study Status";
+                dgv.AutoResizeColumns();
+                dgv.AutoSize = false;
+                dgv.Visible = true;
+                objConnection.Close();
+            }
+            else
+            {
+                MessageBox.Show("There are no enrolments");
+                objConnection.Close();
+            }
+        }
+
+        public void Load(ComboBox[] cmb)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

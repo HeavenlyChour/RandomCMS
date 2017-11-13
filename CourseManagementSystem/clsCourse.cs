@@ -14,9 +14,10 @@ namespace CourseManagementSystem
     {
         private int courseID;
         private string courseName;
-        private string courseLocation;
+        private int suburbID;
+        private string suburbName;
         private int courseDuration;
-        private string courseSemester;
+        private int semesterID;
         private string startDate;
         private string endDate;
         //private DateTime startDate;
@@ -36,12 +37,12 @@ namespace CourseManagementSystem
             this.CourseID = courseID;
         }
 
-        public clsCourse(string courseName, string courseLocation, int courseDuration, string courseSemester, string startDate, string endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, int courseFee)
+        public clsCourse(string courseName, int suburbID, int courseDuration, int semesterID, string startDate, string endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, int courseFee)
         {
             this.CourseName = courseName;
-            this.CourseLocation = courseLocation;
+            this.SuburbID = suburbID;
             this.CourseDuration = courseDuration;
-            this.CourseSemester = courseSemester;
+            this.SemesterID = semesterID;
             this.StartDate = startDate;
             this.EndDate = endDate;
             this.CourseDelivery = courseDelivery;
@@ -50,13 +51,13 @@ namespace CourseManagementSystem
             this.CourseFee = courseFee;
         }
 
-        public clsCourse(int courseID, string courseName, string courseLocation, int courseDuration, string courseSemester, string startDate, string endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, int courseFee)
+        public clsCourse(int courseID, string courseName, int suburbID, int courseDuration, int semesterID, string startDate, string endDate, string courseDelivery, int hoursPerWeek, int noOfUnits, int courseFee)
         {
             this.CourseID = courseID;
             this.CourseName = courseName;
-            this.CourseLocation = courseLocation;
+            this.SuburbID = suburbID;
             this.CourseDuration = courseDuration;
-            this.CourseSemester = courseSemester;
+            this.SemesterID = semesterID;
             this.StartDate = startDate;
             this.EndDate = endDate;
             this.CourseDelivery = courseDelivery;
@@ -92,16 +93,29 @@ namespace CourseManagementSystem
             }
         }
 
-        public string CourseLocation
+        public int SuburbID
         {
             get
             {
-                return courseLocation;
+                return suburbID;
             }
 
             set
             {
-                courseLocation = value;
+                suburbID = value;
+            }
+        }
+
+        public string SuburbName
+        {
+            get
+            {
+                return suburbName;
+            }
+
+            set
+            {
+                suburbName = value;
             }
         }
 
@@ -118,16 +132,16 @@ namespace CourseManagementSystem
             }
         }
 
-        public string CourseSemester
+        public int SemesterID
         {
             get
             {
-                return courseSemester;
+                return semesterID;
             }
 
             set
             {
-                courseSemester = value;
+                semesterID = value;
             }
         }
 
@@ -216,9 +230,9 @@ namespace CourseManagementSystem
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("InsertCourse", objConnection);
             objCommand.Parameters.AddWithValue("@cname", CourseName);
-            objCommand.Parameters.AddWithValue("@cloc", CourseLocation);
-            objCommand.Parameters.AddWithValue("@csdur", CourseDuration);
-            objCommand.Parameters.AddWithValue("@csem", CourseSemester);
+            objCommand.Parameters.AddWithValue("@csub", SuburbID);
+            objCommand.Parameters.AddWithValue("@cdur", CourseDuration);
+            objCommand.Parameters.AddWithValue("@csem", SemesterID);
             objCommand.Parameters.AddWithValue("@sdate", StartDate);
             objCommand.Parameters.AddWithValue("@edate", EndDate);
             objCommand.Parameters.AddWithValue("@cdeliv", CourseDelivery);
@@ -244,12 +258,12 @@ namespace CourseManagementSystem
         public bool Update()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
-            SqlCommand objCommand = new SqlCommand("UpdateStudent", objConnection);
+            SqlCommand objCommand = new SqlCommand("UpdateCourse", objConnection);
             objCommand.Parameters.AddWithValue("@cid", CourseID);
             objCommand.Parameters.AddWithValue("@cname", CourseName);
-            objCommand.Parameters.AddWithValue("@cloc", CourseLocation);
-            objCommand.Parameters.AddWithValue("@csdur", CourseDuration);
-            objCommand.Parameters.AddWithValue("@csem", CourseSemester);
+            objCommand.Parameters.AddWithValue("@csub", SuburbID);
+            objCommand.Parameters.AddWithValue("@cdur", CourseDuration);
+            objCommand.Parameters.AddWithValue("@csem", SemesterID);
             objCommand.Parameters.AddWithValue("@sdate", StartDate);
             objCommand.Parameters.AddWithValue("@edate", EndDate);
             objCommand.Parameters.AddWithValue("@cdeliv", CourseDelivery);
@@ -273,15 +287,16 @@ namespace CourseManagementSystem
             {
                 //courseID = objDataReader[0].ToString();
                 courseName = objDataReader[1].ToString();
-                courseLocation = objDataReader[2].ToString();
-                courseDuration = Convert.ToInt32(objDataReader[3]);
-                courseSemester = objDataReader[4].ToString();
-                startDate = objDataReader[5].ToString();
-                endDate = objDataReader[6].ToString();
-                courseDelivery = objDataReader[7].ToString();
-                hoursPerWeek = Convert.ToInt32(objDataReader[8]);
-                noOfUnits = Convert.ToInt32(objDataReader[9]);
-                courseFee = Convert.ToInt32(objDataReader[10]);
+                suburbID = Convert.ToInt32(objDataReader[2]);
+                suburbName = objDataReader[3].ToString();
+                courseDuration = Convert.ToInt32(objDataReader[4]);
+                semesterID = Convert.ToInt32(objDataReader[5]);
+                startDate = objDataReader[6].ToString();
+                endDate = objDataReader[7].ToString();
+                courseDelivery = objDataReader[8].ToString();
+                hoursPerWeek = Convert.ToInt32(objDataReader[9]);
+                noOfUnits = Convert.ToInt32(objDataReader[10]);
+                courseFee = Convert.ToInt32(objDataReader[11]);
                 objConnection.Close();
                 return true;
             }
@@ -311,9 +326,9 @@ namespace CourseManagementSystem
                 dgv.AutoGenerateColumns = false;
                 dgv.Columns[0].HeaderText = "Course ID";
                 dgv.Columns[1].HeaderText = "Course Name";
-                dgv.Columns[2].HeaderText = "Course Location";
+                dgv.Columns[2].HeaderText = "Suburb ID";
                 dgv.Columns[3].HeaderText = "Course Duration";
-                dgv.Columns[4].HeaderText = "Course Semester";
+                dgv.Columns[4].HeaderText = "Semester ID";
                 dgv.Columns[5].HeaderText = "Start Date";
                 dgv.Columns[6].HeaderText = "End Date";
                 dgv.Columns[7].HeaderText = "Delivery";
@@ -334,7 +349,32 @@ namespace CourseManagementSystem
 
         public void Load(ComboBox[] cmb)
         {
+            string strSql = "select * from suburb";
+            clsDatabase.CreateConnection();
+            DataTable objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[0].DataSource = objDataTable;
+            cmb[0].DisplayMember = "suburbid";
+            cmb[0].ValueMember = "suburbid";
+            cmb[0].SelectedIndex = -1;
+            cmb[0].Text = "";
 
+            objDataTable = null;
+            //strSql = "select * from suburb";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[1].DataSource = objDataTable;
+            cmb[1].DisplayMember = "suburbname";
+            cmb[1].ValueMember = "suburbid";
+            cmb[1].SelectedIndex = -1;
+            cmb[1].Text = "Select a suburb";
+
+            objDataTable = null;
+            strSql = "select * from semester";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[2].DataSource = objDataTable;
+            cmb[2].DisplayMember = "semesterid";
+            cmb[2].ValueMember = "semesterid";
+            cmb[2].SelectedIndex = -1;
+            cmb[2].Text = "Semester ID";
         }
     }
 }

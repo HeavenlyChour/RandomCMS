@@ -44,6 +44,8 @@
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNavigate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnrolmentForm = new System.Windows.Forms.ToolStripMenuItem();
             this.EnrolmentToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -77,8 +79,10 @@
             this.dtpPaymentDueDate = new System.Windows.Forms.DateTimePicker();
             this.pnlCourseDelivery = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmbStudentID = new System.Windows.Forms.ComboBox();
+            this.cmbStudentName = new System.Windows.Forms.ComboBox();
+            this.cmbCourseName = new System.Windows.Forms.ComboBox();
+            this.cmbCourseID = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlCourseDelivery.SuspendLayout();
@@ -241,6 +245,24 @@
             this.mnuViewAll.Text = "View All";
             this.mnuViewAll.ToolTipText = "View All record";
             // 
+            // mnuEdit
+            // 
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuClearAll});
+            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuClearAll
+            // 
+            this.mnuClearAll.Name = "mnuClearAll";
+            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
+            this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
+            // 
             // mnuNavigate
             // 
             this.mnuNavigate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -343,7 +365,7 @@
             // txtStudentID
             // 
             this.txtStudentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentID.Location = new System.Drawing.Point(325, 167);
+            this.txtStudentID.Location = new System.Drawing.Point(12, 167);
             this.txtStudentID.Name = "txtStudentID";
             this.txtStudentID.Size = new System.Drawing.Size(176, 26);
             this.txtStudentID.TabIndex = 2;
@@ -364,7 +386,7 @@
             // txtCourseID
             // 
             this.txtCourseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCourseID.Location = new System.Drawing.Point(325, 199);
+            this.txtCourseID.Location = new System.Drawing.Point(12, 199);
             this.txtCourseID.Name = "txtCourseID";
             this.txtCourseID.Size = new System.Drawing.Size(176, 26);
             this.txtCourseID.TabIndex = 3;
@@ -621,23 +643,49 @@
             this.panel1.Size = new System.Drawing.Size(134, 24);
             this.panel1.TabIndex = 143;
             // 
-            // mnuEdit
+            // cmbStudentID
             // 
-            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuClearAll});
-            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
-            this.mnuEdit.Text = "Edit";
+            this.cmbStudentID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbStudentID.Enabled = false;
+            this.cmbStudentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStudentID.FormattingEnabled = true;
+            this.cmbStudentID.Location = new System.Drawing.Point(325, 167);
+            this.cmbStudentID.Name = "cmbStudentID";
+            this.cmbStudentID.Size = new System.Drawing.Size(35, 28);
+            this.cmbStudentID.TabIndex = 144;
+            this.cmbStudentID.Tag = "Student ID";
             // 
-            // mnuClearAll
+            // cmbStudentName
             // 
-            this.mnuClearAll.Name = "mnuClearAll";
-            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.C)));
-            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
-            this.mnuClearAll.Text = "Clear All";
-            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
+            this.cmbStudentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStudentName.FormattingEnabled = true;
+            this.cmbStudentName.Location = new System.Drawing.Point(366, 167);
+            this.cmbStudentName.Name = "cmbStudentName";
+            this.cmbStudentName.Size = new System.Drawing.Size(176, 28);
+            this.cmbStudentName.TabIndex = 145;
+            this.cmbStudentName.Tag = "Student Name";
+            // 
+            // cmbCourseName
+            // 
+            this.cmbCourseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCourseName.FormattingEnabled = true;
+            this.cmbCourseName.Location = new System.Drawing.Point(366, 199);
+            this.cmbCourseName.Name = "cmbCourseName";
+            this.cmbCourseName.Size = new System.Drawing.Size(176, 28);
+            this.cmbCourseName.TabIndex = 146;
+            this.cmbCourseName.Tag = "Student Name";
+            // 
+            // cmbCourseID
+            // 
+            this.cmbCourseID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbCourseID.Enabled = false;
+            this.cmbCourseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCourseID.FormattingEnabled = true;
+            this.cmbCourseID.Location = new System.Drawing.Point(325, 199);
+            this.cmbCourseID.Name = "cmbCourseID";
+            this.cmbCourseID.Size = new System.Drawing.Size(35, 28);
+            this.cmbCourseID.TabIndex = 147;
+            this.cmbCourseID.Tag = "Student ID";
             // 
             // EnrolmentForm
             // 
@@ -646,6 +694,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(665, 792);
+            this.Controls.Add(this.cmbCourseID);
+            this.Controls.Add(this.cmbCourseName);
+            this.Controls.Add(this.cmbStudentName);
+            this.Controls.Add(this.cmbStudentID);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlCourseDelivery);
             this.Controls.Add(this.dtpPaymentDueDate);
@@ -745,5 +797,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
+        private System.Windows.Forms.ComboBox cmbStudentID;
+        private System.Windows.Forms.ComboBox cmbStudentName;
+        private System.Windows.Forms.ComboBox cmbCourseName;
+        private System.Windows.Forms.ComboBox cmbCourseID;
     }
 }
