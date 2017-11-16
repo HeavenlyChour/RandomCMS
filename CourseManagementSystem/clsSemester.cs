@@ -12,7 +12,7 @@ namespace CourseManagementSystem
     class clsSemester
     {
         private int semesterID;
-        private DateTime semesterDate;
+        private string semesterDate;
         private int semesterWeeks;
 
         public clsSemester()
@@ -24,13 +24,13 @@ namespace CourseManagementSystem
             this.SemesterID = semesterID;
         }
 
-        public clsSemester(DateTime semesterDate, int semesterWeeks)
+        public clsSemester(string semesterDate, int semesterWeeks)
         {
             this.SemesterDate = semesterDate;
             this.SemesterWeeks = semesterWeeks;
         }
 
-        public clsSemester(int semesterID, DateTime semesterDate, int semesterWeeks)
+        public clsSemester(int semesterID, string semesterDate, int semesterWeeks)
         {
             this.SemesterID = semesterID;
             this.SemesterDate = semesterDate;
@@ -51,7 +51,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public DateTime SemesterDate
+        public string SemesterDate
         {
             get
             {

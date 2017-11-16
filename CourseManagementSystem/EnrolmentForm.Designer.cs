@@ -34,7 +34,7 @@
             this.mnuTeacherForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUnitForm = new System.Windows.Forms.ToolStripMenuItem();
             this.lblExpectedEndDate = new System.Windows.Forms.Label();
-            this.dgvTeacher = new System.Windows.Forms.DataGridView();
+            this.dgvEnrolment = new System.Windows.Forms.DataGridView();
             this.lblPaymentStatus = new System.Windows.Forms.Label();
             this.lblEnrolmentForm = new System.Windows.Forms.Label();
             this.lblEnrolmentID = new System.Windows.Forms.Label();
@@ -51,26 +51,18 @@
             this.EnrolmentToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnSearch = new System.Windows.Forms.Button();
             this.cmbPaymentStatus = new System.Windows.Forms.ComboBox();
-            this.txtBalanceOwing = new System.Windows.Forms.TextBox();
-            this.txtAmountPaid = new System.Windows.Forms.TextBox();
+            this.txtAmountDue = new System.Windows.Forms.TextBox();
             this.cmbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.cmbStudyStatus = new System.Windows.Forms.ComboBox();
             this.txtEnrolmentID = new System.Windows.Forms.TextBox();
-            this.txtStudentID = new System.Windows.Forms.TextBox();
             this.lblStudentID = new System.Windows.Forms.Label();
-            this.txtCourseID = new System.Windows.Forms.TextBox();
             this.lblCourseID = new System.Windows.Forms.Label();
             this.lblEnrolmentDate = new System.Windows.Forms.Label();
             this.lblPaymentDueDate = new System.Windows.Forms.Label();
-            this.lblBalanceOwing = new System.Windows.Forms.Label();
-            this.lblAmountPaid = new System.Windows.Forms.Label();
+            this.lblDatePaid = new System.Windows.Forms.Label();
+            this.lblAmountDue = new System.Windows.Forms.Label();
             this.lblPaymentMethod = new System.Windows.Forms.Label();
-            this.rdbDisabilityNo = new System.Windows.Forms.RadioButton();
-            this.rdbDisabilityYes = new System.Windows.Forms.RadioButton();
-            this.lblDisability = new System.Windows.Forms.Label();
             this.lblStudyStatus = new System.Windows.Forms.Label();
-            this.txtDisabilityDescription = new System.Windows.Forms.TextBox();
-            this.lblDisabilityDescription = new System.Windows.Forms.Label();
             this.rdbOnline = new System.Windows.Forms.RadioButton();
             this.rdbFaceToFace = new System.Windows.Forms.RadioButton();
             this.lblCourseDelivery = new System.Windows.Forms.Label();
@@ -78,15 +70,14 @@
             this.dtpExpectedEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpPaymentDueDate = new System.Windows.Forms.DateTimePicker();
             this.pnlCourseDelivery = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.cmbStudentID = new System.Windows.Forms.ComboBox();
             this.cmbStudentName = new System.Windows.Forms.ComboBox();
             this.cmbCourseName = new System.Windows.Forms.ComboBox();
             this.cmbCourseID = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
+            this.dtpDatePaid = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEnrolment)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlCourseDelivery.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuCourseForm
@@ -137,15 +128,15 @@
             this.lblExpectedEndDate.TabIndex = 100;
             this.lblExpectedEndDate.Text = "Expected End Date:";
             // 
-            // dgvTeacher
+            // dgvEnrolment
             // 
-            this.dgvTeacher.BackgroundColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvTeacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTeacher.Location = new System.Drawing.Point(12, 660);
-            this.dgvTeacher.Name = "dgvTeacher";
-            this.dgvTeacher.ReadOnly = true;
-            this.dgvTeacher.Size = new System.Drawing.Size(642, 120);
-            this.dgvTeacher.TabIndex = 93;
+            this.dgvEnrolment.BackgroundColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvEnrolment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEnrolment.Location = new System.Drawing.Point(12, 524);
+            this.dgvEnrolment.Name = "dgvEnrolment";
+            this.dgvEnrolment.ReadOnly = true;
+            this.dgvEnrolment.Size = new System.Drawing.Size(642, 256);
+            this.dgvEnrolment.TabIndex = 93;
             // 
             // lblPaymentStatus
             // 
@@ -153,7 +144,7 @@
             this.lblPaymentStatus.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblPaymentStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaymentStatus.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblPaymentStatus.Location = new System.Drawing.Point(172, 459);
+            this.lblPaymentStatus.Location = new System.Drawing.Point(173, 427);
             this.lblPaymentStatus.Name = "lblPaymentStatus";
             this.lblPaymentStatus.Size = new System.Drawing.Size(141, 20);
             this.lblPaymentStatus.TabIndex = 85;
@@ -244,6 +235,7 @@
             this.mnuViewAll.Size = new System.Drawing.Size(166, 22);
             this.mnuViewAll.Text = "View All";
             this.mnuViewAll.ToolTipText = "View All record";
+            this.mnuViewAll.Click += new System.EventHandler(this.mnuViewAll_Click);
             // 
             // mnuEdit
             // 
@@ -299,45 +291,45 @@
             this.btnSearch.TabIndex = 99;
             this.EnrolmentToolTip.SetToolTip(this.btnSearch, "Press to search");
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cmbPaymentStatus
             // 
             this.cmbPaymentStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPaymentStatus.FormattingEnabled = true;
-            this.cmbPaymentStatus.Location = new System.Drawing.Point(325, 456);
+            this.cmbPaymentStatus.Items.AddRange(new object[] {
+            "Paid",
+            "Unpaid",
+            "Partially Paid"});
+            this.cmbPaymentStatus.Location = new System.Drawing.Point(326, 424);
             this.cmbPaymentStatus.Name = "cmbPaymentStatus";
-            this.cmbPaymentStatus.Size = new System.Drawing.Size(176, 28);
+            this.cmbPaymentStatus.Size = new System.Drawing.Size(217, 28);
             this.cmbPaymentStatus.TabIndex = 11;
             this.cmbPaymentStatus.Tag = "Payment Status";
             this.EnrolmentToolTip.SetToolTip(this.cmbPaymentStatus, "press the down arrow to make a selection");
             // 
-            // txtBalanceOwing
+            // txtAmountDue
             // 
-            this.txtBalanceOwing.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBalanceOwing.Location = new System.Drawing.Point(325, 424);
-            this.txtBalanceOwing.Name = "txtBalanceOwing";
-            this.txtBalanceOwing.Size = new System.Drawing.Size(176, 26);
-            this.txtBalanceOwing.TabIndex = 10;
-            this.txtBalanceOwing.Tag = "Balance Owing";
-            this.EnrolmentToolTip.SetToolTip(this.txtBalanceOwing, "Date format must be yyyy-mm-dd and contain only numeric characters");
-            // 
-            // txtAmountPaid
-            // 
-            this.txtAmountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAmountPaid.Location = new System.Drawing.Point(325, 392);
-            this.txtAmountPaid.Name = "txtAmountPaid";
-            this.txtAmountPaid.Size = new System.Drawing.Size(176, 26);
-            this.txtAmountPaid.TabIndex = 9;
-            this.txtAmountPaid.Tag = "Amount Paid";
-            this.EnrolmentToolTip.SetToolTip(this.txtAmountPaid, "Date format must be yyyy-mm-dd and contain only numeric characters");
+            this.txtAmountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmountDue.Location = new System.Drawing.Point(325, 326);
+            this.txtAmountDue.Name = "txtAmountDue";
+            this.txtAmountDue.Size = new System.Drawing.Size(218, 26);
+            this.txtAmountDue.TabIndex = 9;
+            this.txtAmountDue.Tag = "Amount Due";
+            this.EnrolmentToolTip.SetToolTip(this.txtAmountDue, "Date format must be yyyy-mm-dd and contain only numeric characters");
             // 
             // cmbPaymentMethod
             // 
             this.cmbPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPaymentMethod.FormattingEnabled = true;
-            this.cmbPaymentMethod.Location = new System.Drawing.Point(325, 324);
+            this.cmbPaymentMethod.Items.AddRange(new object[] {
+            "EFTPOS",
+            "BPAY",
+            "Credit Card",
+            "VET Student Loan"});
+            this.cmbPaymentMethod.Location = new System.Drawing.Point(326, 390);
             this.cmbPaymentMethod.Name = "cmbPaymentMethod";
-            this.cmbPaymentMethod.Size = new System.Drawing.Size(176, 28);
+            this.cmbPaymentMethod.Size = new System.Drawing.Size(216, 28);
             this.cmbPaymentMethod.TabIndex = 7;
             this.cmbPaymentMethod.Tag = "Payment Method";
             this.EnrolmentToolTip.SetToolTip(this.cmbPaymentMethod, "press the down arrow to make a selection");
@@ -346,9 +338,13 @@
             // 
             this.cmbStudyStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStudyStatus.FormattingEnabled = true;
-            this.cmbStudyStatus.Location = new System.Drawing.Point(325, 598);
+            this.cmbStudyStatus.Items.AddRange(new object[] {
+            "Studying",
+            "Not Studying",
+            "Deferred"});
+            this.cmbStudyStatus.Location = new System.Drawing.Point(326, 490);
             this.cmbStudyStatus.Name = "cmbStudyStatus";
-            this.cmbStudyStatus.Size = new System.Drawing.Size(176, 28);
+            this.cmbStudyStatus.Size = new System.Drawing.Size(216, 28);
             this.cmbStudyStatus.TabIndex = 14;
             this.cmbStudyStatus.Tag = "Study Status";
             this.EnrolmentToolTip.SetToolTip(this.cmbStudyStatus, "press the down arrow to make a selection");
@@ -362,15 +358,6 @@
             this.txtEnrolmentID.TabIndex = 1;
             this.txtEnrolmentID.Tag = "Enrolment ID";
             // 
-            // txtStudentID
-            // 
-            this.txtStudentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentID.Location = new System.Drawing.Point(12, 167);
-            this.txtStudentID.Name = "txtStudentID";
-            this.txtStudentID.Size = new System.Drawing.Size(176, 26);
-            this.txtStudentID.TabIndex = 2;
-            this.txtStudentID.Tag = "Student ID";
-            // 
             // lblStudentID
             // 
             this.lblStudentID.AutoSize = true;
@@ -382,15 +369,6 @@
             this.lblStudentID.Size = new System.Drawing.Size(102, 20);
             this.lblStudentID.TabIndex = 112;
             this.lblStudentID.Text = "Student ID:";
-            // 
-            // txtCourseID
-            // 
-            this.txtCourseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCourseID.Location = new System.Drawing.Point(12, 199);
-            this.txtCourseID.Name = "txtCourseID";
-            this.txtCourseID.Size = new System.Drawing.Size(176, 26);
-            this.txtCourseID.TabIndex = 3;
-            this.txtCourseID.Tag = "Course ID";
             // 
             // lblCourseID
             // 
@@ -428,29 +406,29 @@
             this.lblPaymentDueDate.TabIndex = 121;
             this.lblPaymentDueDate.Text = "Payment Due Date:";
             // 
-            // lblBalanceOwing
+            // lblDatePaid
             // 
-            this.lblBalanceOwing.AutoSize = true;
-            this.lblBalanceOwing.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblBalanceOwing.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBalanceOwing.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblBalanceOwing.Location = new System.Drawing.Point(179, 427);
-            this.lblBalanceOwing.Name = "lblBalanceOwing";
-            this.lblBalanceOwing.Size = new System.Drawing.Size(133, 20);
-            this.lblBalanceOwing.TabIndex = 123;
-            this.lblBalanceOwing.Text = "Balance Owing:";
+            this.lblDatePaid.AutoSize = true;
+            this.lblDatePaid.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.lblDatePaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatePaid.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.lblDatePaid.Location = new System.Drawing.Point(216, 463);
+            this.lblDatePaid.Name = "lblDatePaid";
+            this.lblDatePaid.Size = new System.Drawing.Size(93, 20);
+            this.lblDatePaid.TabIndex = 123;
+            this.lblDatePaid.Text = "Date Paid:";
             // 
-            // lblAmountPaid
+            // lblAmountDue
             // 
-            this.lblAmountPaid.AutoSize = true;
-            this.lblAmountPaid.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblAmountPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmountPaid.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblAmountPaid.Location = new System.Drawing.Point(195, 395);
-            this.lblAmountPaid.Name = "lblAmountPaid";
-            this.lblAmountPaid.Size = new System.Drawing.Size(116, 20);
-            this.lblAmountPaid.TabIndex = 125;
-            this.lblAmountPaid.Text = "Amount Paid:";
+            this.lblAmountDue.AutoSize = true;
+            this.lblAmountDue.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.lblAmountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmountDue.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.lblAmountDue.Location = new System.Drawing.Point(195, 329);
+            this.lblAmountDue.Name = "lblAmountDue";
+            this.lblAmountDue.Size = new System.Drawing.Size(114, 20);
+            this.lblAmountDue.TabIndex = 125;
+            this.lblAmountDue.Text = "Amount Due:";
             // 
             // lblPaymentMethod
             // 
@@ -458,53 +436,11 @@
             this.lblPaymentMethod.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaymentMethod.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblPaymentMethod.Location = new System.Drawing.Point(163, 329);
+            this.lblPaymentMethod.Location = new System.Drawing.Point(164, 395);
             this.lblPaymentMethod.Name = "lblPaymentMethod";
             this.lblPaymentMethod.Size = new System.Drawing.Size(148, 20);
             this.lblPaymentMethod.TabIndex = 127;
             this.lblPaymentMethod.Text = "Payment Method:";
-            // 
-            // rdbDisabilityNo
-            // 
-            this.rdbDisabilityNo.AutoSize = true;
-            this.rdbDisabilityNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbDisabilityNo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbDisabilityNo.Location = new System.Drawing.Point(72, 0);
-            this.rdbDisabilityNo.Name = "rdbDisabilityNo";
-            this.rdbDisabilityNo.Size = new System.Drawing.Size(49, 24);
-            this.rdbDisabilityNo.TabIndex = 131;
-            this.rdbDisabilityNo.TabStop = true;
-            this.rdbDisabilityNo.Tag = "Disability";
-            this.rdbDisabilityNo.Text = "No";
-            this.rdbDisabilityNo.UseVisualStyleBackColor = true;
-            this.rdbDisabilityNo.CheckedChanged += new System.EventHandler(this.rdbDisabilityNo_CheckedChanged);
-            // 
-            // rdbDisabilityYes
-            // 
-            this.rdbDisabilityYes.AutoSize = true;
-            this.rdbDisabilityYes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbDisabilityYes.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.rdbDisabilityYes.Location = new System.Drawing.Point(1, 0);
-            this.rdbDisabilityYes.Name = "rdbDisabilityYes";
-            this.rdbDisabilityYes.Size = new System.Drawing.Size(58, 24);
-            this.rdbDisabilityYes.TabIndex = 130;
-            this.rdbDisabilityYes.TabStop = true;
-            this.rdbDisabilityYes.Tag = "Disability";
-            this.rdbDisabilityYes.Text = "Yes";
-            this.rdbDisabilityYes.UseVisualStyleBackColor = true;
-            this.rdbDisabilityYes.CheckedChanged += new System.EventHandler(this.rdbDisabilityYes_CheckedChanged);
-            // 
-            // lblDisability
-            // 
-            this.lblDisability.AutoSize = true;
-            this.lblDisability.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblDisability.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisability.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblDisability.Location = new System.Drawing.Point(67, 492);
-            this.lblDisability.Name = "lblDisability";
-            this.lblDisability.Size = new System.Drawing.Size(244, 20);
-            this.lblDisability.TabIndex = 129;
-            this.lblDisability.Text = "Does student have disability?";
             // 
             // lblStudyStatus
             // 
@@ -512,33 +448,11 @@
             this.lblStudyStatus.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblStudyStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudyStatus.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudyStatus.Location = new System.Drawing.Point(193, 601);
+            this.lblStudyStatus.Location = new System.Drawing.Point(194, 493);
             this.lblStudyStatus.Name = "lblStudyStatus";
             this.lblStudyStatus.Size = new System.Drawing.Size(118, 20);
             this.lblStudyStatus.TabIndex = 132;
             this.lblStudyStatus.Text = "Study Status:";
-            // 
-            // txtDisabilityDescription
-            // 
-            this.txtDisabilityDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisabilityDescription.Location = new System.Drawing.Point(325, 520);
-            this.txtDisabilityDescription.Multiline = true;
-            this.txtDisabilityDescription.Name = "txtDisabilityDescription";
-            this.txtDisabilityDescription.Size = new System.Drawing.Size(312, 72);
-            this.txtDisabilityDescription.TabIndex = 13;
-            this.txtDisabilityDescription.Tag = "Disability Description";
-            // 
-            // lblDisabilityDescription
-            // 
-            this.lblDisabilityDescription.AutoSize = true;
-            this.lblDisabilityDescription.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblDisabilityDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisabilityDescription.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblDisabilityDescription.Location = new System.Drawing.Point(129, 523);
-            this.lblDisabilityDescription.Name = "lblDisabilityDescription";
-            this.lblDisabilityDescription.Size = new System.Drawing.Size(186, 20);
-            this.lblDisabilityDescription.TabIndex = 134;
-            this.lblDisabilityDescription.Text = "If Yes, please specify:";
             // 
             // rdbOnline
             // 
@@ -589,7 +503,7 @@
             this.dtpEnrolmentDate.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpEnrolmentDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpEnrolmentDate.Name = "dtpEnrolmentDate";
-            this.dtpEnrolmentDate.Size = new System.Drawing.Size(224, 26);
+            this.dtpEnrolmentDate.Size = new System.Drawing.Size(217, 26);
             this.dtpEnrolmentDate.TabIndex = 139;
             this.dtpEnrolmentDate.Tag = "Enrolment Date";
             this.dtpEnrolmentDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
@@ -604,7 +518,7 @@
             this.dtpExpectedEndDate.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpExpectedEndDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpExpectedEndDate.Name = "dtpExpectedEndDate";
-            this.dtpExpectedEndDate.Size = new System.Drawing.Size(224, 26);
+            this.dtpExpectedEndDate.Size = new System.Drawing.Size(218, 26);
             this.dtpExpectedEndDate.TabIndex = 140;
             this.dtpExpectedEndDate.Tag = "Expected End Date";
             this.dtpExpectedEndDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
@@ -619,7 +533,7 @@
             this.dtpPaymentDueDate.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpPaymentDueDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpPaymentDueDate.Name = "dtpPaymentDueDate";
-            this.dtpPaymentDueDate.Size = new System.Drawing.Size(224, 26);
+            this.dtpPaymentDueDate.Size = new System.Drawing.Size(218, 26);
             this.dtpPaymentDueDate.TabIndex = 141;
             this.dtpPaymentDueDate.Tag = "Payment Due Date";
             this.dtpPaymentDueDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
@@ -631,17 +545,8 @@
             this.pnlCourseDelivery.Controls.Add(this.rdbFaceToFace);
             this.pnlCourseDelivery.Location = new System.Drawing.Point(325, 294);
             this.pnlCourseDelivery.Name = "pnlCourseDelivery";
-            this.pnlCourseDelivery.Size = new System.Drawing.Size(221, 28);
+            this.pnlCourseDelivery.Size = new System.Drawing.Size(218, 28);
             this.pnlCourseDelivery.TabIndex = 142;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.rdbDisabilityNo);
-            this.panel1.Controls.Add(this.rdbDisabilityYes);
-            this.panel1.Location = new System.Drawing.Point(325, 490);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(134, 24);
-            this.panel1.TabIndex = 143;
             // 
             // cmbStudentID
             // 
@@ -661,9 +566,10 @@
             this.cmbStudentName.FormattingEnabled = true;
             this.cmbStudentName.Location = new System.Drawing.Point(366, 167);
             this.cmbStudentName.Name = "cmbStudentName";
-            this.cmbStudentName.Size = new System.Drawing.Size(176, 28);
+            this.cmbStudentName.Size = new System.Drawing.Size(226, 28);
             this.cmbStudentName.TabIndex = 145;
             this.cmbStudentName.Tag = "Student Name";
+            this.cmbStudentName.SelectedIndexChanged += new System.EventHandler(this.cmbStudentName_Changed);
             // 
             // cmbCourseName
             // 
@@ -671,9 +577,10 @@
             this.cmbCourseName.FormattingEnabled = true;
             this.cmbCourseName.Location = new System.Drawing.Point(366, 199);
             this.cmbCourseName.Name = "cmbCourseName";
-            this.cmbCourseName.Size = new System.Drawing.Size(176, 28);
+            this.cmbCourseName.Size = new System.Drawing.Size(226, 28);
             this.cmbCourseName.TabIndex = 146;
             this.cmbCourseName.Tag = "Student Name";
+            this.cmbCourseName.SelectedIndexChanged += new System.EventHandler(this.cmbCourseName_Changed);
             // 
             // cmbCourseID
             // 
@@ -687,6 +594,21 @@
             this.cmbCourseID.TabIndex = 147;
             this.cmbCourseID.Tag = "Student ID";
             // 
+            // dtpDatePaid
+            // 
+            this.dtpDatePaid.AllowDrop = true;
+            this.dtpDatePaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDatePaid.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDatePaid.Location = new System.Drawing.Point(326, 458);
+            this.dtpDatePaid.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+            this.dtpDatePaid.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
+            this.dtpDatePaid.Name = "dtpDatePaid";
+            this.dtpDatePaid.Size = new System.Drawing.Size(217, 26);
+            this.dtpDatePaid.TabIndex = 148;
+            this.dtpDatePaid.Tag = "Date Paid";
+            this.dtpDatePaid.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            this.dtpDatePaid.ValueChanged += new System.EventHandler(this.dtpDatePaid_ValueChanged);
+            // 
             // EnrolmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -694,35 +616,29 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(665, 792);
+            this.Controls.Add(this.dtpDatePaid);
             this.Controls.Add(this.cmbCourseID);
             this.Controls.Add(this.cmbCourseName);
             this.Controls.Add(this.cmbStudentName);
             this.Controls.Add(this.cmbStudentID);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlCourseDelivery);
             this.Controls.Add(this.dtpPaymentDueDate);
             this.Controls.Add(this.dtpExpectedEndDate);
             this.Controls.Add(this.dtpEnrolmentDate);
             this.Controls.Add(this.lblCourseDelivery);
-            this.Controls.Add(this.txtDisabilityDescription);
-            this.Controls.Add(this.lblDisabilityDescription);
             this.Controls.Add(this.lblStudyStatus);
             this.Controls.Add(this.cmbStudyStatus);
-            this.Controls.Add(this.lblDisability);
             this.Controls.Add(this.lblPaymentMethod);
             this.Controls.Add(this.cmbPaymentMethod);
-            this.Controls.Add(this.lblAmountPaid);
-            this.Controls.Add(this.txtAmountPaid);
-            this.Controls.Add(this.lblBalanceOwing);
-            this.Controls.Add(this.txtBalanceOwing);
+            this.Controls.Add(this.lblAmountDue);
+            this.Controls.Add(this.txtAmountDue);
+            this.Controls.Add(this.lblDatePaid);
             this.Controls.Add(this.lblPaymentDueDate);
             this.Controls.Add(this.lblEnrolmentDate);
-            this.Controls.Add(this.txtCourseID);
             this.Controls.Add(this.lblCourseID);
-            this.Controls.Add(this.txtStudentID);
             this.Controls.Add(this.lblStudentID);
             this.Controls.Add(this.lblExpectedEndDate);
-            this.Controls.Add(this.dgvTeacher);
+            this.Controls.Add(this.dgvEnrolment);
             this.Controls.Add(this.lblPaymentStatus);
             this.Controls.Add(this.lblEnrolmentForm);
             this.Controls.Add(this.lblEnrolmentID);
@@ -733,13 +649,12 @@
             this.MaximizeBox = false;
             this.Name = "EnrolmentForm";
             this.Text = "Enrolment Form";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).EndInit();
+            this.Load += new System.EventHandler(this.EnrolmentForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEnrolment)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnlCourseDelivery.ResumeLayout(false);
             this.pnlCourseDelivery.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -752,7 +667,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTeacherForm;
         private System.Windows.Forms.ToolStripMenuItem mnuUnitForm;
         private System.Windows.Forms.Label lblExpectedEndDate;
-        private System.Windows.Forms.DataGridView dgvTeacher;
+        private System.Windows.Forms.DataGridView dgvEnrolment;
         private System.Windows.Forms.Label lblPaymentStatus;
         private System.Windows.Forms.Label lblEnrolmentForm;
         private System.Windows.Forms.Label lblEnrolmentID;
@@ -768,25 +683,17 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ComboBox cmbPaymentStatus;
         private System.Windows.Forms.TextBox txtEnrolmentID;
-        private System.Windows.Forms.TextBox txtStudentID;
         private System.Windows.Forms.Label lblStudentID;
-        private System.Windows.Forms.TextBox txtCourseID;
         private System.Windows.Forms.Label lblCourseID;
         private System.Windows.Forms.Label lblEnrolmentDate;
         private System.Windows.Forms.Label lblPaymentDueDate;
-        private System.Windows.Forms.Label lblBalanceOwing;
-        private System.Windows.Forms.TextBox txtBalanceOwing;
-        private System.Windows.Forms.Label lblAmountPaid;
-        private System.Windows.Forms.TextBox txtAmountPaid;
+        private System.Windows.Forms.Label lblDatePaid;
+        private System.Windows.Forms.Label lblAmountDue;
+        private System.Windows.Forms.TextBox txtAmountDue;
         private System.Windows.Forms.Label lblPaymentMethod;
         private System.Windows.Forms.ComboBox cmbPaymentMethod;
-        private System.Windows.Forms.RadioButton rdbDisabilityNo;
-        private System.Windows.Forms.RadioButton rdbDisabilityYes;
-        private System.Windows.Forms.Label lblDisability;
         private System.Windows.Forms.Label lblStudyStatus;
         private System.Windows.Forms.ComboBox cmbStudyStatus;
-        private System.Windows.Forms.TextBox txtDisabilityDescription;
-        private System.Windows.Forms.Label lblDisabilityDescription;
         private System.Windows.Forms.RadioButton rdbOnline;
         private System.Windows.Forms.RadioButton rdbFaceToFace;
         private System.Windows.Forms.Label lblCourseDelivery;
@@ -794,12 +701,12 @@
         private System.Windows.Forms.DateTimePicker dtpExpectedEndDate;
         private System.Windows.Forms.DateTimePicker dtpPaymentDueDate;
         private System.Windows.Forms.Panel pnlCourseDelivery;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
         private System.Windows.Forms.ComboBox cmbStudentID;
         private System.Windows.Forms.ComboBox cmbStudentName;
         private System.Windows.Forms.ComboBox cmbCourseName;
         private System.Windows.Forms.ComboBox cmbCourseID;
+        private System.Windows.Forms.DateTimePicker dtpDatePaid;
     }
 }

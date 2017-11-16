@@ -17,38 +17,28 @@ namespace CourseManagementSystem
         {
             InitializeComponent();
 
-            txtDisabilityDescription.ReadOnly = true;
+            //txtDisabilityDescription.ReadOnly = true;
             dtpEnrolmentDate.Format = DateTimePickerFormat.Custom;
             dtpEnrolmentDate.CustomFormat = " ";
             dtpExpectedEndDate.Format = DateTimePickerFormat.Custom;
             dtpExpectedEndDate.CustomFormat = " ";
             dtpPaymentDueDate.Format = DateTimePickerFormat.Custom;
             dtpPaymentDueDate.CustomFormat = " ";
+            dtpDatePaid.Format = DateTimePickerFormat.Custom;
+            dtpDatePaid.CustomFormat = " ";
         }
 
         private void mnuAdd_Click(object sender, EventArgs e)
         {
             #region ValidationArea
-            //if (!clsValidation.ValidateTextBox(txtStudentID))
-            //{
-            //    txtStudentID.Focus();
-            //    return;
-            //}
-            //if (!clsValidation.ValidateTextBoxForNumeric(txtStudentID))
-            //{
-            //    txtStudentID.Focus();
-            //    return;
-            //}
-            //if (!clsValidation.ValidateTextBox(txtCourseID))
-            //{
-            //    txtCourseID.Focus();
-            //    return;
-            //}
-            //if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
-            //{
-            //    txtCourseID.Focus();
-            //    return;
-            //}
+            if (!clsValidation.ValidateComboBox(cmbStudentID))
+            {
+                return;
+            }
+            if (!clsValidation.ValidateComboBox(cmbCourseID))
+            {
+                return;
+            }
             if (!clsValidation.ValidateDate(dtpEnrolmentDate))
             {
                 return;
@@ -74,15 +64,6 @@ namespace CourseManagementSystem
             {
                 courseDelText = "Online";
             }
-
-            if (!clsValidation.ValidateComboBox(cmbPaymentMethod))
-            {
-                return;
-            }
-            if (!clsValidation.ValidateDate(dtpPaymentDueDate))
-            {
-                return;
-            }
             if (!clsValidation.ValidateDateStartVsEnd(dtpEnrolmentDate, dtpPaymentDueDate))
             {
                 return;
@@ -91,86 +72,42 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtAmountPaid))
+            if (!clsValidation.ValidateTextBox(txtAmountDue))
             {
-                txtAmountPaid.Focus();
+                txtAmountDue.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtAmountPaid))
+            if (!clsValidation.ValidateTextBoxForNumeric(txtAmountDue))
             {
-                txtAmountPaid.Focus();
+                txtAmountDue.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtBalanceOwing))
+            if (!clsValidation.ValidateDate(dtpPaymentDueDate))
             {
-                txtBalanceOwing.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtBalanceOwing))
+            if (!clsValidation.ValidateComboBox(cmbPaymentMethod))
             {
-                txtBalanceOwing.Focus();
                 return;
             }
             if (!clsValidation.ValidateComboBox(cmbPaymentStatus))
             {
                 return;
             }
-            if (!clsValidation.ValidateRadioButton(rdbDisabilityYes, rdbDisabilityNo))
+            if (!clsValidation.ValidateDate(dtpDatePaid))
             {
                 return;
             }
-
-            //if (rdbDisabilityYes.Checked == true)
-            //{
-            //    txtDisabilityDescription.ReadOnly = false;
-            //    if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
-            //    {
-            //        return;
-            //    }
-            //}
-            //if (rdbDisabilityNo.Checked == true)
-            //{
-            //    txtDisabilityDescription.Text = String.Empty;
-            //    txtDisabilityDescription.ReadOnly = true;
-            //}
-            //string disabilityText = String.Empty;
-            //if (rdbDisabilityYes.Checked)
-            //{
-            //    disabilityText = "Yes";
-            //}
-            //else if (rdbDisabilityNo.Checked)
-            //{
-            //    disabilityText = "No";
-            //}
-
             if (!clsValidation.ValidateComboBox(cmbStudyStatus))
             {
                 cmbStudyStatus.Focus();
                 return;
             }
             #endregion
-
-            //if (rdbDisabilityYes.Checked == true)
-            //{
-            //    //   txtDisabilityDescription.ReadOnly = false;
-            //    if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
-            //    {
-            //        return;
-            //    }
-            //}
-            //if (rdbDisabilityNo.Checked == true)
-            //{
-            //    txtDisabilityDescription.Text = String.Empty;
-            //    txtDisabilityDescription.ReadOnly = true;
-            //}
-            if (!clsValidation.ValidateComboBox(cmbStudyStatus))
-            {
-                return;
-            }
-            clsEnrolment objEnrolment = new clsEnrolment(Convert.ToInt32(txtStudentID.Text), Convert.ToInt32(txtCourseID.Text),
-                dtpEnrolmentDate.Value.ToString("yyyy-MM-dd"), dtpExpectedEndDate.Value.ToString("yyyy-MM-dd"), courseDelText, 
-                cmbPaymentMethod.Text, dtpPaymentDueDate.Value.ToString("yyyy-MM-dd"), Convert.ToInt32(txtAmountPaid.Text), 
-                Convert.ToInt32(txtBalanceOwing.Text), cmbPaymentStatus.Text, cmbStudyStatus.Text);
+        clsEnrolment objEnrolment = new clsEnrolment(Convert.ToInt32(cmbStudentID.Text), Convert.ToInt32(cmbCourseID.Text),
+                dtpEnrolmentDate.Value.ToString("yyyy-MM-dd"), dtpExpectedEndDate.Value.ToString("yyyy-MM-dd"), courseDelText,
+                Convert.ToInt32(txtAmountDue.Text), dtpPaymentDueDate.Value.ToString("yyyy-MM-dd"), cmbPaymentMethod.Text, 
+                cmbPaymentStatus.Text, dtpDatePaid.Value.ToString("yyyy-MM-dd"), cmbStudyStatus.Text);
 
             objEnrolment.Add();
             MessageBox.Show("Enrolment record successfully added!");
@@ -196,24 +133,12 @@ namespace CourseManagementSystem
                 txtEnrolmentID.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtStudentID))
+            if (!clsValidation.ValidateComboBox(cmbStudentID))
             {
-                txtStudentID.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtStudentID))
+            if (!clsValidation.ValidateComboBox(cmbCourseID))
             {
-                txtStudentID.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBox(txtCourseID))
-            {
-                txtCourseID.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
-            {
-                txtCourseID.Focus();
                 return;
             }
             if (!clsValidation.ValidateDate(dtpEnrolmentDate))
@@ -258,58 +183,32 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtAmountPaid))
+            if (!clsValidation.ValidateTextBox(txtAmountDue))
             {
-                txtAmountPaid.Focus();
+                txtAmountDue.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtAmountPaid))
+            if (!clsValidation.ValidateTextBoxForNumeric(txtAmountDue))
             {
-                txtAmountPaid.Focus();
+                txtAmountDue.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtBalanceOwing))
+            if (!clsValidation.ValidateDate(dtpPaymentDueDate))
             {
-                txtBalanceOwing.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtBalanceOwing))
+            if (!clsValidation.ValidateComboBox(cmbPaymentMethod))
             {
-                txtBalanceOwing.Focus();
                 return;
             }
             if (!clsValidation.ValidateComboBox(cmbPaymentStatus))
             {
                 return;
             }
-            if (!clsValidation.ValidateRadioButton(rdbDisabilityYes, rdbDisabilityNo))
+            if (!clsValidation.ValidateDate(dtpDatePaid))
             {
                 return;
             }
-
-            if (rdbDisabilityYes.Checked == true)
-            {
-                txtDisabilityDescription.ReadOnly = false;
-                if (!clsValidation.ValidateTextBox(txtDisabilityDescription))
-                {
-                    return;
-                }
-            }
-            if (rdbDisabilityNo.Checked == true)
-            {
-                txtDisabilityDescription.Text = String.Empty;
-                txtDisabilityDescription.ReadOnly = true;
-            }
-            string disabilityText = String.Empty;
-            if (rdbDisabilityYes.Checked)
-            {
-                disabilityText = "Yes";
-            }
-            else if (rdbDisabilityNo.Checked)
-            {
-                disabilityText = "No";
-            }
-
             if (!clsValidation.ValidateComboBox(cmbStudyStatus))
             {
                 cmbStudyStatus.Focus();
@@ -317,15 +216,59 @@ namespace CourseManagementSystem
             }
             #endregion
 
-            clsEnrolment objEnrolment = new clsEnrolment(Convert.ToInt32(txtEnrolmentID.Text), Convert.ToInt32(txtStudentID.Text), 
-                Convert.ToInt32(txtCourseID.Text), dtpEnrolmentDate.Value.ToString("yyyy-MM-dd"), 
-                dtpExpectedEndDate.Value.Date.ToString("yyyy-MM-dd"), courseDelText, 
-                cmbPaymentMethod.Text, dtpPaymentDueDate.Value.ToString("yyyy-MM-dd"), 
-                Convert.ToInt32(txtAmountPaid.Text), Convert.ToInt32(txtBalanceOwing.Text), 
-                cmbPaymentStatus.Text, cmbStudyStatus.Text);
+            clsEnrolment objEnrolment = new clsEnrolment(Convert.ToInt32(txtEnrolmentID.Text), Convert.ToInt32(cmbStudentID.Text), Convert.ToInt32(cmbCourseID.Text),
+                dtpEnrolmentDate.Value.ToString("yyyy-MM-dd"), dtpExpectedEndDate.Value.ToString("yyyy-MM-dd"), courseDelText,
+                Convert.ToInt32(txtAmountDue.Text), dtpPaymentDueDate.Value.ToString("yyyy-MM-dd"), cmbPaymentMethod.Text,
+                cmbPaymentStatus.Text, dtpDatePaid.Value.ToString("yyyy-MM-dd"), cmbStudyStatus.Text);
 
             objEnrolment.Update();
             MessageBox.Show("Enrolment record successfully updated!");
+        }
+
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateTextBoxForNumeric(txtEnrolmentID))
+            {
+                txtEnrolmentID.Focus();
+                return;
+            }
+
+            clsEnrolment objEnrolment = new clsEnrolment(Convert.ToInt32(txtEnrolmentID.Text));
+
+            bool valid = objEnrolment.Search();
+            if (valid)
+            {
+                cmbStudentID.Text = objEnrolment.StudentID.ToString();
+                cmbStudentName.Text = objEnrolment.StudentFirstName + " " + objEnrolment.StudentLastName;
+                cmbCourseID.Text = objEnrolment.CourseID.ToString();
+                cmbCourseName.Text = objEnrolment.CourseName;
+                dtpEnrolmentDate.Value = DateTime.Parse(objEnrolment.EnrolmentDate);
+                dtpExpectedEndDate.Value = DateTime.Parse(objEnrolment.ExpectedEndDate);
+                if (objEnrolment.CourseDelivery == "FaceToFace")
+                {
+                    rdbFaceToFace.Checked = true;
+                }
+                else if (objEnrolment.CourseDelivery == "Online")
+                {
+                    rdbOnline.Checked = true;
+                }
+                txtAmountDue.Text = objEnrolment.AmountDue.ToString();
+                dtpPaymentDueDate.Value = DateTime.Parse(objEnrolment.PaymentDueDate);
+                cmbPaymentMethod.Text = objEnrolment.PaymentMethod;
+                cmbPaymentStatus.Text = objEnrolment.PaymentStatus;
+                if (objEnrolment.DatePaid != "")
+                {
+                    dtpDatePaid.Value = DateTime.Parse(objEnrolment.DatePaid);
+                }
+                else
+                {
+                    dtpDatePaid.Format = DateTimePickerFormat.Custom;
+                    dtpDatePaid.CustomFormat = " ";
+                }
+                cmbStudyStatus.Text = objEnrolment.StudyStatus;
+            }
         }
 
         private void dtpEnrolmentDate_ValueChanged(object sender, EventArgs e)
@@ -348,38 +291,64 @@ namespace CourseManagementSystem
             dtpPaymentDueDate.Format = DateTimePickerFormat.Custom;
             dtpPaymentDueDate.CustomFormat = dateSelected;
         }
-
-        private void rdbDisabilityYes_CheckedChanged(object sender, EventArgs e)
+        private void dtpDatePaid_ValueChanged(object sender, EventArgs e)
         {
-            txtDisabilityDescription.ReadOnly = false;
-        }
-
-        private void rdbDisabilityNo_CheckedChanged(object sender, EventArgs e)
-        {
-            txtDisabilityDescription.Text = String.Empty;
-            txtDisabilityDescription.ReadOnly = true;
+            string dateSelected = dtpDatePaid.Value.ToString("yyyy-MM-dd");
+            dtpDatePaid.Format = DateTimePickerFormat.Custom;
+            dtpDatePaid.CustomFormat = dateSelected;
         }
 
         private void mnuClearAll_Click(object sender, EventArgs e)
         {
-            txtStudentID.Text = String.Empty;
-            txtCourseID.Text = String.Empty;
+            cmbStudentID.SelectedIndex = -1;
+            cmbStudentID.Text = "";
+            cmbCourseID.SelectedIndex = -1;
+            cmbCourseID.Text = "";
             dtpEnrolmentDate.Format = DateTimePickerFormat.Custom;
             dtpEnrolmentDate.CustomFormat = " ";
             dtpExpectedEndDate.Format = DateTimePickerFormat.Custom;
             dtpExpectedEndDate.CustomFormat = " ";
             rdbFaceToFace.Checked = false;
             rdbOnline.Checked = false;
-            cmbPaymentMethod.SelectedIndex = -1;
+            txtAmountDue.Text = String.Empty;
             dtpPaymentDueDate.Format = DateTimePickerFormat.Custom;
             dtpPaymentDueDate.CustomFormat = " ";
-            txtAmountPaid.Text = String.Empty;
-            txtBalanceOwing.Text = String.Empty;
+            cmbPaymentMethod.SelectedIndex = -1;
             cmbPaymentStatus.SelectedIndex = -1;
-            rdbDisabilityYes.Checked = false;
-            rdbDisabilityNo.Checked = false;
-            txtDisabilityDescription.Text = String.Empty;
+            dtpDatePaid.Format = DateTimePickerFormat.Custom;
+            dtpDatePaid.CustomFormat = " ";
             cmbStudyStatus.SelectedIndex = -1;
         }
+
+        private void mnuViewAll_Click(object sender, EventArgs e)
+        {
+            clsEnrolment objEnrolment = new clsEnrolment();
+            objEnrolment.ViewAll(dgvEnrolment);
+        }
+
+        private void EnrolmentForm_Load(object sender, EventArgs e)
+        {
+            clsEnrolment objEnrolment = new clsEnrolment();
+            ComboBox[] cmb = new ComboBox[] { cmbStudentID, cmbStudentName, cmbCourseID, cmbCourseName };
+            //Doesn't include the other combo boxes because they are fixed values.
+
+            objEnrolment.Load(cmb);
+            objEnrolment.ViewAll(dgvEnrolment);
+        }
+
+        private void cmbStudentName_Changed(object sender, EventArgs e)
+        {
+            int selectedNumber = cmbStudentName.SelectedIndex;
+
+            cmbStudentID.SelectedIndex = selectedNumber;
+        }
+
+        private void cmbCourseName_Changed(object sender, EventArgs e)
+        {
+            int selectedNumber = cmbCourseName.SelectedIndex;
+
+            cmbCourseID.SelectedIndex = selectedNumber;
+        }
+
     }
 }
