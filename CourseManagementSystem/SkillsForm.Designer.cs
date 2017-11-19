@@ -46,13 +46,15 @@
             this.mnuUnitForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAssessmentForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTeacherForm = new System.Windows.Forms.ToolStripMenuItem();
-            this.dgvUnit = new System.Windows.Forms.DataGridView();
+            this.dgvSkills = new System.Windows.Forms.DataGridView();
             this.lblSkillName = new System.Windows.Forms.Label();
             this.UnitToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.txtSkillID = new System.Windows.Forms.TextBox();
             this.txtSkillDescription = new System.Windows.Forms.TextBox();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSkills)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -68,6 +70,7 @@
             this.btnSearch.TabIndex = 142;
             this.UnitToolTip.SetToolTip(this.btnSearch, "Press to search");
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lblSkillDescription
             // 
@@ -119,6 +122,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
+            this.mnuEdit,
             this.mnuNavigate});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -174,6 +178,7 @@
             this.mnuViewAll.Size = new System.Drawing.Size(166, 22);
             this.mnuViewAll.Text = "View All";
             this.mnuViewAll.ToolTipText = "View All record";
+            this.mnuViewAll.Click += new System.EventHandler(this.mnuViewAll_Click);
             // 
             // mnuNavigate
             // 
@@ -234,15 +239,15 @@
             this.mnuTeacherForm.Text = "Teacher Form";
             this.mnuTeacherForm.ToolTipText = "Go to teacher form";
             // 
-            // dgvUnit
+            // dgvSkills
             // 
-            this.dgvUnit.BackgroundColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvUnit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUnit.Location = new System.Drawing.Point(12, 414);
-            this.dgvUnit.Name = "dgvUnit";
-            this.dgvUnit.ReadOnly = true;
-            this.dgvUnit.Size = new System.Drawing.Size(642, 120);
-            this.dgvUnit.TabIndex = 140;
+            this.dgvSkills.BackgroundColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvSkills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSkills.Location = new System.Drawing.Point(12, 366);
+            this.dgvSkills.Name = "dgvSkills";
+            this.dgvSkills.ReadOnly = true;
+            this.dgvSkills.Size = new System.Drawing.Size(642, 168);
+            this.dgvSkills.TabIndex = 140;
             // 
             // lblSkillName
             // 
@@ -271,9 +276,27 @@
             this.txtSkillDescription.Location = new System.Drawing.Point(259, 200);
             this.txtSkillDescription.Multiline = true;
             this.txtSkillDescription.Name = "txtSkillDescription";
-            this.txtSkillDescription.Size = new System.Drawing.Size(326, 180);
+            this.txtSkillDescription.Size = new System.Drawing.Size(326, 160);
             this.txtSkillDescription.TabIndex = 3;
             this.txtSkillDescription.Tag = "Skill Description";
+            // 
+            // mnuEdit
+            // 
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuClearAll});
+            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuClearAll
+            // 
+            this.mnuClearAll.Name = "mnuClearAll";
+            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
+            this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
             // 
             // SkillsForm
             // 
@@ -287,15 +310,16 @@
             this.Controls.Add(this.lblSkillsForm);
             this.Controls.Add(this.lblSkillID);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.dgvUnit);
+            this.Controls.Add(this.dgvSkills);
             this.Controls.Add(this.lblSkillName);
             this.Controls.Add(this.txtSkillID);
             this.Controls.Add(this.txtSkillDescription);
             this.Name = "SkillsForm";
             this.Text = "SkillsForm";
+            this.Load += new System.EventHandler(this.SkillsForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSkills)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,9 +345,11 @@
         private System.Windows.Forms.ToolStripMenuItem mnuUnitForm;
         private System.Windows.Forms.ToolStripMenuItem mnuAssessmentForm;
         private System.Windows.Forms.ToolStripMenuItem mnuTeacherForm;
-        private System.Windows.Forms.DataGridView dgvUnit;
+        private System.Windows.Forms.DataGridView dgvSkills;
         private System.Windows.Forms.Label lblSkillName;
         private System.Windows.Forms.TextBox txtSkillID;
         private System.Windows.Forms.TextBox txtSkillDescription;
+        private System.Windows.Forms.ToolStripMenuItem mnuEdit;
+        private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
     }
 }

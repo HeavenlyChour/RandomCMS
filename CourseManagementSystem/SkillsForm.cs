@@ -36,7 +36,7 @@ namespace CourseManagementSystem
                 return;
             }
             clsSkills objSkills = new clsSkills(txtSkillName.Text, txtSkillDescription.Text);
-            objSkills.AddSkill();
+            objSkills.Add();
             MessageBox.Show("Skill successfully added");
         }
 
@@ -49,7 +49,7 @@ namespace CourseManagementSystem
             }
 
             clsSkills objSkills = new clsSkills(Convert.ToInt32(txtSkillID.Text));
-            objSkills.DeleteSkill();
+            objSkills.Delete();
             MessageBox.Show("Skill successfully deleted");
         }
 
@@ -75,9 +75,44 @@ namespace CourseManagementSystem
                 txtSkillDescription.Focus();
                 return;
             }
-            clsSkills objSkills = new clsSkills(txtSkillName.Text, txtSkillDescription.Text);
-            objSkills.AddSkill();
+            clsSkills objSkills = new clsSkills(Convert.ToInt32(txtSkillID.Text), txtSkillName.Text, txtSkillDescription.Text);
+            objSkills.Update();
             MessageBox.Show("Skill successfully updated");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateTextBoxForNumeric(txtSkillID))
+            {
+                txtSkillID.Focus();
+                return;
+            }
+            clsSkills objSkills = new clsSkills(Convert.ToInt32(txtSkillID.Text));
+            bool valid = objSkills.Search();
+            if (valid)
+            {
+                txtSkillName.Text = objSkills.SkillName;
+                txtSkillDescription.Text = objSkills.SkillDescription;
+            }
+        }
+
+        private void mnuViewAll_Click(object sender, EventArgs e)
+        {
+            clsSkills objSkills = new clsSkills();
+            objSkills.ViewAll(dgvSkills);
+        }
+
+        private void SkillsForm_Load(object sender, EventArgs e)
+        {
+            clsSkills objSkills = new clsSkills();
+            objSkills.ViewAll(dgvSkills);
+        }
+
+        private void mnuClearAll_Click(object sender, EventArgs e)
+        {
+            txtSkillID.Text = String.Empty;
+            txtSkillName.Text = String.Empty;
+            txtSkillDescription.Text = String.Empty;
         }
     }
 }

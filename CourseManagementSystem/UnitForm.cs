@@ -20,24 +20,11 @@ namespace CourseManagementSystem
 
         private void mnuAdd_Click(object sender, EventArgs e)
         {
-            if (!clsValidation.ValidateTextBox(txtUnitName))
-            {
-                txtUnitName.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBox(txtCourseID))
+            if (!clsValidation.ValidateTextBoxForNumeric(txtNoOfHours))
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
-            {
-                return;
-            }
-            if (!clsValidation.ValidateComboBox(cmbNoOfHours))
-            {
-                return;
-            }
-            if (!clsValidation.ValidateComboBox(cmbNoOfAssessments))
+            if (!clsValidation.ValidateTextBoxForNumeric(txtNoOfAssessments))
             {
                 return;
             }
@@ -55,8 +42,8 @@ namespace CourseManagementSystem
                 unitTypeText = "Elective Unit";
             }
 
-            clsUnit objUnit = new clsUnit(txtUnitName.Text, Convert.ToInt32(cmbNoOfHours.Text), Convert.ToInt32(cmbNoOfAssessments.Text), unitTypeText);
-            objUnit.AddUnit();
+            clsUnit objUnit = new clsUnit(txtUnitName.Text, Convert.ToInt32(txtNoOfHours.Text), unitTypeText);
+            objUnit.Add();
             MessageBox.Show("Unit record successfully added!");
         }
 
@@ -68,7 +55,7 @@ namespace CourseManagementSystem
                 return;
             }
             clsUnit objUnit = new clsUnit(Convert.ToInt32(txtUnitID.Text));
-            objUnit.DeleteUnit();
+            objUnit.Delete();
             MessageBox.Show("Unit record successfully deleted");
         }
 
@@ -84,19 +71,27 @@ namespace CourseManagementSystem
                 txtUnitName.Focus();
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtCourseID))
+            //if (!clsValidation.ValidateTextBox(txtCourseID))
+            //{
+            //    return;
+            //}
+            //if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
+            //{
+            //    return;
+            //}
+            //if (!clsValidation.ValidateComboBox(cmbNoOfHours))
+            //{
+            //    return;
+            //}
+            //if (!clsValidation.ValidateComboBox(cmbNoOfAssessments))
+            //{
+            //    return;
+            //}
+            if (!clsValidation.ValidateTextBoxForNumeric(txtNoOfHours))
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtCourseID))
-            {
-                return;
-            }
-            if (!clsValidation.ValidateComboBox(cmbNoOfHours))
-            {
-                return;
-            }
-            if (!clsValidation.ValidateComboBox(cmbNoOfAssessments))
+            if (!clsValidation.ValidateTextBoxForNumeric(txtNoOfAssessments))
             {
                 return;
             }
@@ -115,10 +110,41 @@ namespace CourseManagementSystem
             }
 
             clsUnit objUnit = new clsUnit(Convert.ToInt32(txtUnitID.Text), txtUnitName.Text, 
-                Convert.ToInt32(cmbNoOfHours.Text), Convert.ToInt32(cmbNoOfAssessments.Text), unitTypeText);
+                Convert.ToInt32(txtNoOfHours.Text), unitTypeText);
 
-            objUnit.UpdateUnit();
+            objUnit.Update();
             MessageBox.Show("Unit record successfully updated!");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateTextBoxForNumeric(txtUnitID))
+            {
+                txtUnitID.Focus();
+                return;
+            }
+            clsUnit objUnit = new clsUnit(Convert.ToInt32(txtUnitID.Text));
+            bool valid = objUnit.Search();
+            if (valid)
+            {
+                txtUnitName.Text = objUnit.UnitName;
+                txtNoOfHours.Text = objUnit.NoOfHours.ToString();
+                txtNoOfAssessments.Text = objUnit.NoOfAssessments.ToString();
+                if (objUnit.UnitType == "Core Unit")
+                {
+                    rdbCoreUnit.Checked = true;
+                }
+                else if (objUnit.UnitType == "Elective")
+                {
+                    rdbElectiveUnit.Checked = true;
+                }
+            }
+        }
+
+        private void mnuViewAll_Click(object sender, EventArgs e)
+        {
+            clsUnit objUnit = new clsUnit();
+            objUnit.ViewAll(dgvUnit);
         }
 
         private void mnuClearAll_Click(object sender, EventArgs e)
@@ -126,8 +152,16 @@ namespace CourseManagementSystem
             txtUnitID.Text = String.Empty;
             //cmbUnitName.SelectedIndex = -1;
             txtUnitName.Text = String.Empty;
-            cmbNoOfHours.SelectedIndex = -1;
-            cmbNoOfAssessments.SelectedIndex = -1;
+            txtNoOfHours.Text = String.Empty;
+            txtNoOfAssessments.Text = String.Empty;
+            //cmbNoOfHours.SelectedIndex = -1;
+            //cmbNoOfAssessments.SelectedIndex = -1;
+        }
+
+        private void UnitForm_Load(object sender, EventArgs e)
+        {
+            clsUnit objUnit = new clsUnit();
+            objUnit.ViewAll(dgvUnit);
         }
     }
 }

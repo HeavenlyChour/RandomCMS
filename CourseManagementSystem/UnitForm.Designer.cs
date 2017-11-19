@@ -53,15 +53,13 @@
             this.mnuCourseForm = new System.Windows.Forms.ToolStripMenuItem();
             this.UnitToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnSearch = new System.Windows.Forms.Button();
-            this.cmbNoOfHours = new System.Windows.Forms.ComboBox();
-            this.cmbNoOfAssessments = new System.Windows.Forms.ComboBox();
-            this.txtCourseID = new System.Windows.Forms.TextBox();
             this.lblNumOfAssessments = new System.Windows.Forms.Label();
             this.lblNoOfHours = new System.Windows.Forms.Label();
             this.txtUnitID = new System.Windows.Forms.TextBox();
             this.pnlUnitType = new System.Windows.Forms.Panel();
-            this.lblCourseID = new System.Windows.Forms.Label();
             this.txtUnitName = new System.Windows.Forms.TextBox();
+            this.txtNoOfHours = new System.Windows.Forms.TextBox();
+            this.txtNoOfAssessments = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlUnitType.SuspendLayout();
@@ -103,7 +101,7 @@
             this.lblUnitType.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblUnitType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnitType.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblUnitType.Location = new System.Drawing.Point(152, 309);
+            this.lblUnitType.Location = new System.Drawing.Point(152, 280);
             this.lblUnitType.Name = "lblUnitType";
             this.lblUnitType.Size = new System.Drawing.Size(90, 20);
             this.lblUnitType.TabIndex = 90;
@@ -131,10 +129,10 @@
             // 
             this.dgvUnit.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvUnit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUnit.Location = new System.Drawing.Point(12, 414);
+            this.dgvUnit.Location = new System.Drawing.Point(12, 310);
             this.dgvUnit.Name = "dgvUnit";
             this.dgvUnit.ReadOnly = true;
-            this.dgvUnit.Size = new System.Drawing.Size(642, 120);
+            this.dgvUnit.Size = new System.Drawing.Size(642, 224);
             this.dgvUnit.TabIndex = 83;
             // 
             // lblUnitName
@@ -143,7 +141,7 @@
             this.lblUnitName.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblUnitName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnitName.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblUnitName.Location = new System.Drawing.Point(147, 171);
+            this.lblUnitName.Location = new System.Drawing.Point(148, 174);
             this.lblUnitName.Name = "lblUnitName";
             this.lblUnitName.Size = new System.Drawing.Size(98, 20);
             this.lblUnitName.TabIndex = 78;
@@ -244,6 +242,7 @@
             this.mnuViewAll.Size = new System.Drawing.Size(166, 22);
             this.mnuViewAll.Text = "View All";
             this.mnuViewAll.ToolTipText = "View All record";
+            this.mnuViewAll.Click += new System.EventHandler(this.mnuViewAll_Click);
             // 
             // mnuExit
             // 
@@ -315,38 +314,7 @@
             this.btnSearch.TabIndex = 89;
             this.UnitToolTip.SetToolTip(this.btnSearch, "Press to search");
             this.btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // cmbNoOfHours
-            // 
-            this.cmbNoOfHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbNoOfHours.FormattingEnabled = true;
-            this.cmbNoOfHours.Location = new System.Drawing.Point(259, 235);
-            this.cmbNoOfHours.Name = "cmbNoOfHours";
-            this.cmbNoOfHours.Size = new System.Drawing.Size(113, 28);
-            this.cmbNoOfHours.TabIndex = 4;
-            this.cmbNoOfHours.Tag = "No. of Hours";
-            this.UnitToolTip.SetToolTip(this.cmbNoOfHours, "Press the down arrow to make a selection");
-            // 
-            // cmbNoOfAssessments
-            // 
-            this.cmbNoOfAssessments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbNoOfAssessments.FormattingEnabled = true;
-            this.cmbNoOfAssessments.Location = new System.Drawing.Point(259, 270);
-            this.cmbNoOfAssessments.Name = "cmbNoOfAssessments";
-            this.cmbNoOfAssessments.Size = new System.Drawing.Size(113, 28);
-            this.cmbNoOfAssessments.TabIndex = 5;
-            this.cmbNoOfAssessments.Tag = "No. of Assessments";
-            this.UnitToolTip.SetToolTip(this.cmbNoOfAssessments, "Press the down arrow to make a selection");
-            // 
-            // txtCourseID
-            // 
-            this.txtCourseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCourseID.Location = new System.Drawing.Point(259, 203);
-            this.txtCourseID.Name = "txtCourseID";
-            this.txtCourseID.Size = new System.Drawing.Size(176, 26);
-            this.txtCourseID.TabIndex = 3;
-            this.txtCourseID.Tag = "Course ID";
-            this.UnitToolTip.SetToolTip(this.txtCourseID, "Enter the Course ID");
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lblNumOfAssessments
             // 
@@ -354,7 +322,7 @@
             this.lblNumOfAssessments.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblNumOfAssessments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumOfAssessments.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblNumOfAssessments.Location = new System.Drawing.Point(73, 273);
+            this.lblNumOfAssessments.Location = new System.Drawing.Point(73, 244);
             this.lblNumOfAssessments.Name = "lblNumOfAssessments";
             this.lblNumOfAssessments.Size = new System.Drawing.Size(169, 20);
             this.lblNumOfAssessments.TabIndex = 86;
@@ -366,7 +334,7 @@
             this.lblNoOfHours.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblNoOfHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNoOfHours.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblNoOfHours.Location = new System.Drawing.Point(127, 238);
+            this.lblNoOfHours.Location = new System.Drawing.Point(127, 209);
             this.lblNoOfHours.Name = "lblNoOfHours";
             this.lblNoOfHours.Size = new System.Drawing.Size(115, 20);
             this.lblNoOfHours.TabIndex = 84;
@@ -385,23 +353,10 @@
             // 
             this.pnlUnitType.Controls.Add(this.rdbElectiveUnit);
             this.pnlUnitType.Controls.Add(this.rdbCoreUnit);
-            this.pnlUnitType.Location = new System.Drawing.Point(259, 304);
+            this.pnlUnitType.Location = new System.Drawing.Point(259, 275);
             this.pnlUnitType.Name = "pnlUnitType";
             this.pnlUnitType.Size = new System.Drawing.Size(246, 29);
             this.pnlUnitType.TabIndex = 6;
-            // 
-            // lblCourseID
-            // 
-            this.lblCourseID.AutoSize = true;
-            this.lblCourseID.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblCourseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCourseID.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblCourseID.Location = new System.Drawing.Point(147, 206);
-            this.lblCourseID.Name = "lblCourseID";
-            this.lblCourseID.Size = new System.Drawing.Size(95, 20);
-            this.lblCourseID.TabIndex = 101;
-            this.lblCourseID.Tag = "Course ID";
-            this.lblCourseID.Text = "Course ID:";
             // 
             // txtUnitName
             // 
@@ -412,6 +367,24 @@
             this.txtUnitName.TabIndex = 102;
             this.txtUnitName.Tag = "Unit Name";
             // 
+            // txtNoOfHours
+            // 
+            this.txtNoOfHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNoOfHours.Location = new System.Drawing.Point(259, 206);
+            this.txtNoOfHours.Name = "txtNoOfHours";
+            this.txtNoOfHours.Size = new System.Drawing.Size(98, 26);
+            this.txtNoOfHours.TabIndex = 103;
+            this.txtNoOfHours.Tag = "No. of Hours";
+            // 
+            // txtNoOfAssessments
+            // 
+            this.txtNoOfAssessments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNoOfAssessments.Location = new System.Drawing.Point(259, 241);
+            this.txtNoOfAssessments.Name = "txtNoOfAssessments";
+            this.txtNoOfAssessments.Size = new System.Drawing.Size(98, 26);
+            this.txtNoOfAssessments.TabIndex = 104;
+            this.txtNoOfAssessments.Tag = "No. of Assessments";
+            // 
             // UnitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,11 +392,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 546);
+            this.Controls.Add(this.txtNoOfAssessments);
+            this.Controls.Add(this.txtNoOfHours);
             this.Controls.Add(this.txtUnitName);
-            this.Controls.Add(this.lblCourseID);
-            this.Controls.Add(this.txtCourseID);
-            this.Controls.Add(this.cmbNoOfAssessments);
-            this.Controls.Add(this.cmbNoOfHours);
             this.Controls.Add(this.pnlUnitType);
             this.Controls.Add(this.lblUnitType);
             this.Controls.Add(this.btnSearch);
@@ -440,6 +411,7 @@
             this.Name = "UnitForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Unit Form";
+            this.Load += new System.EventHandler(this.UnitForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnit)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -479,10 +451,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
-        private System.Windows.Forms.ComboBox cmbNoOfHours;
-        private System.Windows.Forms.ComboBox cmbNoOfAssessments;
-        private System.Windows.Forms.Label lblCourseID;
-        private System.Windows.Forms.TextBox txtCourseID;
         private System.Windows.Forms.TextBox txtUnitName;
+        private System.Windows.Forms.TextBox txtNoOfHours;
+        private System.Windows.Forms.TextBox txtNoOfAssessments;
     }
 }

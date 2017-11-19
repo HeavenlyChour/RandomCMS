@@ -5,11 +5,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DatabaseClass;
 
 namespace CourseManagementSystem
 {
-    class clsSemester
+    class clsSemester: ILogic
     {
         private int semesterID;
         private string semesterDate;
@@ -78,7 +79,7 @@ namespace CourseManagementSystem
         }
         #endregion
 
-        public bool AddSemester()
+        public bool Add()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("InsertSemester", objConnection);
@@ -89,7 +90,7 @@ namespace CourseManagementSystem
             return true;
         }
 
-        public bool DeleteSemester()
+        public bool Delete()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("DeleteSemester", objConnection);
@@ -100,7 +101,7 @@ namespace CourseManagementSystem
             return true;
         }
 
-        public bool UpdateSemester()
+        public bool Update()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("UpdateSemester", objConnection);
@@ -111,6 +112,65 @@ namespace CourseManagementSystem
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.ExecuteNonQuery();
             return true;
+        }
+
+        public bool Search()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("SearchSemester", objConnection);
+            objCommand.Parameters.AddWithValue("@semid", SemesterID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+
+            if (objDataReader.Read())
+            {
+                semesterDate = objDataReader[1].ToString();
+                semesterWeeks = Convert.ToInt32(objDataReader[2]);
+                objConnection.Close();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ViewAll(DataGridView dgv)
+        {
+            string strConnection = "server=localhost;database=randomdb;Trusted_Connection=yes";
+            SqlConnection objConnection = new SqlConnection(strConnection);
+            //SqlConnection objConnection = clsDatabase.CreateConnection();
+            objConnection.Open();
+
+            string strSQL = "select * from semester";
+            SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
+
+            DataTable objDataTable = new DataTable();
+            objDataAdapter.Fill(objDataTable);
+
+            if (objDataTable.Rows.Count != 0)
+            {
+                dgv.DataSource = null;
+                dgv.DataSource = objDataTable;
+                dgv.AutoGenerateColumns = false;
+                dgv.Columns[0].HeaderText = "Semester ID";
+                dgv.Columns[1].HeaderText = "Semester Date";
+                dgv.Columns[2].HeaderText = "Semester Weeks";
+                dgv.AutoResizeColumns();
+                dgv.AutoSize = false;
+                dgv.Visible = true;
+                objConnection.Close();
+            }
+            else
+            {
+                MessageBox.Show("There are no semesters");
+                objConnection.Close();
+            }
+        }
+
+        public void Load(ComboBox[] cmb)
+        {
+            throw new NotImplementedException();
         }
     }
 }

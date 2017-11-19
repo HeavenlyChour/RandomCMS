@@ -38,8 +38,9 @@ namespace CourseManagementSystem
                 return;
             }
 
-            clsSemester objSemester = new clsSemester(dtpSemesterStartDate.Value.Date, Convert.ToInt32(txtSemesterWeeks.Text));
-            objSemester.AddSemester();
+            clsSemester objSemester = new clsSemester(dtpSemesterStartDate.Value.ToString("yyyy-MM-dd"), 
+                Convert.ToInt32(txtSemesterWeeks.Text));
+            objSemester.Add();
             MessageBox.Show("Semester successfully added");
         }
 
@@ -52,7 +53,7 @@ namespace CourseManagementSystem
             }
 
             clsSemester objSemester = new clsSemester(Convert.ToInt32(txtSemesterID.Text));
-            objSemester.DeleteSemester();
+            objSemester.Delete();
             MessageBox.Show("Semester successfully deleted");
         }
 
@@ -76,9 +77,32 @@ namespace CourseManagementSystem
                 txtSemesterWeeks.Focus();
                 return;
             }
-            clsSemester objSemester = new clsSemester(Convert.ToInt32(txtSemesterID.Text), dtpSemesterStartDate.Value.Date, Convert.ToInt32(txtSemesterWeeks.Text));
-            objSemester.UpdateSemester();
+            clsSemester objSemester = new clsSemester(Convert.ToInt32(txtSemesterID.Text), 
+                dtpSemesterStartDate.Value.ToString("yyyy-MM-dd"), Convert.ToInt32(txtSemesterWeeks.Text));
+            objSemester.Update();
             MessageBox.Show("Semester successfully updated");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateTextBoxForNumeric(txtSemesterID))
+            {
+                txtSemesterID.Focus();
+                return;
+            }
+            clsSemester objSemester = new clsSemester(Convert.ToInt32(txtSemesterID.Text));
+            bool valid = objSemester.Search();
+            if (valid)
+            {
+                dtpSemesterStartDate.Value = DateTime.Parse(objSemester.SemesterDate);
+                txtSemesterWeeks.Text = objSemester.SemesterWeeks.ToString();
+            }
+        }
+        
+        private void mnuViewAll_Click(object sender, EventArgs e)
+        {
+            clsSemester objSemester = new clsSemester();
+            objSemester.ViewAll(dgvSemester);
         }
 
         private void dtpSemesterStartDate_ValueChanged(object sender, EventArgs e)
@@ -94,6 +118,12 @@ namespace CourseManagementSystem
             dtpSemesterStartDate.Format = DateTimePickerFormat.Custom;
             dtpSemesterStartDate.CustomFormat = " ";
             txtSemesterWeeks.Text = String.Empty;
+        }
+
+        private void SemesterForm_Load(object sender, EventArgs e)
+        {
+            clsSemester objSemester = new clsSemester();
+            objSemester.ViewAll(dgvSemester);
         }
     }
 }
