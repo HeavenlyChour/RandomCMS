@@ -65,35 +65,35 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtTeachStreetAddress))
+            if (!clsValidation.ValidateTextBox(txtTeacherStreetAddress))
             {
-                txtTeachStreetAddress.Focus();
+                txtTeacherStreetAddress.Focus();
                 return;
             }
-            if (!clsValidation.ValidateStreetAddress(txtTeachStreetAddress))
+            if (!clsValidation.ValidateStreetAddress(txtTeacherStreetAddress))
             {
-                txtTeachStreetAddress.Focus();
+                txtTeacherStreetAddress.Focus();
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbTeachSuburb))
+            if (!clsValidation.ValidateComboBox(cmbSuburbName))
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtTeachPostCode))
-            {
-                txtTeachPostCode.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtTeachPostCode))
-            {
-                txtTeachPostCode.Focus();
-                return;
-            }
-            if (!clsValidation.ValidatePostCode(txtTeachPostCode.Text))
-            {
-                txtTeachPostCode.Focus();
-                return;
-            }
+            //if (!clsValidation.ValidateTextBox(txtTeacherPostCode))
+            //{
+            //    txtTeacherPostCode.Focus();
+            //    return;
+            //}
+            //if (!clsValidation.ValidateTextBoxForNumeric(txtTeacherPostCode))
+            //{
+            //    txtTeacherPostCode.Focus();
+            //    return;
+            //}
+            //if (!clsValidation.ValidatePostCode(txtTeacherPostCode.Text))
+            //{
+            //    txtTeacherPostCode.Focus();
+            //    return;
+            //}
             if (!clsValidation.ValidateTextBox(txtTeacherPhoneNum))
             {
                 txtTeacherPhoneNum.Focus();
@@ -122,20 +122,20 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbTeachDepartment))
+            if (!clsValidation.ValidateComboBox(cmbTeacherDepartment))
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtTeacherSkills))
-            {
-                txtTeacherSkills.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateForAlphabet(txtTeacherSkills))
-            {
-                txtTeacherSkills.Focus();
-                return;
-            }
+            //if (!clsValidation.ValidateTextBox(txtTeacherSkills))
+            //{
+            //    txtTeacherSkills.Focus();
+            //    return;
+            //}
+            //if (!clsValidation.ValidateForAlphabet(txtTeacherSkills))
+            //{
+            //    txtTeacherSkills.Focus();
+            //    return;
+            //}
             if (!clsValidation.ValidateRadioButton(rdbASYes, rdbASNo))
             {
                 return;
@@ -161,10 +161,10 @@ namespace CourseManagementSystem
                 leaveText = "No";
             }
             clsTeacher objTeacher = new clsTeacher(txtTeacherFirstName.Text,
-                  txtTeacherLastName.Text, dtpDateOfBirth.Value.Date, genderText, txtTeachStreetAddress.Text,
-                  cmbTeachSuburb.Text, txtTeachPostCode.Text, txtTeacherPhoneNum.Text, txtTeacherEmail.Text,
-                  dtpCommencementDate.Value.Date, cmbClassTaught.Text, txtTeacherSkills.Text, leaveText);
-            objTeacher.AddTeacher();
+                  txtTeacherLastName.Text, genderText, dtpDateOfBirth.Value.ToString("yyyy-MM-dd"), txtTeacherStreetAddress.Text,
+                  Convert.ToInt32(cmbSuburbID.Text), cmbPostCode.Text, txtTeacherPhoneNum.Text, txtTeacherEmail.Text,
+                  dtpCommencementDate.Value.ToString("yyyy-MM-dd"), cmbTeacherDepartment.Text, leaveText);
+            objTeacher.Add();
             MessageBox.Show("Teacher record successfully added!");
         }
 
@@ -176,7 +176,7 @@ namespace CourseManagementSystem
                 return;
             }
             clsTeacher objTeacher = new clsTeacher(Convert.ToInt32(txtTeacherID.Text));
-            objTeacher.DeleteTeacher();
+            objTeacher.Delete();
             MessageBox.Show("Teacher record successfully deleted");
         }
 
@@ -221,35 +221,35 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtTeachStreetAddress))
+            if (!clsValidation.ValidateTextBox(txtTeacherStreetAddress))
             {
-                txtTeachStreetAddress.Focus();
+                txtTeacherStreetAddress.Focus();
                 return;
             }
-            if (!clsValidation.ValidateStreetAddress(txtTeachStreetAddress))
+            if (!clsValidation.ValidateStreetAddress(txtTeacherStreetAddress))
             {
-                txtTeachStreetAddress.Focus();
+                txtTeacherStreetAddress.Focus();
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbTeachSuburb))
+            if (!clsValidation.ValidateComboBox(cmbSuburbName))
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtTeachPostCode))
-            {
-                txtTeachPostCode.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateTextBoxForNumeric(txtTeachPostCode))
-            {
-                txtTeachPostCode.Focus();
-                return;
-            }
-            if (!clsValidation.ValidatePostCode(txtTeachPostCode.Text))
-            {
-                txtTeachPostCode.Focus();
-                return;
-            }
+            //if (!clsValidation.ValidateTextBox(txtTeacherPostCode))
+            //{
+            //    txtTeacherPostCode.Focus();
+            //    return;
+            //}
+            //if (!clsValidation.ValidateTextBoxForNumeric(txtTeacherPostCode))
+            //{
+            //    txtTeacherPostCode.Focus();
+            //    return;
+            //}
+            //if (!clsValidation.ValidatePostCode(txtTeacherPostCode.Text))
+            //{
+            //    txtTeacherPostCode.Focus();
+            //    return;
+            //}
             if (!clsValidation.ValidateTextBox(txtTeacherPhoneNum))
             {
                 txtTeacherPhoneNum.Focus();
@@ -278,20 +278,20 @@ namespace CourseManagementSystem
             {
                 return;
             }
-            if (!clsValidation.ValidateComboBox(cmbTeachDepartment))
+            if (!clsValidation.ValidateComboBox(cmbTeacherDepartment))
             {
                 return;
             }
-            if (!clsValidation.ValidateTextBox(txtTeacherSkills))
-            {
-                txtTeacherSkills.Focus();
-                return;
-            }
-            if (!clsValidation.ValidateForAlphabet(txtTeacherSkills))
-            {
-                txtTeacherSkills.Focus();
-                return;
-            }
+            //if (!clsValidation.ValidateTextBox(txtTeacherSkills))
+            //{
+            //    txtTeacherSkills.Focus();
+            //    return;
+            //}
+            //if (!clsValidation.ValidateForAlphabet(txtTeacherSkills))
+            //{
+            //    txtTeacherSkills.Focus();
+            //    return;
+            //}
             if (!clsValidation.ValidateRadioButton(rdbASYes, rdbASNo))
             {
                 return;
@@ -300,11 +300,11 @@ namespace CourseManagementSystem
             string genderText = String.Empty;
             if (rdbMale.Checked)
             {
-                genderText = "m";
+                genderText = "M";
             }
             else if (rdbFemale.Checked)
             {
-                genderText = "f";
+                genderText = "F";
             }
             string leaveText = String.Empty;
             if (rdbASYes.Checked)
@@ -316,11 +316,72 @@ namespace CourseManagementSystem
                 leaveText = "No";
             }
             clsTeacher objTeacher = new clsTeacher(Convert.ToInt32(txtTeacherID.Text), txtTeacherFirstName.Text,
-                  txtTeacherLastName.Text, dtpDateOfBirth.Value.Date, genderText, txtTeachStreetAddress.Text,
-                  cmbTeachSuburb.Text, txtTeachPostCode.Text, txtTeacherPhoneNum.Text, txtTeacherEmail.Text,
-                  dtpCommencementDate.Value.Date, cmbClassTaught.Text, txtTeacherSkills.Text, leaveText);
-            objTeacher.UpdateTeacher();
+                  txtTeacherLastName.Text, genderText, dtpDateOfBirth.Value.ToString("yyyy-MM-dd"), txtTeacherStreetAddress.Text,
+                  Convert.ToInt32(cmbSuburbID.Text), cmbPostCode.Text, txtTeacherPhoneNum.Text, txtTeacherEmail.Text,
+                  dtpCommencementDate.Value.ToString("yyyy-MM-dd"), cmbTeacherDepartment.Text, leaveText);
+            objTeacher.Update();
             MessageBox.Show("Teacher record successfully updated!");
+        }
+        
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateTextBoxForNumeric(txtTeacherID))
+            {
+                txtTeacherID.Focus();
+                return;
+            }
+            clsTeacher objTeacher = new clsTeacher(Convert.ToInt32(txtTeacherID.Text));
+
+            bool valid = objTeacher.Search();
+            if (valid)
+            {
+                txtTeacherFirstName.Text = objTeacher.FirstName;
+                txtTeacherLastName.Text = objTeacher.LastName;
+                if (objTeacher.Gender == "m" || objTeacher.Gender == "M")
+                {
+                    rdbMale.Checked = true;
+                }
+                else if (objTeacher.Gender == "f" || objTeacher.Gender == "F")
+                {
+                    rdbFemale.Checked = true;
+                }
+                dtpDateOfBirth.Value = DateTime.Parse(objTeacher.DateOfBirth);
+                txtTeacherStreetAddress.Text = objTeacher.StreetAddress;
+                cmbSuburbID.Text = objTeacher.SuburbID.ToString();
+                cmbSuburbName.Text = objTeacher.SuburbName;
+                cmbPostCode.Text = objTeacher.PostCode;
+                //txtStudPostCode.Text = objStudent.PostCode;
+                txtTeacherPhoneNum.Text = objTeacher.PhoneNumber;
+                txtTeacherEmail.Text = objTeacher.Email;
+                dtpCommencementDate.Value = DateTime.Parse(objTeacher.CommencementDate);
+                cmbTeacherDepartment.Text = objTeacher.Department;
+                //txtTeacherSkills.Text = objTeacher.Skills;
+                if (objTeacher.Leave == "Yes")
+                {
+                    rdbASYes.Checked = true;
+                }
+                else if (objTeacher.Leave == "No")
+                {
+                    rdbASNo.Checked = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("This teacher code does not exist.");
+            }
+        }
+        private void mnuViewAll_Click(object sender, EventArgs e)
+        {
+            clsTeacher objStudent = new clsTeacher();
+            objStudent.ViewAll(dgvTeacher);
+        }
+        
+        private void TeacherForm_Load(object sender, EventArgs e)
+        {
+            clsTeacher objTeacher = new clsTeacher();
+            ComboBox[] cmb = new ComboBox[] { cmbSuburbID, cmbSuburbName, cmbPostCode };
+            objTeacher.Load(cmb);
+            objTeacher.ViewAll(dgvTeacher);
         }
 
         private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)
@@ -351,16 +412,16 @@ namespace CourseManagementSystem
             {
                 rdbFemale.Checked = false;
             }
-            txtTeachStreetAddress.Text = String.Empty;
-            cmbTeachSuburb.SelectedIndex = -1;
-            txtTeachPostCode.Text = String.Empty;
+            txtTeacherStreetAddress.Text = String.Empty;
+            cmbSuburbName.SelectedIndex = -1;
+            cmbPostCode.Text = String.Empty;
             txtTeacherPhoneNum.Text = String.Empty;
             txtTeacherEmail.Text = String.Empty;
             dtpCommencementDate.Format = DateTimePickerFormat.Custom;
             dtpCommencementDate.CustomFormat = " ";
-            cmbTeachDepartment.SelectedIndex = -1;
-            cmbClassTaught.SelectedIndex = -1;
-            txtTeacherSkills.Text = String.Empty;
+            cmbTeacherDepartment.SelectedIndex = -1;
+            //cmbClassTaught.SelectedIndex = -1;
+            //txtTeacherSkills.Text = String.Empty;
             if (rdbASYes.Checked == true)
             {
                 rdbASYes.Checked = false;
@@ -376,6 +437,12 @@ namespace CourseManagementSystem
             this.Close();
         }
 
-        
+        private void cmbSuburbName_Changed(object sender, EventArgs e)
+        {
+            int selectedNumber = cmbSuburbName.SelectedIndex;
+
+            cmbSuburbID.SelectedIndex = selectedNumber;
+            cmbPostCode.SelectedIndex = selectedNumber;
+        }
     }
 }

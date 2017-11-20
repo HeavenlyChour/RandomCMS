@@ -7,24 +7,26 @@ using DatabaseClass;
 using System.Data.SqlClient;
 using System.Data;
 using DatabaseClass;
+using System.Windows.Forms;
 
 namespace CourseManagementSystem
 {
-    class clsTeacher
+    class clsTeacher: ILogic
     {
         private int teacherID;
         private string firstName;
         private string lastName;
-        private DateTime dateOfBirth;
         private string gender;
+        private string dateOfBirth;
         private string streetAddress;
-        private string suburb;
+        private int suburbID;
+        private string suburbName;
         private string postCode;
         private string phoneNumber;
         private string email;
-        private DateTime commencementDate;
-        private string classTaught;
-        private string skills;
+        private string commencementDate;
+        private string department;
+        //private string skills;
         private string leave;
 
         
@@ -38,24 +40,24 @@ namespace CourseManagementSystem
             this.TeacherID = teacherID;
         }
 
-        public clsTeacher(string firstName, string lastName, DateTime dateOfBirth, string gender, string streetAddress, string suburb, string postCode, string phoneNumber, string email, DateTime commencementDate, string classTaught, string skills, string leave)
+        public clsTeacher(string firstName, string lastName, string gender, string dateOfBirth, string streetAddress, int suburbID, string postCode, string phoneNumber, string email, string commencementDate, string department, string leave)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.DateOfBirth = dateOfBirth;
             this.Gender = gender;
             this.StreetAddress = streetAddress;
-            this.Suburb = suburb;
+            this.SuburbID = suburbID;
             this.PostCode = postCode;
             this.PhoneNumber = phoneNumber;
             this.Email = email;
             this.CommencementDate = commencementDate;
-            this.ClassTaught = classTaught;
-            this.Skills = skills;
+            this.Department = department;
+            //this.Skills = skills;
             this.Leave = leave;
         }
 
-        public clsTeacher(int teacherID, string firstName, string lastName, DateTime dateOfBirth, string gender, string streetAddress, string suburb, string postCode, string phoneNumber, string email, DateTime commencementDate, string classTaught, string skills, string leave)
+        public clsTeacher(int teacherID, string firstName, string lastName, string gender, string dateOfBirth, string streetAddress, int suburbID, string postCode, string phoneNumber, string email, string commencementDate, string department, string leave)
         {
             this.TeacherID = teacherID;
             this.FirstName = firstName;
@@ -63,13 +65,13 @@ namespace CourseManagementSystem
             this.DateOfBirth = dateOfBirth;
             this.Gender = gender;
             this.StreetAddress = streetAddress;
-            this.Suburb = suburb;
+            this.SuburbID = suburbID;
             this.PostCode = postCode;
             this.PhoneNumber = phoneNumber;
             this.Email = email;
             this.CommencementDate = commencementDate;
-            this.ClassTaught = classTaught;
-            this.Skills = skills;
+            this.Department = department;
+            //this.Skills = skills;
             this.Leave = leave;
         }
 
@@ -113,7 +115,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public DateTime DateOfBirth
+        public string DateOfBirth
         {
             get
             {
@@ -152,16 +154,29 @@ namespace CourseManagementSystem
             }
         }
 
-        public string Suburb
+        public int SuburbID
         {
             get
             {
-                return suburb;
+                return suburbID;
             }
 
             set
             {
-                suburb = value;
+                suburbID = value;
+            }
+        }
+
+        public string SuburbName
+        {
+            get
+            {
+                return suburbName;
+            }
+
+            set
+            {
+                suburbName = value;
             }
         }
 
@@ -204,7 +219,7 @@ namespace CourseManagementSystem
             }
         }
 
-        public DateTime CommencementDate
+        public string CommencementDate
         {
             get
             {
@@ -217,31 +232,31 @@ namespace CourseManagementSystem
             }
         }
 
-        public string ClassTaught
+        public string Department
         {
             get
             {
-                return classTaught;
+                return department;
             }
 
             set
             {
-                classTaught = value;
+                department = value;
             }
         }
 
-        public string Skills
-        {
-            get
-            {
-                return skills;
-            }
+        //public string Skills
+        //{
+        //    get
+        //    {
+        //        return skills;
+        //    }
 
-            set
-            {
-                skills = value;
-            }
-        }
+        //    set
+        //    {
+        //        skills = value;
+        //    }
+        //}
 
         public string Leave
         {
@@ -257,7 +272,7 @@ namespace CourseManagementSystem
         }
         #endregion
 
-        public bool AddTeacher()
+        public bool Add()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("InsertTeacher", objConnection);
@@ -267,20 +282,20 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
             objCommand.Parameters.AddWithValue("@gender", Gender);
             objCommand.Parameters.AddWithValue("@staddress", StreetAddress);
-            objCommand.Parameters.AddWithValue("@suburb", Suburb);
+            objCommand.Parameters.AddWithValue("@suburbid", SuburbID);
             objCommand.Parameters.AddWithValue("@postcode", PostCode);
             objCommand.Parameters.AddWithValue("@phoneno", PhoneNumber);
             objCommand.Parameters.AddWithValue("@email", Email);
             objCommand.Parameters.AddWithValue("@commdate", CommencementDate);
-            objCommand.Parameters.AddWithValue("@clstaught", ClassTaught);
-            objCommand.Parameters.AddWithValue("@skills", Skills);
+            objCommand.Parameters.AddWithValue("@dept", Department);
+            //objCommand.Parameters.AddWithValue("@skills", Skills);
             objCommand.Parameters.AddWithValue("@leave", Leave);
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.ExecuteNonQuery();
             return true;
         }
 
-        public bool DeleteTeacher()
+        public bool Delete()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("DeleteTeacher", objConnection);
@@ -291,27 +306,134 @@ namespace CourseManagementSystem
             return true;
         }
 
-        public bool UpdateTeacher()
+        public bool Update()
         {
             SqlConnection objConnection = clsDatabase.CreateConnection();
             SqlCommand objCommand = new SqlCommand("UpdateTeacher", objConnection);
             objCommand.Parameters.AddWithValue("@tid", TeacherID);
             objCommand.Parameters.AddWithValue("@fname", FirstName);
             objCommand.Parameters.AddWithValue("@lname", LastName);
-            objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
             objCommand.Parameters.AddWithValue("@gender", Gender);
+            objCommand.Parameters.AddWithValue("@dob", DateOfBirth);
             objCommand.Parameters.AddWithValue("@staddress", StreetAddress);
-            objCommand.Parameters.AddWithValue("@suburb", Suburb);
+            objCommand.Parameters.AddWithValue("@suburbid", SuburbID);
             objCommand.Parameters.AddWithValue("@postcode", PostCode);
             objCommand.Parameters.AddWithValue("@phoneno", PhoneNumber);
             objCommand.Parameters.AddWithValue("@email", Email);
             objCommand.Parameters.AddWithValue("@commdate", CommencementDate);
-            objCommand.Parameters.AddWithValue("@clstaught", ClassTaught);
-            objCommand.Parameters.AddWithValue("@skills", Skills);
+            objCommand.Parameters.AddWithValue("@dept", Department);
+            //objCommand.Parameters.AddWithValue("@skills", Skills);
             objCommand.Parameters.AddWithValue("@leave", Leave);
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.ExecuteNonQuery();
             return true;
+        }
+
+        public bool Search()
+        {
+            SqlConnection objConnection = clsDatabase.CreateConnection();
+            SqlCommand objCommand = new SqlCommand("SearchTeacher", objConnection);
+            objCommand.Parameters.AddWithValue("@tid", TeacherID);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader objDataReader = objCommand.ExecuteReader();
+
+            if (objDataReader.Read())
+            {
+                firstName = objDataReader[1].ToString();
+                lastName = objDataReader[2].ToString();
+                gender = objDataReader[3].ToString();
+                dateOfBirth = objDataReader[4].ToString();
+                streetAddress = objDataReader[5].ToString();
+                suburbID = Convert.ToInt32(objDataReader[6]);
+                suburbName = objDataReader[7].ToString();
+                postCode = objDataReader[8].ToString();
+                phoneNumber = objDataReader[9].ToString();
+                email = objDataReader[10].ToString();
+                commencementDate = objDataReader[11].ToString();
+                department = objDataReader[12].ToString();
+                //skills = objDataReader[13].ToString();
+                leave = objDataReader[13].ToString();
+                objConnection.Close();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ViewAll(DataGridView dgv)
+        {
+            string strConnection = "server=localhost;database=randomdb;Trusted_Connection=yes";
+            SqlConnection objConnection = new SqlConnection(strConnection);
+            //SqlConnection objConnection = clsDatabase.CreateConnection();
+            objConnection.Open();
+
+            string strSQL = "select * from teacher";
+            SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
+
+            DataTable objDataTable = new DataTable();
+            objDataAdapter.Fill(objDataTable);
+
+            if (objDataTable.Rows.Count != 0)
+            {
+                dgv.DataSource = null;
+                dgv.DataSource = objDataTable;
+                dgv.AutoGenerateColumns = false;
+                dgv.Columns[0].HeaderText = "Teacher ID";
+                dgv.Columns[1].HeaderText = "First Name";
+                dgv.Columns[2].HeaderText = "Last Name";
+                dgv.Columns[3].HeaderText = "Gender";
+                dgv.Columns[4].HeaderText = "D.O.B.";
+                dgv.Columns[5].HeaderText = "Street Address";
+                dgv.Columns[6].HeaderText = "Suburb ID";
+                dgv.Columns[7].HeaderText = "Post Code";
+                dgv.Columns[8].HeaderText = "Phone No.";
+                dgv.Columns[9].HeaderText = "Email";
+                dgv.Columns[10].HeaderText = "Commencement Date";
+                dgv.Columns[11].HeaderText = "Department";
+                //dgv.Columns[12].HeaderText = "Skills";
+                dgv.Columns[12].HeaderText = "Sick Leave";
+                dgv.AutoResizeColumns();
+                dgv.AutoSize = false;
+                dgv.Visible = true;
+                objConnection.Close();
+            }
+            else
+            {
+                MessageBox.Show("There are no teachers");
+                objConnection.Close();
+            }
+        }
+
+        public void Load(ComboBox[] cmb)
+        {
+            string strSql = "select * from suburb";
+            clsDatabase.CreateConnection();
+            DataTable objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[0].DataSource = objDataTable;
+            cmb[0].DisplayMember = "suburbid";
+            cmb[0].ValueMember = "suburbid";
+            cmb[0].SelectedIndex = -1;
+            cmb[0].Text = "";
+
+            objDataTable = null;
+            //strSql = "select * from suburb";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[1].DataSource = objDataTable;
+            cmb[1].DisplayMember = "suburbname";
+            cmb[1].ValueMember = "suburbid";
+            cmb[1].SelectedIndex = -1;
+            cmb[1].Text = "Select a suburb";
+
+            objDataTable = null;
+            //strSql = "select * from suburb";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[2].DataSource = objDataTable;
+            cmb[2].DisplayMember = "suburbpostcode";
+            cmb[2].ValueMember = "suburbid";
+            cmb[2].SelectedIndex = -1;
+            cmb[2].Text = "Post Code";
         }
     }
 }

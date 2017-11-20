@@ -30,23 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.TeacherToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.txtTeachPostCode = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtTeacherLastName = new System.Windows.Forms.TextBox();
             this.txtTeacherEmail = new System.Windows.Forms.TextBox();
-            this.cmbTeachDepartment = new System.Windows.Forms.ComboBox();
+            this.cmbTeacherDepartment = new System.Windows.Forms.ComboBox();
             this.txtTeacherPhoneNum = new System.Windows.Forms.TextBox();
-            this.txtTeachStreetAddress = new System.Windows.Forms.TextBox();
+            this.txtTeacherStreetAddress = new System.Windows.Forms.TextBox();
             this.txtTeacherFirstName = new System.Windows.Forms.TextBox();
-            this.cmbClassTaught = new System.Windows.Forms.ComboBox();
-            this.txtTeacherSkills = new System.Windows.Forms.TextBox();
             this.rdbFemale = new System.Windows.Forms.RadioButton();
             this.rdbMale = new System.Windows.Forms.RadioButton();
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
-            this.cmbTeachSuburb = new System.Windows.Forms.ComboBox();
+            this.cmbSuburbName = new System.Windows.Forms.ComboBox();
             this.dtpCommencementDate = new System.Windows.Forms.DateTimePicker();
             this.txtTeacherID = new System.Windows.Forms.TextBox();
-            this.lblTeachPostCode = new System.Windows.Forms.Label();
             this.lblTeacherSuburb = new System.Windows.Forms.Label();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdd = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,29 +70,19 @@
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.lblCommencementDate = new System.Windows.Forms.Label();
-            this.lblClassTaught = new System.Windows.Forms.Label();
-            this.lblTeacherSkills = new System.Windows.Forms.Label();
             this.lblAnnualSickLeave = new System.Windows.Forms.Label();
             this.lblGender = new System.Windows.Forms.Label();
             this.rdbASNo = new System.Windows.Forms.RadioButton();
             this.rdbASYes = new System.Windows.Forms.RadioButton();
             this.pnlTeacher = new System.Windows.Forms.Panel();
             this.pnlAnnualSickLeave = new System.Windows.Forms.Panel();
+            this.cmbSuburbID = new System.Windows.Forms.ComboBox();
+            this.cmbPostCode = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlTeacher.SuspendLayout();
             this.pnlAnnualSickLeave.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtTeachPostCode
-            // 
-            this.txtTeachPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeachPostCode.Location = new System.Drawing.Point(241, 350);
-            this.txtTeachPostCode.Name = "txtTeachPostCode";
-            this.txtTeachPostCode.Size = new System.Drawing.Size(113, 26);
-            this.txtTeachPostCode.TabIndex = 8;
-            this.txtTeachPostCode.Tag = "Teacher Post Code";
-            this.TeacherToolTip.SetToolTip(this.txtTeachPostCode, "Post code must contain only numeric characters");
             // 
             // btnSearch
             // 
@@ -111,6 +97,7 @@
             this.btnSearch.TabIndex = 60;
             this.TeacherToolTip.SetToolTip(this.btnSearch, "Press to search");
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtTeacherLastName
             // 
@@ -126,7 +113,7 @@
             // txtTeacherEmail
             // 
             this.txtTeacherEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherEmail.Location = new System.Drawing.Point(241, 414);
+            this.txtTeacherEmail.Location = new System.Drawing.Point(241, 381);
             this.txtTeacherEmail.Name = "txtTeacherEmail";
             this.txtTeacherEmail.Size = new System.Drawing.Size(347, 26);
             this.txtTeacherEmail.TabIndex = 10;
@@ -134,42 +121,42 @@
             this.txtTeacherEmail.Text = "FirstnameLastname@dummyMail.com.au";
             this.TeacherToolTip.SetToolTip(this.txtTeacherEmail, "Email address must follow the format: FirstnameLastname@dummyMail.com.au");
             // 
-            // cmbTeachDepartment
+            // cmbTeacherDepartment
             // 
-            this.cmbTeachDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTeachDepartment.FormattingEnabled = true;
-            this.cmbTeachDepartment.Items.AddRange(new object[] {
+            this.cmbTeacherDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTeacherDepartment.FormattingEnabled = true;
+            this.cmbTeacherDepartment.Items.AddRange(new object[] {
             "IT",
             "Science",
             "Maths",
             "Food",
             "Music"});
-            this.cmbTeachDepartment.Location = new System.Drawing.Point(241, 478);
-            this.cmbTeachDepartment.Name = "cmbTeachDepartment";
-            this.cmbTeachDepartment.Size = new System.Drawing.Size(176, 28);
-            this.cmbTeachDepartment.TabIndex = 13;
-            this.cmbTeachDepartment.Tag = "Teaching Department";
-            this.TeacherToolTip.SetToolTip(this.cmbTeachDepartment, "Press the down arrow to make a selection");
+            this.cmbTeacherDepartment.Location = new System.Drawing.Point(241, 445);
+            this.cmbTeacherDepartment.Name = "cmbTeacherDepartment";
+            this.cmbTeacherDepartment.Size = new System.Drawing.Size(176, 28);
+            this.cmbTeacherDepartment.TabIndex = 13;
+            this.cmbTeacherDepartment.Tag = "Teaching Department";
+            this.TeacherToolTip.SetToolTip(this.cmbTeacherDepartment, "Press the down arrow to make a selection");
             // 
             // txtTeacherPhoneNum
             // 
             this.txtTeacherPhoneNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherPhoneNum.Location = new System.Drawing.Point(241, 382);
+            this.txtTeacherPhoneNum.Location = new System.Drawing.Point(241, 349);
             this.txtTeacherPhoneNum.Name = "txtTeacherPhoneNum";
             this.txtTeacherPhoneNum.Size = new System.Drawing.Size(176, 26);
             this.txtTeacherPhoneNum.TabIndex = 9;
             this.txtTeacherPhoneNum.Tag = "Teacher Phone Number";
             this.TeacherToolTip.SetToolTip(this.txtTeacherPhoneNum, "Phone number must contain only numeric characters");
             // 
-            // txtTeachStreetAddress
+            // txtTeacherStreetAddress
             // 
-            this.txtTeachStreetAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeachStreetAddress.Location = new System.Drawing.Point(241, 283);
-            this.txtTeachStreetAddress.Name = "txtTeachStreetAddress";
-            this.txtTeachStreetAddress.Size = new System.Drawing.Size(347, 26);
-            this.txtTeachStreetAddress.TabIndex = 6;
-            this.txtTeachStreetAddress.Tag = "Teacher Street Address";
-            this.TeacherToolTip.SetToolTip(this.txtTeachStreetAddress, "Street address must begin with street number and then street name");
+            this.txtTeacherStreetAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTeacherStreetAddress.Location = new System.Drawing.Point(241, 283);
+            this.txtTeacherStreetAddress.Name = "txtTeacherStreetAddress";
+            this.txtTeacherStreetAddress.Size = new System.Drawing.Size(347, 26);
+            this.txtTeacherStreetAddress.TabIndex = 6;
+            this.txtTeacherStreetAddress.Tag = "Teacher Street Address";
+            this.TeacherToolTip.SetToolTip(this.txtTeacherStreetAddress, "Street address must begin with street number and then street name");
             // 
             // txtTeacherFirstName
             // 
@@ -181,34 +168,6 @@
             this.txtTeacherFirstName.Tag = "Teacher First Name";
             this.TeacherToolTip.SetToolTip(this.txtTeacherFirstName, "First name must only contain alphabetic characters and begin with a capital lette" +
         "r");
-            // 
-            // cmbClassTaught
-            // 
-            this.cmbClassTaught.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbClassTaught.FormattingEnabled = true;
-            this.cmbClassTaught.Items.AddRange(new object[] {
-            "Web Design",
-            "Software Development",
-            "Baking 101",
-            "Donut Frying",
-            "Burger Design",
-            "Steak Cutting"});
-            this.cmbClassTaught.Location = new System.Drawing.Point(241, 512);
-            this.cmbClassTaught.Name = "cmbClassTaught";
-            this.cmbClassTaught.Size = new System.Drawing.Size(176, 28);
-            this.cmbClassTaught.TabIndex = 14;
-            this.cmbClassTaught.Tag = "Class Taught";
-            this.TeacherToolTip.SetToolTip(this.cmbClassTaught, "Press the down arrow to make a selection");
-            // 
-            // txtTeacherSkills
-            // 
-            this.txtTeacherSkills.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherSkills.Location = new System.Drawing.Point(241, 546);
-            this.txtTeacherSkills.Name = "txtTeacherSkills";
-            this.txtTeacherSkills.Size = new System.Drawing.Size(224, 26);
-            this.txtTeacherSkills.TabIndex = 15;
-            this.txtTeacherSkills.Tag = "Skills";
-            this.TeacherToolTip.SetToolTip(this.txtTeacherSkills, "Enter teacher\'s qualification");
             // 
             // rdbFemale
             // 
@@ -255,27 +214,28 @@
             this.dtpDateOfBirth.Value = new System.DateTime(1997, 12, 31, 0, 0, 0, 0);
             this.dtpDateOfBirth.ValueChanged += new System.EventHandler(this.dtpDateOfBirth_ValueChanged);
             // 
-            // cmbTeachSuburb
+            // cmbSuburbName
             // 
-            this.cmbTeachSuburb.DisplayMember = "Cake";
-            this.cmbTeachSuburb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTeachSuburb.FormattingEnabled = true;
-            this.cmbTeachSuburb.Items.AddRange(new object[] {
+            this.cmbSuburbName.DisplayMember = "Cake";
+            this.cmbSuburbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSuburbName.FormattingEnabled = true;
+            this.cmbSuburbName.Items.AddRange(new object[] {
             "Campbelltown",
             "Liverpool",
             "Ultimo",
             "Granville"});
-            this.cmbTeachSuburb.Location = new System.Drawing.Point(241, 315);
-            this.cmbTeachSuburb.Name = "cmbTeachSuburb";
-            this.cmbTeachSuburb.Size = new System.Drawing.Size(176, 28);
-            this.cmbTeachSuburb.TabIndex = 7;
-            this.cmbTeachSuburb.Tag = "Teacher Suburb";
-            this.TeacherToolTip.SetToolTip(this.cmbTeachSuburb, "Press the down arrow to make a selection");
+            this.cmbSuburbName.Location = new System.Drawing.Point(282, 315);
+            this.cmbSuburbName.Name = "cmbSuburbName";
+            this.cmbSuburbName.Size = new System.Drawing.Size(176, 28);
+            this.cmbSuburbName.TabIndex = 7;
+            this.cmbSuburbName.Tag = "Teacher Suburb";
+            this.TeacherToolTip.SetToolTip(this.cmbSuburbName, "Press the down arrow to make a selection");
+            this.cmbSuburbName.SelectedIndexChanged += new System.EventHandler(this.cmbSuburbName_Changed);
             // 
             // dtpCommencementDate
             // 
             this.dtpCommencementDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpCommencementDate.Location = new System.Drawing.Point(241, 446);
+            this.dtpCommencementDate.Location = new System.Drawing.Point(241, 413);
             this.dtpCommencementDate.MaxDate = new System.DateTime(4000, 12, 31, 0, 0, 0, 0);
             this.dtpCommencementDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpCommencementDate.Name = "dtpCommencementDate";
@@ -293,18 +253,6 @@
             this.txtTeacherID.Size = new System.Drawing.Size(176, 26);
             this.txtTeacherID.TabIndex = 1;
             this.txtTeacherID.Tag = "Teacher ID";
-            // 
-            // lblTeachPostCode
-            // 
-            this.lblTeachPostCode.AutoSize = true;
-            this.lblTeachPostCode.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblTeachPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTeachPostCode.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeachPostCode.Location = new System.Drawing.Point(132, 353);
-            this.lblTeachPostCode.Name = "lblTeachPostCode";
-            this.lblTeachPostCode.Size = new System.Drawing.Size(97, 20);
-            this.lblTeachPostCode.TabIndex = 57;
-            this.lblTeachPostCode.Text = "Post Code:";
             // 
             // lblTeacherSuburb
             // 
@@ -367,6 +315,7 @@
             this.mnuViewAll.Size = new System.Drawing.Size(166, 22);
             this.mnuViewAll.Text = "View All";
             this.mnuViewAll.ToolTipText = "View All record";
+            this.mnuViewAll.Click += new System.EventHandler(this.mnuViewAll_Click);
             // 
             // mnuExit
             // 
@@ -439,10 +388,10 @@
             // 
             this.dgvTeacher.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvTeacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTeacher.Location = new System.Drawing.Point(12, 651);
+            this.dgvTeacher.Location = new System.Drawing.Point(12, 514);
             this.dgvTeacher.Name = "dgvTeacher";
             this.dgvTeacher.ReadOnly = true;
-            this.dgvTeacher.Size = new System.Drawing.Size(642, 120);
+            this.dgvTeacher.Size = new System.Drawing.Size(642, 257);
             this.dgvTeacher.TabIndex = 54;
             // 
             // lblTeacherLastName
@@ -475,7 +424,7 @@
             this.lblTeacherEmail.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeacherEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherEmail.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeacherEmail.Location = new System.Drawing.Point(171, 417);
+            this.lblTeacherEmail.Location = new System.Drawing.Point(171, 384);
             this.lblTeacherEmail.Name = "lblTeacherEmail";
             this.lblTeacherEmail.Size = new System.Drawing.Size(58, 20);
             this.lblTeacherEmail.TabIndex = 48;
@@ -487,11 +436,11 @@
             this.lblTeachDepartment.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeachDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeachDepartment.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeachDepartment.Location = new System.Drawing.Point(43, 481);
+            this.lblTeachDepartment.Location = new System.Drawing.Point(118, 448);
             this.lblTeachDepartment.Name = "lblTeachDepartment";
-            this.lblTeachDepartment.Size = new System.Drawing.Size(187, 20);
+            this.lblTeachDepartment.Size = new System.Drawing.Size(109, 20);
             this.lblTeachDepartment.TabIndex = 41;
-            this.lblTeachDepartment.Text = "Teaching Department:";
+            this.lblTeachDepartment.Text = "Department:";
             // 
             // lblTeacherPhoneNum
             // 
@@ -499,7 +448,7 @@
             this.lblTeacherPhoneNum.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeacherPhoneNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherPhoneNum.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeacherPhoneNum.Location = new System.Drawing.Point(97, 385);
+            this.lblTeacherPhoneNum.Location = new System.Drawing.Point(97, 352);
             this.lblTeacherPhoneNum.Name = "lblTeacherPhoneNum";
             this.lblTeacherPhoneNum.Size = new System.Drawing.Size(132, 20);
             this.lblTeacherPhoneNum.TabIndex = 39;
@@ -590,35 +539,11 @@
             this.lblCommencementDate.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblCommencementDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCommencementDate.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblCommencementDate.Location = new System.Drawing.Point(40, 451);
+            this.lblCommencementDate.Location = new System.Drawing.Point(40, 418);
             this.lblCommencementDate.Name = "lblCommencementDate";
             this.lblCommencementDate.Size = new System.Drawing.Size(187, 20);
             this.lblCommencementDate.TabIndex = 61;
             this.lblCommencementDate.Text = "Commencement Date:";
-            // 
-            // lblClassTaught
-            // 
-            this.lblClassTaught.AutoSize = true;
-            this.lblClassTaught.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblClassTaught.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClassTaught.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblClassTaught.Location = new System.Drawing.Point(110, 515);
-            this.lblClassTaught.Name = "lblClassTaught";
-            this.lblClassTaught.Size = new System.Drawing.Size(119, 20);
-            this.lblClassTaught.TabIndex = 63;
-            this.lblClassTaught.Text = "Class Taught:";
-            // 
-            // lblTeacherSkills
-            // 
-            this.lblTeacherSkills.AutoSize = true;
-            this.lblTeacherSkills.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.lblTeacherSkills.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTeacherSkills.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeacherSkills.Location = new System.Drawing.Point(171, 549);
-            this.lblTeacherSkills.Name = "lblTeacherSkills";
-            this.lblTeacherSkills.Size = new System.Drawing.Size(56, 20);
-            this.lblTeacherSkills.TabIndex = 67;
-            this.lblTeacherSkills.Text = "Skills:";
             // 
             // lblAnnualSickLeave
             // 
@@ -626,7 +551,7 @@
             this.lblAnnualSickLeave.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblAnnualSickLeave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnnualSickLeave.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblAnnualSickLeave.Location = new System.Drawing.Point(65, 580);
+            this.lblAnnualSickLeave.Location = new System.Drawing.Point(65, 481);
             this.lblAnnualSickLeave.Name = "lblAnnualSickLeave";
             this.lblAnnualSickLeave.Size = new System.Drawing.Size(162, 20);
             this.lblAnnualSickLeave.TabIndex = 69;
@@ -683,10 +608,34 @@
             // 
             this.pnlAnnualSickLeave.Controls.Add(this.rdbASNo);
             this.pnlAnnualSickLeave.Controls.Add(this.rdbASYes);
-            this.pnlAnnualSickLeave.Location = new System.Drawing.Point(241, 578);
+            this.pnlAnnualSickLeave.Location = new System.Drawing.Point(241, 479);
             this.pnlAnnualSickLeave.Name = "pnlAnnualSickLeave";
             this.pnlAnnualSickLeave.Size = new System.Drawing.Size(176, 29);
             this.pnlAnnualSickLeave.TabIndex = 16;
+            // 
+            // cmbSuburbID
+            // 
+            this.cmbSuburbID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbSuburbID.Enabled = false;
+            this.cmbSuburbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSuburbID.FormattingEnabled = true;
+            this.cmbSuburbID.Location = new System.Drawing.Point(241, 315);
+            this.cmbSuburbID.Name = "cmbSuburbID";
+            this.cmbSuburbID.Size = new System.Drawing.Size(35, 28);
+            this.cmbSuburbID.TabIndex = 127;
+            this.cmbSuburbID.Tag = "Suburb ID";
+            // 
+            // cmbPostCode
+            // 
+            this.cmbPostCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmbPostCode.Enabled = false;
+            this.cmbPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPostCode.FormattingEnabled = true;
+            this.cmbPostCode.Location = new System.Drawing.Point(464, 315);
+            this.cmbPostCode.Name = "cmbPostCode";
+            this.cmbPostCode.Size = new System.Drawing.Size(124, 28);
+            this.cmbPostCode.TabIndex = 129;
+            this.cmbPostCode.Tag = "Post Code";
             // 
             // TeacherForm
             // 
@@ -695,20 +644,16 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(666, 782);
+            this.Controls.Add(this.cmbPostCode);
+            this.Controls.Add(this.cmbSuburbID);
             this.Controls.Add(this.dtpCommencementDate);
             this.Controls.Add(this.pnlAnnualSickLeave);
-            this.Controls.Add(this.cmbTeachSuburb);
+            this.Controls.Add(this.cmbSuburbName);
             this.Controls.Add(this.dtpDateOfBirth);
             this.Controls.Add(this.pnlTeacher);
             this.Controls.Add(this.lblGender);
             this.Controls.Add(this.lblAnnualSickLeave);
-            this.Controls.Add(this.txtTeacherSkills);
-            this.Controls.Add(this.lblTeacherSkills);
-            this.Controls.Add(this.cmbClassTaught);
-            this.Controls.Add(this.lblClassTaught);
             this.Controls.Add(this.lblCommencementDate);
-            this.Controls.Add(this.txtTeachPostCode);
-            this.Controls.Add(this.lblTeachPostCode);
             this.Controls.Add(this.lblTeacherSuburb);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dgvTeacher);
@@ -717,11 +662,11 @@
             this.Controls.Add(this.lblTeacherDateOfBirth);
             this.Controls.Add(this.txtTeacherEmail);
             this.Controls.Add(this.lblTeacherEmail);
-            this.Controls.Add(this.cmbTeachDepartment);
+            this.Controls.Add(this.cmbTeacherDepartment);
             this.Controls.Add(this.lblTeachDepartment);
             this.Controls.Add(this.txtTeacherPhoneNum);
             this.Controls.Add(this.lblTeacherPhoneNum);
-            this.Controls.Add(this.txtTeachStreetAddress);
+            this.Controls.Add(this.txtTeacherStreetAddress);
             this.Controls.Add(this.lblTeachStreetAddress);
             this.Controls.Add(this.txtTeacherFirstName);
             this.Controls.Add(this.lblTeacherFirstName);
@@ -733,6 +678,7 @@
             this.Name = "TeacherForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Teacher Form";
+            this.Load += new System.EventHandler(this.TeacherForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -748,16 +694,14 @@
         #endregion
 
         private System.Windows.Forms.ToolTip TeacherToolTip;
-        private System.Windows.Forms.TextBox txtTeachPostCode;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtTeacherLastName;
         private System.Windows.Forms.TextBox txtTeacherEmail;
-        private System.Windows.Forms.ComboBox cmbTeachDepartment;
+        private System.Windows.Forms.ComboBox cmbTeacherDepartment;
         private System.Windows.Forms.TextBox txtTeacherPhoneNum;
-        private System.Windows.Forms.TextBox txtTeachStreetAddress;
+        private System.Windows.Forms.TextBox txtTeacherStreetAddress;
         private System.Windows.Forms.TextBox txtTeacherFirstName;
         private System.Windows.Forms.TextBox txtTeacherID;
-        private System.Windows.Forms.Label lblTeachPostCode;
         private System.Windows.Forms.Label lblTeacherSuburb;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.ToolStripMenuItem mnuAdd;
@@ -782,10 +726,6 @@
         private System.Windows.Forms.Label lblTeacherID;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lblCommencementDate;
-        private System.Windows.Forms.ComboBox cmbClassTaught;
-        private System.Windows.Forms.Label lblClassTaught;
-        private System.Windows.Forms.TextBox txtTeacherSkills;
-        private System.Windows.Forms.Label lblTeacherSkills;
         private System.Windows.Forms.Label lblAnnualSickLeave;
         private System.Windows.Forms.RadioButton rdbFemale;
         private System.Windows.Forms.RadioButton rdbMale;
@@ -794,11 +734,13 @@
         private System.Windows.Forms.RadioButton rdbASYes;
         private System.Windows.Forms.Panel pnlTeacher;
         private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
-        private System.Windows.Forms.ComboBox cmbTeachSuburb;
+        private System.Windows.Forms.ComboBox cmbSuburbName;
         private System.Windows.Forms.Panel pnlAnnualSickLeave;
         private System.Windows.Forms.DateTimePicker dtpCommencementDate;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.ComboBox cmbSuburbID;
+        private System.Windows.Forms.ComboBox cmbPostCode;
     }
 }
