@@ -75,6 +75,7 @@
             this.cmbCourseName = new System.Windows.Forms.ComboBox();
             this.cmbCourseID = new System.Windows.Forms.ComboBox();
             this.dtpDatePaid = new System.Windows.Forms.DateTimePicker();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnrolment)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlCourseDelivery.SuspendLayout();
@@ -193,7 +194,8 @@
             this.mnuAdd,
             this.mnuDelete,
             this.mnuUpdate,
-            this.mnuViewAll});
+            this.mnuViewAll,
+            this.mnuExit});
             this.mnuFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(42, 20);
@@ -506,7 +508,7 @@
             this.dtpEnrolmentDate.Size = new System.Drawing.Size(217, 26);
             this.dtpEnrolmentDate.TabIndex = 139;
             this.dtpEnrolmentDate.Tag = "Enrolment Date";
-            this.dtpEnrolmentDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            this.dtpEnrolmentDate.Value = new System.DateTime(2017, 12, 1, 0, 0, 0, 0);
             this.dtpEnrolmentDate.ValueChanged += new System.EventHandler(this.dtpEnrolmentDate_ValueChanged);
             // 
             // dtpExpectedEndDate
@@ -521,7 +523,7 @@
             this.dtpExpectedEndDate.Size = new System.Drawing.Size(218, 26);
             this.dtpExpectedEndDate.TabIndex = 140;
             this.dtpExpectedEndDate.Tag = "Expected End Date";
-            this.dtpExpectedEndDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            this.dtpExpectedEndDate.Value = new System.DateTime(2017, 12, 1, 0, 0, 0, 0);
             this.dtpExpectedEndDate.ValueChanged += new System.EventHandler(this.dtpExpectedEndDate_ValueChanged);
             // 
             // dtpPaymentDueDate
@@ -536,7 +538,7 @@
             this.dtpPaymentDueDate.Size = new System.Drawing.Size(218, 26);
             this.dtpPaymentDueDate.TabIndex = 141;
             this.dtpPaymentDueDate.Tag = "Payment Due Date";
-            this.dtpPaymentDueDate.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            this.dtpPaymentDueDate.Value = new System.DateTime(2017, 12, 1, 0, 0, 0, 0);
             this.dtpPaymentDueDate.ValueChanged += new System.EventHandler(this.dtpPaymentDueDate_ValueChanged);
             // 
             // pnlCourseDelivery
@@ -606,8 +608,16 @@
             this.dtpDatePaid.Size = new System.Drawing.Size(217, 26);
             this.dtpDatePaid.TabIndex = 148;
             this.dtpDatePaid.Tag = "Date Paid";
-            this.dtpDatePaid.Value = new System.DateTime(2001, 12, 1, 0, 0, 0, 0);
+            this.dtpDatePaid.Value = new System.DateTime(2017, 12, 1, 0, 0, 0, 0);
             this.dtpDatePaid.ValueChanged += new System.EventHandler(this.dtpDatePaid_ValueChanged);
+            // 
+            // mnuExit
+            // 
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuExit.Size = new System.Drawing.Size(166, 22);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // EnrolmentForm
             // 
@@ -708,5 +718,6 @@
         private System.Windows.Forms.ComboBox cmbCourseName;
         private System.Windows.Forms.ComboBox cmbCourseID;
         private System.Windows.Forms.DateTimePicker dtpDatePaid;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
     }
 }

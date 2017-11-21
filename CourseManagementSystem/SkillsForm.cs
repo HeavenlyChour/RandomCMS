@@ -38,6 +38,7 @@ namespace CourseManagementSystem
             clsSkills objSkills = new clsSkills(txtSkillName.Text, txtSkillDescription.Text);
             objSkills.Add();
             MessageBox.Show("Skill successfully added");
+            objSkills.ViewAll(dgvSkills);
         }
 
         private void mnuDelete_Click(object sender, EventArgs e)
@@ -51,6 +52,7 @@ namespace CourseManagementSystem
             clsSkills objSkills = new clsSkills(Convert.ToInt32(txtSkillID.Text));
             objSkills.Delete();
             MessageBox.Show("Skill successfully deleted");
+            objSkills.ViewAll(dgvSkills);
         }
 
         private void mnuUpdate_Click(object sender, EventArgs e)
@@ -78,6 +80,7 @@ namespace CourseManagementSystem
             clsSkills objSkills = new clsSkills(Convert.ToInt32(txtSkillID.Text), txtSkillName.Text, txtSkillDescription.Text);
             objSkills.Update();
             MessageBox.Show("Skill successfully updated");
+            objSkills.ViewAll(dgvSkills);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -113,6 +116,11 @@ namespace CourseManagementSystem
             txtSkillID.Text = String.Empty;
             txtSkillName.Text = String.Empty;
             txtSkillDescription.Text = String.Empty;
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

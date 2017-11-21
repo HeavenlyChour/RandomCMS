@@ -39,12 +39,13 @@ namespace CourseManagementSystem
             }
             else if (rdbElectiveUnit.Checked)
             {
-                unitTypeText = "Elective Unit";
+                unitTypeText = "Elective";
             }
 
             clsUnit objUnit = new clsUnit(txtUnitName.Text, Convert.ToInt32(txtNoOfHours.Text), unitTypeText);
             objUnit.Add();
             MessageBox.Show("Unit record successfully added!");
+            objUnit.ViewAll(dgvUnit);
         }
 
         private void mnuDelete_Click(object sender, EventArgs e)
@@ -57,6 +58,7 @@ namespace CourseManagementSystem
             clsUnit objUnit = new clsUnit(Convert.ToInt32(txtUnitID.Text));
             objUnit.Delete();
             MessageBox.Show("Unit record successfully deleted");
+            objUnit.ViewAll(dgvUnit);
         }
 
         private void mnuUpdate_Click(object sender, EventArgs e)
@@ -106,7 +108,7 @@ namespace CourseManagementSystem
             }
             else if (rdbElectiveUnit.Checked)
             {
-                unitTypeText = "Elective Unit";
+                unitTypeText = "Elective";
             }
 
             clsUnit objUnit = new clsUnit(Convert.ToInt32(txtUnitID.Text), txtUnitName.Text, 
@@ -114,6 +116,7 @@ namespace CourseManagementSystem
 
             objUnit.Update();
             MessageBox.Show("Unit record successfully updated!");
+            objUnit.ViewAll(dgvUnit);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -162,6 +165,11 @@ namespace CourseManagementSystem
         {
             clsUnit objUnit = new clsUnit();
             objUnit.ViewAll(dgvUnit);
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

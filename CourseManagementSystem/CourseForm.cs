@@ -136,6 +136,7 @@ namespace CourseManagementSystem
 
             objCourse.Add();
             MessageBox.Show("Course record successfully added!");
+            objCourse.ViewAll(dgvCourse);
         }
 
         private void mnuDelete_Click(object sender, EventArgs e)
@@ -145,9 +146,10 @@ namespace CourseManagementSystem
                 txtCourseID.Focus();
                 return;
             }
-            clsCourse objStudent = new clsCourse(Convert.ToInt32(txtCourseID.Text));
-            objStudent.Delete();
+            clsCourse objCourse = new clsCourse(Convert.ToInt32(txtCourseID.Text));
+            objCourse.Delete();
             MessageBox.Show("Course record successfully deleted");
+            objCourse.ViewAll(dgvCourse);
         }
 
         private void mnuUpdate_Click(object sender, EventArgs e)
@@ -265,6 +267,7 @@ namespace CourseManagementSystem
 
             objCourse.Update();
             MessageBox.Show("Course record successfully updated!");
+            objCourse.ViewAll(dgvCourse);
         }
 
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
@@ -354,6 +357,9 @@ namespace CourseManagementSystem
             cmbSuburbID.SelectedIndex = selectedNumber;
         }
 
-        
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

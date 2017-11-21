@@ -41,6 +41,7 @@
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.cmbSuburbName = new System.Windows.Forms.ComboBox();
             this.dtpCommencementDate = new System.Windows.Forms.DateTimePicker();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.txtTeacherID = new System.Windows.Forms.TextBox();
             this.lblTeacherSuburb = new System.Windows.Forms.Label();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,7 +78,6 @@
             this.pnlAnnualSickLeave = new System.Windows.Forms.Panel();
             this.cmbSuburbID = new System.Windows.Forms.ComboBox();
             this.cmbPostCode = new System.Windows.Forms.ComboBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlTeacher.SuspendLayout();
@@ -111,16 +111,25 @@
             this.cmbTeacherDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTeacherDepartment.FormattingEnabled = true;
             this.cmbTeacherDepartment.Items.AddRange(new object[] {
+            "Aboriginal Studies",
+            "Business",
+            "Design",
+            "Finance",
+            "Hospitality",
+            "Industrial",
             "IT",
+            "Literature",
+            "Mathematics",
+            "Medical",
+            "Music",
+            "Retail",
             "Science",
-            "Maths",
-            "Food",
-            "Music"});
+            "Social Studies"});
             this.cmbTeacherDepartment.Location = new System.Drawing.Point(241, 445);
             this.cmbTeacherDepartment.Name = "cmbTeacherDepartment";
             this.cmbTeacherDepartment.Size = new System.Drawing.Size(176, 28);
             this.cmbTeacherDepartment.TabIndex = 13;
-            this.cmbTeacherDepartment.Tag = "Teaching Department";
+            this.cmbTeacherDepartment.Tag = "Department";
             this.TeacherToolTip.SetToolTip(this.cmbTeacherDepartment, "Press the down arrow to make a selection");
             // 
             // txtTeacherPhoneNum
@@ -229,6 +238,21 @@
             this.dtpCommencementDate.Tag = "Commencement Date";
             this.TeacherToolTip.SetToolTip(this.dtpCommencementDate, "Press the down arrow to make a selection");
             this.dtpCommencementDate.ValueChanged += new System.EventHandler(this.dtpCommencementDate_ValueChanged);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.White;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
+            this.btnSearch.Location = new System.Drawing.Point(423, 124);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(35, 28);
+            this.btnSearch.TabIndex = 60;
+            this.TeacherToolTip.SetToolTip(this.btnSearch, "Press to search");
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtTeacherID
             // 
@@ -621,21 +645,6 @@
             this.cmbPostCode.Size = new System.Drawing.Size(124, 28);
             this.cmbPostCode.TabIndex = 129;
             this.cmbPostCode.Tag = "Post Code";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.White;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
-            this.btnSearch.Location = new System.Drawing.Point(423, 124);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(35, 28);
-            this.btnSearch.TabIndex = 60;
-            this.TeacherToolTip.SetToolTip(this.btnSearch, "Press to search");
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // TeacherForm
             // 

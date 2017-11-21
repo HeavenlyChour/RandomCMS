@@ -40,6 +40,8 @@
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNavigate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEnrolmentForm = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCourseForm = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +53,7 @@
             this.UnitToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.txtSkillID = new System.Windows.Forms.TextBox();
             this.txtSkillDescription = new System.Windows.Forms.TextBox();
-            this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSkills)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +65,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
-            this.btnSearch.Location = new System.Drawing.Point(441, 136);
+            this.btnSearch.Location = new System.Drawing.Point(354, 136);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(35, 28);
             this.btnSearch.TabIndex = 142;
@@ -78,7 +79,7 @@
             this.lblSkillDescription.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSkillDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSkillDescription.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSkillDescription.Location = new System.Drawing.Point(102, 203);
+            this.lblSkillDescription.Location = new System.Drawing.Point(15, 203);
             this.lblSkillDescription.Name = "lblSkillDescription";
             this.lblSkillDescription.Size = new System.Drawing.Size(143, 20);
             this.lblSkillDescription.TabIndex = 144;
@@ -87,7 +88,7 @@
             // txtSkillName
             // 
             this.txtSkillName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillName.Location = new System.Drawing.Point(259, 168);
+            this.txtSkillName.Location = new System.Drawing.Point(172, 168);
             this.txtSkillName.Name = "txtSkillName";
             this.txtSkillName.Size = new System.Drawing.Size(217, 26);
             this.txtSkillName.TabIndex = 2;
@@ -99,7 +100,7 @@
             this.lblSkillsForm.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSkillsForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSkillsForm.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSkillsForm.Location = new System.Drawing.Point(252, 60);
+            this.lblSkillsForm.Location = new System.Drawing.Point(165, 60);
             this.lblSkillsForm.Name = "lblSkillsForm";
             this.lblSkillsForm.Size = new System.Drawing.Size(187, 37);
             this.lblSkillsForm.TabIndex = 137;
@@ -112,7 +113,7 @@
             this.lblSkillID.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSkillID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSkillID.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSkillID.Location = new System.Drawing.Point(175, 139);
+            this.lblSkillID.Location = new System.Drawing.Point(88, 139);
             this.lblSkillID.Name = "lblSkillID";
             this.lblSkillID.Size = new System.Drawing.Size(71, 20);
             this.lblSkillID.TabIndex = 136;
@@ -126,7 +127,7 @@
             this.mnuNavigate});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(666, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(464, 24);
             this.menuStrip1.TabIndex = 141;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -136,7 +137,8 @@
             this.mnuAdd,
             this.mnuDelete,
             this.mnuUpdate,
-            this.mnuViewAll});
+            this.mnuViewAll,
+            this.mnuExit});
             this.mnuFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(42, 20);
@@ -179,6 +181,24 @@
             this.mnuViewAll.Text = "View All";
             this.mnuViewAll.ToolTipText = "View All record";
             this.mnuViewAll.Click += new System.EventHandler(this.mnuViewAll_Click);
+            // 
+            // mnuEdit
+            // 
+            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuClearAll});
+            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mnuEdit.Name = "mnuEdit";
+            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
+            this.mnuEdit.Text = "Edit";
+            // 
+            // mnuClearAll
+            // 
+            this.mnuClearAll.Name = "mnuClearAll";
+            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
+            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
+            this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
             // 
             // mnuNavigate
             // 
@@ -243,10 +263,10 @@
             // 
             this.dgvSkills.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvSkills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSkills.Location = new System.Drawing.Point(12, 366);
+            this.dgvSkills.Location = new System.Drawing.Point(12, 314);
             this.dgvSkills.Name = "dgvSkills";
             this.dgvSkills.ReadOnly = true;
-            this.dgvSkills.Size = new System.Drawing.Size(642, 168);
+            this.dgvSkills.Size = new System.Drawing.Size(440, 162);
             this.dgvSkills.TabIndex = 140;
             // 
             // lblSkillName
@@ -255,7 +275,7 @@
             this.lblSkillName.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblSkillName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSkillName.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblSkillName.Location = new System.Drawing.Point(147, 171);
+            this.lblSkillName.Location = new System.Drawing.Point(60, 171);
             this.lblSkillName.Name = "lblSkillName";
             this.lblSkillName.Size = new System.Drawing.Size(98, 20);
             this.lblSkillName.TabIndex = 139;
@@ -264,7 +284,7 @@
             // txtSkillID
             // 
             this.txtSkillID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillID.Location = new System.Drawing.Point(259, 136);
+            this.txtSkillID.Location = new System.Drawing.Point(172, 136);
             this.txtSkillID.Name = "txtSkillID";
             this.txtSkillID.Size = new System.Drawing.Size(176, 26);
             this.txtSkillID.TabIndex = 1;
@@ -273,37 +293,27 @@
             // txtSkillDescription
             // 
             this.txtSkillDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSkillDescription.Location = new System.Drawing.Point(259, 200);
+            this.txtSkillDescription.Location = new System.Drawing.Point(172, 200);
             this.txtSkillDescription.Multiline = true;
             this.txtSkillDescription.Name = "txtSkillDescription";
-            this.txtSkillDescription.Size = new System.Drawing.Size(326, 160);
+            this.txtSkillDescription.Size = new System.Drawing.Size(217, 108);
             this.txtSkillDescription.TabIndex = 3;
             this.txtSkillDescription.Tag = "Skill Description";
             // 
-            // mnuEdit
+            // mnuExit
             // 
-            this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuClearAll});
-            this.mnuEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.mnuEdit.Name = "mnuEdit";
-            this.mnuEdit.Size = new System.Drawing.Size(43, 20);
-            this.mnuEdit.Text = "Edit";
-            // 
-            // mnuClearAll
-            // 
-            this.mnuClearAll.Name = "mnuClearAll";
-            this.mnuClearAll.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.C)));
-            this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
-            this.mnuClearAll.Text = "Clear All";
-            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuExit.Size = new System.Drawing.Size(166, 22);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // SkillsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(666, 546);
+            this.ClientSize = new System.Drawing.Size(464, 488);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblSkillDescription);
             this.Controls.Add(this.txtSkillName);
@@ -351,5 +361,6 @@
         private System.Windows.Forms.TextBox txtSkillDescription;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuClearAll;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
     }
 }

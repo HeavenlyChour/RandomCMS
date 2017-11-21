@@ -101,7 +101,7 @@
             this.lblUnitType.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblUnitType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnitType.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblUnitType.Location = new System.Drawing.Point(152, 280);
+            this.lblUnitType.Location = new System.Drawing.Point(95, 275);
             this.lblUnitType.Name = "lblUnitType";
             this.lblUnitType.Size = new System.Drawing.Size(90, 20);
             this.lblUnitType.TabIndex = 90;
@@ -132,7 +132,7 @@
             this.dgvUnit.Location = new System.Drawing.Point(12, 310);
             this.dgvUnit.Name = "dgvUnit";
             this.dgvUnit.ReadOnly = true;
-            this.dgvUnit.Size = new System.Drawing.Size(642, 224);
+            this.dgvUnit.Size = new System.Drawing.Size(482, 224);
             this.dgvUnit.TabIndex = 83;
             // 
             // lblUnitName
@@ -141,7 +141,7 @@
             this.lblUnitName.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblUnitName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnitName.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblUnitName.Location = new System.Drawing.Point(148, 174);
+            this.lblUnitName.Location = new System.Drawing.Point(91, 169);
             this.lblUnitName.Name = "lblUnitName";
             this.lblUnitName.Size = new System.Drawing.Size(98, 20);
             this.lblUnitName.TabIndex = 78;
@@ -162,7 +162,7 @@
             this.lblUnitForm.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblUnitForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnitForm.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblUnitForm.Location = new System.Drawing.Point(252, 60);
+            this.lblUnitForm.Location = new System.Drawing.Point(195, 55);
             this.lblUnitForm.Name = "lblUnitForm";
             this.lblUnitForm.Size = new System.Drawing.Size(168, 37);
             this.lblUnitForm.TabIndex = 76;
@@ -175,7 +175,7 @@
             this.lblUnitID.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblUnitID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnitID.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblUnitID.Location = new System.Drawing.Point(175, 139);
+            this.lblUnitID.Location = new System.Drawing.Point(118, 134);
             this.lblUnitID.Name = "lblUnitID";
             this.lblUnitID.Size = new System.Drawing.Size(71, 20);
             this.lblUnitID.TabIndex = 75;
@@ -189,7 +189,7 @@
             this.mnuNavigate});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(666, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(506, 24);
             this.menuStrip1.TabIndex = 88;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -250,6 +250,7 @@
             this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.mnuExit.Size = new System.Drawing.Size(166, 22);
             this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // mnuEdit
             // 
@@ -308,7 +309,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
-            this.btnSearch.Location = new System.Drawing.Point(441, 136);
+            this.btnSearch.Location = new System.Drawing.Point(384, 131);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(35, 28);
             this.btnSearch.TabIndex = 89;
@@ -322,7 +323,7 @@
             this.lblNumOfAssessments.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblNumOfAssessments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumOfAssessments.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblNumOfAssessments.Location = new System.Drawing.Point(73, 244);
+            this.lblNumOfAssessments.Location = new System.Drawing.Point(16, 239);
             this.lblNumOfAssessments.Name = "lblNumOfAssessments";
             this.lblNumOfAssessments.Size = new System.Drawing.Size(169, 20);
             this.lblNumOfAssessments.TabIndex = 86;
@@ -334,7 +335,7 @@
             this.lblNoOfHours.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblNoOfHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNoOfHours.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblNoOfHours.Location = new System.Drawing.Point(127, 209);
+            this.lblNoOfHours.Location = new System.Drawing.Point(70, 204);
             this.lblNoOfHours.Name = "lblNoOfHours";
             this.lblNoOfHours.Size = new System.Drawing.Size(115, 20);
             this.lblNoOfHours.TabIndex = 84;
@@ -343,7 +344,7 @@
             // txtUnitID
             // 
             this.txtUnitID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnitID.Location = new System.Drawing.Point(259, 136);
+            this.txtUnitID.Location = new System.Drawing.Point(202, 131);
             this.txtUnitID.Name = "txtUnitID";
             this.txtUnitID.Size = new System.Drawing.Size(176, 26);
             this.txtUnitID.TabIndex = 1;
@@ -353,7 +354,7 @@
             // 
             this.pnlUnitType.Controls.Add(this.rdbElectiveUnit);
             this.pnlUnitType.Controls.Add(this.rdbCoreUnit);
-            this.pnlUnitType.Location = new System.Drawing.Point(259, 275);
+            this.pnlUnitType.Location = new System.Drawing.Point(202, 270);
             this.pnlUnitType.Name = "pnlUnitType";
             this.pnlUnitType.Size = new System.Drawing.Size(246, 29);
             this.pnlUnitType.TabIndex = 6;
@@ -361,16 +362,16 @@
             // txtUnitName
             // 
             this.txtUnitName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnitName.Location = new System.Drawing.Point(259, 171);
+            this.txtUnitName.Location = new System.Drawing.Point(202, 166);
             this.txtUnitName.Name = "txtUnitName";
-            this.txtUnitName.Size = new System.Drawing.Size(302, 26);
+            this.txtUnitName.Size = new System.Drawing.Size(217, 26);
             this.txtUnitName.TabIndex = 102;
             this.txtUnitName.Tag = "Unit Name";
             // 
             // txtNoOfHours
             // 
             this.txtNoOfHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoOfHours.Location = new System.Drawing.Point(259, 206);
+            this.txtNoOfHours.Location = new System.Drawing.Point(202, 201);
             this.txtNoOfHours.Name = "txtNoOfHours";
             this.txtNoOfHours.Size = new System.Drawing.Size(98, 26);
             this.txtNoOfHours.TabIndex = 103;
@@ -378,8 +379,9 @@
             // 
             // txtNoOfAssessments
             // 
+            this.txtNoOfAssessments.Enabled = false;
             this.txtNoOfAssessments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoOfAssessments.Location = new System.Drawing.Point(259, 241);
+            this.txtNoOfAssessments.Location = new System.Drawing.Point(202, 236);
             this.txtNoOfAssessments.Name = "txtNoOfAssessments";
             this.txtNoOfAssessments.Size = new System.Drawing.Size(98, 26);
             this.txtNoOfAssessments.TabIndex = 104;
@@ -391,7 +393,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(666, 546);
+            this.ClientSize = new System.Drawing.Size(506, 546);
             this.Controls.Add(this.txtNoOfAssessments);
             this.Controls.Add(this.txtNoOfHours);
             this.Controls.Add(this.txtUnitName);

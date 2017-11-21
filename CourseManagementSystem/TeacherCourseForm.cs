@@ -17,22 +17,7 @@ namespace CourseManagementSystem
         {
             InitializeComponent();
         }
-
-        /*private void mnuAdd_Click(object sender, EventArgs e)
-        {
-            if (!clsValidation.ValidateComboBox(cmbUnitID))
-            {
-                return;
-            }
-            if (!clsValidation.ValidateComboBox(cmbCourseID))
-            {
-                return;
-            }
-
-            clsUnitCourse objUnitCourse = new clsUnitCourse(Convert.ToInt32(cmbUnitID.Text), Convert.ToInt32(cmbUnitID.Text));
-            objUnitCourse.Add();
-            MessageBox.Show("Unit-Course record successfully added!");
-        }*/
+        
         private void mnuAdd_Click(object sender, EventArgs e)
         {
             if (!clsValidation.ValidateComboBox(cmbTeacherID))
@@ -47,22 +32,9 @@ namespace CourseManagementSystem
             clsTeacherCourse objTeacherCourse = new clsTeacherCourse(Convert.ToInt32(cmbTeacherID.Text), Convert.ToInt32(cmbCourseID.Text));
             objTeacherCourse.Add();
             MessageBox.Show("Teacher-Course record successfully added!");
+            objTeacherCourse.ViewAll(dgvTeacherCourse);
         }
-
-        /*private void mnuDelete_Click(object sender, EventArgs e)
-        {
-            if (!clsValidation.ValidateComboBox(cmbUnitID))
-            {
-                return;
-            }
-            if (!clsValidation.ValidateComboBox(cmbCourseID))
-            {
-                return;
-            }
-            clsUnitCourse objUnitCourse = new clsUnitCourse(Convert.ToInt32(cmbUnitID.Text), Convert.ToInt32(cmbUnitID.Text));
-            objUnitCourse.Delete();
-            MessageBox.Show("Unit-Course record successfully deleted!");
-        }*/
+        
         private void mnuDelete_Click(object sender, EventArgs e)
         {
             if (!clsValidation.ValidateComboBox(cmbTeacherID))
@@ -76,39 +48,15 @@ namespace CourseManagementSystem
             clsTeacherCourse objTeacherCourse = new clsTeacherCourse(Convert.ToInt32(cmbTeacherID.Text), Convert.ToInt32(cmbCourseID.Text));
             objTeacherCourse.Delete();
             MessageBox.Show("Teacher-Course record successfully deleted!");
+            objTeacherCourse.ViewAll(dgvTeacherCourse);
         }
-
-        /*private void mnuViewAll_Click(object sender, EventArgs e)
-        {
-            clsUnitCourse objUnitCourse = new clsUnitCourse();
-            objUnitCourse.ViewAll(dgvUnitCourse);
-        }*/
-
+        
         private void mnuViewAll_Click(object sender, EventArgs e)
         {
             clsTeacherCourse objTeacherCourse = new clsTeacherCourse();
             objTeacherCourse.ViewAll(dgvTeacherCourse);
         }
-
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        /*private void UnitCourseForm_Load(object sender, EventArgs e)
-        {
-            clsUnitCourse objUnitCourse = new clsUnitCourse();
-            ComboBox[] cmb = new ComboBox[] { cmbTeacherID, cmbTeacherName, cmbCourseID, cmbCourseName };
-            objUnitCourse.Load(cmb);
-            objUnitCourse.ViewAll(dgvTeacherCourse);
-        }*/
-
-        /*private void cmbUnitName_Changed(object sender, EventArgs e)
-        {
-            int selectedNumber = cmbTeacherName.SelectedIndex;
-
-            cmbTeacherID.SelectedIndex = selectedNumber;
-        }*/
+        
         private void cmbTeacherName_Changed(object sender, EventArgs e)
         {
             int selectedNumber = cmbTeacherName.SelectedIndex;
@@ -129,6 +77,17 @@ namespace CourseManagementSystem
             ComboBox[] cmb = new ComboBox[] { cmbTeacherID, cmbTeacherName, cmbCourseID, cmbCourseName };
             objTeacherCourse.Load(cmb);
             objTeacherCourse.ViewAll(dgvTeacherCourse);
+        }
+
+        private void mnuClearAll_Click(object sender, EventArgs e)
+        {
+            cmbTeacherName.SelectedIndex = -1;
+            cmbCourseName.SelectedIndex = -1;
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -65,6 +65,7 @@ namespace CourseManagementSystem
 
             objAssessment.Add();
             MessageBox.Show("Assessment successfully added");
+            objAssessment.ViewAll(dgvAssessment);
         }
 
         private void mnuDelete_Click(object sender, EventArgs e)
@@ -79,6 +80,7 @@ namespace CourseManagementSystem
 
             objAssessment.Delete();
             MessageBox.Show("Assessment successfully deleted");
+            objAssessment.ViewAll(dgvAssessment);
         }
 
         private void mnuUpdate_Click(object sender, EventArgs e)
@@ -121,6 +123,7 @@ namespace CourseManagementSystem
 
             objAssessment.Update();
             MessageBox.Show("Assessment successfully updated");
+            objAssessment.ViewAll(dgvAssessment);
         }
 
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
@@ -140,8 +143,8 @@ namespace CourseManagementSystem
         private void mnuClearAll_Click(object sender, EventArgs e)
         {
             txtAssessmentID.Text = String.Empty;
-            cmbUnitName.Text = String.Empty;
-            cmbTeacherName.Text = String.Empty;
+            cmbUnitName.SelectedIndex = -1;
+            cmbTeacherName.SelectedIndex = -1;
             txtAssessmentName.Text = String.Empty;
             dtpStartDate.Text = String.Empty;
             dtpDueDate.Text = String.Empty;
@@ -162,19 +165,9 @@ namespace CourseManagementSystem
             bool valid = objAssessment.Search();
             if (valid)
             {
-
                 txtAssessmentName.Text = objAssessment.AssessmentName;
                 cmbUnitID.Text = objAssessment.UnitID.ToString();
                 cmbUnitName.Text = objAssessment.UnitName;
-                /*for (int i = 0; i < cmbUnitID.Items.Count; i++)
-                {
-                    if (i == objAssessment.UnitID)
-                    {
-                        cmbUnitName.SelectedIndex = i;
-                        break;
-                    }
-                }*/
-
                 cmbTeacherID.Text = objAssessment.TeacherID.ToString();
                 cmbTeacherName.Text = objAssessment.TeacherFirstName + " " + objAssessment.TeacherLastName;
                 dtpStartDate.Value = DateTime.Parse(objAssessment.StartDate);
@@ -197,21 +190,12 @@ namespace CourseManagementSystem
             loaded = true;
         }
 
-        //Need to fix the Unit ID and Teacher ID text field changing
-
         private void cmbUnitName_Changed(object sender, EventArgs e)
         {
             if (loaded == true)
             {
                 int selectedNumber = cmbUnitName.SelectedIndex;
-                //DataGridViewRow row = dgvAssessment.Rows[selectedNumber];
-
-                //int selectedID = Convert.ToInt32(row.Cells[1].Value);
-                //MessageBox.Show("Unit Name Selected Index: " + selectedNumber);
-                //int selectedID = Convert.ToInt32(dgvAssessment.Rows[selectedNumber].Cells[1].Value);
-
                 cmbUnitID.SelectedIndex = selectedNumber;
-                //cmbUnitID.SelectedIndex = selectedID;
             }
         }
 
@@ -220,6 +204,11 @@ namespace CourseManagementSystem
             int selectedNumber = cmbTeacherName.SelectedIndex;
 
             cmbTeacherID.SelectedIndex = selectedNumber;
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -42,6 +42,7 @@ namespace CourseManagementSystem
                 Convert.ToInt32(txtSemesterWeeks.Text));
             objSemester.Add();
             MessageBox.Show("Semester successfully added");
+            objSemester.ViewAll(dgvSemester);
         }
 
         private void mnuDelete_Click(object sender, EventArgs e)
@@ -55,6 +56,7 @@ namespace CourseManagementSystem
             clsSemester objSemester = new clsSemester(Convert.ToInt32(txtSemesterID.Text));
             objSemester.Delete();
             MessageBox.Show("Semester successfully deleted");
+            objSemester.ViewAll(dgvSemester);
         }
 
         private void mnuUpdate_Click(object sender, EventArgs e)
@@ -81,6 +83,7 @@ namespace CourseManagementSystem
                 dtpSemesterStartDate.Value.ToString("yyyy-MM-dd"), Convert.ToInt32(txtSemesterWeeks.Text));
             objSemester.Update();
             MessageBox.Show("Semester successfully updated");
+            objSemester.ViewAll(dgvSemester);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -124,6 +127,11 @@ namespace CourseManagementSystem
         {
             clsSemester objSemester = new clsSemester();
             objSemester.ViewAll(dgvSemester);
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

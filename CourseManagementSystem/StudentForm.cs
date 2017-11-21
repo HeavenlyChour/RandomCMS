@@ -191,6 +191,7 @@ namespace CourseManagementSystem
                   Convert.ToInt32(cmbCountryID.Text), disabilityText, txtDisabilityDescription.Text);
             objStudent.Add();
             MessageBox.Show("Student record successfully added!");
+            objStudent.ViewAll(dgvStudent);
         }
 
         /// <summary>
@@ -209,6 +210,7 @@ namespace CourseManagementSystem
             clsStudent objStudent = new clsStudent(Convert.ToInt32(txtStudentID.Text));
             objStudent.Delete();
             MessageBox.Show("Student record successfully deleted");
+            objStudent.ViewAll(dgvStudent);
         }
 
         /// <summary>
@@ -361,6 +363,7 @@ namespace CourseManagementSystem
                   Convert.ToInt32(cmbCountryID.Text), disabilityText, txtDisabilityDescription.Text);
             objStudent.Update();
             MessageBox.Show("Student record successfully updated!");
+            objStudent.ViewAll(dgvStudent);
         }
 
         /// <summary>
@@ -385,8 +388,6 @@ namespace CourseManagementSystem
             txtStudentID.Text = String.Empty;
             txtStudentFirstName.Text = String.Empty;
             txtStudentLastName.Text = String.Empty;
-            dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
-            dtpDateOfBirth.CustomFormat = " ";
             if (rdbMale.Checked==true)
             {
                 rdbMale.Checked = false;
@@ -394,8 +395,12 @@ namespace CourseManagementSystem
             {
                 rdbFemale.Checked = false;
             }
+            dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
+            dtpDateOfBirth.CustomFormat = " ";
             txtStudStreetAddress.Text = String.Empty;
             cmbSuburbName.SelectedIndex = -1;
+            cmbSuburbName.Text = String.Empty;
+            cmbSuburbID.Text = String.Empty;
             cmbPostCode.Text = String.Empty;
             //txtStudPostCode.Text = String.Empty;
             txtStudentPhoneNum.Text = String.Empty;
@@ -502,45 +507,7 @@ namespace CourseManagementSystem
         {
             clsStudent objStudent = new clsStudent();
             objStudent.ViewAll(dgvStudent);
-
-            #region Not used
-            //string strConnection = "server=localhost;database=randomdb;Trusted_Connection=yes";
-            //SqlConnection objConnection = new SqlConnection(strConnection);
-            //objConnection.Open();
-
-            //string strSQL = "select * from student";
-            //SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
-
-            //DataTable objDataTable = new DataTable();
-            //objDataAdapter.Fill(objDataTable);
-
-            //if (objDataTable.Rows.Count != 0)
-            //{
-            //    dgvStudent.DataSource = null;
-            //    dgvStudent.DataSource = objDataTable;
-            //    dgvStudent.AutoGenerateColumns = false;
-            //    dgvStudent.Columns[0].HeaderText = "Student ID";
-            //    dgvStudent.Columns[1].HeaderText = "First Name";
-            //    dgvStudent.Columns[2].HeaderText = "Last Name";
-            //    dgvStudent.Columns[3].HeaderText = "Gender";
-            //    dgvStudent.Columns[4].HeaderText = "D.O.B.";
-            //    dgvStudent.Columns[5].HeaderText = "Street Address";
-            //    dgvStudent.Columns[6].HeaderText = "Suburb";
-            //    dgvStudent.Columns[7].HeaderText = "Post Code";
-            //    dgvStudent.Columns[8].HeaderText = "Phone No.";
-            //    dgvStudent.Columns[9].HeaderText = "Email";
-            //    dgvStudent.Columns[10].HeaderText = "Nationality";
-            //    dgvStudent.Columns[11].HeaderText = "Disability";
-            //    dgvStudent.Columns[12].HeaderText = "Disability Description";
-            //    dgvStudent.AutoResizeColumns();
-            //    dgvStudent.AutoSize = false;
-            //    dgvStudent.Visible = true;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("There are no students");
-            //}
-            #endregion
+            
         }
 
         private void StudentForm_Load(object sender, EventArgs e)

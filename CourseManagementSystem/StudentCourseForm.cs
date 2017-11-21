@@ -31,7 +31,8 @@ namespace CourseManagementSystem
 
             clsStudentCourse objStudentCourse = new clsStudentCourse(Convert.ToInt32(cmbStudentID.Text), Convert.ToInt32(cmbCourseID.Text));
             objStudentCourse.Add();
-            MessageBox.Show("Teacher-Course record successfully added!");
+            MessageBox.Show("Student-Course record successfully added!");
+            objStudentCourse.ViewAll(dgvStudentCourse);
         }
         
         private void mnuDelete_Click(object sender, EventArgs e)
@@ -46,18 +47,14 @@ namespace CourseManagementSystem
             }
             clsStudentCourse objStudentCourse = new clsStudentCourse(Convert.ToInt32(cmbStudentID.Text), Convert.ToInt32(cmbCourseID.Text));
             objStudentCourse.Delete();
-            MessageBox.Show("Teacher-Course record successfully deleted!");
+            MessageBox.Show("Student-Course record successfully deleted!");
+            objStudentCourse.ViewAll(dgvStudentCourse);
         }
         
         private void mnuViewAll_Click(object sender, EventArgs e)
         {
             clsStudentCourse objStudentCourse = new clsStudentCourse();
             objStudentCourse.ViewAll(dgvStudentCourse);
-        }
-
-        private void mnuExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void cmbStudentName_Changed(object sender, EventArgs e)
@@ -80,6 +77,17 @@ namespace CourseManagementSystem
             ComboBox[] cmb = new ComboBox[] { cmbStudentID, cmbStudentName, cmbCourseID, cmbCourseName };
             objStudentCourse.Load(cmb);
             objStudentCourse.ViewAll(dgvStudentCourse);
+        }
+
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void mnuClearAll_Click(object sender, EventArgs e)
+        {
+            cmbStudentName.SelectedIndex = -1;
+            cmbCourseName.SelectedIndex = -1;
         }
     }
 }

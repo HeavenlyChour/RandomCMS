@@ -61,6 +61,7 @@
             this.cmbTeacherName = new System.Windows.Forms.ComboBox();
             this.cmbUnitID = new System.Windows.Forms.ComboBox();
             this.cmbTeacherID = new System.Windows.Forms.ComboBox();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssessment)).BeginInit();
             this.SuspendLayout();
@@ -228,7 +229,8 @@
             this.mnuAdd,
             this.mnuDelete,
             this.mnuUpdate,
-            this.mnuViewAll});
+            this.mnuViewAll,
+            this.mnuExit});
             this.mnuFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(42, 20);
@@ -257,10 +259,10 @@
             // 
             this.dgvAssessment.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvAssessment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAssessment.Location = new System.Drawing.Point(12, 411);
+            this.dgvAssessment.Location = new System.Drawing.Point(12, 339);
             this.dgvAssessment.Name = "dgvAssessment";
             this.dgvAssessment.ReadOnly = true;
-            this.dgvAssessment.Size = new System.Drawing.Size(642, 120);
+            this.dgvAssessment.Size = new System.Drawing.Size(642, 192);
             this.dgvAssessment.TabIndex = 103;
             // 
             // lblUnitID
@@ -402,6 +404,14 @@
             this.cmbTeacherID.TabIndex = 126;
             this.cmbTeacherID.Tag = "Teacher ID";
             // 
+            // mnuExit
+            // 
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuExit.Size = new System.Drawing.Size(166, 22);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            // 
             // AssessmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,5 +483,6 @@
         private System.Windows.Forms.ComboBox cmbTeacherName;
         private System.Windows.Forms.ComboBox cmbUnitID;
         private System.Windows.Forms.ComboBox cmbTeacherID;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
     }
 }

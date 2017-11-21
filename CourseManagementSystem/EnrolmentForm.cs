@@ -111,6 +111,7 @@ namespace CourseManagementSystem
 
             objEnrolment.Add();
             MessageBox.Show("Enrolment record successfully added!");
+            objEnrolment.ViewAll(dgvEnrolment);
         }
 
         private void mnuDelete_Click(object sender, EventArgs e)
@@ -123,6 +124,7 @@ namespace CourseManagementSystem
             clsEnrolment objEnrolment = new clsEnrolment(Convert.ToInt32(txtEnrolmentID.Text));
             objEnrolment.Delete();
             MessageBox.Show("Enrolment record successfully deleted");
+            objEnrolment.ViewAll(dgvEnrolment);
         }
 
         private void mnuUpdate_Click(object sender, EventArgs e)
@@ -223,6 +225,7 @@ namespace CourseManagementSystem
 
             objEnrolment.Update();
             MessageBox.Show("Enrolment record successfully updated!");
+            objEnrolment.ViewAll(dgvEnrolment);
         }
 
 
@@ -300,10 +303,9 @@ namespace CourseManagementSystem
 
         private void mnuClearAll_Click(object sender, EventArgs e)
         {
-            cmbStudentID.SelectedIndex = -1;
-            cmbStudentID.Text = "";
-            cmbCourseID.SelectedIndex = -1;
-            cmbCourseID.Text = "";
+            txtEnrolmentID.Text = String.Empty;
+            cmbStudentName.SelectedIndex = -1;
+            cmbCourseName.SelectedIndex = -1;
             dtpEnrolmentDate.Format = DateTimePickerFormat.Custom;
             dtpEnrolmentDate.CustomFormat = " ";
             dtpExpectedEndDate.Format = DateTimePickerFormat.Custom;
@@ -350,5 +352,9 @@ namespace CourseManagementSystem
             cmbCourseID.SelectedIndex = selectedNumber;
         }
 
+        private void mnuExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

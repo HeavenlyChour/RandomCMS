@@ -72,6 +72,7 @@
             this.rdbFaceToFace = new System.Windows.Forms.RadioButton();
             this.rdbOnline = new System.Windows.Forms.RadioButton();
             this.cmbSuburbID = new System.Windows.Forms.ComboBox();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourse)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlCourseDelivery.SuspendLayout();
@@ -172,7 +173,8 @@
             this.mnuAdd,
             this.mnuDelete,
             this.mnuUpdate,
-            this.mnuViewAll});
+            this.mnuViewAll,
+            this.mnuExit});
             this.mnuFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(42, 20);
@@ -536,6 +538,14 @@
             this.cmbSuburbID.TabIndex = 127;
             this.cmbSuburbID.Tag = "Suburb ID";
             // 
+            // mnuExit
+            // 
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuExit.Size = new System.Drawing.Size(166, 22);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            // 
             // CourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -630,5 +640,6 @@
         private System.Windows.Forms.RadioButton rdbFaceToFace;
         private System.Windows.Forms.RadioButton rdbOnline;
         private System.Windows.Forms.ComboBox cmbSuburbID;
+        private System.Windows.Forms.ToolStripMenuItem mnuExit;
     }
 }

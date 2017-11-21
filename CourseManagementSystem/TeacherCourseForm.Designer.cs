@@ -218,6 +218,7 @@
             this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.mnuExit.Size = new System.Drawing.Size(166, 22);
             this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
             // mnuEdit
             // 
@@ -235,6 +236,7 @@
             | System.Windows.Forms.Keys.C)));
             this.mnuClearAll.Size = new System.Drawing.Size(191, 22);
             this.mnuClearAll.Text = "Clear All";
+            this.mnuClearAll.Click += new System.EventHandler(this.mnuClearAll_Click);
             // 
             // mnuNavigate
             // 

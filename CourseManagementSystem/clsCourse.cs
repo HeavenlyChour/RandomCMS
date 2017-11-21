@@ -374,7 +374,7 @@ namespace CourseManagementSystem
             cmb[2].DisplayMember = "semesterid";
             cmb[2].ValueMember = "semesterid";
             cmb[2].SelectedIndex = -1;
-            cmb[2].Text = "Semester ID";
+            cmb[2].Text = "Select a semester ID";
         }
     }
 }

@@ -145,11 +145,11 @@ namespace CourseManagementSystem
             string genderText = String.Empty;
             if (rdbMale.Checked)
             {
-                genderText = "m";
+                genderText = "M";
             }
             else if (rdbFemale.Checked)
             {
-                genderText = "f";
+                genderText = "F";
             }
             string leaveText = String.Empty;
             if (rdbASYes.Checked)
@@ -166,6 +166,7 @@ namespace CourseManagementSystem
                   dtpCommencementDate.Value.ToString("yyyy-MM-dd"), cmbTeacherDepartment.Text, leaveText);
             objTeacher.Add();
             MessageBox.Show("Teacher record successfully added!");
+            objTeacher.ViewAll(dgvTeacher);
         }
 
         private void mnuDelete_Click(object sender, EventArgs e)
@@ -178,6 +179,7 @@ namespace CourseManagementSystem
             clsTeacher objTeacher = new clsTeacher(Convert.ToInt32(txtTeacherID.Text));
             objTeacher.Delete();
             MessageBox.Show("Teacher record successfully deleted");
+            objTeacher.ViewAll(dgvTeacher);
         }
 
         private void mnuUpdate_Click(object sender, EventArgs e)
@@ -321,6 +323,7 @@ namespace CourseManagementSystem
                   dtpCommencementDate.Value.ToString("yyyy-MM-dd"), cmbTeacherDepartment.Text, leaveText);
             objTeacher.Update();
             MessageBox.Show("Teacher record successfully updated!");
+            objTeacher.ViewAll(dgvTeacher);
         }
         
         private void btnSearch_Click(object sender, EventArgs e)
@@ -372,8 +375,8 @@ namespace CourseManagementSystem
         }
         private void mnuViewAll_Click(object sender, EventArgs e)
         {
-            clsTeacher objStudent = new clsTeacher();
-            objStudent.ViewAll(dgvTeacher);
+            clsTeacher objTeacher = new clsTeacher();
+            objTeacher.ViewAll(dgvTeacher);
         }
         
         private void TeacherForm_Load(object sender, EventArgs e)
@@ -414,6 +417,8 @@ namespace CourseManagementSystem
             }
             txtTeacherStreetAddress.Text = String.Empty;
             cmbSuburbName.SelectedIndex = -1;
+            cmbSuburbName.Text = String.Empty;
+            cmbSuburbID.Text = String.Empty;
             cmbPostCode.Text = String.Empty;
             txtTeacherPhoneNum.Text = String.Empty;
             txtTeacherEmail.Text = String.Empty;
