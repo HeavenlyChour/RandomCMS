@@ -78,6 +78,9 @@
             this.pnlAnnualSickLeave = new System.Windows.Forms.Panel();
             this.cmbSuburbID = new System.Windows.Forms.ComboBox();
             this.cmbPostCode = new System.Windows.Forms.ComboBox();
+            this.cmbSkill = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSearchSkill = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTeacher)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlTeacher.SuspendLayout();
@@ -87,7 +90,7 @@
             // txtTeacherLastName
             // 
             this.txtTeacherLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherLastName.Location = new System.Drawing.Point(241, 188);
+            this.txtTeacherLastName.Location = new System.Drawing.Point(213, 188);
             this.txtTeacherLastName.Name = "txtTeacherLastName";
             this.txtTeacherLastName.Size = new System.Drawing.Size(347, 26);
             this.txtTeacherLastName.TabIndex = 3;
@@ -98,7 +101,7 @@
             // txtTeacherEmail
             // 
             this.txtTeacherEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherEmail.Location = new System.Drawing.Point(241, 381);
+            this.txtTeacherEmail.Location = new System.Drawing.Point(213, 381);
             this.txtTeacherEmail.Name = "txtTeacherEmail";
             this.txtTeacherEmail.Size = new System.Drawing.Size(347, 26);
             this.txtTeacherEmail.TabIndex = 10;
@@ -125,7 +128,7 @@
             "Retail",
             "Science",
             "Social Studies"});
-            this.cmbTeacherDepartment.Location = new System.Drawing.Point(241, 445);
+            this.cmbTeacherDepartment.Location = new System.Drawing.Point(213, 445);
             this.cmbTeacherDepartment.Name = "cmbTeacherDepartment";
             this.cmbTeacherDepartment.Size = new System.Drawing.Size(176, 28);
             this.cmbTeacherDepartment.TabIndex = 13;
@@ -135,7 +138,7 @@
             // txtTeacherPhoneNum
             // 
             this.txtTeacherPhoneNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherPhoneNum.Location = new System.Drawing.Point(241, 349);
+            this.txtTeacherPhoneNum.Location = new System.Drawing.Point(213, 349);
             this.txtTeacherPhoneNum.Name = "txtTeacherPhoneNum";
             this.txtTeacherPhoneNum.Size = new System.Drawing.Size(176, 26);
             this.txtTeacherPhoneNum.TabIndex = 9;
@@ -145,7 +148,7 @@
             // txtTeacherStreetAddress
             // 
             this.txtTeacherStreetAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherStreetAddress.Location = new System.Drawing.Point(241, 283);
+            this.txtTeacherStreetAddress.Location = new System.Drawing.Point(213, 283);
             this.txtTeacherStreetAddress.Name = "txtTeacherStreetAddress";
             this.txtTeacherStreetAddress.Size = new System.Drawing.Size(347, 26);
             this.txtTeacherStreetAddress.TabIndex = 6;
@@ -155,7 +158,7 @@
             // txtTeacherFirstName
             // 
             this.txtTeacherFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherFirstName.Location = new System.Drawing.Point(241, 156);
+            this.txtTeacherFirstName.Location = new System.Drawing.Point(213, 156);
             this.txtTeacherFirstName.Name = "txtTeacherFirstName";
             this.txtTeacherFirstName.Size = new System.Drawing.Size(347, 26);
             this.txtTeacherFirstName.TabIndex = 2;
@@ -197,7 +200,7 @@
             // 
             this.dtpDateOfBirth.AllowDrop = true;
             this.dtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(241, 220);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(213, 220);
             this.dtpDateOfBirth.MaxDate = new System.DateTime(1997, 12, 31, 0, 0, 0, 0);
             this.dtpDateOfBirth.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
@@ -218,7 +221,7 @@
             "Liverpool",
             "Ultimo",
             "Granville"});
-            this.cmbSuburbName.Location = new System.Drawing.Point(282, 315);
+            this.cmbSuburbName.Location = new System.Drawing.Point(254, 315);
             this.cmbSuburbName.Name = "cmbSuburbName";
             this.cmbSuburbName.Size = new System.Drawing.Size(176, 28);
             this.cmbSuburbName.TabIndex = 7;
@@ -229,7 +232,7 @@
             // dtpCommencementDate
             // 
             this.dtpCommencementDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpCommencementDate.Location = new System.Drawing.Point(241, 413);
+            this.dtpCommencementDate.Location = new System.Drawing.Point(213, 413);
             this.dtpCommencementDate.MaxDate = new System.DateTime(4000, 12, 31, 0, 0, 0, 0);
             this.dtpCommencementDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtpCommencementDate.Name = "dtpCommencementDate";
@@ -246,7 +249,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
-            this.btnSearch.Location = new System.Drawing.Point(423, 124);
+            this.btnSearch.Location = new System.Drawing.Point(395, 124);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(35, 28);
             this.btnSearch.TabIndex = 60;
@@ -257,7 +260,7 @@
             // txtTeacherID
             // 
             this.txtTeacherID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeacherID.Location = new System.Drawing.Point(241, 124);
+            this.txtTeacherID.Location = new System.Drawing.Point(213, 124);
             this.txtTeacherID.Name = "txtTeacherID";
             this.txtTeacherID.Size = new System.Drawing.Size(176, 26);
             this.txtTeacherID.TabIndex = 1;
@@ -269,7 +272,7 @@
             this.lblTeacherSuburb.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeacherSuburb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherSuburb.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeacherSuburb.Location = new System.Drawing.Point(159, 318);
+            this.lblTeacherSuburb.Location = new System.Drawing.Point(131, 318);
             this.lblTeacherSuburb.Name = "lblTeacherSuburb";
             this.lblTeacherSuburb.Size = new System.Drawing.Size(72, 20);
             this.lblTeacherSuburb.TabIndex = 55;
@@ -400,7 +403,7 @@
             this.dgvTeacher.Location = new System.Drawing.Point(12, 514);
             this.dgvTeacher.Name = "dgvTeacher";
             this.dgvTeacher.ReadOnly = true;
-            this.dgvTeacher.Size = new System.Drawing.Size(642, 257);
+            this.dgvTeacher.Size = new System.Drawing.Size(641, 207);
             this.dgvTeacher.TabIndex = 54;
             // 
             // lblTeacherLastName
@@ -409,7 +412,7 @@
             this.lblTeacherLastName.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeacherLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherLastName.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeacherLastName.Location = new System.Drawing.Point(133, 191);
+            this.lblTeacherLastName.Location = new System.Drawing.Point(105, 191);
             this.lblTeacherLastName.Name = "lblTeacherLastName";
             this.lblTeacherLastName.Size = new System.Drawing.Size(100, 20);
             this.lblTeacherLastName.TabIndex = 52;
@@ -421,7 +424,7 @@
             this.lblTeacherDateOfBirth.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeacherDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherDateOfBirth.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeacherDateOfBirth.Location = new System.Drawing.Point(114, 223);
+            this.lblTeacherDateOfBirth.Location = new System.Drawing.Point(86, 223);
             this.lblTeacherDateOfBirth.Name = "lblTeacherDateOfBirth";
             this.lblTeacherDateOfBirth.Size = new System.Drawing.Size(117, 20);
             this.lblTeacherDateOfBirth.TabIndex = 50;
@@ -433,7 +436,7 @@
             this.lblTeacherEmail.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeacherEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherEmail.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeacherEmail.Location = new System.Drawing.Point(171, 384);
+            this.lblTeacherEmail.Location = new System.Drawing.Point(143, 384);
             this.lblTeacherEmail.Name = "lblTeacherEmail";
             this.lblTeacherEmail.Size = new System.Drawing.Size(58, 20);
             this.lblTeacherEmail.TabIndex = 48;
@@ -445,7 +448,7 @@
             this.lblTeachDepartment.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeachDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeachDepartment.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeachDepartment.Location = new System.Drawing.Point(118, 448);
+            this.lblTeachDepartment.Location = new System.Drawing.Point(90, 448);
             this.lblTeachDepartment.Name = "lblTeachDepartment";
             this.lblTeachDepartment.Size = new System.Drawing.Size(109, 20);
             this.lblTeachDepartment.TabIndex = 41;
@@ -457,7 +460,7 @@
             this.lblTeacherPhoneNum.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeacherPhoneNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherPhoneNum.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeacherPhoneNum.Location = new System.Drawing.Point(97, 352);
+            this.lblTeacherPhoneNum.Location = new System.Drawing.Point(69, 352);
             this.lblTeacherPhoneNum.Name = "lblTeacherPhoneNum";
             this.lblTeacherPhoneNum.Size = new System.Drawing.Size(132, 20);
             this.lblTeacherPhoneNum.TabIndex = 39;
@@ -469,7 +472,7 @@
             this.lblTeachStreetAddress.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeachStreetAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeachStreetAddress.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeachStreetAddress.Location = new System.Drawing.Point(91, 286);
+            this.lblTeachStreetAddress.Location = new System.Drawing.Point(63, 286);
             this.lblTeachStreetAddress.Name = "lblTeachStreetAddress";
             this.lblTeachStreetAddress.Size = new System.Drawing.Size(140, 20);
             this.lblTeachStreetAddress.TabIndex = 37;
@@ -481,7 +484,7 @@
             this.lblTeacherFirstName.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeacherFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherFirstName.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeacherFirstName.Location = new System.Drawing.Point(133, 159);
+            this.lblTeacherFirstName.Location = new System.Drawing.Point(105, 159);
             this.lblTeacherFirstName.Name = "lblTeacherFirstName";
             this.lblTeacherFirstName.Size = new System.Drawing.Size(101, 20);
             this.lblTeacherFirstName.TabIndex = 35;
@@ -506,7 +509,7 @@
             this.lblTeacherID.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblTeacherID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherID.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblTeacherID.Location = new System.Drawing.Point(133, 127);
+            this.lblTeacherID.Location = new System.Drawing.Point(105, 127);
             this.lblTeacherID.Name = "lblTeacherID";
             this.lblTeacherID.Size = new System.Drawing.Size(103, 20);
             this.lblTeacherID.TabIndex = 32;
@@ -520,7 +523,7 @@
             this.mnuNavigate});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(666, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(670, 24);
             this.menuStrip1.TabIndex = 59;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -548,7 +551,7 @@
             this.lblCommencementDate.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblCommencementDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCommencementDate.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblCommencementDate.Location = new System.Drawing.Point(40, 418);
+            this.lblCommencementDate.Location = new System.Drawing.Point(12, 418);
             this.lblCommencementDate.Name = "lblCommencementDate";
             this.lblCommencementDate.Size = new System.Drawing.Size(187, 20);
             this.lblCommencementDate.TabIndex = 61;
@@ -560,7 +563,7 @@
             this.lblAnnualSickLeave.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblAnnualSickLeave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAnnualSickLeave.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblAnnualSickLeave.Location = new System.Drawing.Point(65, 481);
+            this.lblAnnualSickLeave.Location = new System.Drawing.Point(37, 481);
             this.lblAnnualSickLeave.Name = "lblAnnualSickLeave";
             this.lblAnnualSickLeave.Size = new System.Drawing.Size(162, 20);
             this.lblAnnualSickLeave.TabIndex = 69;
@@ -572,7 +575,7 @@
             this.lblGender.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGender.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblGender.Location = new System.Drawing.Point(156, 255);
+            this.lblGender.Location = new System.Drawing.Point(128, 255);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(74, 20);
             this.lblGender.TabIndex = 71;
@@ -608,7 +611,7 @@
             // 
             this.pnlTeacher.Controls.Add(this.rdbFemale);
             this.pnlTeacher.Controls.Add(this.rdbMale);
-            this.pnlTeacher.Location = new System.Drawing.Point(241, 252);
+            this.pnlTeacher.Location = new System.Drawing.Point(213, 252);
             this.pnlTeacher.Name = "pnlTeacher";
             this.pnlTeacher.Size = new System.Drawing.Size(176, 25);
             this.pnlTeacher.TabIndex = 5;
@@ -617,7 +620,7 @@
             // 
             this.pnlAnnualSickLeave.Controls.Add(this.rdbASNo);
             this.pnlAnnualSickLeave.Controls.Add(this.rdbASYes);
-            this.pnlAnnualSickLeave.Location = new System.Drawing.Point(241, 479);
+            this.pnlAnnualSickLeave.Location = new System.Drawing.Point(213, 479);
             this.pnlAnnualSickLeave.Name = "pnlAnnualSickLeave";
             this.pnlAnnualSickLeave.Size = new System.Drawing.Size(176, 29);
             this.pnlAnnualSickLeave.TabIndex = 16;
@@ -628,7 +631,7 @@
             this.cmbSuburbID.Enabled = false;
             this.cmbSuburbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSuburbID.FormattingEnabled = true;
-            this.cmbSuburbID.Location = new System.Drawing.Point(241, 315);
+            this.cmbSuburbID.Location = new System.Drawing.Point(213, 315);
             this.cmbSuburbID.Name = "cmbSuburbID";
             this.cmbSuburbID.Size = new System.Drawing.Size(35, 28);
             this.cmbSuburbID.TabIndex = 127;
@@ -640,11 +643,52 @@
             this.cmbPostCode.Enabled = false;
             this.cmbPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPostCode.FormattingEnabled = true;
-            this.cmbPostCode.Location = new System.Drawing.Point(464, 315);
+            this.cmbPostCode.Location = new System.Drawing.Point(436, 315);
             this.cmbPostCode.Name = "cmbPostCode";
             this.cmbPostCode.Size = new System.Drawing.Size(124, 28);
             this.cmbPostCode.TabIndex = 129;
             this.cmbPostCode.Tag = "Post Code";
+            // 
+            // cmbSkill
+            // 
+            this.cmbSkill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSkill.FormattingEnabled = true;
+            this.cmbSkill.Items.AddRange(new object[] {
+            "EFTPOS",
+            "BPAY",
+            "Credit Card",
+            "VET Student Loan"});
+            this.cmbSkill.Location = new System.Drawing.Point(436, 476);
+            this.cmbSkill.Name = "cmbSkill";
+            this.cmbSkill.Size = new System.Drawing.Size(176, 28);
+            this.cmbSkill.TabIndex = 157;
+            this.cmbSkill.Tag = "Payment Method";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label1.Location = new System.Drawing.Point(432, 453);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 20);
+            this.label1.TabIndex = 156;
+            this.label1.Text = "Skill:";
+            // 
+            // btnSearchSkill
+            // 
+            this.btnSearchSkill.BackColor = System.Drawing.Color.White;
+            this.btnSearchSkill.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearchSkill.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchSkill.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearchSkill.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
+            this.btnSearchSkill.Location = new System.Drawing.Point(618, 476);
+            this.btnSearchSkill.Name = "btnSearchSkill";
+            this.btnSearchSkill.Size = new System.Drawing.Size(35, 28);
+            this.btnSearchSkill.TabIndex = 155;
+            this.btnSearchSkill.UseVisualStyleBackColor = false;
+            this.btnSearchSkill.Click += new System.EventHandler(this.btnSearchSkill_Click);
             // 
             // TeacherForm
             // 
@@ -652,7 +696,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(666, 782);
+            this.ClientSize = new System.Drawing.Size(670, 733);
+            this.Controls.Add(this.cmbSkill);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnSearchSkill);
             this.Controls.Add(this.cmbPostCode);
             this.Controls.Add(this.cmbSuburbID);
             this.Controls.Add(this.dtpCommencementDate);
@@ -751,5 +798,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.ComboBox cmbSuburbID;
         private System.Windows.Forms.ComboBox cmbPostCode;
+        private System.Windows.Forms.ComboBox cmbSkill;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSearchSkill;
     }
 }

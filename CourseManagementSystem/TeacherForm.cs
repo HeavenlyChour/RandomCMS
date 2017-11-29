@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -382,7 +383,7 @@ namespace CourseManagementSystem
         private void TeacherForm_Load(object sender, EventArgs e)
         {
             clsTeacher objTeacher = new clsTeacher();
-            ComboBox[] cmb = new ComboBox[] { cmbSuburbID, cmbSuburbName, cmbPostCode };
+            ComboBox[] cmb = new ComboBox[] { cmbSuburbID, cmbSuburbName, cmbPostCode, cmbSkill };
             objTeacher.Load(cmb);
             objTeacher.ViewAll(dgvTeacher);
         }
@@ -448,6 +449,19 @@ namespace CourseManagementSystem
 
             cmbSuburbID.SelectedIndex = selectedNumber;
             cmbPostCode.SelectedIndex = selectedNumber;
+        }
+
+        private void btnSearchSkill_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateComboBox(cmbSkill))
+            {
+                return;
+            }
+
+            string strSQL = "select * from teacher, teacher_skill, skill where teacher.teacherId = teacher_skill.teacherId " +
+                            " and teacher_skill.skillId = skill.skillId and skill.skillId = " + Convert.ToInt32(cmbSkill.SelectedValue);
+            DataTable objDataTable = clsDatabase.CreateDataTable(strSQL);
+            dgvTeacher.DataSource = objDataTable;
         }
     }
 }

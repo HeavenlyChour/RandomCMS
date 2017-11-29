@@ -1,7 +1,9 @@
-﻿using System;
+﻿using DatabaseClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -331,7 +333,7 @@ namespace CourseManagementSystem
         private void EnrolmentForm_Load(object sender, EventArgs e)
         {
             clsEnrolment objEnrolment = new clsEnrolment();
-            ComboBox[] cmb = new ComboBox[] { cmbStudentID, cmbStudentName, cmbCourseID, cmbCourseName };
+            ComboBox[] cmb = new ComboBox[] { cmbStudentID, cmbStudentName, cmbCourseID, cmbCourseName, cmbSemester };
             //Doesn't include the other combo boxes because they are fixed values.
 
             objEnrolment.Load(cmb);
@@ -355,6 +357,43 @@ namespace CourseManagementSystem
         private void mnuExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSearchStudent_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateComboBox(cmbStudentID))
+            {
+                return;
+            }
+            string strSQL = "select * from enrolment, course, semester where enrolment.courseID = course.courseId and " +
+                            "course.semesterId = semester.semesterId and enrolment.studentId = " + Convert.ToInt32(cmbStudentID.SelectedValue);
+            DataTable objDataTable = clsDatabase.CreateDataTable(strSQL);
+            dgvEnrolment.DataSource = objDataTable;
+        }
+
+        private void btnSearchCourse_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateComboBox(cmbCourseID))
+            {
+                return;
+            }
+
+            string strSQL = "select * from enrolment, course, semester where enrolment.courseID = course.courseId and " +
+                            "course.semesterId = semester.semesterId and enrolment.courseId = " + Convert.ToInt32(cmbCourseID.SelectedValue);
+            DataTable objDataTable = clsDatabase.CreateDataTable(strSQL);
+            dgvEnrolment.DataSource = objDataTable;
+        }
+
+        private void btnSearchSemester_Click(object sender, EventArgs e)
+        {
+            if (!clsValidation.ValidateComboBox(cmbSemester))
+            {
+                return;
+            }
+            string strSQL = "select * from enrolment, course, semester where enrolment.courseID = course.courseId and " +
+                            "course.semesterId = semester.semesterId and semester.semesterId = " + Convert.ToInt32(cmbSemester.SelectedValue);
+            DataTable objDataTable = clsDatabase.CreateDataTable(strSQL);
+            dgvEnrolment.DataSource = objDataTable;
         }
     }
 }

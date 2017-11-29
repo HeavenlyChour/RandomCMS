@@ -30,7 +30,8 @@ namespace CourseManagementSystem
             }
 
             clsTeacherCourse objTeacherCourse = new clsTeacherCourse(Convert.ToInt32(cmbTeacherID.Text), Convert.ToInt32(cmbCourseID.Text));
-            objTeacherCourse.Add();
+            if (!objTeacherCourse.Add())
+                return;
             MessageBox.Show("Teacher-Course record successfully added!");
             objTeacherCourse.ViewAll(dgvTeacherCourse);
         }

@@ -59,9 +59,23 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@tid", TeacherID);
             objCommand.Parameters.AddWithValue("@skid", SkillID);
             objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.ExecuteNonQuery();
-            objConnection.Close();
-            return true;
+            try
+            {
+                objCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (SqlException es)
+            {
+                if (es.Number == 2627)
+                {
+                    MessageBox.Show("Primary Key Violation");
+                }
+                return false;
+            }
+            finally
+            {
+                objConnection.Close();
+            }
         }
 
         public bool Delete()
@@ -84,7 +98,11 @@ namespace CourseManagementSystem
             //SqlConnection objConnection = clsDatabase.CreateConnection();
             objConnection.Open();
 
-            string strSQL = "select * from teacher_skill";
+            string strSQL = "select teacher_skill.teacherId, (teacher.teacherFirstName + ' ' + " +
+                            "teacher.teacherLastName) as TeacherName, teacher_skill.skillId, " +
+                            "skill.skillName from teacher, teacher_skill, skill " +
+                            "where teacher.teacherId = teacher_skill.teacherId and " +
+                            "skill.skillId = teacher_skill.skillId;";
             SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
 
             DataTable objDataTable = new DataTable();
@@ -96,7 +114,9 @@ namespace CourseManagementSystem
                 dgv.DataSource = objDataTable;
                 dgv.AutoGenerateColumns = false;
                 dgv.Columns[0].HeaderText = "Teacher ID";
-                dgv.Columns[1].HeaderText = "Skill ID";
+                dgv.Columns[1].HeaderText = "Teacher Name";
+                dgv.Columns[2].HeaderText = "Skill ID";
+                dgv.Columns[3].HeaderText = "Skill Name";
                 dgv.AutoResizeColumns();
                 dgv.AutoSize = false;
                 dgv.Visible = true;

@@ -434,6 +434,15 @@ namespace CourseManagementSystem
             cmb[2].ValueMember = "suburbid";
             cmb[2].SelectedIndex = -1;
             cmb[2].Text = "Post Code";
+
+            objDataTable = null;
+            strSql = "select * from skill";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[3].DataSource = objDataTable;
+            cmb[3].DisplayMember = "skillName";
+            cmb[3].ValueMember = "skillId";
+            cmb[3].SelectedIndex = -1;
+            cmb[3].Text = "";
         }
     }
 }

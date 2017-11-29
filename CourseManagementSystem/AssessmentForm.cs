@@ -13,12 +13,13 @@ namespace CourseManagementSystem
 {
     public partial class AssessmentForm : Form
     {
-        bool loaded = false;
+        //bool loaded = false;
 
         public AssessmentForm()
         {
             InitializeComponent();
 
+            //Clear the date time pickers upon form load
             dtpStartDate.Format = DateTimePickerFormat.Custom;
             dtpStartDate.CustomFormat = " ";
             dtpDueDate.Format = DateTimePickerFormat.Custom;
@@ -59,12 +60,16 @@ namespace CourseManagementSystem
                 return;
             }
             #endregion
+            //create an assessment object with the supplied values
             clsAssessment objAssessment = new clsAssessment(txtAssessmentName.Text, Convert.ToInt32(cmbUnitID.Text), 
                 Convert.ToInt32(cmbTeacherID.Text),  dtpStartDate.Value.ToString("yyyy-MM-dd"), 
                 dtpDueDate.Value.ToString("yyyy-MM-dd"));
 
+            //run the Add function for the object created
             objAssessment.Add();
             MessageBox.Show("Assessment successfully added");
+
+            //refresh the data grid view
             objAssessment.ViewAll(dgvAssessment);
         }
 
@@ -75,11 +80,14 @@ namespace CourseManagementSystem
                 txtAssessmentID.Focus();
                 return;
             }
-
+            //create and assessment object with only the id
             clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text));
 
+            //run the Delete function
             objAssessment.Delete();
             MessageBox.Show("Assessment successfully deleted");
+
+            //refresh the data grid view
             objAssessment.ViewAll(dgvAssessment);
         }
 
@@ -117,17 +125,22 @@ namespace CourseManagementSystem
                 return;
             }
             #endregion
+            //create an assessment object with all values
             clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text), txtAssessmentName.Text,
                 Convert.ToInt32(cmbUnitID.Text), Convert.ToInt32(cmbTeacherID.Text), 
                 dtpStartDate.Value.ToString("yyyy-MM-dd"), dtpDueDate.Value.ToString("yyyy-MM-dd"));
 
+            //run the Update value for the created object
             objAssessment.Update();
             MessageBox.Show("Assessment successfully updated");
+
+            //refresh the data grid view
             objAssessment.ViewAll(dgvAssessment);
         }
 
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
         {
+            //force the date time picker to year/month/day format
             string dateSelected = dtpStartDate.Value.ToString("yyyy-MM-dd");
             dtpStartDate.Format = DateTimePickerFormat.Custom;
             dtpStartDate.CustomFormat = dateSelected;
@@ -142,6 +155,7 @@ namespace CourseManagementSystem
 
         private void mnuClearAll_Click(object sender, EventArgs e)
         {
+            //sets all the form elements to be empty
             txtAssessmentID.Text = String.Empty;
             cmbUnitName.SelectedIndex = -1;
             cmbTeacherName.SelectedIndex = -1;
@@ -161,8 +175,13 @@ namespace CourseManagementSystem
                 txtAssessmentID.Focus();
                 return;
             }
+            //creates an assessment object with only the id value
             clsAssessment objAssessment = new clsAssessment(Convert.ToInt32(txtAssessmentID.Text));
+
+            //runs the search function for the created object
             bool valid = objAssessment.Search();
+
+            //if an assessment was found in the Search function, then set the form elements to the supplied values
             if (valid)
             {
                 txtAssessmentName.Text = objAssessment.AssessmentName;
@@ -177,32 +196,37 @@ namespace CourseManagementSystem
 
         private void mnuViewAll_Click(object sender, EventArgs e)
         {
+            //passes the data grid view to the ViewAll function and refreshes the data grid view on the form
             clsAssessment objAssessment = new clsAssessment();
             objAssessment.ViewAll(dgvAssessment);
         }
 
         private void AssessmentForm_Load(object sender, EventArgs e)
         {
+            //passes the comboboxes that need to be popluated from the database and passes the data grid view
+            //then runs the Load and ViewAll functions upon loading the form
             clsAssessment objAssessment = new clsAssessment();
             ComboBox[] cmb = new ComboBox[] {cmbUnitID, cmbUnitName, cmbTeacherID, cmbTeacherName };
             objAssessment.Load(cmb);
             objAssessment.ViewAll(dgvAssessment);
-            loaded = true;
+            //loaded = true;
         }
 
         private void cmbUnitName_Changed(object sender, EventArgs e)
         {
-            if (loaded == true)
-            {
-                int selectedNumber = cmbUnitName.SelectedIndex;
-                cmbUnitID.SelectedIndex = selectedNumber;
-            }
+            //if (loaded == true)
+            //{
+
+            //changes the UnitID combobox whenever the UnitName combobox is changed
+            int selectedNumber = cmbUnitName.SelectedIndex;
+            cmbUnitID.SelectedIndex = selectedNumber;
+
+            //}
         }
 
         private void cmbTeacherName_Changed(object sender, EventArgs e)
         {
             int selectedNumber = cmbTeacherName.SelectedIndex;
-
             cmbTeacherID.SelectedIndex = selectedNumber;
         }
 

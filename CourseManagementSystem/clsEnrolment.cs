@@ -373,7 +373,27 @@ namespace CourseManagementSystem
             //SqlConnection objConnection = clsDatabase.CreateConnection();
             objConnection.Open();
 
-            string strSQL = "select * from enrolment";
+#if DEBUG
+            string strSQL = "select * from enrolment, course, semester where enrolment.courseID = course.courseId and " +
+                            "course.semesterId = semester.semesterId";
+#elif (!DEBUG)
+            //string strSQL = "SELECT E.EnrolmentID, S.StudentID, S.StudentFirstName, S.StudentLastName, C.CourseID, " + 
+            //        "C.CourseName, E.EnrolmentDate, " +
+            //        "E.ExpectedEndDate, E.Delivery, E.AmountDue, E.PaymentDueDate, E.PaymentMethod, "+
+            //        "E.PaymentStatus, E.DatePaid, E.StudyStatus " +
+            //        "FROM Student S inner join Enrolment E ON S.StudentID = E.StudentID " +
+            //        "inner join Course C ON E.CourseID = C.CourseID";
+
+            string strSQL = "select enrolment.enrolmentid, enrolment.studentid, " +
+                "(student.studentFirstName + ' ' + student.studentLastName) " +
+                "as StudentName, enrolment.courseid, course.coursename, " +
+                "enrolment.enrolmentdate, enrolment.expectedenddate, " +
+                "enrolment.delivery, enrolment.amountdue, enrolment.paymentduedate, " +
+                "enrolment.paymentmethod, enrolment.paymentstatus, enrolment.datepaid, " +
+                "enrolment.studystatus from student, enrolment, course where " +
+                "student.studentid = enrolment.studentid and course.courseid " +
+                "= enrolment.courseid";
+#endif
             SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
 
             DataTable objDataTable = new DataTable();
@@ -381,40 +401,52 @@ namespace CourseManagementSystem
 
             if (objDataTable.Rows.Count != 0)
             {
-                dgv.DataSource = null;
-                dgv.DataSource = objDataTable;
-                dgv.AutoGenerateColumns = false;
-                /*dgv.Columns[0].HeaderText = "Enroment ID";
-                dgv.Columns[1].HeaderText = "Student ID";
-                dgv.Columns[2].HeaderText = "Student Name";
-                dgv.Columns[3].HeaderText = "Course ID";
-                dgv.Columns[4].HeaderText = "Course Name";
-                dgv.Columns[5].HeaderText = "Enrolment Date";
-                dgv.Columns[6].HeaderText = "Expected End Date";
-                dgv.Columns[7].HeaderText = "Delivery";
-                dgv.Columns[8].HeaderText = "Amount Due";
-                dgv.Columns[9].HeaderText = "Payment Due Date";
-                dgv.Columns[10].HeaderText = "Payment Method";
-                dgv.Columns[11].HeaderText = "Payment Status";
-                dgv.Columns[12].HeaderText = "Date Paid";
-                dgv.Columns[13].HeaderText = "Study Status";*/
+                try
+                {
+                    dgv.DataSource = null;
+                    dgv.DataSource = objDataTable;
+                    dgv.AutoGenerateColumns = false;
+#if DEBUG
+                    dgv.Columns[0].HeaderText = "Enroment ID";
+                    dgv.Columns[1].HeaderText = "Student ID";
+                    dgv.Columns[2].HeaderText = "Course ID";
+                    dgv.Columns[3].HeaderText = "Enrolment Date";
+                    dgv.Columns[4].HeaderText = "Expected End Date";
+                    dgv.Columns[5].HeaderText = "Delivery";
+                    dgv.Columns[6].HeaderText = "Amount Due";
+                    dgv.Columns[7].HeaderText = "Payment Due Date";
+                    dgv.Columns[8].HeaderText = "Payment Method";
+                    dgv.Columns[9].HeaderText = "Payment Status";
+                    dgv.Columns[10].HeaderText = "Date Paid";
+                    dgv.Columns[11].HeaderText = "Study Status";
+#elif (!DEBUG)
+                    dgv.Columns[0].HeaderText = "Enroment ID";
+                    dgv.Columns[1].HeaderText = "Student ID";
+                    dgv.Columns[2].HeaderText = "Student Name";
+                    //dgv.Columns[3].HeaderText = "Student Last Name";
+                    dgv.Columns[3].HeaderText = "Course ID";
+                    dgv.Columns[4].HeaderText = "Course Name";
+                    dgv.Columns[5].HeaderText = "Enrolment Date";
+                    dgv.Columns[6].HeaderText = "Expected End Date";
+                    dgv.Columns[7].HeaderText = "Delivery";
+                    dgv.Columns[8].HeaderText = "Amount Due";
+                    dgv.Columns[9].HeaderText = "Payment Due Date";
+                    dgv.Columns[10].HeaderText = "Payment Method";
+                    dgv.Columns[11].HeaderText = "Payment Status";
+                    dgv.Columns[12].HeaderText = "Date Paid";
+                    dgv.Columns[13].HeaderText = "Study Status";
+#endif
 
-                dgv.Columns[0].HeaderText = "Enroment ID";
-                dgv.Columns[1].HeaderText = "Student ID";
-                dgv.Columns[2].HeaderText = "Course ID";
-                dgv.Columns[3].HeaderText = "Enrolment Date";
-                dgv.Columns[4].HeaderText = "Expected End Date";
-                dgv.Columns[5].HeaderText = "Delivery";
-                dgv.Columns[6].HeaderText = "Amount Due";
-                dgv.Columns[7].HeaderText = "Payment Due Date";
-                dgv.Columns[8].HeaderText = "Payment Method";
-                dgv.Columns[9].HeaderText = "Payment Status";
-                dgv.Columns[10].HeaderText = "Date Paid";
-                dgv.Columns[11].HeaderText = "Study Status";
-                dgv.AutoResizeColumns();
-                dgv.AutoSize = false;
-                dgv.Visible = true;
-                objConnection.Close();
+                    dgv.AutoResizeColumns();
+                    dgv.AutoSize = false;
+                    dgv.Visible = true;
+                    objConnection.Close();
+                }
+                catch(IndexOutOfRangeException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                
             }
             else
             {
@@ -459,6 +491,15 @@ namespace CourseManagementSystem
             cmb[3].ValueMember = "courseid";
             cmb[3].SelectedIndex = -1;
             cmb[3].Text = "Select a course";
+
+            objDataTable = null;
+            strSql = "select * from semester";
+            objDataTable = clsDatabase.CreateDataTable(strSql);
+            cmb[4].DataSource = objDataTable;
+            cmb[4].DisplayMember = "semesterid";
+            cmb[4].ValueMember = "semesterid";
+            cmb[4].SelectedIndex = -1;
+            cmb[4].Text = "";
         }
     }
 }

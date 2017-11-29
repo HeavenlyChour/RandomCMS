@@ -30,7 +30,8 @@ namespace CourseManagementSystem
             }
 
             clsUnitCourse objUnitCourse = new clsUnitCourse(Convert.ToInt32(cmbUnitID.Text), Convert.ToInt32(cmbCourseID.Text));
-            objUnitCourse.Add();
+            if (!objUnitCourse.Add())
+                return;
             MessageBox.Show("Unit-Course record successfully added!");
             objUnitCourse.ViewAll(dgvUnitCourse);
         }

@@ -44,6 +44,7 @@
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNavigate = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +55,10 @@
             this.txtAmountDue = new System.Windows.Forms.TextBox();
             this.cmbPaymentMethod = new System.Windows.Forms.ComboBox();
             this.cmbStudyStatus = new System.Windows.Forms.ComboBox();
+            this.btnSearchSemester = new System.Windows.Forms.Button();
+            this.btnSearchStudent = new System.Windows.Forms.Button();
+            this.btnSearchCourse = new System.Windows.Forms.Button();
+            this.cmbSemester = new System.Windows.Forms.ComboBox();
             this.txtEnrolmentID = new System.Windows.Forms.TextBox();
             this.lblStudentID = new System.Windows.Forms.Label();
             this.lblCourseID = new System.Windows.Forms.Label();
@@ -75,7 +80,7 @@
             this.cmbCourseName = new System.Windows.Forms.ComboBox();
             this.cmbCourseID = new System.Windows.Forms.ComboBox();
             this.dtpDatePaid = new System.Windows.Forms.DateTimePicker();
-            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEnrolment)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlCourseDelivery.SuspendLayout();
@@ -123,7 +128,7 @@
             this.lblExpectedEndDate.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblExpectedEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExpectedEndDate.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblExpectedEndDate.Location = new System.Drawing.Point(142, 266);
+            this.lblExpectedEndDate.Location = new System.Drawing.Point(34, 264);
             this.lblExpectedEndDate.Name = "lblExpectedEndDate";
             this.lblExpectedEndDate.Size = new System.Drawing.Size(170, 20);
             this.lblExpectedEndDate.TabIndex = 100;
@@ -133,10 +138,10 @@
             // 
             this.dgvEnrolment.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvEnrolment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEnrolment.Location = new System.Drawing.Point(12, 524);
+            this.dgvEnrolment.Location = new System.Drawing.Point(11, 524);
             this.dgvEnrolment.Name = "dgvEnrolment";
             this.dgvEnrolment.ReadOnly = true;
-            this.dgvEnrolment.Size = new System.Drawing.Size(642, 256);
+            this.dgvEnrolment.Size = new System.Drawing.Size(672, 197);
             this.dgvEnrolment.TabIndex = 93;
             // 
             // lblPaymentStatus
@@ -145,7 +150,7 @@
             this.lblPaymentStatus.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblPaymentStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaymentStatus.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblPaymentStatus.Location = new System.Drawing.Point(173, 427);
+            this.lblPaymentStatus.Location = new System.Drawing.Point(65, 425);
             this.lblPaymentStatus.Name = "lblPaymentStatus";
             this.lblPaymentStatus.Size = new System.Drawing.Size(141, 20);
             this.lblPaymentStatus.TabIndex = 85;
@@ -170,7 +175,7 @@
             this.lblEnrolmentID.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblEnrolmentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnrolmentID.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblEnrolmentID.Location = new System.Drawing.Point(195, 138);
+            this.lblEnrolmentID.Location = new System.Drawing.Point(87, 136);
             this.lblEnrolmentID.Name = "lblEnrolmentID";
             this.lblEnrolmentID.Size = new System.Drawing.Size(120, 20);
             this.lblEnrolmentID.TabIndex = 76;
@@ -184,7 +189,7 @@
             this.mnuNavigate});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(665, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(705, 24);
             this.menuStrip1.TabIndex = 98;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -239,6 +244,14 @@
             this.mnuViewAll.ToolTipText = "View All record";
             this.mnuViewAll.Click += new System.EventHandler(this.mnuViewAll_Click);
             // 
+            // mnuExit
+            // 
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuExit.Size = new System.Drawing.Size(166, 22);
+            this.mnuExit.Text = "Exit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            // 
             // mnuEdit
             // 
             this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -287,7 +300,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSearch.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
-            this.btnSearch.Location = new System.Drawing.Point(507, 135);
+            this.btnSearch.Location = new System.Drawing.Point(399, 133);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(35, 28);
             this.btnSearch.TabIndex = 99;
@@ -303,7 +316,7 @@
             "Paid",
             "Unpaid",
             "Partially Paid"});
-            this.cmbPaymentStatus.Location = new System.Drawing.Point(326, 424);
+            this.cmbPaymentStatus.Location = new System.Drawing.Point(218, 422);
             this.cmbPaymentStatus.Name = "cmbPaymentStatus";
             this.cmbPaymentStatus.Size = new System.Drawing.Size(217, 28);
             this.cmbPaymentStatus.TabIndex = 11;
@@ -313,7 +326,7 @@
             // txtAmountDue
             // 
             this.txtAmountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAmountDue.Location = new System.Drawing.Point(325, 326);
+            this.txtAmountDue.Location = new System.Drawing.Point(217, 324);
             this.txtAmountDue.Name = "txtAmountDue";
             this.txtAmountDue.Size = new System.Drawing.Size(218, 26);
             this.txtAmountDue.TabIndex = 9;
@@ -329,7 +342,7 @@
             "BPAY",
             "Credit Card",
             "VET Student Loan"});
-            this.cmbPaymentMethod.Location = new System.Drawing.Point(326, 390);
+            this.cmbPaymentMethod.Location = new System.Drawing.Point(218, 388);
             this.cmbPaymentMethod.Name = "cmbPaymentMethod";
             this.cmbPaymentMethod.Size = new System.Drawing.Size(216, 28);
             this.cmbPaymentMethod.TabIndex = 7;
@@ -344,17 +357,78 @@
             "Studying",
             "Not Studying",
             "Deferred"});
-            this.cmbStudyStatus.Location = new System.Drawing.Point(326, 490);
+            this.cmbStudyStatus.Location = new System.Drawing.Point(218, 488);
             this.cmbStudyStatus.Name = "cmbStudyStatus";
             this.cmbStudyStatus.Size = new System.Drawing.Size(216, 28);
             this.cmbStudyStatus.TabIndex = 14;
             this.cmbStudyStatus.Tag = "Study Status";
             this.EnrolmentToolTip.SetToolTip(this.cmbStudyStatus, "press the down arrow to make a selection");
             // 
+            // btnSearchSemester
+            // 
+            this.btnSearchSemester.BackColor = System.Drawing.Color.White;
+            this.btnSearchSemester.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearchSemester.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchSemester.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearchSemester.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
+            this.btnSearchSemester.Location = new System.Drawing.Point(646, 488);
+            this.btnSearchSemester.Name = "btnSearchSemester";
+            this.btnSearchSemester.Size = new System.Drawing.Size(35, 28);
+            this.btnSearchSemester.TabIndex = 149;
+            this.EnrolmentToolTip.SetToolTip(this.btnSearchSemester, "Press to search");
+            this.btnSearchSemester.UseVisualStyleBackColor = false;
+            this.btnSearchSemester.Click += new System.EventHandler(this.btnSearchSemester_Click);
+            // 
+            // btnSearchStudent
+            // 
+            this.btnSearchStudent.BackColor = System.Drawing.Color.White;
+            this.btnSearchStudent.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearchStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchStudent.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearchStudent.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
+            this.btnSearchStudent.Location = new System.Drawing.Point(490, 165);
+            this.btnSearchStudent.Name = "btnSearchStudent";
+            this.btnSearchStudent.Size = new System.Drawing.Size(35, 28);
+            this.btnSearchStudent.TabIndex = 152;
+            this.EnrolmentToolTip.SetToolTip(this.btnSearchStudent, "Press to search");
+            this.btnSearchStudent.UseVisualStyleBackColor = false;
+            this.btnSearchStudent.Click += new System.EventHandler(this.btnSearchStudent_Click);
+            // 
+            // btnSearchCourse
+            // 
+            this.btnSearchCourse.BackColor = System.Drawing.Color.White;
+            this.btnSearchCourse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearchCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchCourse.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSearchCourse.Image = global::CourseManagementSystem.Properties.Resources.unnamed__1_5;
+            this.btnSearchCourse.Location = new System.Drawing.Point(490, 197);
+            this.btnSearchCourse.Name = "btnSearchCourse";
+            this.btnSearchCourse.Size = new System.Drawing.Size(35, 28);
+            this.btnSearchCourse.TabIndex = 153;
+            this.EnrolmentToolTip.SetToolTip(this.btnSearchCourse, "Press to search");
+            this.btnSearchCourse.UseVisualStyleBackColor = false;
+            this.btnSearchCourse.Click += new System.EventHandler(this.btnSearchCourse_Click);
+            // 
+            // cmbSemester
+            // 
+            this.cmbSemester.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSemester.FormattingEnabled = true;
+            this.cmbSemester.Items.AddRange(new object[] {
+            "EFTPOS",
+            "BPAY",
+            "Credit Card",
+            "VET Student Loan"});
+            this.cmbSemester.Location = new System.Drawing.Point(464, 488);
+            this.cmbSemester.Name = "cmbSemester";
+            this.cmbSemester.Size = new System.Drawing.Size(176, 28);
+            this.cmbSemester.TabIndex = 154;
+            this.cmbSemester.Tag = "Payment Method";
+            this.EnrolmentToolTip.SetToolTip(this.cmbSemester, "press the down arrow to make a selection");
+            // 
             // txtEnrolmentID
             // 
             this.txtEnrolmentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEnrolmentID.Location = new System.Drawing.Point(325, 135);
+            this.txtEnrolmentID.Location = new System.Drawing.Point(217, 133);
             this.txtEnrolmentID.Name = "txtEnrolmentID";
             this.txtEnrolmentID.Size = new System.Drawing.Size(176, 26);
             this.txtEnrolmentID.TabIndex = 1;
@@ -366,7 +440,7 @@
             this.lblStudentID.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblStudentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudentID.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudentID.Location = new System.Drawing.Point(211, 170);
+            this.lblStudentID.Location = new System.Drawing.Point(103, 168);
             this.lblStudentID.Name = "lblStudentID";
             this.lblStudentID.Size = new System.Drawing.Size(102, 20);
             this.lblStudentID.TabIndex = 112;
@@ -378,7 +452,7 @@
             this.lblCourseID.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblCourseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCourseID.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblCourseID.Location = new System.Drawing.Point(217, 202);
+            this.lblCourseID.Location = new System.Drawing.Point(109, 200);
             this.lblCourseID.Name = "lblCourseID";
             this.lblCourseID.Size = new System.Drawing.Size(95, 20);
             this.lblCourseID.TabIndex = 114;
@@ -390,7 +464,7 @@
             this.lblEnrolmentDate.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblEnrolmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnrolmentDate.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblEnrolmentDate.Location = new System.Drawing.Point(172, 234);
+            this.lblEnrolmentDate.Location = new System.Drawing.Point(64, 232);
             this.lblEnrolmentDate.Name = "lblEnrolmentDate";
             this.lblEnrolmentDate.Size = new System.Drawing.Size(140, 20);
             this.lblEnrolmentDate.TabIndex = 116;
@@ -402,7 +476,7 @@
             this.lblPaymentDueDate.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblPaymentDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaymentDueDate.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblPaymentDueDate.Location = new System.Drawing.Point(147, 363);
+            this.lblPaymentDueDate.Location = new System.Drawing.Point(39, 361);
             this.lblPaymentDueDate.Name = "lblPaymentDueDate";
             this.lblPaymentDueDate.Size = new System.Drawing.Size(165, 20);
             this.lblPaymentDueDate.TabIndex = 121;
@@ -414,7 +488,7 @@
             this.lblDatePaid.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblDatePaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatePaid.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblDatePaid.Location = new System.Drawing.Point(216, 463);
+            this.lblDatePaid.Location = new System.Drawing.Point(108, 461);
             this.lblDatePaid.Name = "lblDatePaid";
             this.lblDatePaid.Size = new System.Drawing.Size(93, 20);
             this.lblDatePaid.TabIndex = 123;
@@ -426,7 +500,7 @@
             this.lblAmountDue.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblAmountDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAmountDue.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblAmountDue.Location = new System.Drawing.Point(195, 329);
+            this.lblAmountDue.Location = new System.Drawing.Point(87, 327);
             this.lblAmountDue.Name = "lblAmountDue";
             this.lblAmountDue.Size = new System.Drawing.Size(114, 20);
             this.lblAmountDue.TabIndex = 125;
@@ -438,7 +512,7 @@
             this.lblPaymentMethod.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaymentMethod.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblPaymentMethod.Location = new System.Drawing.Point(164, 395);
+            this.lblPaymentMethod.Location = new System.Drawing.Point(56, 393);
             this.lblPaymentMethod.Name = "lblPaymentMethod";
             this.lblPaymentMethod.Size = new System.Drawing.Size(148, 20);
             this.lblPaymentMethod.TabIndex = 127;
@@ -450,7 +524,7 @@
             this.lblStudyStatus.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblStudyStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudyStatus.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblStudyStatus.Location = new System.Drawing.Point(194, 493);
+            this.lblStudyStatus.Location = new System.Drawing.Point(86, 491);
             this.lblStudyStatus.Name = "lblStudyStatus";
             this.lblStudyStatus.Size = new System.Drawing.Size(118, 20);
             this.lblStudyStatus.TabIndex = 132;
@@ -490,7 +564,7 @@
             this.lblCourseDelivery.BackColor = System.Drawing.SystemColors.HotTrack;
             this.lblCourseDelivery.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCourseDelivery.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.lblCourseDelivery.Location = new System.Drawing.Point(171, 298);
+            this.lblCourseDelivery.Location = new System.Drawing.Point(63, 296);
             this.lblCourseDelivery.Name = "lblCourseDelivery";
             this.lblCourseDelivery.Size = new System.Drawing.Size(139, 20);
             this.lblCourseDelivery.TabIndex = 136;
@@ -501,7 +575,7 @@
             this.dtpEnrolmentDate.AllowDrop = true;
             this.dtpEnrolmentDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpEnrolmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEnrolmentDate.Location = new System.Drawing.Point(325, 231);
+            this.dtpEnrolmentDate.Location = new System.Drawing.Point(217, 229);
             this.dtpEnrolmentDate.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpEnrolmentDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpEnrolmentDate.Name = "dtpEnrolmentDate";
@@ -516,7 +590,7 @@
             this.dtpExpectedEndDate.AllowDrop = true;
             this.dtpExpectedEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpExpectedEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpExpectedEndDate.Location = new System.Drawing.Point(325, 264);
+            this.dtpExpectedEndDate.Location = new System.Drawing.Point(217, 262);
             this.dtpExpectedEndDate.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpExpectedEndDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpExpectedEndDate.Name = "dtpExpectedEndDate";
@@ -531,7 +605,7 @@
             this.dtpPaymentDueDate.AllowDrop = true;
             this.dtpPaymentDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpPaymentDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpPaymentDueDate.Location = new System.Drawing.Point(325, 358);
+            this.dtpPaymentDueDate.Location = new System.Drawing.Point(217, 356);
             this.dtpPaymentDueDate.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpPaymentDueDate.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpPaymentDueDate.Name = "dtpPaymentDueDate";
@@ -545,7 +619,7 @@
             // 
             this.pnlCourseDelivery.Controls.Add(this.rdbOnline);
             this.pnlCourseDelivery.Controls.Add(this.rdbFaceToFace);
-            this.pnlCourseDelivery.Location = new System.Drawing.Point(325, 294);
+            this.pnlCourseDelivery.Location = new System.Drawing.Point(217, 292);
             this.pnlCourseDelivery.Name = "pnlCourseDelivery";
             this.pnlCourseDelivery.Size = new System.Drawing.Size(218, 28);
             this.pnlCourseDelivery.TabIndex = 142;
@@ -556,7 +630,7 @@
             this.cmbStudentID.Enabled = false;
             this.cmbStudentID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStudentID.FormattingEnabled = true;
-            this.cmbStudentID.Location = new System.Drawing.Point(325, 167);
+            this.cmbStudentID.Location = new System.Drawing.Point(217, 165);
             this.cmbStudentID.Name = "cmbStudentID";
             this.cmbStudentID.Size = new System.Drawing.Size(35, 28);
             this.cmbStudentID.TabIndex = 144;
@@ -566,7 +640,7 @@
             // 
             this.cmbStudentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStudentName.FormattingEnabled = true;
-            this.cmbStudentName.Location = new System.Drawing.Point(366, 167);
+            this.cmbStudentName.Location = new System.Drawing.Point(258, 165);
             this.cmbStudentName.Name = "cmbStudentName";
             this.cmbStudentName.Size = new System.Drawing.Size(226, 28);
             this.cmbStudentName.TabIndex = 145;
@@ -577,7 +651,7 @@
             // 
             this.cmbCourseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCourseName.FormattingEnabled = true;
-            this.cmbCourseName.Location = new System.Drawing.Point(366, 199);
+            this.cmbCourseName.Location = new System.Drawing.Point(258, 197);
             this.cmbCourseName.Name = "cmbCourseName";
             this.cmbCourseName.Size = new System.Drawing.Size(226, 28);
             this.cmbCourseName.TabIndex = 146;
@@ -590,7 +664,7 @@
             this.cmbCourseID.Enabled = false;
             this.cmbCourseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCourseID.FormattingEnabled = true;
-            this.cmbCourseID.Location = new System.Drawing.Point(325, 199);
+            this.cmbCourseID.Location = new System.Drawing.Point(217, 197);
             this.cmbCourseID.Name = "cmbCourseID";
             this.cmbCourseID.Size = new System.Drawing.Size(35, 28);
             this.cmbCourseID.TabIndex = 147;
@@ -601,7 +675,7 @@
             this.dtpDatePaid.AllowDrop = true;
             this.dtpDatePaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDatePaid.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDatePaid.Location = new System.Drawing.Point(326, 458);
+            this.dtpDatePaid.Location = new System.Drawing.Point(218, 456);
             this.dtpDatePaid.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
             this.dtpDatePaid.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
             this.dtpDatePaid.Name = "dtpDatePaid";
@@ -611,13 +685,17 @@
             this.dtpDatePaid.Value = new System.DateTime(2017, 12, 1, 0, 0, 0, 0);
             this.dtpDatePaid.ValueChanged += new System.EventHandler(this.dtpDatePaid_ValueChanged);
             // 
-            // mnuExit
+            // label1
             // 
-            this.mnuExit.Name = "mnuExit";
-            this.mnuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mnuExit.Size = new System.Drawing.Size(166, 22);
-            this.mnuExit.Text = "Exit";
-            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label1.Location = new System.Drawing.Point(460, 465);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.TabIndex = 151;
+            this.label1.Text = "Semester:";
             // 
             // EnrolmentForm
             // 
@@ -625,7 +703,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(665, 792);
+            this.ClientSize = new System.Drawing.Size(705, 733);
+            this.Controls.Add(this.cmbSemester);
+            this.Controls.Add(this.btnSearchCourse);
+            this.Controls.Add(this.btnSearchStudent);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnSearchSemester);
             this.Controls.Add(this.dtpDatePaid);
             this.Controls.Add(this.cmbCourseID);
             this.Controls.Add(this.cmbCourseName);
@@ -719,5 +802,10 @@
         private System.Windows.Forms.ComboBox cmbCourseID;
         private System.Windows.Forms.DateTimePicker dtpDatePaid;
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
+        private System.Windows.Forms.Button btnSearchSemester;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSearchStudent;
+        private System.Windows.Forms.Button btnSearchCourse;
+        private System.Windows.Forms.ComboBox cmbSemester;
     }
 }

@@ -60,9 +60,23 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@uid", UnitID);
             objCommand.Parameters.AddWithValue("@cid", CourseID);
             objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.ExecuteNonQuery();
-            objConnection.Close();
-            return true;
+            try
+            {
+                objCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (SqlException es)
+            {
+                if (es.Number == 2627)
+                {
+                    MessageBox.Show("Primary Key Violation");
+                }
+                return false;
+            }
+            finally
+            {
+                objConnection.Close();
+            }
         }
 
         public bool Delete()
@@ -95,7 +109,10 @@ namespace CourseManagementSystem
             //SqlConnection objConnection = clsDatabase.CreateConnection();
             objConnection.Open();
 
-            string strSQL = "select * from unit_course";
+            string strSQL = "select unit_course.unitId, unit.unitName, unit_course.courseId, " +
+                            "course.courseName from unit, unit_course, course " +
+                            "where unit.unitId = unit_course.unitId and " +
+                            "course.courseId = unit_course.courseId;";
             SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
 
             DataTable objDataTable = new DataTable();
@@ -107,7 +124,9 @@ namespace CourseManagementSystem
                 dgv.DataSource = objDataTable;
                 dgv.AutoGenerateColumns = false;
                 dgv.Columns[0].HeaderText = "Unit ID";
-                dgv.Columns[1].HeaderText = "Course ID";
+                dgv.Columns[1].HeaderText = "Unit Name";
+                dgv.Columns[2].HeaderText = "Course ID";
+                dgv.Columns[3].HeaderText = "Course Name";
                 dgv.AutoResizeColumns();
                 dgv.AutoSize = false;
                 dgv.Visible = true;

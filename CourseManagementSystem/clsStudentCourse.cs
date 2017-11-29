@@ -58,9 +58,23 @@ namespace CourseManagementSystem
             objCommand.Parameters.AddWithValue("@sid", StudentID);
             objCommand.Parameters.AddWithValue("@cid", CourseID);
             objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.ExecuteNonQuery();
-            objConnection.Close();
-            return true;
+            try
+            {
+                objCommand.ExecuteNonQuery();
+                return true;
+            }
+            catch (SqlException es)
+            {
+                if (es.Number == 2627)
+                {
+                    MessageBox.Show("Primary Key Violation");
+                }
+                return false;
+            }
+            finally
+            {
+                objConnection.Close();
+            }
         }
 
         public bool Delete()
@@ -82,7 +96,11 @@ namespace CourseManagementSystem
             //SqlConnection objConnection = clsDatabase.CreateConnection();
             objConnection.Open();
 
-            string strSQL = "select * from student_course";
+            string strSQL = "select student_course.studentId, (student.studentFirstName + ' ' + " +
+                            "student.studentLastName) as StudentName, student_course.courseId, " +
+                            "course.courseName from student, student_course, course " +
+                            "where student.studentId = student_course.studentId and " +
+                            "course.courseId = student_course.courseId;";
             SqlDataAdapter objDataAdapter = new SqlDataAdapter(strSQL, objConnection);
 
             DataTable objDataTable = new DataTable();
@@ -94,7 +112,9 @@ namespace CourseManagementSystem
                 dgv.DataSource = objDataTable;
                 dgv.AutoGenerateColumns = false;
                 dgv.Columns[0].HeaderText = "Student ID";
-                dgv.Columns[1].HeaderText = "Course ID";
+                dgv.Columns[1].HeaderText = "Student Name";
+                dgv.Columns[2].HeaderText = "Course ID";
+                dgv.Columns[3].HeaderText = "Course Name";
                 dgv.AutoResizeColumns();
                 dgv.AutoSize = false;
                 dgv.Visible = true;

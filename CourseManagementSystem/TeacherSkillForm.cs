@@ -30,7 +30,8 @@ namespace CourseManagementSystem
             }
 
             clsTeacherSkill objTeacherSkill = new clsTeacherSkill(Convert.ToInt32(cmbTeacherID.Text), Convert.ToInt32(cmbSkillID.Text));
-            objTeacherSkill.Add();
+            if (!objTeacherSkill.Add())
+                return;
             MessageBox.Show("Teacher-Skill record successfully added!");
             objTeacherSkill.ViewAll(dgvTeacherSkill);
         }
